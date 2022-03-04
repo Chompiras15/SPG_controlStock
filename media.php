@@ -1,86 +1,125 @@
 <?php
-  $page_title = 'Lista de imagenes';
+  $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-  page_require_level(2);
+  page_require_level(1);
+  
+  $all_embarques = find_all('emb_tasachim')
 ?>
-<?php $media_files = find_all('media');?>
 <?php
-  if(isset($_POST['submit'])) {
-  $photo = new Media();
-  $photo->upload($_FILES['file_upload']);
-    if($photo->process_media()){
-        $session->msg('s','Imagen subida al servidor.');
-        redirect('media.php');
-    } else{
-      $session->msg('d',join($photo->errors));
-      redirect('media.php');
-    }
+ if(isset($_POST['add_emb'])){
+   $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor');
+   validate_fields($req_field);
+   $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
+   $cant_out = remove_junk($db->escape($_POST['cant_out']));
+   $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
+   $date_out = remove_junk($db->escape($_POST['date_out']));
+   $supervisor = remove_junk($db->escape($_POST['supervisor']));
+ 
 
-  }
+   if(empty($errors))
+   {
+      $sql  = "INSERT INTO emb_tasachim (";
+     $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor";
+     $sql .=") VALUES (";
+     $sql .=" '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
+     $sql .=")";
+     $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
+      if($db->query($sql)){
+        $session->msg("s", "Ruma agregada exitosamente.");
+        redirect('media.php',false);
+      } else {
+        $session->msg("d", "Lo siento, registro falló");
+        redirect('media.php',false);
+      }
+   } else {
+     $session->msg("d", $errors);
+     redirect('media.php',false);
+   }
+ }
 ?>
 <?php include_once('layouts/header.php'); ?>
-     <div class="row">
-        <div class="col-md-6">
-          <?php echo display_msg($msg); ?>
+
+  <div class="row">
+     <div class="col-md-12">
+       <?php echo display_msg($msg); ?>
+     </div>
+  </div>
+   <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>
+            <span class="glyphicon glyphicon-th"></span>
+            <span>Agregar Ruma</span>
+         </strong>
         </div>
-
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <span class="glyphicon glyphicon-camera"></span>
-            <span>Lista de imagenes</span>
-            <div class="pull-right">
-              <form class="form-inline" action="media.php" method="POST" enctype="multipart/form-data">
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <input type="file" name="file_upload" multiple="multiple" class="btn btn-primary btn-file"/>
-                 </span>
-
-                 <button type="submit" name="submit" class="btn btn-default">Subir</button>
-               </div>
-              </div>
-             </form>
+        <div class="panel-body">
+          <form method="post" action="media.php">
+            <div class="form-group">
+                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Cono" required>
+                <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " required>
+                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" required>
+                <input type="date" class="form-control" name="date_out" placeholder="Fecha de Salida" required>
+                <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
+      
             </div>
-          </div>
-          <div class="panel-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="text-center" style="width: 50px;">#</th>
-                  <th class="text-center">Imagen</th>
-                  <th class="text-center">Descripción</th>
-                  <th class="text-center" style="width: 20%;">Tipo</th>
-                  <th class="text-center" style="width: 50px;">Acciones</th>
-                </tr>
-              </thead>
-                <tbody>
-                <?php foreach ($media_files as $media_file): ?>
-                <tr class="list-inline">
-                 <td class="text-center"><?php echo count_id();?></td>
-                  <td class="text-center">
-                      <img src="uploads/products/<?php echo $media_file['file_name'];?>" class="img-thumbnail" />
-                  </td>
-                <td class="text-center">
-                  <?php echo $media_file['file_name'];?>
-                </td>
-                <td class="text-center">
-                  <?php echo $media_file['file_type'];?>
-                </td>
-                <td class="text-center">
-                  <a href="delete_media.php?id=<?php echo (int) $media_file['id'];?>" class="btn btn-danger btn-xs"  title="Eliminar">
-                    <span class="glyphicon glyphicon-trash"></span>
-                  </a>
-                </td>
-               </tr>
-              <?php endforeach;?>
-            </tbody>
-          </div>
+            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Ruma</button>
+        </form>
         </div>
       </div>
-</div>
+    </div>
+    <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>
+          <span class="glyphicon glyphicon-th"></span>
+          <span>Lista de Rumas</span>
+       </strong>
+      </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">Id</th>
+                    <th>Cod_Contrato</th>
+                    <th class="text-center" style="width: 50px;">cantidad</th>
+                    <th>Cod_ruma</th>
+                    <th class="text-center" style="width: 50px;">fecha</th>
+                    <th>supervisor</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($all_embarques as $cat):?>
+                <tr>
+                    <td class="text-center"><?php echo count_id();?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['cod_contrato'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['cant_out'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['date_out'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['supervisor'])); ?></td>
+                   
+                  
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                          <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                      </div>
+                    </td>
 
-
-<?php include_once('layouts/footer.php'); ?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+       </div>
+    </div>
+    </div>
+   </div>
+  </div>
+  <?php include_once('layouts/footer.php'); ?>
