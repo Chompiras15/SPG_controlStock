@@ -236,6 +236,7 @@ table tfoot tr td:first-child{
   color: #646464;
   border: 1px solid #e6e6e6;
   border-radius: 3px;
+  padding: 20px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
