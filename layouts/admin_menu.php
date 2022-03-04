@@ -18,7 +18,7 @@
   <li>
     <a href="categorie.php" >
       <i class="glyphicon glyphicon-indent-left"></i>
-      <span>Categorías</span>
+      <span>Almacen</span>
     </a>
   </li>
   <li>
