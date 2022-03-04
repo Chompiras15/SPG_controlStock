@@ -8,7 +8,7 @@
 ?>
 <?php
  if(isset($_POST['add_cat'])){
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede', 'nicho');
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
    validate_fields($req_field);
    $cat_sector = remove_junk($db->escape($_POST['sector']));
    $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -16,15 +16,14 @@
    $cat_producc = remove_junk($db->escape($_POST['date_producc']));
    $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
    $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-   $cat_sede = remove_junk($db->escape($_POST['sede']));
    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
    $date   = make_date();
 
    if(empty($errors)){
       $sql  = "INSERT INTO sede_tasachimbote (";
-     $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,sede,nicho,date_almacenamiento";
+     $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
      $sql .=") VALUES (";
-     $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$cat_nicho}', '{$date}'";
+     $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
      $sql .=")";
      $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
 
@@ -66,7 +65,7 @@
                 <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
                 <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
                 <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
-                <input type="text" class="form-control" name="sede" placeholder="Sede" required>
+                <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
             </div>
             <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
         </form>
