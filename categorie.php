@@ -1,21 +1,35 @@
 <?php
-  $page_title = 'Lista de categorías';
+  $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(1);
   
-  $all_categories = find_all('categories')
+  $all_categories = find_all('sede_tasachimbote')
 ?>
 <?php
  if(isset($_POST['add_cat'])){
-   $req_field = array('categorie-name');
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede', 'nicho');
    validate_fields($req_field);
-   $cat_name = remove_junk($db->escape($_POST['categorie-name']));
+   $cat_sector = remove_junk($db->escape($_POST['sector']));
+   $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
+   $cat_sacos = remove_junk($db->escape($_POST['cant_saco']));
+   $cat_producc = remove_junk($db->escape($_POST['date_producc']));
+   $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
+   $cat_calidad = remove_junk($db->escape($_POST['calidad']));
+   $cat_sede = remove_junk($db->escape($_POST['sede']));
+   $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+   $date   = make_date();
+
    if(empty($errors)){
-      $sql  = "INSERT INTO categories (name)";
-      $sql .= " VALUES ('{$cat_name}')";
+      $sql  = "INSERT INTO sede_tasachimbote (";
+     $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,sede,nicho,date_almacenamiento";
+     $sql .=") VALUES (";
+     $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$cat_nicho}', '{$date}'";
+     $sql .=")";
+     $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+
       if($db->query($sql)){
-        $session->msg("s", "Categoría agregada exitosamente.");
+        $session->msg("s", "Ruma agregada exitosamente.");
         redirect('categorie.php',false);
       } else {
         $session->msg("d", "Lo siento, registro falló");
@@ -40,15 +54,21 @@
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Agregar categoría</span>
+            <span>Agregar Ruma</span>
          </strong>
         </div>
         <div class="panel-body">
           <form method="post" action="categorie.php">
             <div class="form-group">
-                <input type="text" class="form-control" name="categorie-name" placeholder="Nombre de la categoría" required>
+                <input type="text" class="form-control" name="sector" placeholder="Sector" required>
+                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo ruma" required>
+                <input type="text" class="form-control" name="cant_saco" placeholder="Cantidad sacos" required>
+                <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
+                <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
+                <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
+                <input type="text" class="form-control" name="sede" placeholder="Sede" required>
             </div>
-            <button type="submit" name="add_cat" class="btn btn-primary">Agregar categoría</button>
+            <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
         </form>
         </div>
       </div>
@@ -58,15 +78,19 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de categorías</span>
+          <span>Lista de Rumas</span>
        </strong>
       </div>
         <div class="panel-body">
           <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 50px;">#</th>
-                    <th>Categorías</th>
+                    <th class="text-center" style="width: 50px;">Id</th>
+                    <th>Cod.Ruma</th>
+                    <th class="text-center" style="width: 50px;">Sector</th>
+                    <th>Cant_sacos</th>
+                    <th class="text-center" style="width: 50px;">nicho</th>
+                    <th>Calidad</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
@@ -74,7 +98,13 @@
               <?php foreach ($all_categories as $cat):?>
                 <tr>
                     <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['name'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                   
+                  
                     <td class="text-center">
                       <div class="btn-group">
                         <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
