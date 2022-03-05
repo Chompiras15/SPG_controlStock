@@ -47,35 +47,35 @@
      </div>
   </div>
    <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Agregar Ruma</span>
+            <span>Agregar Despacho</span>
          </strong>
         </div>
         <div class="panel-body">
           <form method="post" action="media.php">
             <div class="form-group">
-                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Cono" required>
+                <input type="text" class="form-control" name="cod_contrato" placeholder="Contrato" required>
                 <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " required>
                 <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" required>
                 <input type="date" class="form-control" name="date_out" placeholder="Fecha de Salida" required>
                 <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
       
             </div>
-            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Ruma</button>
+            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Despacho</button>
         </form>
         </div>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Rumas</span>
+          <span>Lista de Despachos</span>
        </strong>
       </div>
         <div class="panel-body">
@@ -86,7 +86,7 @@
                     <th>Cod_Contrato</th>
                     <th class="text-center" style="width: 50px;">cantidad</th>
                     <th>Cod_ruma</th>
-                    <th class="text-center" style="width: 50px;">fecha</th>
+                    <th class="text-center" style="width: 100px;">fecha</th>
                     <th>supervisor</th>
                   
                 </tr>

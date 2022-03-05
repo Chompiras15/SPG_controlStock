@@ -24,17 +24,17 @@
   <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-th-large"></i>
-      <span>Productos</span>
+      <span>Actividades</span>
     </a>
     <ul class="nav submenu">
-       <li><a href="product.php">Administrar productos</a> </li>
+       <li><a href="actividad.php">Administrar Actividades</a> </li>
        <li><a href="add_product.php">Agregar productos</a> </li>
    </ul>
   </li>
   <li>
     <a href="media.php" >
       <i class="glyphicon glyphicon-picture"></i>
-      <span>Media</span>
+      <span>Despachos</span>
     </a>
   </li>
   <li>
