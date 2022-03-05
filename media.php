@@ -52,20 +52,20 @@
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Agregar Ruma</span>
+            <span>Agregar Embarcación</span>
          </strong>
         </div>
         <div class="panel-body">
           <form method="post" action="media.php">
             <div class="form-group">
-                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Cono" required>
+                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato" required>
                 <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " required>
                 <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" required>
                 <input type="date" class="form-control" name="date_out" placeholder="Fecha de Salida" required>
                 <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
       
             </div>
-            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Ruma</button>
+            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Embarque</button>
         </form>
         </div>
       </div>
@@ -75,7 +75,7 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Rumas</span>
+          <span>Lista de Embarcaciones</span>
        </strong>
       </div>
         <div class="panel-body">
@@ -92,22 +92,22 @@
                 </tr>
             </thead>
             <tbody>
-              <?php foreach ($all_embarques as $cat):?>
+              <?php foreach ($all_embarques as $embar):?>
                 <tr>
                     <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cod_contrato'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cant_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['date_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['supervisor'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($embar['date_out'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
                    
                   
                     <td class="text-center">
                       <div class="btn-group">
-                        <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                        <a href="edit_embarcaciones.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                           <span class="glyphicon glyphicon-edit"></span>
                         </a>
-                        <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                        <a href="delete_media.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                           <span class="glyphicon glyphicon-trash"></span>
                         </a>
                       </div>
