@@ -28,8 +28,8 @@
     </a>
     <ul class="nav submenu">
        <li><a href="actividad.php">Administrar Actividades</a> </li>
-       <li><a href="monthly_sales.php">Reporte Mensuales</a></li>
-       <li><a href="daily_sales.php">Reporte diario</a> </li>
+       <li><a href="monthly_sales.php">Reporte Diario</a></li>
+       <li><a href="daily_sales.php">Reporte Mensual</a> </li>
    </ul>
   </li>
   <li>
