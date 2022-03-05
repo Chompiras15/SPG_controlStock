@@ -27,7 +27,8 @@ if(isset($_POST['edit_cat'])){
   $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
-  if(empty($errors)){
+  if(empty($errors))
+  {
     $sql   = "UPDATE sede_tasachimbote SET";
     $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
     $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";

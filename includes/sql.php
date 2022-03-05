@@ -36,6 +36,39 @@ function find_by_id($table,$id)
             return null;
      }
 }
+
+/*--------------------------------------------------------------*/
+/*  Function for Find data from table by Cod_Ruma
+/*--------------------------------------------------------------*/
+function find_by_codRuma($table,$cod_ruma)
+{
+  global $db;
+  //$id = (int)$id;
+    if(tableExists($table)){
+          $sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE cod_ruma='{$db->escape($cod_ruma)}' LIMIT 1");
+          if($result = $db->fetch_assoc($sql))
+            return $result;
+          else
+            return null;
+     }
+}
+
+/*--------------------------------------------------------------*/
+/* Function for Delete data from table by cod_Ruma
+/*--------------------------------------------------------------*/
+function delete_by_codRuma($table,$cod_ruma)   ///  observacion
+{
+  global $db;
+  if(tableExists($table))
+   {
+    $sql = "DELETE FROM ".$db->escape($table);
+    $sql .= " WHERE cod_ruma=". $db->escape($cod_ruma);
+    $sql .= " LIMIT 1";
+    $db->query($sql);
+    return ($db->affected_rows() === 1) ? true : false;
+   }
+}
+
 /*--------------------------------------------------------------*/
 /* Function for Delete data from table by id
 /*--------------------------------------------------------------*/

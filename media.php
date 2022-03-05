@@ -7,7 +7,8 @@
   $all_embarques = find_all('emb_tasachim')
 ?>
 <?php
- if(isset($_POST['add_emb'])){
+ if(isset($_POST['add_emb']))
+ {
    $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor');
    validate_fields($req_field);
    $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
@@ -26,9 +27,53 @@
      $sql .=")";
      $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-      if($db->query($sql)){
-        $session->msg("s", "Ruma agregada exitosamente.");
-        redirect('media.php',false);
+      if($db->query($sql))
+      
+      {
+
+        $findCatRuma = find_by_codRuma('sede_tasachimbote',$_POST['cod_ruma']);
+        $restaSacos=(int)$findCatRuma["cant_saco"]-(int)$cant_out;
+
+        if($restaSacos == 0)
+        {
+          $delete_cod_ruma= delete_by_id('sede_tasachimbote',$findCatRuma['id']);
+            //$delete_id = delete_by_id('sede_tasachimbote',(int)$categorie['id']);
+          if($delete_cod_ruma){
+              $session->msg("s","Ruma eliminada");
+              redirect('media.php');
+          } else {
+              $delete_cod_ruma->msg("d","Eliminación falló");
+              redirect('media.php');
+          }
+
+        }elseif($restaSacos > 0)
+        {
+          $sql   = "UPDATE sede_tasachimbote SET";
+          $sql  .=" cant_saco ='{$restaSacos}'";
+          $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+          $result = $db->query($sql);
+          if($result && $db->affected_rows() === 1) 
+          {
+            $session->msg("s", "Categoría actualizada con éxito.");
+            redirect('media.php',false);
+          } else 
+          {
+            $session->msg("d", "Lo siento, actualización falló.");
+            redirect('media.php',false);
+          }
+
+          $session->msg("s", "Ruma agregada exitosamente.");
+          redirect('media.php',false);
+
+        }elseif($restaSacos < 0)
+        {
+          $session->msg("d", "Verificar la Cantidad Sacos");
+          redirect('media.php',false);
+        }
+
+        
+
       } else {
         $session->msg("d", "Lo siento, registro falló");
         redirect('media.php',false);
