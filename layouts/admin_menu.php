@@ -28,7 +28,8 @@
     </a>
     <ul class="nav submenu">
        <li><a href="actividad.php">Administrar Actividades</a> </li>
-       <li><a href="add_product.php">Agregar productos</a> </li>
+       <li><a href="monthly_sales.php">Reporte Mensuales</a></li>
+       <li><a href="daily_sales.php">Reporte diario</a> </li>
    </ul>
   </li>
   <li>
@@ -50,11 +51,11 @@
   <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-signal"></i>
-       <span>Reporte de ventas</span>
+       <span>Reporte de Actividades</span>
       </a>
       <ul class="nav submenu">
         <li><a href="sales_report.php">Ventas por fecha </a></li>
-        <li><a href="monthly_sales.php">Ventas mensuales</a></li>
+        <li><a href="monthly_sales.php">Actividades</a></li>
         <li><a href="daily_sales.php">Ventas diarias</a> </li>
       </ul>
   </li>

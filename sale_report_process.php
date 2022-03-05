@@ -28,7 +28,7 @@ $results = '';
 <html lang="en-US">
  <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <title>Reporte de ventas</title>
+   <title>Reporte de Actividades</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
    <style>
    @media print {
@@ -79,7 +79,7 @@ $results = '';
   <?php if($results): ?>
     <div class="page-break">
        <div class="sale-head pull-right">
-           <h1>Reporte de ventas</h1>
+           <h1>Reporte de Actividades</h1>
            <strong><?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?> </strong>
        </div>
       <table class="table table-border">
@@ -96,9 +96,12 @@ $results = '';
         <tbody>
           <?php foreach($results as $result): ?>
            <tr>
-              <td class=""><?php echo remove_junk($result['date']);?></td>
+              <td class=""><?php echo remove_junk($result['fecha']);?></td>
               <td class="desc">
-                <h6><?php echo remove_junk(ucfirst($result['name']));?></h6>
+                <h6><?php echo remove_junk(ucfirst($result['nameActivity']));?></h6>
+              </td>
+              <td class="desc">
+                <h6><?php echo remove_junk(ucfirst($result['details']));?></h6>
               </td>
               <td class="text-right"><?php echo remove_junk($result['buy_price']);?></td>
               <td class="text-right"><?php echo remove_junk($result['sale_price']);?></td>

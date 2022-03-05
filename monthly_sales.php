@@ -20,28 +20,28 @@
         <div class="panel-heading clearfix">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Ventas mensuales</span>
+            <span>Actividades mensuales</span>
           </strong>
         </div>
         <div class="panel-body">
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;">#</th>
-                <th> Descripción </th>
-                <th class="text-center" style="width: 15%;"> Cantidad vendidas</th>
-                <th class="text-center" style="width: 15%;"> Total </th>
+                <th class="text-center" style="width: 50px;">ID</th>
+                <th> Actividad </th>
+                <th class="text-center" style="width: 15%;"> Detalle</th>
                 <th class="text-center" style="width: 15%;"> Fecha </th>
+                
+               
              </tr>
             </thead>
            <tbody>
              <?php foreach ($sales as $sale):?>
              <tr>
                <td class="text-center"><?php echo count_id();?></td>
-               <td><?php echo remove_junk($sale['name']); ?></td>
-               <td class="text-center"><?php echo (int)$sale['qty']; ?></td>
-               <td class="text-center"><?php echo remove_junk($sale['total_saleing_price']); ?></td>
-               <td class="text-center"><?php echo date("d/m/Y", strtotime ($sale['date'])); ?></td>
+               <td><?php echo remove_junk($sale['nameActivity']); ?></td>
+               <td><?php echo remove_junk($sale['details']); ?></td>
+               <td class="text-center"><?php echo date("d/m/Y", strtotime ($sale['fecha'])); ?></td>
              </tr>
              <?php endforeach;?>
            </tbody>

@@ -97,32 +97,32 @@
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-<<<<<<< HEAD
+
             <span>Agregar Despacho</span>
-=======
-            <span>Agregar Embarcación</span>
->>>>>>> 3ad25d649201168b5c420dbf937fa698e1f9354a
+
+           
+
          </strong>
         </div>
         <div class="panel-body">
           <form method="post" action="media.php">
             <div class="form-group">
-<<<<<<< HEAD
+
+                <
+
                 <input type="text" class="form-control" name="cod_contrato" placeholder="Contrato" required>
-=======
-                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato" required>
->>>>>>> 3ad25d649201168b5c420dbf937fa698e1f9354a
+
                 <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " required>
                 <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" required>
                 <input type="date" class="form-control" name="date_out" placeholder="Fecha de Salida" required>
                 <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
       
             </div>
-<<<<<<< HEAD
+
             <button type="submit" name="add_emb" class="btn btn-primary">Agregar Despacho</button>
-=======
-            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Embarque</button>
->>>>>>> 3ad25d649201168b5c420dbf937fa698e1f9354a
+
+   
+
         </form>
         </div>
       </div>
@@ -132,11 +132,9 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-<<<<<<< HEAD
+
           <span>Lista de Despachos</span>
-=======
-          <span>Lista de Embarcaciones</span>
->>>>>>> 3ad25d649201168b5c420dbf937fa698e1f9354a
+
        </strong>
       </div>
         <div class="panel-body">
@@ -144,11 +142,11 @@
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
-                    <th>Cod_Contrato</th>
-                    <th class="text-center" style="width: 50px;">cantidad</th>
-                    <th>Cod_ruma</th>
-                    <th class="text-center" style="width: 100px;">fecha</th>
-                    <th>supervisor</th>
+                    <th>CONTRATO</th>
+                    <th class="text-center" style="width: 50px;">CANTIDAD</th>
+                    <th>COD.RUMA</th>
+                    <th class="text-center" style="width: 100px;">FECHA</th>
+                    <th>SUPERVISOR</th>
                   
                 </tr>
             </thead>
