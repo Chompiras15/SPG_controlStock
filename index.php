@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/spg_login.css">
 	<script src="js/material.min.js" ></script>
 
 </head>
