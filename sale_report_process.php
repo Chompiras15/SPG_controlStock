@@ -56,11 +56,11 @@ $results = '';
        margin: 0;
        border-bottom: 1px solid #212121;
      }.table>thead:first-child>tr:first-child>th{
-       border-top: 1px solid #000;
+       border-top: 2px solid #000;
       }
       table thead tr th {
        text-align: center;
-       border: 1px solid #ededed;
+       border: 2px solid #ededed;
      }table tbody tr td{
        vertical-align: middle;
      }.sale-head,table.table thead tr th,table tbody tr td,table tfoot tr td{
@@ -85,47 +85,24 @@ $results = '';
       <table class="table table-border">
         <thead>
           <tr>
+              <th>Actividad</th>
+              <th>Detalle</th>
               <th>Fecha</th>
-              <th>Descripción</th>
-              <th>Precio de compra</th>
-              <th>Precio de venta</th>
-              <th>Cantidad total</th>
-              <th>TOTAL</th>
+
           </tr>
         </thead>
         <tbody>
           <?php foreach($results as $result): ?>
            <tr>
-              <td class=""><?php echo remove_junk($result['fecha']);?></td>
-              <td class="desc">
-                <h6><?php echo remove_junk(ucfirst($result['nameActivity']));?></h6>
-              </td>
-              <td class="desc">
-                <h6><?php echo remove_junk(ucfirst($result['details']));?></h6>
-              </td>
-              <td class="text-right"><?php echo remove_junk($result['buy_price']);?></td>
-              <td class="text-right"><?php echo remove_junk($result['sale_price']);?></td>
-              <td class="text-right"><?php echo remove_junk($result['total_sales']);?></td>
-              <td class="text-right"><?php echo remove_junk($result['total_saleing_price']);?></td>
+            
+              <td class="text-right"><?php echo remove_junk($result['nameActivity']);?></td>
+              <td class="text-right"><?php echo remove_junk($result['details']);?></td>
+              <td class="text-right"><?php echo remove_junk($result['fecha']);?></td>
+             
           </tr>
         <?php endforeach; ?>
         </tbody>
-        <tfoot>
-         <tr class="text-right">
-           <td colspan="4"></td>
-           <td colspan="1"> Total </td>
-           <td> $
-           <?php echo number_format(@total_price($results)[0], 2);?>
-          </td>
-         </tr>
-         <tr class="text-right">
-           <td colspan="4"></td>
-           <td colspan="1">Utilidad</td>
-           <td> $<?php echo number_format(@total_price($results)[1], 2);?></td>
-         </tr>
-        </tfoot>
-      </table>
-    </div>
+       
   <?php
     else:
         $session->msg("d", "No se encontraron ventas. ");

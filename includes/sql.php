@@ -342,12 +342,14 @@ function find_sale_by_dates($start_date,$end_date){
   global $db;
   $start_date  = date("Y-m-d", strtotime($start_date));
   $end_date    = date("Y-m-d", strtotime($end_date));
-  $sql  = "SELECT s.nameActivity, s.details,s.fecha";
- /* $sql .= "COUNT(s.product_id) AS total_records,";
-  $sql .= "SUM(s.qty) AS total_sales,";
-  $sql .= "SUM(p.sale_price * s.qty) AS total_saleing_price,";
+  $sql  = "SELECT s.nameActivity, s.details, s.fecha ";
+  $sql .= "FROM activity_tasachim s";
+  
+ /* $sql .= "COUNT(s.product_id) AS total_records,";*/
+  /*$sql .= "SUM(s.qty) AS total_sales,";*/
+ /* $sql .= "SUM(p.sale_price * s.qty) AS total_saleing_price,";
   $sql .= "SUM(p.buy_price * s.qty) AS total_buying_price ";*/
-  $sql .= "FROM activity_tasachim s ";
+
   /*$sql .= "LEFT JOIN products p ON s.product_id = p.id";*/
   $sql .= " WHERE s.fecha BETWEEN '{$start_date}' AND '{$end_date}'";
   $sql .= " GROUP BY DATE(s.fecha),s.nameActivity";
