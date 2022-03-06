@@ -30,6 +30,7 @@
        <li><a href="actividad.php">Administrar Actividades</a> </li>
        <li><a href="monthly_sales.php">Reporte Diario</a></li>
        <li><a href="daily_sales.php">Reporte Mensual</a> </li>
+       <li><a href="sales_report.php">Reporte Rangos </a></li>
    </ul>
   </li>
   <li>
