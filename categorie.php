@@ -23,51 +23,63 @@
     $date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
-   if(!$findCatRuma)
-   {
-  
-      if(empty($errors)){
-        $sql  = "INSERT INTO sede_tasachimbote (";
-        $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
-        $sql .=") VALUES (";
-        $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
-        $sql .=")";
-        $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
-  
-        if($db->query($sql)){
-          $session->msg("s", "Ruma agregada exitosamente.");
-          redirect('categorie.php',false);
-        } else {
-          $session->msg("d", "Lo siento, registro falló");
-          redirect('categorie.php',false);
-        }
-      } else {
-        $session->msg("d", $errors);
-        redirect('categorie.php',false);
-      }
-   }else 
-   {
-      //UPDATE DATA ALMACEN 
-      
-
-      $sql   = "UPDATE sede_tasachimbote SET";
-      $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
-      $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
-      $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-
-      $result = $db->query($sql);
-      if($result && $db->affected_rows() === 1) 
-      {
-        $session->msg("s", "Categoría actualizada con éxito.");
-        redirect('categorie.php',false);
-      } else 
-      {
-        $session->msg("d", "Lo siento, actualización falló.");
-        redirect('categorie.php',false);
-      }
     
-   }
-   
+    if($sumaSacos<=1000)
+    {
+        if(!$findCatRuma)
+        {
+
+            if(empty($errors))
+            {
+              $sql  = "INSERT INTO sede_tasachimbote (";
+              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
+              $sql .=") VALUES (";
+              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
+              $sql .=")";
+              $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+        
+              if($db->query($sql)){
+                $session->msg("s", "Ruma agregada exitosamente.");
+                redirect('categorie.php',false);
+              } else {
+                $session->msg("d", "Lo siento, registro falló");
+                redirect('categorie.php',false);
+              }
+            } else {
+              $session->msg("d", $errors);
+              redirect('categorie.php',false);
+            }
+
+          
+        
+            
+        }else 
+        {
+            //UPDATE DATA ALMACEN 
+            
+
+            $sql   = "UPDATE sede_tasachimbote SET";
+            $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
+            $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+            $result = $db->query($sql);
+            if($result && $db->affected_rows() === 1) 
+            {
+              $session->msg("s", "Categoría actualizada con éxito.");
+              redirect('categorie.php',false);
+            } else 
+            {
+              $session->msg("d", "Lo siento, actualización falló.");
+              redirect('categorie.php',false);
+            }
+          
+        }
+
+    }else{
+      $session->msg("d", "La Ruma ".$cat_ruma. " Excede la cantidad limite de sacos");
+      redirect('categorie.php',false);
+    }
  }
 ?>
 <?php include_once('layouts/header.php'); ?>
