@@ -64,10 +64,10 @@ $results = '';
      }table tbody tr td{
        vertical-align: middle;
      }.sale-head,table.table thead tr th,table tbody tr td,table tfoot tr td{
-       border: 1px solid #212121;
+       border: 2px solid #212121;
        white-space: nowrap;
      }.sale-head h1,table thead tr th,table tfoot tr td{
-       background-color: #f8f8f8;
+       background-color: #71aaf7;;
      }tfoot{
        color:#000;
        text-transform: uppercase;
