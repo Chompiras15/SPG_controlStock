@@ -234,7 +234,7 @@ function tableExists($table){
      elseif($current_user['user_level'] <= (int)$require_level):
               return true;
       else:
-            $session->msg("d", "¡Lo siento!  no tienes permiso para ver la página.");
+            $session->msg("d", "¡Lo siento!  no tienes permiso para ejecutar esta acción.");
             redirect('home.php', false);
         endif;
 
