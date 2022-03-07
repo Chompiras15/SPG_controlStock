@@ -225,9 +225,11 @@ function tableExists($table){
             $session->msg('d','Por favor Iniciar sesión...');
             redirect('index.php', false);
       //if Group status Deactive
-     elseif($login_level['group_status'] === '0'):
-           $session->msg('d','Este nivel de usaurio esta inactivo!');
-           redirect('home.php',false);
+      //OJO CON ESTO-------------------------------------
+     //elseif($login_level['group_status'] === '0'):
+       //    $session->msg('d','Este nivel de usaurio esta inactivo!');
+         //  redirect('home.php',false);
+           //-------------------------------------
       //cheackin log in User level and Require level is Less than or equal to
      elseif($current_user['user_level'] <= (int)$require_level):
               return true;

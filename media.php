@@ -39,7 +39,7 @@
           $delete_cod_ruma= delete_by_id('sede_tasachimbote',$findCatRuma['id']);
             //$delete_id = delete_by_id('sede_tasachimbote',(int)$categorie['id']);
           if($delete_cod_ruma){
-              $session->msg("s","Ruma eliminada");
+              $session->msg("s","Ruma despachada totalmente");
               redirect('media.php');
           } else {
               $delete_cod_ruma->msg("d","Eliminación falló");
@@ -55,7 +55,7 @@
           $result = $db->query($sql);
           if($result && $db->affected_rows() === 1) 
           {
-            $session->msg("s", "Categoría actualizada con éxito.");
+            $session->msg("s", "Despacho actualizado con éxito");
             redirect('media.php',false);
           } else 
           {
@@ -108,7 +108,7 @@
           <form method="post" action="media.php">
             <div class="form-group">
 
-                <
+               
 
                 <input type="text" class="form-control" name="cod_contrato" placeholder="Contrato" required>
 
