@@ -1,6 +1,8 @@
+
 <?php
   $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
+
   // Checkin What level user has permission to view this page
   page_require_level(3);
  
@@ -59,8 +61,9 @@
        <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
       </div>
         <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover">
-            <thead>
+          <table class="table table-bordered table-striped table-hover " id="actividad" >
+          
+            <thead >
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
                     <th class="text-center" style="width: 100px;">Actividad</th>
@@ -69,7 +72,7 @@
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
               <?php foreach ($all_actividades as $act):?>
                 <tr>
                     <td class="text-center"><?php echo count_id();?></td>
@@ -88,12 +91,26 @@
                     </td>
 
                 </tr>
+                <!----------------------------------------------->
+              
+                <!----------------------------------------------->
+                
               <?php endforeach; ?>
             </tbody>
+     
           </table>
        </div>
+      
     </div>
+    
     </div>
+   
    </div>
+  
   </div>
+  <script>
+  var tablita= document.querySelector("#actividad");
+  var dataTable= new DataTable(tablita);
+  </script>
   <?php include_once('layouts/footer.php'); ?>
+                

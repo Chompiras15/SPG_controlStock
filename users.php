@@ -25,7 +25,7 @@
          <a href="add_user.php" class="btn btn-info pull-right">Agregar usuario</a>
       </div>
      <div class="panel-body">
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-striped" id="user">
         <thead>
           <tr>
             <th class="text-center" style="width: 50px;">#</th>
@@ -70,4 +70,8 @@
     </div>
   </div>
 </div>
+<script>
+  var tablita= document.querySelector("#user");
+  var dataTable= new DataTable(tablita);
+  </script>
   <?php include_once('layouts/footer.php'); ?>

@@ -139,7 +139,7 @@
        </strong>
       </div>
         <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover">
+          <table class="table table-bordered table-striped table-hover" id="despacho">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
@@ -182,4 +182,8 @@
     </div>
    </div>
   </div>
+  <script>
+  var tablita= document.querySelector("#despacho");
+  var dataTable= new DataTable(tablita);
+  </script>
   <?php include_once('layouts/footer.php'); ?>

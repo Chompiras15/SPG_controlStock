@@ -90,7 +90,7 @@
      </div>
   </div>
    <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong>
@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong>
@@ -123,7 +123,7 @@
        </strong>
       </div>
         <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover">
+          <table class="table table-bordered table-striped table-hover" id="almacen">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
@@ -132,6 +132,7 @@
                     <th>Cant_sacos</th>
                     <th class="text-center" style="width: 50px;">nicho</th>
                     <th>Calidad</th>
+                    <th>Fecha</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
@@ -144,6 +145,7 @@
                     <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                    
                   
                     <td class="text-center">
@@ -166,4 +168,9 @@
     </div>
    </div>
   </div>
+  <script>
+  var tablita= document.querySelector("#almacen");
+  var dataTable= new DataTable(tablita);
+  </script>
+
   <?php include_once('layouts/footer.php'); ?>

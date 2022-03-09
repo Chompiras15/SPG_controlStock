@@ -145,7 +145,7 @@
             <i class="glyphicon glyphicon-list"></i>
         </div>
         <div class="panel-value pull-right">
-        <h4 class="margin-top" style="margin-top: 50px;"> Tasa Exalmar </h4>
+        <h4 class="margin-top" style="margin-top: 50px;"> Chimbote Exalmar </h4>
         </div>
        </div>
     </div>
@@ -185,7 +185,7 @@
             <i class="glyphicon glyphicon-user"></i>
         </div>
         <div class="panel-value pull-right">
-          <h4 class="margin-top" style="margin-top: 50px;"> Malabrigo </h4>
+          <h4 class="margin-top" style="margin-top: 50px;"> Malabrigo Exalmar </h4>
         </div>
        </div>
     </div>

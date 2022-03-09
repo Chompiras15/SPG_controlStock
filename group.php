@@ -22,7 +22,7 @@
        <a href="add_group.php" class="btn btn-info pull-right btn-sm"> Agregar grupo</a>
     </div>
      <div class="panel-body">
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="grupo">
         <thead>
           <tr>
             <th class="text-center" style="width: 50px;">#</th>
@@ -65,4 +65,8 @@
     </div>
   </div>
 </div>
+<script>
+  var tablita= document.querySelector("#grupo");
+  var dataTable= new DataTable(tablita);
+  </script>
   <?php include_once('layouts/footer.php'); ?>

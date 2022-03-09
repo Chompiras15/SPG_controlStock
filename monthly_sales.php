@@ -20,7 +20,7 @@
         <div class="panel-heading clearfix">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Actividades mensuales</span>
+            <span>Actividades Diarias</span>
           </strong>
         </div>
         <div class="panel-body">
