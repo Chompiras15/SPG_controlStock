@@ -53,6 +53,39 @@ function find_by_codRuma($table,$cod_ruma)
      }
 }
 
+
+/*--------------------------------------------------------------*/
+/*  Function for Find data from table by sedeUser
+/*--------------------------------------------------------------*/
+function find_by_sedeUser($table,$sede_user)
+{
+  global $db;
+  //$id = (int)$id;
+    if(tableExists($table)){
+          $sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE sede='{$db->escape($sede_user)}' LIMIT 1");
+          if($result = $db->fetch_assoc($sql))
+            return $result;
+          else
+            return null;
+     }
+}
+
+/*--------------------------------------------------------------*/
+/*  Function for Find data from table by user
+/*--------------------------------------------------------------*/
+function find_by_user($table,$user)
+{
+  global $db;
+  //$id = (int)$id;
+    if(tableExists($table)){
+          $sql = $db->query("SELECT * FROM {$db->escape($table)} WHERE username='{$db->escape($user)}' LIMIT 1");
+          if($result = $db->fetch_assoc($sql))
+            return $result;
+          else
+            return null;
+     }
+}
+
 /*--------------------------------------------------------------*/
 /* Function for Delete data from table by cod_Ruma
 /*--------------------------------------------------------------*/
