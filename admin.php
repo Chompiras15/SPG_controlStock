@@ -221,24 +221,21 @@
   
   firstClient.onclick=function()
   {
-     /*<?php
+     <?php
 
          $sql   = "UPDATE users SET";
-         $sql  .=" sede ='{$findUser["image"]}'";
+         $sql  .=" sede ='{$findUser["id"]}'";
          $sql  .= " WHERE username='{$findUser['username']}'";
 
          $result = $db->query($sql);
          if($result && $db->affected_rows() === 1) 
          {
            $session->msg("s", "Categoría actualizada con éxito.");
-           redirect('categorie.php',false);
+           redirect('admin.php',false);
          } else 
-         {
-           $session->msg("d", "Lo siento, actualización falló.");
-           redirect('categorie.php',false);
-         }
+         
       
-      ?>*/
+      ?>
 
       console.log(firstClient)
   };
