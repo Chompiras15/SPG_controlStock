@@ -36,10 +36,12 @@ $results = '';
         font-size: 9.5pt;
         margin: 0;
         padding: 0;
+       
      }.page-break {
        page-break-before:always;
        width: auto;
        margin: auto;
+      
       }
     }
     .page-break{
@@ -73,11 +75,19 @@ $results = '';
        text-transform: uppercase;
        font-weight: 500;
      }
+     .page-break img{
+       width: 150px;
+       margin: auto;
+      border-radius:50%;
+      padding-top:35px;
+     
+     }
    </style>
 </head>
 <body>
   <?php if($results): ?>
     <div class="page-break">
+    <img src="img/logobussiness.png">
        <div class="sale-head pull-right">
            <h1>Reporte de Actividades</h1>
            <strong><?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?> </strong>
@@ -105,7 +115,7 @@ $results = '';
        
   <?php
     else:
-        $session->msg("d", "No se encontraron ventas. ");
+        $session->msg("d", "No se encontraron Actividades. ");
         redirect('sales_report.php', false);
      endif;
   ?>
