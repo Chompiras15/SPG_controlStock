@@ -17,9 +17,17 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-  if( $SuperUser["sede"]=="Chimbote") $table="sede_tasachimbote";
-  if( $SuperUser["sede"]=="Atico") $table="sede_atico";
-
+  if( $SuperUser["sede"]=="T-Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="T-Samanco") $table="";
+  if( $SuperUser["sede"]=="T-Supe") $table="";
+  if( $SuperUser["sede"]=="T-Vegueta") $table="";
+  if( $SuperUser["sede"]=="T-Callao") $table="";
+  if( $SuperUser["sede"]=="T-Pisco") $table="";
+  if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
+  if( $SuperUser["sede"]=="T-Matarani") $table="";
+  if( $SuperUser["sede"]=="E-Chimbote") $table="";
+  if( $SuperUser["sede"]=="E-Chicama") $table="";
+  
   $all_categories = find_all($table)
 ?>
 <?php
