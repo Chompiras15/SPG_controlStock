@@ -11,12 +11,30 @@
 <?php
   $page_title = 'Editar Embarcaciones';
   require_once('includes/load.php');
+  $table = "";
+  //require_once('includes/load.php');
+  $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(1);
+  $table = "";
+  $tabla_sed="";
+  //require_once('includes/load.php');
+  $SuperUser = current_user();
+  if( $SuperUser["sede"]=="T-Chimbote"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$table="emb_samanco";$tabla_sed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$table="emb_supe";$tabla_sed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$table="emb_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$table="emb_pisco";$tabla_sed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$table="emb_atico";$tabla_sed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$table="emb_matarani";$tabla_sed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$table="emb_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$table="emb_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
+  
 ?>
 <?php
   //Display all catgories.
-  $categorie = find_by_id('emb_tasachim',(int)$_GET['id']);
+  $categorie = find_by_id($table,(int)$_GET['id']);
   if(!$categorie){
     $session->msg("d","Missing Embarcaciones id.");
     redirect('media.php');
@@ -36,7 +54,7 @@ if(isset($_POST['edit_emb']))
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors)){
-    $sql   = "UPDATE emb_tasachim SET";
+    $sql   = "UPDATE $table SET";
     $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
     $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
        $sql .= " WHERE id='{$categorie['id']}'";
