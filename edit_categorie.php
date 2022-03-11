@@ -18,7 +18,7 @@
 
 <?php
 if(isset($_POST['edit_cat'])){
-  $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
+  $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
   validate_fields($req_field);
   $cat_sector = remove_junk($db->escape($_POST['sector']));
   $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -26,7 +26,7 @@ if(isset($_POST['edit_cat'])){
   $cat_producc = remove_junk($db->escape($_POST['date_producc']));
   $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
   $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-  $cat_sede = remove_junk($db->escape($_POST['sede']));
+  $cat_nicho = remove_junk($db->escape($_POST['nicho']));
   $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
@@ -34,7 +34,7 @@ if(isset($_POST['edit_cat'])){
   {
     $sql   = "UPDATE $table SET";
     $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
-    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',sede='{$cat_sede}',date_almacenamiento='{$date}'";
+    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
        $sql .= " WHERE id='{$categorie['id']}'";
      $result = $db->query($sql);
      if($result && $db->affected_rows() === 1) {
@@ -67,7 +67,7 @@ if(isset($_POST['edit_cat'])){
            <span>Editando <?php echo remove_junk(ucfirst($categorie['date_producc']));?></span>
            <span>Editando <?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?></span>
            <span>Editando <?php echo remove_junk(ucfirst($categorie['calidad']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['sede']));?></span>
+           <span>Editando <?php echo remove_junk(ucfirst($categorie['nicho']));?></span>
         </strong>
        </div>
        <div class="panel-body">
@@ -79,16 +79,7 @@ if(isset($_POST['edit_cat'])){
                <input type="date" class="form-control" name="date_producc" value="<?php echo remove_junk(ucfirst($categorie['date_producc']));?>">
                <input type="date" class="form-control" name="date_vencimiento" value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
                <input type="text" class="form-control" name="calidad" value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
-                
-                Selecciona la Sede:
-              <select name="sede">
-         <!-- Opciones de la lista -->
-               <option value="TASA-Chimbote" selected>TASA-Chimbote</option>
-               <option value="TASA-Callao" >TASA-Callao</option> <!-- Opción por defecto -->
-               <option value="TASA-Samanco">TASA-Samanco</option>
-               <option value="TASA-Vegueta">TASA-Vegueta</option>
-               <option value="EXALMAR-Chimbote">EXALMAR-Chimbote</option>
-               </select>
+                <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
            </div>
            <button type="submit" name="edit_cat" class="btn btn-primary">Actualizar Ruma</button>
        </form>

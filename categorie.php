@@ -15,8 +15,8 @@
  if(isset($_POST['add_cat']))
  {
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
-    validate_fields($req_field);
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho'); 
+   validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -25,6 +25,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_sede = remove_junk($db->escape($_POST['sede']));
+    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
     $date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
@@ -39,7 +40,7 @@
               $sql  = "INSERT INTO $table (";
               $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
               $sql .=") VALUES (";
-              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$date}'";
+              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
               $sql .=")";
               $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
         
@@ -65,7 +66,7 @@
 
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',sede='{$cat_sede}',date_almacenamiento='{$date}'";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
             $result = $db->query($sql);
@@ -112,15 +113,7 @@
                 <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
                 <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
                 <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
-                Selecciona la Sede:
-              <select name="sede">
-         <!-- Opciones de la lista -->
-               <option value="TASA-Chimbote" selected>TASA-Chimbote</option>
-               <option value="TASA-Callao" >TASA-Callao</option> <!-- Opción por defecto -->
-               <option value="TASA-Samanco">TASA-Samanco</option>
-               <option value="TASA-Vegueta">TASA-Vegueta</option>
-               <option value="EXALMAR-Chimbote">EXALMAR-Chimbote</option>
-               </select>
+                <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
             </div>
             <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
         </form>
