@@ -53,7 +53,8 @@ if(isset($_POST['edit_emb']))
   $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
-  if(empty($errors)){
+  if(empty($errors))
+  {
     $sql   = "UPDATE $table SET";
     $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
     $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
