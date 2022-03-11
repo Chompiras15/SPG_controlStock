@@ -226,6 +226,20 @@ function tableExists($table){
     return ($result && $db->affected_rows() === 1 ? true : false);
 	}
 
+
+
+   /*--------------------------------------------------------------*/
+  /* Function to update Sede superUser
+  /*--------------------------------------------------------------*/
+
+ function updateSedeSuperUser($user_name,$newSede)
+ {
+   global $db;
+   $sql = "UPDATE users SET sede='{$newSede}' WHERE username ='{$user_name}' LIMIT 1";
+   $result = $db->query($sql);
+   return ($result && $db->affected_rows() === 1 ? true : false);
+ }
+
   /*--------------------------------------------------------------*/
   /* Find all Group name
   /*--------------------------------------------------------------*/

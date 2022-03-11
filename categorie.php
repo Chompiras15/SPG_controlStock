@@ -1,16 +1,26 @@
 <?php
   $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
+  $table = "";
+  //require_once('includes/load.php');
+  $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-  
-  $all_categories = find_all('sede_tasachimbote')
+  if( $SuperUser["sede"]=="Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="Atico") $table="sede_atico";
+
+  $all_categories = find_all($table)
 ?>
 <?php
  if(isset($_POST['add_cat']))
  {
+<<<<<<< Updated upstream
    $findCatRuma = find_by_codRuma('sede_tasachimbote',$_POST['cod_ruma']);
    $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
+=======
+   $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
+>>>>>>> Stashed changes
     validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
@@ -31,8 +41,13 @@
 
             if(empty($errors))
             {
+<<<<<<< Updated upstream
               $sql  = "INSERT INTO sede_tasachimbote (";
               $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,sede,date_almacenamiento";
+=======
+              $sql  = "INSERT INTO $table (";
+              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
+>>>>>>> Stashed changes
               $sql .=") VALUES (";
               $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$date}'";
               $sql .=")";
@@ -58,7 +73,7 @@
             //UPDATE DATA ALMACEN 
             
 
-            $sql   = "UPDATE sede_tasachimbote SET";
+            $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
             $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',sede='{$cat_sede}',date_almacenamiento='{$date}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";

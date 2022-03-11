@@ -1,12 +1,15 @@
 <?php
   $page_title = 'Editar categoría';
   require_once('includes/load.php');
+  $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(1);
+  if( $SuperUser["sede"]=="Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="Atico") $table="sede_atico";
 ?>
 <?php
   //Display all catgories.
-  $categorie = find_by_id('sede_tasachimbote',(int)$_GET['id']);
+  $categorie = find_by_id($table,(int)$_GET['id']);
   if(!$categorie){
     $session->msg("d","Missing categorie id.");
     redirect('categorie.php');
@@ -29,7 +32,7 @@ if(isset($_POST['edit_cat'])){
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors))
   {
-    $sql   = "UPDATE sede_tasachimbote SET";
+    $sql   = "UPDATE $table SET";
     $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
     $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',sede='{$cat_sede}',date_almacenamiento='{$date}'";
        $sql .= " WHERE id='{$categorie['id']}'";

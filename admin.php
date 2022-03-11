@@ -1,6 +1,8 @@
 <?php
   $page_title = 'Admin página de inicio';
+  
   require_once('includes/load.php');
+  $SuperUser = current_user();
   // Checkin What level user has permission to view this page
    page_require_level(1);
 ?>
@@ -19,6 +21,37 @@
      <?php echo display_msg($msg); ?>
    </div>
 </div>
+
+<?php
+   if(isset($_POST['sede_Chim']))
+   {
+      $var = updateSedeSuperUser($SuperUser['username'],"Atico");
+
+      if($var==true) 
+      {
+         $session->msg("s", "Categoría actualizada con éxito.");
+         redirect('admin.php',false);
+      } else {
+         $session->msg("d", "Lo siento, actualización falló.");
+         redirect('admin.php',false);
+       }
+   }
+   
+
+   if(isset($_POST['sede_Atico']))
+   {
+      $var2 = updateSedeSuperUser($SuperUser['username'],"Chimbote");
+
+      if($var2==true) 
+      {
+         $session->msg("s", "Categoría actualizada con éxito.");
+         redirect('admin.php',false);
+      } else {
+         $session->msg("d", "Lo siento, actualización falló.");
+         redirect('admin.php',false);
+       }
+   }
+?>
 
 <style>
   .titleSedes
@@ -90,7 +123,7 @@
             <i class="glyphicon glyphicon-list"></i>
         </div>
         <div class="panel-value pull-right">
-          <h2 class="margin-top"> <?php  echo $c_user['total']; ?> </h2>
+          <h2 class="margin-top"> <?php  echo $SuperUser['sede']; ?> </h2>
           <p class="text-muted">Categorías</p>
         </div>
        </div>
@@ -106,34 +139,38 @@
 <div class="row" style="margin-top:20px;">
     <div class="col-md-6">
          <div class="row titleClients">
-            <p class="p_clientes">CLIENTES TASA</p>
+            <p class="p_clientes"> CLIENTES TASA</p>
          </div>
 
 
+         <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+        
+               <button type="submit" name="sede_Chim" class="col-md-6 cont_sede">
 
-         <div class="col-md-6 cont_sede"id="firstClient">
+                  <div class="panel panel-box clearfix">
+                     <div class="panel-icon pull-left bg-green">
+                        <i class="glyphicon glyphicon-user"></i>
+                     </div>
 
-            <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-green">
-                  <i class="glyphicon glyphicon-user"></i>
-               </div>
+                     <div class="panel-value pull-right">
+                        <h4 class="margin-top" style="margin-top: 50px;"> Atico </h4>
+                     </div>
+                  </div>
+               </button>
+         </form>
 
-               <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Atico </h4>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-md-6 cont_sede">
-            <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-red">
-                  <i class="glyphicon glyphicon-list"></i>
-            </div>
-            <div class="panel-value pull-right">
-            <h4 class="margin-top" style="margin-top: 50px;"> Supe </h4>
-            </div>
-            </div>
-         </div>
+        <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+               <button type="submit"name="sede_Atico"  class="col-md-6 cont_sede">
+                  <div class="panel panel-box clearfix">
+                     <div class="panel-icon pull-left bg-red">
+                        <i class="glyphicon glyphicon-list"></i>
+                  </div>
+                  <div class="panel-value pull-right">
+                  <h4 class="margin-top" style="margin-top: 50px;"> Supe </h4>
+                  </div>
+                  </div>
+               </button>
+         </form>
 
          <div class="col-md-6 cont_sede">
             <div class="panel panel-box clearfix">
@@ -216,32 +253,8 @@
 
 
 
-<script>
-  var firstClient=document.getElementById("firstClient");
-  
-  firstClient.onclick=function()
-  {
-     <?php
-
-         $sql   = "UPDATE users SET";
-         $sql  .=" sede ='{$findUser["id"]}'";
-         $sql  .= " WHERE username='{$findUser['username']}'";
-
-         $result = $db->query($sql);
-         if($result && $db->affected_rows() === 1) 
-         {
-           $session->msg("s", "Categoría actualizada con éxito.");
-           redirect('admin.php',false);
-         } else 
-         
-      
-      ?>
-
-      console.log(firstClient)
-  };
 
 
-</script>
 
 
-<?php include_once('layouts/footer.php'); ?>
+
