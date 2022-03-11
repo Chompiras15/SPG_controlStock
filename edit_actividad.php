@@ -1,3 +1,13 @@
+<!--   
+ ====================================================================
+        SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
+ Descripción:Edita Actividades
+ Creado: 11/03/2022
+ Chimbote Peru 
+ ====================================================================
+  
+-->
+
 <?php
   $page_title = 'Editar Actividad';
   require_once('includes/load.php');

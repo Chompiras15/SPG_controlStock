@@ -1,3 +1,13 @@
+<!--   
+ ====================================================================
+        SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
+ Descripción:Agrega Actividades
+ Creado: 11/03/2022
+ Chimbote Peru 
+ ====================================================================
+  
+-->
+
 <?php
   $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
