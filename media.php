@@ -4,8 +4,21 @@
   // Checkin What level user has permission to view this page
   page_require_level(3);
  
+  $table = "";
+  //require_once('includes/load.php');
+  $SuperUser = current_user();
+  if( $SuperUser["sede"]=="T-Chimbote") $table="emb_tasachim";
+  if( $SuperUser["sede"]=="T-Samanco") $table="emb_samanco";
+  if( $SuperUser["sede"]=="T-Supe") $table="emb_supe";
+  if( $SuperUser["sede"]=="T-Vegueta") $table="emb_vegueta";
+  if( $SuperUser["sede"]=="T-Callao") $table="emb_callao";
+  if( $SuperUser["sede"]=="T-Pisco") $table="emb_pisco";
+  if( $SuperUser["sede"]=="T-Atico") $table="emb_atico";
+  if( $SuperUser["sede"]=="T-Matarani") $table="emb_matarani";
+  if( $SuperUser["sede"]=="E-Chimbote") $table="emb_exalmar_chim";
+  if( $SuperUser["sede"]=="E-Chicama") $table="emb_exalmar_mala";
   
-  $all_embarques = find_all('emb_tasachim')
+  $all_embarques = find_all($table)
 ?>
 <?php
  if(isset($_POST['add_emb']))
@@ -21,7 +34,7 @@
 
    if(empty($errors))
    {
-      $sql  = "INSERT INTO emb_tasachim (";
+      $sql  = "INSERT INTO $table (";
      $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor";
      $sql .=") VALUES (";
      $sql .=" '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
@@ -32,12 +45,12 @@
       
       {
 
-        $findCatRuma = find_by_codRuma('sede_tasachimbote',$_POST['cod_ruma']);
+        $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
         $restaSacos=(int)$findCatRuma["cant_saco"]-(int)$cant_out;
 
         if($restaSacos == 0)
         {
-          $delete_cod_ruma= delete_by_id('sede_tasachimbote',$findCatRuma['id']);
+          $delete_cod_ruma= delete_by_id($table,$findCatRuma['id']);
             //$delete_id = delete_by_id('sede_tasachimbote',(int)$categorie['id']);
           if($delete_cod_ruma){
               $session->msg("s","Ruma despachada totalmente");
@@ -49,7 +62,7 @@
 
         }elseif($restaSacos > 0)
         {
-          $sql   = "UPDATE sede_tasachimbote SET";
+          $sql   = "UPDATE $table SET";
           $sql  .=" cant_saco ='{$restaSacos}'";
           $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
