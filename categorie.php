@@ -18,15 +18,15 @@
   // Checkin What level user has permission to view this page
   page_require_level(3);
   if( $SuperUser["sede"]=="T-Chimbote") $table="sede_tasachimbote";
-  if( $SuperUser["sede"]=="T-Samanco") $table="";
-  if( $SuperUser["sede"]=="T-Supe") $table="";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="";
-  if( $SuperUser["sede"]=="T-Callao") $table="";
-  if( $SuperUser["sede"]=="T-Pisco") $table="";
+  if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
+  if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
+  if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
+  if( $SuperUser["sede"]=="T-Callao") $table="sede_callao";
+  if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $table="";
-  if( $SuperUser["sede"]=="E-Chimbote") $table="";
-  if( $SuperUser["sede"]=="E-Chicama") $table="";
+  if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
+  if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
+  if( $SuperUser["sede"]=="E-Chicama") $table="sede_exalmar_mala";
   
   $all_categories = find_all($table)
 ?>
