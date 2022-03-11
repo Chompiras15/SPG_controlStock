@@ -13,10 +13,22 @@
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(1);
+  $tableActi = "";
+  $SuperUser = current_user();
+  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 ?>
 <?php
   //Display all catgories.
-  $activity = find_by_id('activity_tasachim',(int)$_GET['id']);
+  $activity = find_by_id($tableActi,(int)$_GET['id']);
   if(!$activity){
     $session->msg("d","No se encontro Actividad id.");
     redirect('actividad.php');
@@ -34,7 +46,7 @@ if(isset($_POST['edit_actividad'])){
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors)){
-    $sql   = "UPDATE activity_tasachim SET";
+    $sql   = "UPDATE $tableActi SET";
     $sql  .=" nameActivity ='{$act_name}', details ='{$act_details}',";
     $sql  .=" fecha ='{$act_fecha}',date ='{$date}'";
        $sql .= " WHERE id='{$activity['id']}'";
