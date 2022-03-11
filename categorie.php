@@ -10,7 +10,7 @@
  if(isset($_POST['add_cat']))
  {
    $findCatRuma = find_by_codRuma('sede_tasachimbote',$_POST['cod_ruma']);
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
     validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
@@ -19,7 +19,7 @@
     $cat_producc = remove_junk($db->escape($_POST['date_producc']));
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+    $cat_sede = remove_junk($db->escape($_POST['sede']));
     $date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
@@ -32,9 +32,9 @@
             if(empty($errors))
             {
               $sql  = "INSERT INTO sede_tasachimbote (";
-              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
+              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,sede,date_almacenamiento";
               $sql .=") VALUES (";
-              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
+              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$date}'";
               $sql .=")";
               $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
         
@@ -60,7 +60,7 @@
 
             $sql   = "UPDATE sede_tasachimbote SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',sede='{$cat_sede}',date_almacenamiento='{$date}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
             $result = $db->query($sql);
@@ -107,7 +107,15 @@
                 <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
                 <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
                 <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
-                <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
+                Selecciona la Sede:
+              <select name="sede">
+         <!-- Opciones de la lista -->
+               <option value="TASA-Chimbote" selected>TASA-Chimbote</option>
+               <option value="TASA-Callao" >TASA-Callao</option> <!-- Opción por defecto -->
+               <option value="TASA-Samanco">TASA-Samanco</option>
+               <option value="TASA-Vegueta">TASA-Vegueta</option>
+               <option value="EXALMAR-Chimbote">EXALMAR-Chimbote</option>
+               </select>
             </div>
             <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
         </form>
@@ -130,8 +138,8 @@
                     <th>Cod.Ruma</th>
                     <th class="text-center" style="width: 50px;">Sector</th>
                     <th>Cant_sacos</th>
-                    <th class="text-center" style="width: 50px;">nicho</th>
-                    <th>Calidad</th>
+                    <th class="text-center" style="width: 50px;">Calidad</th>
+                    <th>Sede</th>
                     <th>Fecha</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
@@ -143,8 +151,8 @@
                     <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($cat['sede'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                    
                   

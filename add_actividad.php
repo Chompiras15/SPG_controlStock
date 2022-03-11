@@ -56,10 +56,25 @@
         <div class="panel-body">
           <form method="post" action="add_actividad.php">
             <div class="form-group">
-                <input type="text" class="form-control" name="nameActivity" placeholder="Actividad" required>
+        Selecciona la Actividad:
+              <select name="nameActivity">
+         <!-- Opciones de la lista -->
+               <option value="Embarque" selected>Descarga/Carga eslinga</option>
+               <option value="Etiquetado de sacos" >Etiquetado de sacos</option> <!-- Opción por defecto -->
+               <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
+               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
+               <option value="Ventilacion de sacos con HP">Ventilacion de sacos con HP</option>
+               <option value="Corte y vaceado jumbo">Corte y vaceado jumbo</option>
+               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
+               <option value="Reproceso por Homogenizado">Reproceso por Homogenizado</option>
+               <option value="Manteado de plataformas">Manteado de plataformas</option>
+               <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
+               <option value="Limpieza de mantas">Limpieza de mantas</option>
+               <option value="Embarque">Embarque</option>
+               <option value="Manteniminto">Manteniminto</option>
+               </select>
                 <input type="text" class="form-control" name="details" placeholder="Detalle" required>
                 <input type="date" class="form-control" name="fecha" placeholder="Fecha" required>
- 
             </div>
             <button type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
         </form>

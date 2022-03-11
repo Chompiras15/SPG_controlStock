@@ -62,7 +62,23 @@ if(isset($_POST['edit_actividad'])){
        <div class="panel-body">
          <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
            <div class="form-group">
-               <input type="text" class="form-control" name="nameActivity" value="<?php echo remove_junk(ucfirst($activity['nameActivity']));?>">
+           Selecciona la Actividad:
+              <select name="nameActivity" <?php echo (int)$activity['id'];?>>
+         <!-- Opciones de la lista -->
+               <option value="Embarque" selected>Descarga/Carga eslinga</option>
+               <option value="Etiquetado de sacos" >Etiquetado de sacos</option> <!-- Opción por defecto -->
+               <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
+               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
+               <option value="Ventilacion de sacos con HP">Ventilacion de sacos con HP</option>
+               <option value="Corte y vaceado jumbo">Corte y vaceado jumbo</option>
+               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
+               <option value="Reproceso por Homogenizado">Reproceso por Homogenizado</option>
+               <option value="Manteado de plataformas">Manteado de plataformas</option>
+               <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
+               <option value="Limpieza de mantas">Limpieza de mantas</option>
+               <option value="Embarque">Embarque</option>
+               <option value="Manteniminto">Manteniminto</option>
+               </select>
                <input type="text" class="form-control" name="details" value="<?php echo remove_junk(ucfirst($activity['details']));?>">
                <input type="date" class="form-control" name="fecha" value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
 
