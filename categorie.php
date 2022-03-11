@@ -26,8 +26,8 @@
  if(isset($_POST['add_cat']))
  {
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho'); 
-   validate_fields($req_field);
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
+    validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -35,7 +35,6 @@
     $cat_producc = remove_junk($db->escape($_POST['date_producc']));
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-    $cat_sede = remove_junk($db->escape($_POST['sede']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
     $date   = make_date();
 
@@ -148,8 +147,8 @@
                     <th class="text-center" style="width: 50px;">Sector</th>
                     <th>Cant_sacos</th>
                     <th class="text-center" style="width: 50px;">Calidad</th>
-                   
-                    <th>Fechas</th>
+                    <th>Nicho</th>
+                    <th>Fecha</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
@@ -161,7 +160,7 @@
                     <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                   
+                    <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                    
                   
