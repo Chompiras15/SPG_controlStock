@@ -276,7 +276,7 @@ html, body{
 	align-items: center;
 	justify-content: center;
 	color: var(--color-text);
-	background-image: url(../assets/img/fontLogin.jpg);
+	background-image: url(../img/fontLogin.jpg);
 }
 .container-login{
 	width: 100%;

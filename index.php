@@ -12,10 +12,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 	
-  <link rel="stylesheet" href="css/material.min.css">
-	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="assets/css/material.min.css">
 
-	<link rel="stylesheet" href="css/spg_login.css">
+	<link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
+
+	<link rel="stylesheet" href="assets/css/spg_login.css">
 	<script src="js/material.min.js" ></script>
 
 </head>
