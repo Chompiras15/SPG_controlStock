@@ -145,7 +145,7 @@
                     <th>Cant_sacos</th>
                     <th class="text-center" style="width: 50px;">Calidad</th>
                    
-                    <th>Fecha</th>
+                    <th>Fechas</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
