@@ -14,13 +14,8 @@
 <?php
  if(isset($_POST['add_cat']))
  {
-<<<<<<< Updated upstream
-   $findCatRuma = find_by_codRuma('sede_tasachimbote',$_POST['cod_ruma']);
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
-=======
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
-   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
->>>>>>> Stashed changes
+   $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'sede');
     validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
@@ -41,13 +36,8 @@
 
             if(empty($errors))
             {
-<<<<<<< Updated upstream
-              $sql  = "INSERT INTO sede_tasachimbote (";
-              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,sede,date_almacenamiento";
-=======
               $sql  = "INSERT INTO $table (";
               $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
->>>>>>> Stashed changes
               $sql .=") VALUES (";
               $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_sede}', '{$date}'";
               $sql .=")";
@@ -154,7 +144,7 @@
                     <th class="text-center" style="width: 50px;">Sector</th>
                     <th>Cant_sacos</th>
                     <th class="text-center" style="width: 50px;">Calidad</th>
-                    <th>Sede</th>
+                   
                     <th>Fecha</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
@@ -167,7 +157,7 @@
                     <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['sede'])); ?></td>
+                   
                     <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                    
                   
