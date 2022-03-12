@@ -8,7 +8,8 @@
 ?>
 <?php
 
- $c_user=count_by_id('users');
+ $c_userTotals=count_by_id('users');
+ $c_userSedes=count_by_id_sede('users',$SuperUser["sede"]);
  $all_user = find_all('users');
  
  $findUser = find_by_user('users',"admin");
@@ -175,6 +176,13 @@
     text-align: center;
   }
 
+  .cont_sede
+  {
+   padding: 0;
+   margin: 20px;
+   background:white;
+   border: 1px solid gray;
+  }
   .cont_sede:hover
   {
      transform:scale(1.1);
@@ -204,44 +212,46 @@
     font-weight: bold;
     margin: 10px;
   }
+
+  .cont_init
+  {
+      height: 80px;
+      margin-bottom: 15px;
+  }
 </style>
-
+<i class=""></i>
 <div class="row">
-    <div class="col-md-4">
-       <div class="panel panel-box clearfix">
-         <div class="panel-icon pull-left bg-green">
-            <i class="glyphicon glyphicon-user"></i>
-        </div>
-        <div class="panel-value pull-right">
-          <h2 class="margin-top"> <?php  echo $c_user['total']; ?> </h2>
-          <p class="text-muted">Usuarios</p>
-        </div>
-       </div>
+    <div class="col-md-4 cont_init" id="usersT">
+         <a href="users.php">
+            <div class="panel panel-box clearfix">
+               <div class="panel-icon pull-left bg-green">
+                  <i class="glyphicon glyphicon-user"></i>
+               </div>
+               <div class="panel-value pull-right">
+                  <h2 class="margin-top"> <?php  echo $c_userTotals['total']; ?> </h2>
+                  <p class="text-muted">Usuarios Totales</p>
+               </div>
+            </div>
+         </a>
     </div>
 
     <div class="col-md-4">
-       <div class="panel panel-box clearfix">
-         <div class="panel-icon pull-left bg-red">
-            <i class="glyphicon glyphicon-list"></i>
-        </div>
-        <div class="panel-value pull-right">
-          <h2 class="margin-top"> <?php  echo $c_user['total']; ?> </h2>
-          <p class="text-muted">Clientes</p>
-        </div>
-       </div>
+   </div>
+
+    <div class="col-md-4 cont_init" id="usersS">
+         <a href="users.php">
+            <div class="panel panel-box clearfix">
+               <div class="panel-icon pull-left bg-red">
+                  <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <div class="panel-value pull-right">
+               <h2 class="margin-top"> <?php  echo $c_userSedes['total']-1; ?> </h2>
+               <p class="text-muted">Usuarios por Sede</p>
+            </div>
+            </div>
+         </a>
     </div>
 
-    <div class="col-md-4">
-       <div class="panel panel-box clearfix">
-         <div class="panel-icon pull-left bg-red">
-            <i class="glyphicon glyphicon-list"></i>
-        </div>
-        <div class="panel-value pull-right">
-          <h2 class="margin-top"> <?php  echo $SuperUser['sede']; ?> </h2>
-          <p class="text-muted">Categorías</p>
-        </div>
-       </div>
-    </div>
 
 
 </div>
@@ -259,7 +269,7 @@
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
         
-               <button type="submit" name="sede_TChim" class="col-md-6 cont_sede">
+               <button type="submit" name="sede_TChim" class="col-md-5 col-sm-12 cont_sede">
 
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-green">
@@ -274,7 +284,7 @@
          </form>
 
         <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tSamanco"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tSamanco"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -287,7 +297,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tSupe"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tSupe"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -300,7 +310,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tVegeta"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tVegeta"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -313,7 +323,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tCallao"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tCallao"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -326,7 +336,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tPisco"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tPisco"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -339,7 +349,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tAtico"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tAtico"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -352,7 +362,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_tMatarani"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_tMatarani"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -367,7 +377,7 @@
 
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
          <div class="row titleClients">
             <p class="p_clientes">CLIENTES EXALMAR</p>
          </div>
@@ -375,7 +385,7 @@
 
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_eChimbote"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_eChimbote"  class="col-md-5  col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -388,7 +398,7 @@
          </form>
 
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-               <button type="submit"name="sede_eChicama"  class="col-md-6 cont_sede">
+               <button type="submit"name="sede_eChicama"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
                         <i class="glyphicon glyphicon-list"></i>
@@ -401,6 +411,8 @@
          </form>
       </div>
 </div>
+
+
 
 <?php include_once('layouts/footer.php'); ?>
 

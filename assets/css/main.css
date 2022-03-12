@@ -1,3 +1,16 @@
+.sedes
+{
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(150, 150, 158, 1.0);
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  margin: 0;
+  background: #f9f9f9;
+  border-radius: 30px;
+}
+
 body{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -56,14 +69,21 @@ a{
   letter-spacing: .5px;
   padding: 15px;
 }
-.panel-box{
+.panel-box
+{
+  height: 100%;
   width: 100%;
   text-align: center;
   border: none;
-}.panel-value{
+}
+.panel-value
+{
   width: 60%;
-}.panel-icon{
-  padding: 30px;
+  height: 100%;
+}
+.panel-icon
+{
+  height: 100%;
   width: 40%;
   border-radius: 0;
 }.panel-icon{
@@ -75,7 +95,7 @@ a{
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }.panel-value h2{
-  margin-top: 30px;
+  margin-top:10px;
 }
 .panel-icon i{
   line-height:65px;

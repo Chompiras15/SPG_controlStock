@@ -55,18 +55,44 @@ if(isset($_POST['edit_emb']))
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors))
   {
-    $sql   = "UPDATE $table SET";
-    $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
-    $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
-       $sql .= " WHERE id='{$categorie['id']}'";
-     $result = $db->query($sql);
-     if($result && $db->affected_rows() === 1) {
-       $session->msg("s", "Categoría actualizada con éxito.");
-       redirect('media.php',false);
-     } else {
-       $session->msg("d", "Lo siento, actualización falló.");
-       redirect('media.php',false);
-     }
+
+
+      //CAMBIO LA CNTIDAD DE SEDE
+      $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
+      //$findAct = find_by_codRuma($table,$_POST['cod_ruma']);
+  
+      $newCant=(int)$findCatRuma["cant_saco"]+(int)$categorie["cant_out"]-(int)$_POST['cant_out'];
+      //$session->msg("d", $newCant);
+      //redirect('media.php',false);
+      $sql   = "UPDATE $tabla_sed SET";
+      $sql  .=" cant_saco ='{$newCant}'";
+      $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+      $result = $db->query($sql);
+
+      if($result && $db->affected_rows() === 1) 
+          {
+
+            
+              $sql   = "UPDATE $table SET";
+              $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
+              $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
+              $sql .= " WHERE id='{$categorie['id']}'";
+              $result = $db->query($sql);
+
+              if($result && $db->affected_rows() === 1) 
+              {
+
+                $session->msg("s", "Despacho actualizado con éxito");
+                redirect('media.php',false);
+              } else {
+                $session->msg("d", "Lo siento, actualización falló.");
+                redirect('media.php',false);
+              }
+
+            
+          }
+
   } else {
     $session->msg("d", $errors);
     redirect('media.php',false);

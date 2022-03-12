@@ -130,6 +130,25 @@ function count_by_id($table){
      return($db->fetch_assoc($result));
   }
 }
+
+
+/*--------------------------------------------------------------*/
+/* Function for Count id  By table name donde sede=algo
+/*--------------------------------------------------------------*/
+
+function count_by_id_sede($table,$sede){
+  global $db;
+  if(tableExists($table))
+  {
+    $sql  = "SELECT COUNT(*) AS total FROM ".$db->escape($table);
+    $sql .= " WHERE sede='". $db->escape($sede)."'";
+    $sql .= " LIMIT 1";
+
+    
+    $result = $db->query($sql);
+     return($db->fetch_assoc($result));
+  }
+}
 /*--------------------------------------------------------------*/
 /* Determine if database table exists
 /*--------------------------------------------------------------*/
