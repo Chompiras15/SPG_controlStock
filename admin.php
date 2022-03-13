@@ -169,6 +169,11 @@
 ?>
 
 <style>
+   .panel h4
+   {
+      margin: revert;
+    margin-bottom: 0;
+   }
   .titleSedes
   {
     border-radius: 5px;
@@ -277,7 +282,7 @@
                      </div>
 
                      <div class="panel-value pull-right">
-                        <h4 class="margin-top" style="margin-top: 50px;"> Chimbote </h4>
+                        <h4 class="margin-top"> Chimbote </h4>
                      </div>
                   </div>
                </button>
@@ -290,7 +295,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Samanco </h4>
+                  <h4 class="margin-top"> Samanco </h4>
                   </div>
                   </div>
                </button>
@@ -303,7 +308,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Supe </h4>
+                  <h4 class="margin-top"> Supe </h4>
                   </div>
                   </div>
                </button>
@@ -316,7 +321,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Végueta </h4>
+                  <h4 class="margin-top"> Végueta </h4>
                   </div>
                   </div>
                </button>
@@ -329,7 +334,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Callao </h4>
+                  <h4 class="margin-top"> Callao </h4>
                   </div>
                   </div>
                </button>
@@ -342,7 +347,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Pisco </h4>
+                  <h4 class="margin-top" > Pisco </h4>
                   </div>
                   </div>
                </button>
@@ -355,12 +360,11 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Atico </h4>
+                  <h4 class="margin-top"> Atico </h4>
                   </div>
                   </div>
                </button>
          </form>
-
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_tMatarani"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
@@ -368,7 +372,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Matarani </h4>
+                  <h4 class="margin-top" > Matarani </h4>
                   </div>
                   </div>
                </button>
@@ -391,7 +395,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Chimbote </h4>
+                  <h4 class="margin-top"> Chimbote </h4>
                   </div>
                   </div>
                </button>
@@ -404,7 +408,7 @@
                         <i class="glyphicon glyphicon-list"></i>
                   </div>
                   <div class="panel-value pull-right">
-                  <h4 class="margin-top" style="margin-top: 50px;"> Chicama (Malabrigo) </h4>
+                  <h4 class="margin-top"> Chicama (Malabrigo) </h4>
                   </div>
                   </div>
                </button>
