@@ -475,8 +475,8 @@ CREATE TABLE `users` (
   CONSTRAINT `FK_user` FOREIGN KEY (`user_level`) REFERENCES `user_groups` (`group_level`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-INSERT INTO users VALUES("1","Jhonatan ","Admin","d033e22ae348aeb5660fc2140aec35850c4da997","1","z5yuzxl01.png","1","2022-03-12 16:04:05","T-Chimbote");
-INSERT INTO users VALUES("2","Jamhes","Jhon","aebae9d01a7522dd71eb17b158edb0262feaa886","1","shocqw92.jpg","1","2022-03-11 03:40:02","Chimbote");
+INSERT INTO users VALUES("1","Jhonatan ","Admin","d033e22ae348aeb5660fc2140aec35850c4da997","1","z5yuzxl01.png","1","2022-03-12 21:42:00","T-Chimbote");
+INSERT INTO users VALUES("2","Jamhes","Jhon","aebae9d01a7522dd71eb17b158edb0262feaa886","1","shocqw92.jpg","1","2022-03-12 21:48:36","Chimbote");
 INSERT INTO users VALUES("3","david","david","7c222fb2927d828af22f592134e8932480637c0d","3","no_image.jpg","1","","");
 INSERT INTO users VALUES("4","JAVS","javs","2b48ff30cef8c9e99e46c633c31de243f7b2fb50","3","no_image.jpg","1","2022-03-11 15:49:39","Atico");
 
