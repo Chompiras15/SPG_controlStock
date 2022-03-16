@@ -28,8 +28,8 @@
             $sql = "UPDATE users SET name ='{$name}', username ='{$username}',user_level='{$level}',status='{$status}',sede='{$sede}' WHERE id='{$db->escape($id)}'";
          $result = $db->query($sql);
           if($result && $db->affected_rows() === 1){
-            $session->msg('s',"Acount Updated ");
-            redirect('edit_user.php?id='.(int)$e_user['id'], false);
+            $session->msg('s',"Cuenta de Usuario Actualizada ");
+            redirect('users.php', false);
           } else {
             $session->msg('d',' Lo siento no se actualizó los datos.');
             redirect('edit_user.php?id='.(int)$e_user['id'], false);
@@ -105,16 +105,16 @@ if(isset($_POST['update-pass'])) {
             <div class="form-group">
               <label for="sede">SEDE</label>
                 <select class="form-control" name="sede">
-                <option value="T-Chimbote">Tasa Chimbote</option>
-                <option value="T-Samanco">Tasa Samanco</option>
-                <option value="T-Supe">Tasa Supe</option>
-                <option value="T-Vegueta">Tasa Végueta</option>
-                <option value="T-Callao">Tasa Callao</option>
-                  <option value="T-Pisco">Tasa Pisco</option>
-                  <option value="T-Atico">Tasa Atico</option>
-                  <option value="T-Matarani">Tasa Matarani</option>
-                  <option value="E-Chimbote">Exalmar Chimbote</option>
-                  <option value="T-Chicama">Exalmar Chicama</option>
+                <option value="T-Chimbote">Tasa - Chimbote</option>
+                <option value="T-Samanco">Tasa - Samanco</option>
+                <option value="T-Supe">Tasa - Supe</option>
+                <option value="T-Vegueta">Tasa - Végueta</option>
+                <option value="T-Callao">Tasa - Callao</option>
+                  <option value="T-Pisco">Tasa - Pisco</option>
+                  <option value="T-Atico">Tasa - Atico</option>
+                  <option value="T-Matarani">Tasa - Matarani</option>
+                  <option value="E-Chimbote">Exalmar - Chimbote</option>
+                  <option value="T-Chicama">Exalmar - Chicama</option>
              
                 </select>
             </div>
