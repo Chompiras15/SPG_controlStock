@@ -75,6 +75,7 @@ a{
   width: 100%;
   text-align: center;
   border: none;
+  margin: 0 !important;
 }
 .panel-value
 {
