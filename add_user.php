@@ -64,8 +64,21 @@
                 <input type="password" class="form-control" name ="password"  placeholder="Contraseña">
             </div>
             <div class="form-group">
-                <label for="sede">Sede</label>
-                <input type="text" class="form-control" name ="sede"  placeholder="Sede">
+            <label for="sede">Selecciona Sede:</label>
+              <select class="form-control" name="sede">
+         <!-- Opciones de la lista -->
+               <option value="T-Chimbote" selected>T-Chimbote</option>
+               <option value="T-Samanco" >T-Samanco</option> <!-- Opción por defecto -->
+               <option value="T-Supe">T-Supe</option>
+               <option value="T-Vegueta">T-Vegueta</option>
+               <option value="T-Callao">T-Callao</option>
+               <option value="T-Pisco">T-Pisco</option>
+               <option value="T-Atico">T-Atico</option>
+               <option value="T-Matarani">T-Matarani</option>
+               <option value="E-Chimbote">E-Chimbote</option>
+               <option value="E-Chicama">E-Chicama</option>
+               
+               </select>
             </div>
             <div class="form-group">
               <label for="level">Rol de usuario</label>
