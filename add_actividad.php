@@ -66,8 +66,8 @@
         <div class="panel-body">
           <form method="post" action="add_actividad.php">
             <div class="form-group">
-        Selecciona la Actividad:
-              <select name="nameActivity">
+            <label for="nameActivity">Selecciona Actividad:</label>
+              <select class="form-control" name="nameActivity">
          <!-- Opciones de la lista -->
                <option value="Embarque" selected>Descarga/Carga eslinga</option>
                <option value="Etiquetado de sacos" >Etiquetado de sacos</option> <!-- Opción por defecto -->

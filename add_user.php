@@ -26,7 +26,7 @@
         if($db->query($query)){
           //sucess
           $session->msg('s'," Cuenta de usuario ha sido creada");
-          redirect('add_user.php', false);
+          redirect('users.php', false);
         } else {
           //failed
           $session->msg('d',' No se pudo crear la cuenta.');
@@ -67,16 +67,16 @@
             <label for="sede">Selecciona Sede:</label>
               <select class="form-control" name="sede">
          <!-- Opciones de la lista -->
-               <option value="T-Chimbote" selected>T-Chimbote</option>
-               <option value="T-Samanco" >T-Samanco</option> <!-- Opción por defecto -->
-               <option value="T-Supe">T-Supe</option>
-               <option value="T-Vegueta">T-Vegueta</option>
-               <option value="T-Callao">T-Callao</option>
-               <option value="T-Pisco">T-Pisco</option>
-               <option value="T-Atico">T-Atico</option>
-               <option value="T-Matarani">T-Matarani</option>
-               <option value="E-Chimbote">E-Chimbote</option>
-               <option value="E-Chicama">E-Chicama</option>
+               <option value="T-Chimbote" selected>Tasa - Chimbote</option>
+               <option value="T-Samanco" >Tasa - Samanco</option> <!-- Opción por defecto -->
+               <option value="T-Supe">Tasa - Supe</option>
+               <option value="T-Vegueta">Tasa - Végueta</option>
+               <option value="T-Callao">Tasa - Callao</option>
+               <option value="T-Pisco">Tasa - Pisco</option>
+               <option value="T-Atico">Tasa - Atico</option>
+               <option value="T-Matarani">Tasa - Matarani</option>
+               <option value="E-Chimbote">Exalmar - Chimbote</option>
+               <option value="E-Chicama">Exalmar - Chicama</option>
                
                </select>
             </div>
@@ -90,6 +90,7 @@
             </div>
             <div class="form-group clearfix">
               <button type="submit" name="add_user" class="btn btn-primary">Guardar</button>
+
             </div>
         </form>
         </div>
