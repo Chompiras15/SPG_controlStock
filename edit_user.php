@@ -24,7 +24,8 @@
        $username = remove_junk($db->escape($_POST['username']));
           $level = (int)$db->escape($_POST['level']);
        $status   = remove_junk($db->escape($_POST['status']));
-            $sql = "UPDATE users SET name ='{$name}', username ='{$username}',user_level='{$level}',status='{$status}' WHERE id='{$db->escape($id)}'";
+       $sede   = remove_junk($db->escape($_POST['sede']));
+            $sql = "UPDATE users SET name ='{$name}', username ='{$username}',user_level='{$level}',status='{$status}',sede='{$sede}' WHERE id='{$db->escape($id)}'";
          $result = $db->query($sql);
           if($result && $db->affected_rows() === 1){
             $session->msg('s',"Acount Updated ");
@@ -100,6 +101,24 @@ if(isset($_POST['update-pass'])) {
                   <option <?php if($e_user['status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
                 </select>
             </div>
+
+            <div class="form-group">
+              <label for="sede">SEDE</label>
+                <select class="form-control" name="sede">
+                <option value="T-Chimbote">Tasa Chimbote</option>
+                <option value="T-Samanco">Tasa Samanco</option>
+                <option value="T-Supe">Tasa Supe</option>
+                <option value="T-Vegueta">Tasa Végueta</option>
+                <option value="T-Callao">Tasa Callao</option>
+                  <option value="T-Pisco">Tasa Pisco</option>
+                  <option value="T-Atico">Tasa Atico</option>
+                  <option value="T-Matarani">Tasa Matarani</option>
+                  <option value="E-Chimbote">Exalmar Chimbote</option>
+                  <option value="T-Chicama">Exalmar Chicama</option>
+             
+                </select>
+            </div>
+
             <div class="form-group clearfix">
                     <button type="submit" name="update" class="btn btn-info">Actualizar</button>
             </div>
