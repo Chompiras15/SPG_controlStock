@@ -37,18 +37,21 @@
 <?php include_once('layouts/footer.php'); ?>
 <?php
  if(isset($_POST['add_actividad'])){
-   $req_field = array('nameActivity', 'details', 'date');
+   $req_field = array('nameActivity', 'details', 'observation','auxiliares','hora_ini','hora_fin','date');
    validate_fields($req_field);
    $act_name = remove_junk($db->escape($_POST['nameActivity']));
    $act_details = remove_junk($db->escape($_POST['details']));
-   $act_fecha = remove_junk($db->escape($_POST['fecha']));
+   $act_observation = remove_junk($db->escape($_POST['observation']));
+   $act_aux = remove_junk($db->escape($_POST['auxiliares']));
+   $act_ini = remove_junk($db->escape($_POST['hora_ini']));
+   $act_fin = remove_junk($db->escape($_POST['hora_fin']));
    $date   = make_date();
 
    if(empty($errors)){
       $sql  = "INSERT INTO $tableActi (";
-     $sql .=" nameActivity,details,fecha,date";
+     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,date";
      $sql .=") VALUES (";
-     $sql .=" '{$act_name}', '{$act_details}', '{$act_fecha}', '{$date}'";
+     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}','{$act_aux}','{$act_ini}','{$act_fin}', '{$date}'";
      $sql .=")";
      $sql .=" ON DUPLICATE KEY UPDATE nameActivity='{$act_name}'";
 
@@ -91,7 +94,10 @@
                     <th class="text-center" style="width: 50px;">Id</th>
                     <th class="text-center" style="width: 100px;">Actividad</th>
                     <th class="text-center" style="width: 100px;">Detalle</th>
-                    <th class="text-center" style="width: 100px;">Fecha</th>
+                    <th class="text-center" style="width: 100px;">Observacion</th>
+                    <th class="text-center" style="width: 100px;">auxiliares</th>
+                    <th class="text-center" style="width: 100px;">Inició</th>
+                    <th class="text-center" style="width: 100px;">Terminó</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
@@ -101,7 +107,11 @@
                     <td class="text-center"><?php echo count_id();?></td>
                     <td><?php echo remove_junk(ucfirst($act['nameActivity'])); ?></td>
                     <td><?php echo remove_junk(ucfirst($act['details'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['observation'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['auxiliares'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
+                    
                     <td class="text-center">
                       <div class="btn-group">
                         <a href="edit_actividad.php?id=<?php echo (int)$act['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">

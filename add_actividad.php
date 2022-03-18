@@ -18,18 +18,22 @@
 ?>
 <?php
  if(isset($_POST['add_actividad'])){
-   $req_field = array('nameActivity', 'details','fecha');
+   $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','hora_fin');
    validate_fields($req_field);
    $act_name = remove_junk($db->escape($_POST['nameActivity']));
    $act_details = remove_junk($db->escape($_POST['details']));
-   $act_fecha = remove_junk($db->escape($_POST['fecha']));
+   $act_observation = remove_junk($db->escape($_POST['observation']));
+   $act_aux = remove_junk($db->escape($_POST['auxiliares']));
+   $act_ini = remove_junk($db->escape($_POST['hora_ini']));
+   $act_fin = remove_junk($db->escape($_POST['hora_fin']));
+
    $dates   = make_date();
 
    if(empty($errors)){
       $sql  = "INSERT INTO activity_tasachim (";
-     $sql .=" nameActivity,details,fecha,date";
+     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,date";
      $sql .=") VALUES (";
-     $sql .=" '{$act_name}', '{$act_details}', '{$act_fecha}', '{$dates}'";
+     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}', '{$act_aux}', '{$act_ini}', '{$act_fin}', '{$dates}'";
      $sql .=")";
      $sql .=" ON DUPLICATE KEY UPDATE nameActivity='{$act_name}'";
 
@@ -63,6 +67,10 @@
             <span>Agregar Actividad</span>
          </strong>
         </div>
+        <?php  
+        date_default_timezone_set("America/Lima");
+        $fecha_actual=date("Y-m-s H:i:s");   
+         ?>
         <div class="panel-body">
           <form method="post" action="add_actividad.php">
             <div class="form-group">
@@ -84,10 +92,18 @@
                <option value="Manteniminto">Manteniminto</option>
                </select>
                 <input type="text" class="form-control" name="details" placeholder="Detalle" required>
-                <input type="date" class="form-control" name="fecha" placeholder="Fecha" required>
-            </div>
-            <button type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
-        </form>
+                <input type="text" class="form-control" name="observation" placeholder="Observacion" required>
+                <input type="text" class="form-control" name="auxiliares" placeholder="Auxiliares" required>
+                <label for="hora_ini">Hora de inicio</label>
+                <input  type="time" class="form-control" name="hora_ini"  placeholder="Inició" required>
+                <label for="hora_fin">Hora de fin:</label>
+                <input  type="time" class="form-control" name="hora_fin"  placeholder="Terminó" required>
+                
+              </div>
+            
+            <button  type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
+        
+          </form>
         </div>
       </div>
     </div>

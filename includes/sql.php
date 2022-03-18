@@ -386,7 +386,7 @@ function tableExists($table){
  /*--------------------------------------------------------------*/
  function find_all_sale(){
    global $db;
-   $sql  = "SELECT s.id,s.nameActivity,s.details,s.fecha";
+   $sql  = "SELECT s.id,s.nameActivity,s.details,s.observation,s.auxiliares,s.hora_ini,s.hora_fin";
    $sql .= " FROM activity_tasachim s";
    /*$sql .= " LEFT JOIN products p ON s.product_id = p.id";*/
    $sql .= " ORDER BY s.date DESC";
@@ -453,5 +453,6 @@ function  monthlySales($year){
   $sql .= " ORDER BY date_format(s.fecha, '%c' ) ASC";
   return find_by_sql($sql);
 }
+
 
 ?>
