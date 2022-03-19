@@ -67,7 +67,7 @@ $results = '';
        vertical-align: middle;
      }.sale-head,table.table thead tr th,table tbody tr td,table tfoot tr td{
        border: 2px solid #212121;
-       white-space: nowrap;
+       white-space: normal;
      }.sale-head h1,table thead tr th,table tfoot tr td{
        background-color: #71aaf7;;
      }tfoot{
@@ -97,7 +97,11 @@ $results = '';
           <tr>
               <th>Actividad</th>
               <th>Detalle</th>
-              <th>Fecha</th>
+              <th>Observacion</th>
+              <th>Auxiliares</th>
+              <th>Inició</th>
+              <th>Terminó</th>
+              <th class="text-center" style="width: 10%;">Fecha</th>
 
           </tr>
         </thead>
@@ -105,9 +109,13 @@ $results = '';
           <?php foreach($results as $result): ?>
            <tr>
             
-              <td class="text-right"><?php echo remove_junk($result['nameActivity']);?></td>
-              <td class="text-right"><?php echo remove_junk($result['details']);?></td>
-              <td class="text-right"><?php echo remove_junk($result['fecha']);?></td>
+              <td class="text-left"><?php echo remove_junk($result['nameActivity']);?></td>
+              <td class="text-left"><?php echo remove_junk($result['details']);?></td>
+              <td class="text-left"><?php echo remove_junk($result['observation']);?></td>
+              <td class="text-justify"><?php echo remove_junk($result['auxiliares']);?></td>
+              <td class="text-left"><?php echo remove_junk($result['hora_ini']);?></td>
+              <td class="text-left"><?php echo remove_junk($result['hora_fin']);?></td>
+              <td class="text-justify"><?php echo remove_junk($result['fecha']);?></td>
              
           </tr>
         <?php endforeach; ?>

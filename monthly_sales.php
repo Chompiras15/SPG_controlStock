@@ -30,6 +30,10 @@
                 <th class="text-center" style="width: 50px;">ID</th>
                 <th> Actividad </th>
                 <th class="text-center" style="width: 15%;"> Detalle</th>
+                <th class="text-center" style="width: 15%;"> Observacion</th>
+                <th class="text-center" style="width: 15%;"> Auxiliares</th>
+                <th class="text-center" style="width: 15%;"> Inició</th>
+                <th class="text-center" style="width: 15%;"> Finalizó</th>
                 <th class="text-center" style="width: 15%;"> Fecha </th>
                 
                
@@ -39,8 +43,12 @@
              <?php foreach ($sales as $sale):?>
              <tr>
                <td class="text-center"><?php echo count_id();?></td>
-               <td><?php echo remove_junk($sale['nameActivity']); ?></td>
-               <td><?php echo remove_junk($sale['details']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['nameActivity']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['details']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['observation']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['auxiliares']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['hora_ini']); ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['hora_fin']); ?></td>
                <td class="text-center"><?php echo date("d/m/Y", strtotime ($sale['fecha'])); ?></td>
              </tr>
              <?php endforeach;?>

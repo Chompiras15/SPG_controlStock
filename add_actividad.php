@@ -18,7 +18,7 @@
 ?>
 <?php
  if(isset($_POST['add_actividad'])){
-   $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','hora_fin');
+   $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','hora_fin','fecha');
    validate_fields($req_field);
    $act_name = remove_junk($db->escape($_POST['nameActivity']));
    $act_details = remove_junk($db->escape($_POST['details']));
@@ -26,14 +26,15 @@
    $act_aux = remove_junk($db->escape($_POST['auxiliares']));
    $act_ini = remove_junk($db->escape($_POST['hora_ini']));
    $act_fin = remove_junk($db->escape($_POST['hora_fin']));
+   $act_fecha = remove_junk($db->escape($_POST['fecha']));
 
    $dates   = make_date();
 
    if(empty($errors)){
       $sql  = "INSERT INTO activity_tasachim (";
-     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,date";
+     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,fecha,date";
      $sql .=") VALUES (";
-     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}', '{$act_aux}', '{$act_ini}', '{$act_fin}', '{$dates}'";
+     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}', '{$act_aux}', '{$act_ini}', '{$act_fin}', '{$act_fecha}', '{$dates}'";
      $sql .=")";
      $sql .=" ON DUPLICATE KEY UPDATE nameActivity='{$act_name}'";
 
@@ -98,6 +99,8 @@
                 <input  type="time" class="form-control" name="hora_ini"  placeholder="Inició" required>
                 <label for="hora_fin">Hora de fin:</label>
                 <input  type="time" class="form-control" name="hora_fin"  placeholder="Terminó" required>
+                <input  type="date" class="form-control" name="fecha"  placeholder="Fecha" required>
+                
                 
               </div>
             

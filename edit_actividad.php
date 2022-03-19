@@ -37,7 +37,7 @@
 
 <?php
 if(isset($_POST['edit_actividad'])){
-  $req_field = array('nameActivity', 'details', 'observation', 'auxiliares','hora_ini','hora_fin');
+  $req_field = array('nameActivity', 'details', 'observation', 'auxiliares','hora_ini','hora_fin','fecha');
   validate_fields($req_field);
   $act_name = remove_junk($db->escape($_POST['nameActivity']));
   $act_details = remove_junk($db->escape($_POST['details']));
@@ -45,13 +45,14 @@ if(isset($_POST['edit_actividad'])){
   $act_aux = remove_junk($db->escape($_POST['auxiliares']));
   $act_ini = remove_junk($db->escape($_POST['hora_ini']));
   $act_fin = remove_junk($db->escape($_POST['hora_fin']));
+  $act_fecha = remove_junk($db->escape($_POST['fecha']));
   $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors)){
     $sql   = "UPDATE $tableActi SET";
     $sql  .=" nameActivity ='{$act_name}', details ='{$act_details}',";
-    $sql  .=" observation ='{$act_observation}', auxiliares ='{$act_aux}', hora_ini ='{$act_ini}', hora_fin ='{$act_fin}', date ='{$date}'";
+    $sql  .=" observation ='{$act_observation}', auxiliares ='{$act_aux}', hora_ini ='{$act_ini}', hora_fin ='{$act_fin}', fecha ='{$act_fecha}', date ='{$date}'";
        $sql .= " WHERE id='{$activity['id']}'";
      $result = $db->query($sql);
      if($result && $db->affected_rows() === 1) {
@@ -84,6 +85,7 @@ if(isset($_POST['edit_actividad'])){
            <span>Editando <?php echo remove_junk(ucfirst($activity['auxiliares']));?></span>
            <span>Editando <?php echo remove_junk(ucfirst($activity['hora_ini']));?></span>
            <span>Editando <?php echo remove_junk(ucfirst($activity['hora_fin']));?></span>
+           <span>Editando <?php echo remove_junk(ucfirst($activity['fecha']));?></span>
            
            
         </strong>
@@ -113,6 +115,7 @@ if(isset($_POST['edit_actividad'])){
                <input type="text" class="form-control" name="auxiliares" value="<?php echo remove_junk(ucfirst($activity['auxiliares']));?>">
                <input type="time" class="form-control" name="hora_ini" value="<?php echo remove_junk(ucfirst($activity['hora_ini']));?>">
                <input type="time" class="form-control" name="hora_fin" value="<?php echo remove_junk(ucfirst($activity['hora_fin']));?>">
+               <input type="date" class="form-control" name="fecha" value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
 
            </div>
            <button type="submit" name="edit_actividad" class="btn btn-primary">Actualizar Actividad</button>

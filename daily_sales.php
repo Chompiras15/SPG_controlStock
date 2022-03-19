@@ -32,6 +32,10 @@
                 <th class="text-center" style="width: 20px;">ID</th>
                 <th class="text-center" style="width: 20px;"> Actividad</th>
                 <th class="text-center" style="width: 20px;"> Detalle </th>
+                <th class="text-center" style="width: 20px;"> Observacion </th>
+                <th class="text-center" style="width: 20px;"> Auxiliares </th>
+                <th class="text-center" style="width: 20px;"> Inició </th>
+                <th class="text-center" style="width: 20px;"> Finalizó </th>
                 <th class="text-center" style="width: 40px;"> Fecha </th>
              </tr>
             </thead>
@@ -41,6 +45,10 @@
                <td class="text-center"><?php echo count_id();?></td>
                <td><?php echo remove_junk($sale['nameActivity']); ?></td>
                <td><?php echo remove_junk($sale['details']); ?></td>
+               <td><?php echo remove_junk($sale['observation']); ?></td>
+               <td><?php echo remove_junk($sale['auxiliares']); ?></td>
+               <td><?php echo remove_junk($sale['hora_ini']); ?></td>
+               <td><?php echo remove_junk($sale['hora_fin']); ?></td>
                <td class="text-center"><?php echo date("d/m/Y", strtotime ($sale['fecha'])); ?></td>
              </tr>
              <?php endforeach;?>
