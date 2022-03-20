@@ -358,7 +358,7 @@ input[type=file]{
      float: right;
      display: block;
      padding: 10px;
-     background: #025959;
+     background: transparent;
      color: white;
      font-weight: bold;
      font-size: 25px;
@@ -379,4 +379,13 @@ input[type=file]{
    {
     padding: 35px 15px 20px 15px;
    }
+}
+
+
+@media screen and (max-width:750px)
+{
+  .header-date
+  {
+    display: none;
+  }
 }
