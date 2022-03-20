@@ -1,3 +1,5 @@
+
+
 <?php
 $page_title = 'Reporte de ventas';
 $results = '';
@@ -83,8 +85,15 @@ $results = '';
      
      }
    </style>
+   <!-- links para exportar a excel -->
+   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+
+    
 </head>
 <body>
+  
   <?php if($results): ?>
     <div class="page-break">
     <img src="assets/img/logobussiness.png">
@@ -92,7 +101,12 @@ $results = '';
            <h1>Reporte de Actividades</h1>
            <strong><?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?> </strong>
        </div>
-      <table class="table table-border">
+       <button id="btnExportar" class="btn btn-success">
+                <i class="fas fa-file-excel"></i> Exportar datos a Excel
+            </button>
+           <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
+           
+      <table id="tabla" class="table table-border">
         <thead>
           <tr>
               <th>Actividad</th>
@@ -127,6 +141,28 @@ $results = '';
         redirect('sales_report.php', false);
      endif;
   ?>
+
+  <!-- script para exportar a excel -->
+<script>
+    const $btnExportar = document.querySelector("#btnExportar"),
+        $tabla = document.querySelector("#tabla");
+
+    $btnExportar.addEventListener("click", function() {
+        let tableExport = new TableExport($tabla, {
+            exportButtons: false, // No queremos botones
+            filename: "Reporte de prueba", //Nombre del archivo de Excel
+            sheetname: "Reporte de Actividades", //Título de la hoja
+        });
+        let datos = tableExport.getExportData();
+        let preferenciasDocumento = datos.tabla.xlsx;
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+    });
+</script>
+<script>
+  function ImprimirPagina(){
+    window.print();
+  }
+</script>
 </body>
 </html>
 <?php if(isset($db)) { $db->db_disconnect(); } ?>
