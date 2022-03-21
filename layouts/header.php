@@ -18,13 +18,14 @@
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>
     <header id="header">
+    <div class="nav_menu"> <div></div></div>
       <div class="logo pull-left"> SGP- BUSINESS </div>
       <div class="header-content">
           <div class="header-date pull-left">
             <strong><?php //echo date("d/m/Y  g:i a");
             date_default_timezone_set("America/Lima"); echo date("d/m/Y  g:i a");?></strong>
           </div>
-          <div class="pull-right clearfix">
+          <div class="header_user">
             <ul class="info-menu list-inline list-unstyled">
               <li class="profile">
                 <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
@@ -55,11 +56,9 @@
             </ul>
           </div>
           
-          <div class="pull-right clearfix">
+          <div class="header_sede">
            
                 <span class="sedes"><?php echo remove_junk(ucfirst($user['sede'])); ?> </span>
-                
-              
           </div>
      </div>
     </header>

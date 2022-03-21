@@ -226,6 +226,7 @@
 </style>
 <i class=""></i>
 <div class="row">
+   <div class="row">
     <div class="col-md-3 cont_init" id="usersT">
          <a href="users.php">
             <div class="panel panel-box clearfix">
@@ -239,7 +240,7 @@
             </div>
          </a>
     </div>
-    <div class="row">
+    
     <div class="col-md-3 cont_init" id="usersT">
          <a href="backup.php">
             <div class="panel panel-box clearfix">
@@ -285,7 +286,7 @@
          </div>
 
 
-         <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+         <form method="post">
         
                <button type="submit" name="sede_TChim" class="col-md-5 col-sm-12 cont_sede">
 
@@ -301,7 +302,7 @@
                </button>
          </form>
 
-        <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+        <form method="post">
                <button type="submit"name="sede_tSamanco"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
@@ -314,7 +315,7 @@
                </button>
          </form>
 
-         <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+         <form method="post" action="admin.php">
                <button type="submit"name="sede_tSupe"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">
@@ -327,7 +328,7 @@
                </button>
          </form>
 
-         <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+         <form method="post" action="admin.php">
                <button type="submit"name="sede_tVegeta"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
                      <div class="panel-icon pull-left bg-red">

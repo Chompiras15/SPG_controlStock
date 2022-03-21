@@ -1,3 +1,85 @@
+.header_user
+  {
+    position: absolute;
+    right: 0;
+  }
+
+  .header_sede
+  {
+    left: 80px;
+  }
+
+.nav_menu div
+{
+  background-size: 100% 100%;
+  background-image: url("../img/lista.png");
+  width: 30px;
+  height: 50px;
+  margin: auto;
+}
+.nav_menu
+{
+  display: none;
+}
+
+
+.panel h4
+   {
+      margin: revert;
+    margin-bottom: 0;
+   }
+  .titleSedes
+  {
+    border-radius: 5px;
+    background: #0a146e;
+    text-align: center;
+  }
+
+  .cont_sede
+  {
+   padding: 0;
+   margin: 20px;
+   background:white;
+   border: 1px solid gray;
+  }
+  .cont_sede:hover
+  {
+     transform:scale(1.1);
+  }
+  .titleClients
+  {
+   margin-bottom: 15px;
+   margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 5px;
+    background: #00427a;
+    text-align: center;
+  }
+  .p_clientes
+  {
+   color: white;
+    font-size: 17px;
+    font-family: fangsong;
+    font-weight: bold;
+    margin: 10px;
+  }
+  .p_sedes
+  {
+    color: white;
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  .cont_init
+  {
+      height: 80px;
+      margin-bottom: 15px;
+  }
+
+
+
 .sedes
 {
   text-decoration: none;
@@ -109,7 +191,7 @@ a{
   top: 0;
   left: 0;
   background-color:#050a38;;
-  width: 100%;
+  width: 100vw;
   height: 65px;
   line-height: 65px;
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -127,6 +209,7 @@ a{
 }.header-date{
   color: #9b9b9b;
   margin-left: 20px;
+  margin-right: 20px;
 }
 .info-menu{
   height: 60px;
@@ -333,8 +416,6 @@ input[type=file]{
   width: 125px;
   height: 125px;
 }
-<<<<<<< HEAD
-=======
 
 
 @media screen and (max-width:800px)
@@ -351,17 +432,20 @@ input[type=file]{
   }
    .nav_menu
    {
-     height: 50px;
-     float: right;
-     display: block;
-     padding: 10px;
-     background: #025959;
-     color: white;
-     font-weight: bold;
-     font-size: 25px;
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
+    top: 15px;
+    height: 70px;
+    float: right;
+    display: block;
+    padding: 10px 5px 5px 6px;
+    background: white;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* padding: 10px; */
+    width: 45px;
    }
 
    .nav_menu i
@@ -377,4 +461,69 @@ input[type=file]{
     padding: 35px 15px 20px 15px;
    }
 }
->>>>>>> parent of 54aacf7 (Update main.css)
+
+
+@media screen and (max-width:750px)
+{
+  .header-date
+  {
+    display: none;
+  }
+
+  .header_user
+  {
+    position: absolute;
+    right: 80px;
+  }
+
+  .header_sede
+  {
+    position: absolute;
+    left: 20px;
+  }
+
+  .dataTable-container
+  {
+    overflow: auto;
+  }
+  .cont_sede
+  {
+    width: 100%;
+    margin: 0;
+  }
+
+  .cont_sede:hover
+  {
+     transform:scale(1);
+  }
+
+  .nav_menu
+   {
+    margin-top: 2px;
+    margin-right: 20px;
+    border-radius: 50%;
+    top: 15px;
+    height: 60px;
+    float: right;
+    display: block;
+    padding: 5px 5px 5px 6px;
+    background: white;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* padding: 10px; */
+    width: 65px;
+   }
+}
+
+
+/*@media screen and (max-width:600px)
+{
+  .clearfix
+  {
+    display: none;
+  }
+}*/
