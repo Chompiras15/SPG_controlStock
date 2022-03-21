@@ -333,3 +333,48 @@ input[type=file]{
   width: 125px;
   height: 125px;
 }
+<<<<<<< HEAD
+=======
+
+
+@media screen and (max-width:800px)
+{
+  .sidebar
+  {
+    left: -100%;
+  }
+
+  .logo 
+  {
+    left: -100%;
+    position: fixed;
+  }
+   .nav_menu
+   {
+     height: 50px;
+     float: right;
+     display: block;
+     padding: 10px;
+     background: #025959;
+     color: white;
+     font-weight: bold;
+     font-size: 25px;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+   }
+
+   .nav_menu i
+   {
+    float: right;
+    font-size: 30px;
+   }
+
+  
+
+   .page
+   {
+    padding: 35px 15px 20px 15px;
+   }
+}
+>>>>>>> parent of 54aacf7 (Update main.css)
