@@ -1,3 +1,37 @@
+
+.titleClients
+{
+margin-bottom: 15px;
+margin-left: auto;
+ margin-right: auto;
+ border-radius: 5px;
+ background: #00427a;
+ text-align: center;
+}
+.p_clientes
+{
+color: white;
+ font-size: 17px;
+ font-family: fangsong;
+ font-weight: bold;
+ margin: 10px;
+}
+.p_sedes
+{
+ color: white;
+ font-size: 20px;
+ font-family: cursive;
+ font-weight: bold;
+ margin: 10px;
+}
+
+.cont_init
+{
+   height: 80px;
+   margin-bottom: 15px;
+}
+
+
 .header_user
   {
     position: absolute;
@@ -417,7 +451,28 @@ input[type=file]{
   height: 125px;
 }
 
+@media screen and (max-width:1000px)
+{
+  .cont_sede
+  {
+    width: 100%;
+    margin: 20px 0px 5px 0px !important;
+  }
 
+  .cont_sede:hover
+  {
+     transform:scale(1);
+  }
+  .titleClients 
+   {
+      margin-top: 15px;
+      margin-bottom: 1px;
+    }
+    .cont_cat
+    {
+      text-align: center;
+    }
+}
 @media screen and (max-width:800px)
 {
   .sidebar
@@ -454,17 +509,36 @@ input[type=file]{
     font-size: 30px;
    }
 
-  
+   .cont_sede
+   {
+     width: 100%;
+     margin: 20px 0px 5px 0px !important;
+   }
+ 
+   .cont_sede:hover
+   {
+      transform:scale(1);
+   }
 
    .page
    {
     padding: 35px 15px 20px 15px;
    }
+   .titleClients 
+   {
+      margin-top: 15px;
+      margin-bottom: 1px;
+    }
+    .cont_cat
+    {
+      text-align: center;
+    }
 }
 
 
 @media screen and (max-width:750px)
 {
+ 
   .header-date
   {
     display: none;
@@ -489,7 +563,7 @@ input[type=file]{
   .cont_sede
   {
     width: 100%;
-    margin: 0;
+    margin: 20px 0px 5px 0px;
   }
 
   .cont_sede:hover
@@ -517,6 +591,42 @@ input[type=file]{
     /* padding: 10px; */
     width: 65px;
    }
+
+   .titleClients 
+   {
+      margin-top: 15px;
+      margin-bottom: 1px;
+    }
+
+    .cont_cat
+    {
+      text-align: center;
+    }
+
+    input::-webkit-input-placeholder {
+      text-align: center;
+   }
+   
+   input:-moz-placeholder { /* Firefox 18- */
+      text-align: center;  
+   }
+   
+   input::-moz-placeholder {  /* Firefox 19+ */
+      text-align: center;  
+   }
+   
+   input:-ms-input-placeholder {  
+      text-align: center; 
+   }
+
+
+    input[type=date] {
+    display: block;
+    text-align: center;
+    //width: 170px;
+}
+
+
 }
 
 

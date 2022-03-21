@@ -14,7 +14,20 @@
   // Checkin What level user has permission to view this page
   page_require_level(1,3);
   
-  $all_actividades = find_all('activity_tasachim')
+  $tableActi = "";
+  $SuperUser = current_user();
+  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
+
+  $all_actividades = find_all($tableActi)
 ?>
 <?php
  if(isset($_POST['add_actividad'])){
@@ -31,7 +44,7 @@
    $dates   = make_date();
 
    if(empty($errors)){
-      $sql  = "INSERT INTO activity_tasachim (";
+      $sql  = "INSERT INTO $tableActi (";
      $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,fecha,date";
      $sql .=") VALUES (";
      $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}', '{$act_aux}', '{$act_ini}', '{$act_fin}', '{$act_fecha}', '{$dates}'";

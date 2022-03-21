@@ -168,66 +168,11 @@
    }
 ?>
 
-<style>
-   .panel h4
-   {
-      margin: revert;
-    margin-bottom: 0;
-   }
-  .titleSedes
-  {
-    border-radius: 5px;
-    background: #0a146e;
-    text-align: center;
-  }
 
-  .cont_sede
-  {
-   padding: 0;
-   margin: 20px;
-   background:white;
-   border: 1px solid gray;
-  }
-  .cont_sede:hover
-  {
-     transform:scale(1.1);
-  }
-  .titleClients
-  {
-   margin-bottom: 15px;
-   margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    background: #00427a;
-    text-align: center;
-  }
-  .p_clientes
-  {
-   color: white;
-    font-size: 17px;
-    font-family: fangsong;
-    font-weight: bold;
-    margin: 10px;
-  }
-  .p_sedes
-  {
-    color: white;
-    font-size: 20px;
-    font-family: cursive;
-    font-weight: bold;
-    margin: 10px;
-  }
-
-  .cont_init
-  {
-      height: 80px;
-      margin-bottom: 15px;
-  }
-</style>
 <i class=""></i>
 <div class="row">
    <div class="row">
-    <div class="col-md-3 cont_init" id="usersT">
+    <div class="col-md-4 cont_init" id="usersT">
          <a href="users.php">
             <div class="panel panel-box clearfix">
                <div class="panel-icon pull-left bg-green">
@@ -241,7 +186,7 @@
          </a>
     </div>
     
-    <div class="col-md-3 cont_init" id="usersT">
+    <div class="col-md-4 cont_init" id="usersT">
          <a href="backup.php">
             <div class="panel panel-box clearfix">
                <div class="panel-icon pull-left bg-green">
@@ -257,7 +202,7 @@
 
   
 
-    <div class="col-md-3 cont_init" id="usersS">
+    <div class="col-md-4 cont_init" id="usersS">
          <a href="users.php">
             <div class="panel panel-box clearfix">
                <div class="panel-icon pull-left bg-red">
