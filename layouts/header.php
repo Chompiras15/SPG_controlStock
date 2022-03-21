@@ -18,7 +18,6 @@
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>
     <header id="header">
-    <div class="nav_menu"> <i class="glyphicon glyphicon-home"></i></div>
       <div class="logo pull-left"> SGP- BUSINESS </div>
       <div class="header-content">
           <div class="header-date pull-left">
@@ -81,7 +80,6 @@
 
    </div>
 <?php endif;?>
-
 
 <div class="page">
   <div class="container-fluid">
