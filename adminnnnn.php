@@ -148,7 +148,7 @@
                <button type="submit" name="sede_Chim" class="col-md-6 cont_sede">
 
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-green">
+                     <div class="panel-icon pull-left bg-navy">
                         <i class="glyphicon glyphicon-user"></i>
                      </div>
 

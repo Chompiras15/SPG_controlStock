@@ -65,7 +65,7 @@ color: white;
   .titleSedes
   {
     border-radius: 5px;
-    background: #0a146e;
+    background: #03C4EB;
     text-align: center;
   }
 
@@ -171,6 +171,10 @@ a{
 .bg-blue{
   background-color: #7ACBEE;
 }
+.bg-navy{
+  background-color:#001f3f;
+}
+
 .bg-yellow{
   background-color: #FDD761;
 }
@@ -224,7 +228,7 @@ a{
   z-index: 99;
   top: 0;
   left: 0;
-  background-color:#050a38;;
+  background-color: #f0f1f2;
   width: 100vw;
   height: 65px;
   line-height: 65px;
@@ -239,7 +243,8 @@ a{
     letter-spacing: 1px;
     display: inline-block;
     width: 250px;
-     background-color: #16a085;
+      
+    background: #001f3f;
 }.header-date{
   color: #9b9b9b;
   margin-left: 20px;
@@ -300,7 +305,7 @@ a{
   padding: 65px 0 0;
   height: 100%;
   width: 250px;
-  background: #050930;
+  background: #001f3f;
   border-right: 1px solid #ddd;
   text-align: center;
 }.sidebar ul li:hover,.submenu ul li:hover{
@@ -313,11 +318,13 @@ a{
 }.sidebar ul li {
   display: block;
 }.sidebar ul li:hover,ul.submenu{
-  background-color:#35404d;
+  background-color: rgba(3, 196, 235, 0.9);
+
+  
 }.sidebar ul li a:hover {
   color: white;
 }.sidebar ul li a,ul.submenu li a {
-  color: #aeb2b7;
+  color: #ffffff;
   display: block;
   overflow: hidden;
   position: relative;
@@ -330,7 +337,7 @@ a{
   letter-spacing: 1.5px;
   text-shadow: 0 1px rgba(0,0,0, 1);
 }.sidebar ul li a i{
-  color: #aeb2b7;
+  color: #ffffff;
   padding: 15px 22px;
   text-align: center;
 }ul.submenu{

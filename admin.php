@@ -175,7 +175,7 @@
     <div class="col-md-4 cont_init" id="usersT">
          <a href="users.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-green">
+               <div class="panel-icon pull-left bg-navy">
                   <i class="glyphicon glyphicon-user"></i>
                </div>
                <div class="panel-value pull-right">
@@ -189,8 +189,8 @@
     <div class="col-md-4 cont_init" id="usersT">
          <a href="backup.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-green">
-                  <i class="glyphicon glyphicon-user"></i>
+               <div class="panel-icon pull-left bg-navy">
+                  <i class="glyphicon glyphicon-download"></i>
                </div>
                <div class="panel-value pull-right">
                   <h2 class="text-muted">Backup </h2>
@@ -205,7 +205,7 @@
     <div class="col-md-4 cont_init" id="usersS">
          <a href="users.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-red">
+               <div class="panel-icon pull-left bg-navy">
                   <i class="glyphicon glyphicon-user"></i>
             </div>
             <div class="panel-value pull-right">
@@ -236,8 +236,8 @@
                <button type="submit" name="sede_TChim" class="col-md-5 col-sm-12 cont_sede">
 
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-green">
-                        <i class="glyphicon glyphicon-user"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                      </div>
 
                      <div class="panel-value pull-right">
@@ -250,8 +250,8 @@
         <form method="post">
                <button type="submit"name="sede_tSamanco"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Samanco </h4>
@@ -263,8 +263,8 @@
          <form method="post" action="admin.php">
                <button type="submit"name="sede_tSupe"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Supe </h4>
@@ -276,8 +276,8 @@
          <form method="post" action="admin.php">
                <button type="submit"name="sede_tVegeta"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Végueta </h4>
@@ -289,8 +289,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_tCallao"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Callao </h4>
@@ -302,8 +302,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_tPisco"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top" > Pisco </h4>
@@ -315,8 +315,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_tAtico"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Atico </h4>
@@ -327,8 +327,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_tMatarani"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top" > Matarani </h4>
@@ -350,8 +350,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_eChimbote"  class="col-md-5  col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Chimbote </h4>
@@ -363,8 +363,8 @@
          <form method="post" action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                <button type="submit"name="sede_eChicama"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-red">
-                        <i class="glyphicon glyphicon-list"></i>
+                     <div class="panel-icon pull-left bg-navy">
+                        <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
                   <h4 class="margin-top"> Chicama (Malabrigo) </h4>
