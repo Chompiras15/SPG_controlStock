@@ -406,12 +406,12 @@ function find_recent_sale_added($limit){
 /*--------------------------------------------------------------*/
 /* Function for Generate sales report by two dates
 /*--------------------------------------------------------------*/
-function find_sale_by_dates($start_date,$end_date){
+function find_sale_by_dates($table,$start_date,$end_date){
   global $db;
   $start_date  = date("Y-m-d", strtotime($start_date));
   $end_date    = date("Y-m-d", strtotime($end_date));
   $sql  = "SELECT s.nameActivity, s.details, s.observation, s.auxiliares ,s.hora_ini, s.hora_fin, s.fecha ";
-  $sql .= "FROM activity_tasachim s";
+  $sql .= "FROM $table s";
   
  /* $sql .= "COUNT(s.product_id) AS total_records,";*/
   /*$sql .= "SUM(s.qty) AS total_sales,";*/
@@ -427,12 +427,12 @@ function find_sale_by_dates($start_date,$end_date){
 /*--------------------------------------------------------------*/
 /* Function for Generate Daily sales report
 /*--------------------------------------------------------------*/
-function  dailySales($year,$month){
+function  dailySales($table,$year,$month){
   global $db;
   $sql  = "SELECT s.nameActivity,";
   $sql .= " DATE_FORMAT(s.fecha, '%Y-%m-%e') AS fecha,s.nameActivity,s.details,s.observation,s.auxiliares,s.hora_ini,s.hora_fin,s.fecha";
  /* $sql .= "SUM(p.sale_price * s.qty) AS total_saleing_price";*/
-  $sql .= " FROM activity_tasachim s";
+  $sql .= " FROM $table s";
   /*$sql .= " LEFT JOIN products p ON s.product_id = p.id";*/
   $sql .= " WHERE DATE_FORMAT(s.fecha, '%Y-%m' ) = '{$year}-{$month}'";
   $sql .= " GROUP BY DATE_FORMAT( s.fecha,  '%e' ),s.nameActivity";
@@ -441,12 +441,12 @@ function  dailySales($year,$month){
 /*--------------------------------------------------------------*/
 /* Function for Generate Monthly sales report
 /*--------------------------------------------------------------*/
-function  monthlySales($year){
+function  monthlySales($table ,$year){
   global $db;
   $sql  = "SELECT s.nameActivity,";
   $sql .= " DATE_FORMAT(s.fecha, '%Y-%m-%e') AS fecha,s.nameActivity,s.details,s.observation,s.auxiliares,s.hora_ini,s.hora_fin,s.fecha";
   /*$sql .= "SUM(p.sale_price * s.qty) AS total_saleing_price";*/
-  $sql .= " FROM activity_tasachim s";
+  $sql .= " FROM $table s";
  /* $sql .= " LEFT JOIN products p ON s.product_id = p.id";*/
   $sql .= " WHERE DATE_FORMAT(s.fecha, '%Y' ) = '{$year}'";
   $sql .= " GROUP BY DATE_FORMAT( s.fecha,  '%c' ),s.nameActivity";

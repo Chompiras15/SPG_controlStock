@@ -6,6 +6,18 @@ $results = '';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
    page_require_level(3);
+   $tableActi = "";
+   $SuperUser = current_user();
+   if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
+   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
+   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
+   if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
+   if( $SuperUser["sede"]=="T-Pisco") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
+   if( $SuperUser["sede"]=="T-Atico") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
+   if( $SuperUser["sede"]=="T-Matarani") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
+   if( $SuperUser["sede"]=="E-Chimbote") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+   if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 ?>
 <?php
   if(isset($_POST['submit'])){
@@ -15,7 +27,7 @@ $results = '';
     if(empty($errors)):
       $start_date   = remove_junk($db->escape($_POST['start-date']));
       $end_date     = remove_junk($db->escape($_POST['end-date']));
-      $results      = find_sale_by_dates($start_date,$end_date);
+      $results      = find_sale_by_dates($tableActi,$start_date,$end_date);
     else:
       $session->msg("d", $errors);
       redirect('sales_report.php', false);
