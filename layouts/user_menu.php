@@ -1,4 +1,5 @@
 <ul>
+<div class="img-perfil"> <img/></div>
   <li>
     <a href="home.php">
       <i class="glyphicon glyphicon-home"></i>

@@ -1,3 +1,4 @@
+<?php $user = current_user(); ?>
      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -9,5 +10,7 @@
 <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
   </body>
 </html>
-
+<script>
+  console.log(document.getElementsByClassName("img-perfil")[0].getElementsByTagName("img")[0].src=src="uploads/users/<?php echo $user['image'];?>");
+</script>
 <?php if(isset($db)) { $db->db_disconnect(); } ?>

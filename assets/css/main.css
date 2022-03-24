@@ -1,4 +1,15 @@
 
+.img-perfil
+{
+  width: 100%;height: 200px;margin-bottom:15px;
+}
+
+.img-perfil img
+{
+  width: 88%;
+  height: 100%;
+  border-radius: 50%;
+}
 .titleClients
 {
 margin-bottom: 15px;

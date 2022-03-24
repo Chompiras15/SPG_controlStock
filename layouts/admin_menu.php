@@ -1,4 +1,10 @@
+
 <ul>
+
+
+<div class="img-perfil"> <img/></div>
+
+
   <li>
     <a href="admin.php">
       <i class="glyphicon glyphicon-home"></i>
@@ -42,3 +48,4 @@
   
  
 </ul>
+
