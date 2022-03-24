@@ -35,68 +35,76 @@
 
    if(empty($errors))
    {
-      $sql  = "INSERT INTO $table (";
-     $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor";
-     $sql .=") VALUES (";
-     $sql .=" '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
-     $sql .=")";
-     $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-
-      if($db->query($sql))
-      
+      if($cant_out<1001)
       {
 
-        $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
-        $restaSacos=(int)$findCatRuma["cant_saco"]-(int)$cant_out;
+          $sql  = "INSERT INTO $table (";
+          $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor";
+          $sql .=") VALUES (";
+          $sql .=" '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
+          $sql .=")";
+          $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-        if($restaSacos == 0)
-        {
-          $delete_cod_ruma= delete_by_id($tabla_sed,$findCatRuma['id']);
-            //$delete_id = delete_by_id('sede_tasachimbote',(int)$categorie['id']);
-          if($delete_cod_ruma){
-              $session->msg("s","Ruma despachada totalmente");
-              redirect('media.php');
+          if($db->query($sql))
+          {
+
+            $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
+            $restaSacos=(int)$findCatRuma["cant_saco"]-(int)$cant_out;
+
+            if($restaSacos == 0)
+            {
+              $delete_cod_ruma= delete_by_id($tabla_sed,$findCatRuma['id']);
+                //$delete_id = delete_by_id('sede_tasachimbote',(int)$categorie['id']);
+              if($delete_cod_ruma){
+                  $session->msg("s","Ruma despachada totalmente");
+                  redirect('media.php');
+              } else {
+                  $delete_cod_ruma->msg("d","Eliminación falló");
+                  redirect('media.php');
+              }
+
+            }elseif($restaSacos > 0)
+            {
+              $sql   = "UPDATE $tabla_sed SET";
+              $sql  .=" cant_saco ='{$restaSacos}'";
+              $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+              $result = $db->query($sql);
+              if($result && $db->affected_rows() === 1) 
+              {
+                $session->msg("s", "Despacho actualizado con éxito");
+                redirect('media.php',false);
+              } else 
+              {
+                $session->msg("d", "Lo siento, actualización falló.");
+                redirect('media.php',false);
+              }
+
+              $session->msg("s", "Ruma agregada exitosamente.");
+              redirect('media.php',false);
+
+            }elseif($restaSacos < 0)
+            {
+              $session->msg("d", "Verificar la Cantidad Sacos");
+              redirect('media.php',false);
+            }
+
+            
+
           } else {
-              $delete_cod_ruma->msg("d","Eliminación falló");
-              redirect('media.php');
-          }
-
-        }elseif($restaSacos > 0)
-        {
-          $sql   = "UPDATE $tabla_sed SET";
-          $sql  .=" cant_saco ='{$restaSacos}'";
-          $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-
-          $result = $db->query($sql);
-          if($result && $db->affected_rows() === 1) 
-          {
-            $session->msg("s", "Despacho actualizado con éxito");
-            redirect('media.php',false);
-          } else 
-          {
-            $session->msg("d", "Lo siento, actualización falló.");
+            $session->msg("d", "Lo siento, registro falló");
             redirect('media.php',false);
           }
-
-          $session->msg("s", "Ruma agregada exitosamente.");
-          redirect('media.php',false);
-
-        }elseif($restaSacos < 0)
-        {
-          $session->msg("d", "Verificar la Cantidad Sacos");
-          redirect('media.php',false);
-        }
-
-        
-
-      } else {
-        $session->msg("d", "Lo siento, registro falló");
+      }else
+      {
+        $session->msg("d", "Excedio la Capacitad Límite, Verifique la cantidad que va Despachar");
         redirect('media.php',false);
       }
-   } else {
-     $session->msg("d", $errors);
-     redirect('media.php',false);
-   }
+    } else {
+       $session->msg("d", $errors);
+      redirect('media.php',false);
+    }
+    
  }
 ?>
 <?php include_once('layouts/header.php'); ?>

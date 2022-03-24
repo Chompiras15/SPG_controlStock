@@ -50,18 +50,26 @@ if(isset($_POST['edit_cat'])){
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors))
   {
-    $sql   = "UPDATE $table SET";
-    $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
-    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
-       $sql .= " WHERE id='{$categorie['id']}'";
-     $result = $db->query($sql);
-     if($result && $db->affected_rows() === 1) {
-       $session->msg("s", "Categoría actualizada con éxito.");
-       redirect('categorie.php',false);
-     } else {
-       $session->msg("d", "Lo siento, actualización falló.");
-       redirect('categorie.php',false);
-     }
+    if($cat_saco<1001)
+    {
+
+        $sql   = "UPDATE $table SET";
+        $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
+        $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
+          $sql .= " WHERE id='{$categorie['id']}'";
+        $result = $db->query($sql);
+        if($result && $db->affected_rows() === 1) {
+          $session->msg("s", "Categoría actualizada con éxito.");
+          redirect('categorie.php',false);
+        } else {
+          $session->msg("d", "Lo siento, actualización falló.");
+          redirect('categorie.php',false);
+        }
+
+    }else{
+      $session->msg("d", "Excedió el límite de cantidad.");
+      redirect('categorie.php',false);
+    }
   } else {
     $session->msg("d", $errors);
     redirect('categorie.php',false);
@@ -76,18 +84,6 @@ if(isset($_POST['edit_cat'])){
    </div>
    <div class="col-md-5">
      <div class="panel panel-default">
-       <div class="panel-heading">
-         <strong>
-           <span class="glyphicon glyphicon-th"></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['sector']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['cant_saco']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['date_producc']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['calidad']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['nicho']));?></span>
-        </strong>
-       </div>
        <div class="panel-body">
          <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
            <div class="form-group">
