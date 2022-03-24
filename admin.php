@@ -236,7 +236,8 @@
                <button type="submit" name="sede_TChim" class="col-md-5 col-sm-12 cont_sede">
 
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-celeste">
+                      <div class="panel-icon pull-left bg-navy "> 
+                       
                         <i class="glyphicon glyphicon-home"></i>
                      </div>
 
@@ -263,7 +264,7 @@
          <form method="post" action="admin.php">
                <button type="submit"name="sede_tSupe"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-celeste">
+                     <div class="panel-icon pull-left bg-navy">
                         <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">

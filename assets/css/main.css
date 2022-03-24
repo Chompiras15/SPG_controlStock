@@ -700,8 +700,16 @@ input[type=file]{
     input[type=date] {
     display: block;
     text-align: center;
-    //width: 170px;
+    /* //width: 170px; */
 }
+
+
+}
+.panel-icon img{
+  height: 100%;
+  width: 80%;
+ 
+    
 
 
 }
