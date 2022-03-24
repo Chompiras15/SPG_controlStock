@@ -1,4 +1,39 @@
 
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+body::-webkit-scrollbar-button:increment,body::-webkit-scrollbar-button {
+  display: none;
+} 
+
+body::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+.backup
+{
+  margin-top: 28px;
+  font-size: 22px;
+    font-family: initial;
+    font-weight: bolder;
+}
 .img-perfil
 {
   width: 100%;height: 200px;margin-bottom:15px;
@@ -46,12 +81,13 @@ color: white;
 .header_user
   {
     position: absolute;
-    right: 0;
+    right: 35px;
   }
 
   .header_sede
   {
-    left: 80px;
+    position: fixed;
+    left: 280px;
   }
 
 .nav_menu div
@@ -75,15 +111,16 @@ color: white;
    }
   .titleSedes
   {
-    border-radius: 5px;
-    background: #03C4EB;
+    border-radius: 25px;
+    background: #7a7c7e;
     text-align: center;
   }
 
   .cont_sede
   {
+    border-radius: 20px;  
    padding: 0;
-   margin: 20px;
+   margin: 15px;
    background:white;
    border: 1px solid gray;
   }
@@ -97,7 +134,7 @@ color: white;
    margin-left: auto !important;
     margin-right: auto !important;
     border-radius: 5px;
-    background: #00427a;
+    background: #03c4eb;
     text-align: center;
   }
   .p_clientes
@@ -110,11 +147,11 @@ color: white;
   }
   .p_sedes
   {
-    color: white;
+    color: #000000;
     font-size: 20px;
     font-family: cursive;
     font-weight: bold;
-    margin: 10px;
+    margin: 5px;
   }
 
   .cont_init
@@ -132,13 +169,20 @@ color: white;
   font-size: 14px;
   color: rgba(150, 150, 158, 1.0);
   position: relative;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 30px 10px 30px;
   margin: 0;
-  background: #f9f9f9;
-  border-radius: 30px;
+  background: #03c4eb;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(255 255 255);
+  font-weight: bold;
 }
 
 body{
+  /*Estilos estándar experimentales (Principalmente Firefox)*/
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   overflow-x: hidden;
@@ -186,6 +230,15 @@ a{
   background-color:#001f3f;
 }
 
+.bg-celeste{
+  background-color:#2a91ff
+}
+
+.bg-gray{
+
+  background-color: #6a6a6a;
+}
+
 .bg-yellow{
   background-color: #FDD761;
 }
@@ -202,6 +255,7 @@ a{
 }
 .panel-box
 {
+  border-radius: 25px;
   height: 100%;
   width: 100%;
   text-align: center;
@@ -215,10 +269,13 @@ a{
 }
 .panel-icon
 {
+
   height: 100%;
   width: 40%;
   border-radius: 0;
 }.panel-icon{
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
@@ -230,7 +287,7 @@ a{
   margin-top:10px;
 }
 .panel-icon i{
-  line-height:65px;
+  line-height:75px;
   font-size: 40px;
   color: #fff;
 }
@@ -239,7 +296,7 @@ a{
   z-index: 99;
   top: 0;
   left: 0;
-  background-color: #f0f1f2;
+  background-color: #ffffff;
   width: 100vw;
   height: 65px;
   line-height: 65px;
@@ -247,18 +304,18 @@ a{
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 } header > .logo {
-    color: #fff;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    width: 250px;
-      
-    background: #001f3f;
+  color: #fff;
+  text-align: center;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 250px;
+  background: #001f3f;
+  font-size: x-large;
 }.header-date{
-  color: #9b9b9b;
-  margin-left: 20px;
+  color: #000000;
+  margin-left: 30%;
   margin-right: 20px;
 }
 .info-menu{
@@ -269,14 +326,16 @@ a{
 }.info-menu li.profile {
   position: relative;
 }.profile a.toggle{
+  font-weight: 700;
+  /* font-size: 115px; */
   text-decoration: none;
   text-align: center;
   font-size: 14px;
-  color: rgba(150, 150, 158, 1.0);
+  color: rgb(255 255 255);
   position: relative;
   padding: 10px 10px 10px 0;
   margin: 0;
-  background: #f9f9f9;
+  background: #03c4eb;
   border-radius: 30px;
 }.info-menu li.profile a img{
   width: 30px;

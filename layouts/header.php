@@ -19,7 +19,7 @@
   <?php  if ($session->isUserLoggedIn(true)): ?>
     <header id="header">
     <div class="nav_menu"> <div></div></div>
-      <div class="logo pull-left"> SGP- BUSINESS </div>
+      <div class="logo pull-left"> SGP - BUSINESS </div>
       <div class="header-content">
           <div class="header-date pull-left">
             <strong><?php //echo date("d/m/Y  g:i a");

@@ -175,7 +175,7 @@
     <div class="col-md-4 cont_init" id="usersT">
          <a href="users.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-navy">
+               <div class="panel-icon pull-left bg-celeste">
                   <i class="glyphicon glyphicon-user"></i>
                </div>
                <div class="panel-value pull-right">
@@ -189,11 +189,11 @@
     <div class="col-md-4 cont_init" id="usersT">
          <a href="backup.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-navy">
+               <div class="panel-icon pull-left bg-gray">
                   <i class="glyphicon glyphicon-download"></i>
                </div>
                <div class="panel-value pull-right">
-                  <h2 class="text-muted">Backup </h2>
+                  <h3 class="backup">Backup </h3>
               
                </div>
             </div>
@@ -205,7 +205,7 @@
     <div class="col-md-4 cont_init" id="usersS">
          <a href="users.php">
             <div class="panel panel-box clearfix">
-               <div class="panel-icon pull-left bg-navy">
+               <div class="panel-icon pull-left bg-celeste">
                   <i class="glyphicon glyphicon-user"></i>
             </div>
             <div class="panel-value pull-right">
@@ -221,13 +221,13 @@
 </div>
 
 <div class="row titleSedes">
-  <p class="p_sedes">SEDES</p>
+  <p class="p_sedes">SEDES - CLIENTES</p>
 </div>
 
 <div class="row" style="margin-top:20px;">
     <div class="col-md-6">
          <div class="row titleClients">
-            <p class="p_clientes"> CLIENTES TASA</p>
+            <p class="p_clientes"> CLIENTES - TASA</p>
          </div>
 
 
@@ -236,7 +236,7 @@
                <button type="submit" name="sede_TChim" class="col-md-5 col-sm-12 cont_sede">
 
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-navy">
+                     <div class="panel-icon pull-left bg-celeste">
                         <i class="glyphicon glyphicon-home"></i>
                      </div>
 
@@ -263,7 +263,7 @@
          <form method="post" action="admin.php">
                <button type="submit"name="sede_tSupe"  class="col-md-5 col-sm-12 cont_sede">
                   <div class="panel panel-box clearfix">
-                     <div class="panel-icon pull-left bg-navy">
+                     <div class="panel-icon pull-left bg-celeste">
                         <i class="glyphicon glyphicon-home"></i>
                   </div>
                   <div class="panel-value pull-right">
@@ -342,7 +342,7 @@
 
       <div class="col-md-6 col-sm-12">
          <div class="row titleClients">
-            <p class="p_clientes">CLIENTES EXALMAR</p>
+            <p class="p_clientes">CLIENTES - EXALMAR</p>
          </div>
 
 
