@@ -45,35 +45,37 @@
 if(isset($_POST['edit_emb']))
 {
     $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'supervisor');
-  validate_fields($req_field);
-  $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
-  $cant_out = remove_junk($db->escape($_POST['cant_out']));
-  $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-  $supervisor = remove_junk($db->escape($_POST['supervisor']));
-  $date=make_date();
+    validate_fields($req_field);
+    $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
+    $cant_out = remove_junk($db->escape($_POST['cant_out']));
+    $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
+    $supervisor = remove_junk($db->escape($_POST['supervisor']));
+    $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors))
   {
 
+      if($cant_out<1001)
+      {
+     
+          //CAMBIO LA CNTIDAD DE SEDE
+          $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
+          //$findAct = find_by_codRuma($table,$_POST['cod_ruma']);
+      
+          $newCant=(int)$findCatRuma["cant_saco"]+(int)$categorie["cant_out"]-(int)$_POST['cant_out'];
+          //$session->msg("d", $newCant);
+          //redirect('media.php',false);
+          $sql   = "UPDATE $tabla_sed SET";
+          $sql  .=" cant_saco ='{$newCant}'";
+          $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-      //CAMBIO LA CNTIDAD DE SEDE
-      $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
-      //$findAct = find_by_codRuma($table,$_POST['cod_ruma']);
-  
-      $newCant=(int)$findCatRuma["cant_saco"]+(int)$categorie["cant_out"]-(int)$_POST['cant_out'];
-      //$session->msg("d", $newCant);
-      //redirect('media.php',false);
-      $sql   = "UPDATE $tabla_sed SET";
-      $sql  .=" cant_saco ='{$newCant}'";
-      $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+          $result = $db->query($sql);
 
-      $result = $db->query($sql);
-
-      if($result && $db->affected_rows() === 1) 
+          if($result && $db->affected_rows() === 1) 
           {
 
-            
+                
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
@@ -87,11 +89,15 @@ if(isset($_POST['edit_emb']))
                 redirect('media.php',false);
               } else {
                 $session->msg("d", "Lo siento, actualización falló.");
-                redirect('media.php',false);
+                 redirect('media.php',false);
               }
 
-            
+                
           }
+      }else{
+        $session->msg("d", "Excedió la cantidad Límite.");
+        redirect('media.php',false);
+      }
 
   } else {
     $session->msg("d", $errors);
@@ -107,17 +113,7 @@ if(isset($_POST['edit_emb']))
    </div>
    <div class="col-md-5">
      <div class="panel panel-default">
-       <div class="panel-heading">
-         <strong>
-           <span class="glyphicon glyphicon-th"></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['cod_contrato']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['cant_out']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['date_out']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($categorie['supervisor']));?></span>
-  
-        </strong>
-       </div>
+       
        <div class="panel-body">
          <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
            <div class="form-group">
