@@ -1,4 +1,7 @@
+
 <ul>
+
+<div class="img-perfil"><img/></div>
   <li>
     <a href="home.php">
       <i class="glyphicon glyphicon-home"></i>
@@ -8,23 +11,27 @@
   <li>
     <a href="categorie.php" >
       <i class="glyphicon glyphicon-indent-left"></i>
-      <span>Categorías</span>
+      <span>Almacen</span>
+    </a>
+  </li>
+  <li>
+    <a href="media.php" >
+      <i class="glyphicon glyphicon-picture"></i>
+      <span>Despachos</span>
     </a>
   </li>
   <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-th-large"></i>
-      <span>Productos</span>
+      <span>Actividades</span>
     </a>
     <ul class="nav submenu">
-       <li><a href="product.php">Administrar productos</a> </li>
-       <li><a href="add_product.php">Agregar producto</a> </li>
+    <li><a href="actividad.php">Administrar Actividades</a> </li>
+       <li><a href="monthly_sales.php">Reporte Diario</a></li>
+       <li><a href="daily_sales.php">Reporte Mensual</a> </li>
+       <li><a href="sales_report.php">Reporte Rangos </a></li>
    </ul>
   </li>
-  <li>
-    <a href="media.php" >
-      <i class="glyphicon glyphicon-picture"></i>
-      <span>Media</span>
-    </a>
-  </li>
+  
+ 
 </ul>
