@@ -1,4 +1,3 @@
-
 <!--   
  ====================================================================
         SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
@@ -113,7 +112,7 @@
        <?php echo display_msg($msg); ?>
      </div>
   </div>
-   <!-- <div class="row">
+   <div class="row">
     <div class="col-md-3 cont_cat">
       <div class="panel panel-default">
      <div class="panel-heading">
@@ -139,66 +138,4 @@
         </form>
         </div>
       </div>
-    </div> -->
-    <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-      <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Rumas</span>
-
-       </strong>
-       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-      </div>
-        <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover" id="almacen">
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th>Cod.Ruma</th>
-                    <th class="text-center" style="width: 50px;">Sector</th>
-                    <th>Cant_sacos</th>
-                    <th class="text-center" style="width: 50px;">Calidad</th>
-                    <th>Nicho</th>
-                    <th>Fecha</th>
-                    <th class="text-center" style="width: 100px;">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($all_categories as $cat):?>
-                <tr>
-                    <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
-                   
-                  
-                    <td class="text-center">
-                      <div class="btn-group">
-                        <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                          <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                          <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                      </div>
-                    </td>
-
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-       </div>
     </div>
-    </div>
-   </div>
-  </div>
-  <script>
-  var tablita= document.querySelector("#almacen");
-  var dataTable= new DataTable(tablita);
-  </script>
-
-  <?php include_once('layouts/footer.php'); ?>

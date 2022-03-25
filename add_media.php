@@ -114,7 +114,7 @@
        <?php echo display_msg($msg); ?>
      </div>
   </div>
-   <!-- <div class="row">
+   <div class="row">
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -149,63 +149,4 @@
         </form>
         </div>
       </div>
-    </div> -->
-    <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-
-          <span>Lista de Despachos</span>
-          <a href="add_media.php" class="btn btn-info pull-right">Agregar Despacho</a>
-       </strong>
-      </div>
-        <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover" id="despacho">
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th>CONTRATO</th>
-                    <th class="text-center" style="width: 50px;">CANTIDAD</th>
-                    <th>COD.RUMA</th>
-                    <th class="text-center" style="width: 100px;">FECHA</th>
-                    <th>SUPERVISOR</th>
-                  
-                </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($all_embarques as $embar):?>
-                <tr>
-                    <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['date_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
-                   
-                  
-                    <td class="text-center">
-                      <div class="btn-group">
-                        <a href="edit_embarcaciones.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                          <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="delete_media.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                          <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                      </div>
-                    </td>
-
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-       </div>
     </div>
-    </div>
-   </div>
-  </div>
-  <script>
-  var tablita= document.querySelector("#despacho");
-  var dataTable= new DataTable(tablita);
-  </script>
-  <?php include_once('layouts/footer.php'); ?>
