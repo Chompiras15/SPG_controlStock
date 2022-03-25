@@ -2,7 +2,7 @@
 <ul>
 
 
-<div class="img-perfil"> <img/></div>
+<div class="img-perfil"><img/></div>
 
 
   <li>

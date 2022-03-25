@@ -11,6 +11,16 @@
   </body>
 </html>
 <script>
-  console.log(document.getElementsByClassName("img-perfil")[0].getElementsByTagName("img")[0].src=src="uploads/users/<?php echo $user['image'];?>");
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function putPhoto()
+{
+  await sleep(50);
+  document.getElementsByClassName("img-perfil")[0].getElementsByTagName("img")[0].src="uploads/users/<?php echo $user['image'];?>"
+}
+  
+putPhoto();
+  //console.log(document.getElementsByClassName("img-perfil")[0].getElementsByTagName("img")[0].src="uploads/users/<?php echo $user['image'];?>");
 </script>
 <?php if(isset($db)) { $db->db_disconnect(); } ?>
