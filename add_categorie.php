@@ -113,7 +113,7 @@
      </div>
   </div>
    <div class="row">
-    <div class="col-md-3 cont_cat">
+    
       <div class="panel panel-default">
      <div class="panel-heading">
         <strong>
@@ -124,8 +124,46 @@
  
       </div>
         <div class="panel-body">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 cont_form">
           <form method="post" action="categorie.php">
-            <div class="form-group">
+          <div class="material-textfield">
+              <input placeholder=" " type="text" name="sector" required>
+              <label>Sector</label>
+          </div>
+
+          <div class="material-textfield">
+              <input placeholder=" " type="text" name="cod_ruma" required>
+              <label>Cod.Ruma</label>
+          </div>
+
+          <div class="material-textfield">
+              <input placeholder=" " type="text" name="cant_saco" required>
+              <label>Cantidad sacos</label>
+          </div>
+          <div class="material-textfield">
+          <label class="select">Fecha Vencimiento</label>
+              <input  placeholder=" " type="date" name="date_producc" required>
+              
+          </div>
+
+          <div class="material-textfield">
+          <label class="select" >Fecha Produccion</label>
+              <input  placeholder=" " type="date" name="date_vencimiento" required>
+              
+          </div>
+          <div class="material-textfield">
+              <input placeholder=" " type="text" name="calidad" required>
+              <label>Calidad</label>
+          </div>
+
+          <div class="material-textfield">
+              <input placeholder=" " type="text" name="nicho" required>
+              <label>Carril</label>
+          </div>
+
+            <!-- <div class="form-group">
                 <input type="text" class="form-control" name="sector" placeholder="Sector" required>
                 <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo ruma" required>
                 <input type="text" class="form-control" name="cant_saco" placeholder="Cantidad sacos" required>
@@ -133,9 +171,11 @@
                 <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
                 <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
                 <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
+            </div> -->
+            <div class="form-group clearfix">
+            <button style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
             </div>
-            <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
-        </form>
+          </form>
         </div>
       </div>
     </div>
