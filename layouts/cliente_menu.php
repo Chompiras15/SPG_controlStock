@@ -1,4 +1,3 @@
-
 <ul>
 
 <div class="img-perfil"><img/></div>
