@@ -43,12 +43,13 @@
  }
 ?>
 <?php include_once('layouts/header.php'); ?>
-<div class="login-page">
+<div class="login-page col-md-12 col-sm-12">
     <div class="text-center">
-       <h3>Agregar nuevo grupo de usurios</h3>
+       <h3>Agregar nuevo grupo de usuarios</h3>
      </div>
      <?php echo display_msg($msg); ?>
       <form method="post" action="add_group.php" class="clearfix">
+        
         <div class="form-group">
               <label for="name" class="control-label">Nombre del grupo</label>
               <input type="name" class="form-control" name="group-name" required>
@@ -65,7 +66,7 @@
             </select>
         </div>
         <div class="form-group clearfix">
-                <button type="submit" name="add" class="btn btn-info">Guardar</button>
+                <button style="font-size: 18px;padding: 15px;border-radius: 35px;" type="submit" name="add" class="btn btn-info">Guardar</button>
         </div>
     </form>
 </div>

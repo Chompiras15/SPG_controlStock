@@ -17,6 +17,7 @@ function sleep(ms) {
 async function putPhoto()
 {
   await sleep(50);
+  //console.log(document.getElementsByClassName("img-perfil")[0]);
   document.getElementsByClassName("img-perfil")[0].getElementsByTagName("img")[0].src="uploads/users/<?php echo $user['image'];?>"
 }
   
