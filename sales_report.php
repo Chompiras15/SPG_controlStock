@@ -11,15 +11,15 @@ $page_title = 'Reporte de Actividades';
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="panel">
       <div class="panel-heading">
 
       </div>
       <div class="panel-body">
           <form class="clearfix" method="post" action="sale_report_process.php">
-            <div class="form-group">
-              <label class="form-label">Rango de fechas</label>
+            <div class="form-group" style="text-align:center">
+              <label class="form-label" style="font-size: 25px;margin-bottom: 15px;">Rango de fechas</label>
                 <div class="input-group">
                   <input type="text" class="datepicker form-control" name="start-date" placeholder="From">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
@@ -27,7 +27,7 @@ $page_title = 'Reporte de Actividades';
                 </div>
             </div>
             <div class="form-group">
-                 <button type="submit" name="submit" class="btn btn-primary">Generar Reporte</button>
+                 <button style="width:100%;" type="submit" name="submit" class="btn btn-primary">Generar Reporte</button>
             </div>
           </form>
       </div>

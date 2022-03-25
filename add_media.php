@@ -114,40 +114,61 @@
        <?php echo display_msg($msg); ?>
      </div>
   </div>
-   <div class="row">
-    <div class="col-md-3">
-      <div class="panel panel-default">
+  
+  <div class="row">
+    <div class="panel panel-default ">
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-
             <span>Agregar Despacho</span>
-
-           
-
-         </strong>
+          </strong>
         </div>
-        <div class="panel-body">
-          <form method="post" action="media.php">
-            <div class="form-group">
-
-               
-
-                <input type="text" class="form-control" name="cod_contrato" placeholder="Contrato" required>
-
-                <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " required>
-                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" required>
-                <input type="date" class="form-control" name="date_out" placeholder="Fecha de Salida" required>
-                <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
-      
+        <div class="panel-body" style="height: 400px;margin-top: 5%;">
+            <div class="col-md-3">
             </div>
+            <div class="col-md-6 cont_form">
+              <form method="post" action="media.php">
+                  <div class="material-textfield">
+                      <input placeholder=" " type="text" name="cod_contrato" required>
+                      <label>Contrato</label>
+                  </div>
 
-            <button type="submit" name="add_emb" class="btn btn-primary">Agregar Despacho</button>
+                  <div class="material-textfield">
+                      <input placeholder=" " type="number" name="cant_out" required>
+                      <label>Cantidad</label>
+                  </div>
 
-   
+                  <div class="material-textfield">
+                      <input placeholder=" " type="text" name="cod_ruma" required>
+                      <label>Codigo Ruma</label>
+                  </div>
 
-        </form>
+                  <div class="material-textfield">
+                      <label class="select">Fecha de Salida</label>
+                      <input placeholder=" " type="date" name="date_out" required>
+                     
+                  </div>
+
+                  <div class="material-textfield">
+                      <input placeholder=" " type="text" name="supervisor" required>
+                      <label>Supervisor</label>
+                  </div>
+
+                  <div class="form-group clearfix">
+                        <button style="width:100%;border-radius: 35px;margin-top:10px" type="submit" name="add_emb" class="btn btn-info">Guardar</button>
+                  </div> 
+              </form>
+
+            </div>
         </div>
+
       </div>
-    </div>
+</div>
+
+
+
+
+
+
+
     <?php include_once('layouts/footer.php'); ?>
