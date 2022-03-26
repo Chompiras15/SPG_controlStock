@@ -29,6 +29,7 @@
   
   $all_categories = find_all($table)
 ?>
+<<<<<<< HEAD
 <?php
  if(isset($_POST['add_cat']))
  {
@@ -98,13 +99,9 @@
             }
           
         }
+=======
+>>>>>>> b84f2c5e95345dfe2740fa65b19f6b20cb0d1769
 
-    }else{
-      $session->msg("d", "La Ruma ".$cat_ruma. " Excede la cantidad limite de sacos");
-      redirect('categorie.php',false);
-    }
- }
-?>
 <?php include_once('layouts/header.php'); ?>
 
   <div class="row">
@@ -163,15 +160,7 @@
               <label>Carril</label>
           </div>
 
-            <!-- <div class="form-group">
-                <input type="text" class="form-control" name="sector" placeholder="Sector" required>
-                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo ruma" required>
-                <input type="text" class="form-control" name="cant_saco" placeholder="Cantidad sacos" required>
-                <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
-                <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
-                <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
-                <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
-            </div> -->
+          
             <div class="form-group clearfix">
             <button style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
             </div>
