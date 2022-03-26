@@ -43,7 +43,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    $date   = make_date();
+    //$date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
     
@@ -55,9 +55,9 @@
             if(empty($errors))
             {
               $sql  = "INSERT INTO $table (";
-              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
+              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho";
               $sql .=") VALUES (";
-              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
+              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}'";
               $sql .=")";
               $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
         
@@ -83,7 +83,7 @@
 
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
             $result = $db->query($sql);
