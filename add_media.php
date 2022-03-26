@@ -127,7 +127,7 @@
             <div class="col-md-3">
             </div>
             <div class="col-md-6 cont_form">
-              <form method="post" action="media.php">
+              <form method="post" action="add_media.php">
                   <div class="material-textfield">
                       <input placeholder=" " type="text" name="cod_contrato" required>
                       <label>Contrato</label>
