@@ -73,7 +73,7 @@
   </div>
    <div class="row">
      
-  
+   <div class="col-md-5">
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong>
@@ -81,14 +81,14 @@
             <span>Agregar Actividad</span>
          </strong>
         </div>
-       
+        <?php  
+        date_default_timezone_set("America/Lima");
+        $fecha_actual=date("Y-m-s H:i:s");   
+         ?>
         <div class="panel-body">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6 cont_form">
           <form method="post" action="add_actividad.php">
-          <div class="material-textfield">
-              <label class="select" for="sede">Selecciona Actividad:</label>
+            <div class="form-group">
+            <label for="nameActivity">Selecciona Actividad:</label>
               <select class="form-control" name="nameActivity">
          <!-- Opciones de la lista -->
                <option value="Embarque" selected>Descarga/Carga eslinga</option>
@@ -105,52 +105,71 @@
                <option value="Embarque">Embarque</option>
                <option value="Manteniminto">Manteniminto</option>
                </select>
-            </div>
+                <input type="text" class="form-control" name="details" placeholder="Detalle" required>
+                <input type="text" class="form-control" name="observation" placeholder="Observacion" required>
+                <input type="text" class="form-control" name="auxiliares" placeholder="Auxiliares" required>
+                <label for="hora_ini">Hora de inicio</label>
+                <input  type="time" class="form-control" name="hora_ini"  placeholder="Inició" required>
+                <label for="hora_fin">Hora de fin:</label>
+                <input  type="time" class="form-control" name="hora_fin"  placeholder="Terminó" required>
+                <input  type="date" class="form-control" name="fecha"  placeholder="Fecha" required>
+                
+                
+              </div>
             
-          <div class="material-textfield">
-         
-              <input placeholder=" " type="text" name="details" required>
-              <label>Detalle</label>
-          </div>
-
-          <div class="material-textfield">
-          
-              <input placeholder=" " type="text" name="observation" required>
-              <label>Observacion</label>
-          </div>
-
-          <div class="material-textfield">
-          
-              <input placeholder=" " type="text" name="auxiliares" required>
-              <label>Auxiliares</label>
-          </div>
-
-          <div class="material-textfield">
-          <label class="select" >Inició</label>
-              <input placeholder=" " type="time" name="hora_ini" required>
-             
-          </div>
-
-          <div class="material-textfield">
-          <label class="select">Terminó</label>
-              <input placeholder=" " type="time" name="hora_fin" required>
-              
-          </div>
-          <div class="material-textfield">
-          <label class="select">Fecha</label>
-              <input placeholder=" " type="date" name="fecha" required>
-              
-          </div>
-
-              
-              <div class="form-group clearfix">
-            <button  style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
-            </div>
+            <button  type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
+        
           </form>
-
         </div>
       </div>
     </div>
     
-  
+   <!-- <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>
+          <span class="glyphicon glyphicon-th"></span>
+          <span>Lista de Actividades</span>
+
+       </strong>
+       <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
+      </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">Id</th>
+                    <th class="text-center" style="width: 100px;">Actividad</th>
+                    <th class="text-center" style="width: 100px;">Detalle</th>
+                    <th class="text-center" style="width: 100px;">Fecha</th>
+                    <th class="text-center" style="width: 100px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($all_actividades as $act):?>
+                <tr>
+                    <td class="text-center"><?php echo count_id();?></td>
+                    <td><?php echo remove_junk(ucfirst($act['nameActivity'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['details'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                          <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                      </div>
+                    </td>
+
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+       </div>
+    </div>
+    </div>
+   </div>
+  </div>-->
   <?php include_once('layouts/footer.php'); ?>

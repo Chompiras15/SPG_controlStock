@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 input[type=time]
 {
   margin: 0 0 10px 0;
   line-height: 15px !important;
 }
 
-=======
+
 .panel-body
 {
   overflow: auto;
@@ -14,7 +14,8 @@ input[type=time]
 {
   background: #001f3f;
 }
->>>>>>> b84f2c5e95345dfe2740fa65b19f6b20cb0d1769
+
+
 input[type=date]
 {
   margin: 0 0 10px 0;
@@ -49,7 +50,7 @@ input[type=date]
 input {
   margin: 15px 0px 5px 0px;
   width: 100%;
-  font-size: 12px;
+  font-size: 1rem;
   outline: none;
   border: 1px solid gray;
   border-radius: 5px;  
@@ -804,16 +805,13 @@ input[type=file]{
     display: block;
     text-align: center;
     /* //width: 170px; */
+    }
+
 }
 
-
-}
 .panel-icon img{
   height: 100%;
   width: 80%;
- 
-    
-
 
 }
 

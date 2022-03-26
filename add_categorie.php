@@ -44,7 +44,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-   
+    $date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
     
@@ -56,9 +56,9 @@
             if(empty($errors))
             {
               $sql  = "INSERT INTO $table (";
-              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho";
+              $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,date_almacenamiento";
               $sql .=") VALUES (";
-              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}'";
+              $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$date}'";
               $sql .=")";
               $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
         
@@ -84,7 +84,7 @@
 
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}'";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',date_almacenamiento='{$date}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
             $result = $db->query($sql);
@@ -124,7 +124,7 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6 cont_form">
-          <form method="post" action="add_categorie.php">
+          <form method="post" action="categorie.php">
           <div class="material-textfield">
               <input placeholder=" " type="text" name="sector" required>
               <label>Sector</label>

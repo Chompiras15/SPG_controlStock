@@ -70,7 +70,7 @@
               $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
               $result = $db->query($sql);
-              if($result && $db->affected_rows() === 1) 
+              if($result && $db->affected_rows() == 1) 
               {
                 $session->msg("s", "Despacho actualizado con éxito");
                 redirect('media.php',false);
