@@ -113,33 +113,7 @@
        <?php echo display_msg($msg); ?>
      </div>
   </div>
-   <!-- <div class="row">
-    <div class="col-md-3 cont_cat">
-      <div class="panel panel-default">
-     <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Actividades</span>
-
-       </strong>
- 
-      </div>
-        <div class="panel-body">
-          <form method="post" action="categorie.php">
-            <div class="form-group">
-                <input type="text" class="form-control" name="sector" placeholder="Sector" required>
-                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo ruma" required>
-                <input type="text" class="form-control" name="cant_saco" placeholder="Cantidad sacos" required>
-                <input type="date" class="form-control" name="date_producc" placeholder="Fecha produccion" required>
-                <input type="date" class="form-control" name="date_vencimiento" placeholder="Fecha caducidad" required>
-                <input type="text" class="form-control" name="calidad" placeholder="Calidad" required>
-                <input type="text" class="form-control" name="nicho" placeholder="Nicho" required>
-            </div>
-            <button type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
-        </form>
-        </div>
-      </div>
-    </div> -->
+   
     <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">

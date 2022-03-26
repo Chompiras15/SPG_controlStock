@@ -29,7 +29,6 @@
   
   $all_categories = find_all($table)
 ?>
-<<<<<<< HEAD
 <?php
  if(isset($_POST['add_cat']))
  {
@@ -99,9 +98,9 @@
             }
           
         }
-=======
->>>>>>> b84f2c5e95345dfe2740fa65b19f6b20cb0d1769
-
+    }
+ }
+?>
 <?php include_once('layouts/header.php'); ?>
 
   <div class="row">
