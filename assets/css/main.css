@@ -1,4 +1,19 @@
-
+.selectEdit
+{
+  margin: 15px 0 15px 0 !important;
+}
+.inputEdit
+{
+  margin: 0 0 10px 0;
+}
+.cont_formEdit
+{
+  background: lightgrey;
+  border-radius: 25px;
+  border: 3px solid #686a6a;
+  /* margin: 10px; */
+    padding: 20px;
+}
 input[type=time]
 {
   margin: 0 0 10px 0;
