@@ -29,9 +29,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Despachos</title>
   <!-- Script para exportar a excel -->
-  <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+  <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
-    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script> -->
     <style>
 /*estilos para la tabla*/
 table th {
@@ -56,12 +56,12 @@ color: white;
           <span class="glyphicon glyphicon-th"></span>
 
           <span>Lista de Despachos</span>
-          <button id="btnExportar" class="btn btn-success">
+          <!-- <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button>
+            </button> -->
           <a href="add_media.php" class="btn btn-info pull-right">Agregar Despacho</a>
           
-          <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
+          <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
        </strong>
       </div>
         <div class="panel-body">
@@ -110,10 +110,10 @@ color: white;
    </div>
   </div>
  <!-- script para busqueda por celda -->
- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script> 
-<script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>  -->
+<!-- <script>
 $(document).ready(function(){
     var table = $('#tabla').DataTable({
        orderCellsTop: true,
@@ -138,12 +138,12 @@ $(document).ready(function(){
     } );   
 });
 
-</script>
+</script> -->
 
 
-</script>
+
   <!-- script para exportar en excel -->
-  <script>
+  <!-- <script>
     const $btnExportar = document.querySelector("#btnExportar"),
         $tabla = document.querySelector("#tabla");
 
@@ -162,7 +162,7 @@ $(document).ready(function(){
   function ImprimirPagina(){
     window.print();
     }
-  </script>
+  </script> -->
   <?php include_once('layouts/footer.php'); ?>
   </body>
 </html>

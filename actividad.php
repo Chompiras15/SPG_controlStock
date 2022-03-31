@@ -78,9 +78,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Actividad</title>
      <!-- links para exportar a excel -->
-     <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+     <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
-    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script> -->
     
 
     <style>
@@ -111,11 +111,11 @@
           <span>Lista de Actividades</span>
 
        </strong>
-       <button id="btnExportar" class="btn btn-success">
+       <!-- <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button>
+            </button> -->
        <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
-           <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
+           <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
       </div>
         <div class="panel-body">
           <table class="table table-bordered table-striped table-hover " id="tabla" >
@@ -176,7 +176,7 @@
   </div>
   
   <!-- script para busqueda por celda -->
- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script> 
 
@@ -205,7 +205,7 @@ $(document).ready(function(){
     } );   
 });
 
-</script>
+</script> -->
  
  
    <!-- script para exportar a excel -->
