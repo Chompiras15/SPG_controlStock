@@ -11,7 +11,7 @@
  <div class="col-md-12">
     <div class="panel">
       <div class="jumbotron text-center">
-         <h1>Gestor de almacenes de SGP Business</h1>
+         <h1>Control de almacen por sedes de SGP Business</h1>
      
       </div>
     </div>
