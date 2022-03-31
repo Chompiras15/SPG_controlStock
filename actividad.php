@@ -179,7 +179,7 @@
    </div>
   
   </div>
-<<<<<<< HEAD
+
   
   <!-- script para busqueda por celda -->
  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -230,8 +230,8 @@ $(document).ready(function(){
         tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
 </script>
-=======
->>>>>>> parent of 9459fba (busqueda)
+
+
   <script>
   var tablita= document.querySelector("#actividad");
   var dataTable= new DataTable(tablita);
