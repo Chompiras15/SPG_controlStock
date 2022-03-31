@@ -113,17 +113,17 @@
 
        </strong>
 
-       <!-- <button id="btnExportar" class="btn btn-success">
+       <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button> -->
+            </button>
        <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
-           <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
+           <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
 
-       <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
+       
 
       </div>
         <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover " id="actividad" >
+          <table class="table table-bordered table-striped table-hover " id="tabla" >
           
             <thead >
                 <tr>
@@ -181,8 +181,36 @@
   </div>
 
  
-   <!-- script para exportar a excel -->
-   <script>
+  <?php include_once('layouts/footer.php'); ?>
+ <script>
+$(document).ready(function(){
+    var table = $('#tabla').DataTable({
+       orderCellsTop: true,
+       fixedHeader: true 
+    });
+
+    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
+
+    $('#tabla thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );   
+});
+
+</script>
+
+  <!-- script para exportar a excel -->
+<script>
     const $btnExportar = document.querySelector("#btnExportar"),
         $tabla = document.querySelector("#tabla");
 
@@ -197,10 +225,11 @@
         tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
 </script>
-
-  <script>
-  var tablita= document.querySelector("#actividad");
-  var dataTable= new DataTable(tablita);
+<!-- Script para imprimir -->
+<script>
+  function ImprimirPagina(){
+    window.print();
+    }
   </script>
   <?php include_once('layouts/footer.php'); ?>
                 

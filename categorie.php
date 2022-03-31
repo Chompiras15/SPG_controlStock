@@ -71,7 +71,7 @@ color: white;
       </div>
         <div class="panel-body">
           <!-- tablaaaaaa -->
-          <table class="table table-bordered table-striped table-hover" id="almacen">
+          <table  class="table table-bordered table-striped table-hover" id="tabla" >
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
@@ -120,15 +120,15 @@ color: white;
   <?php include_once('layouts/footer.php'); ?>
  <script>
 $(document).ready(function(){
-    var table = $('#almacen').DataTable({
+    var table = $('#tabla').DataTable({
        orderCellsTop: true,
        fixedHeader: true 
     });
 
     //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#almacen thead tr').clone(true).appendTo( '#almacen thead' );
+    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
 
-    $('#almacen thead tr:eq(1) th').each( function (i) {
+    $('#tabla thead tr:eq(1) th').each( function (i) {
         var title = $(this).text(); //es el nombre de la columna
         $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
  
@@ -168,6 +168,9 @@ $(document).ready(function(){
     }
   </script>
 
- 
+  <!-- <script>
+  var tablita= document.querySelector("#almacen");
+  var dataTable= new DataTable(tablita);
+  </script> -->
 
   <?php include_once('layouts/footer.php'); ?>
