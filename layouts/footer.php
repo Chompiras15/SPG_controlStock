@@ -8,6 +8,10 @@
   <script type="text/javascript" src="assets/js/menu.js"></script>
   <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
+<!-- links para exportar a excel -->
+   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
 
 <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">

@@ -75,17 +75,17 @@ color: white;
 
        </strong>
 
-       <!-- <button id="btnExportar" class="btn btn-success">
+       <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button> -->
+            </button>
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-       <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
+       <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
 
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
 
       </div>
         <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover" id="almacen">
+          <table class="table table-bordered table-striped table-hover" id="tabla">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
@@ -189,6 +189,11 @@ $(document).ready(function(){
     });
 </script>
 <!-- Script para imprimir -->
+<script>
+  function ImprimirPagina(){
+    window.print();
+    }
+  </script>
 
   <script>
   var tablita= document.querySelector("#almacen");
