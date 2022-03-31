@@ -9,7 +9,6 @@
   
 -->
 
-
 <?php
   $page_title = 'Almacen-Chimbote';
   require_once('includes/load.php');
@@ -31,6 +30,7 @@
   
   $all_categories = find_all($table)
 ?>
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +55,8 @@ color: white;
 <body>
   
 
+=======
+>>>>>>> parent of 9459fba (busqueda)
 
 <?php include_once('layouts/header.php'); ?>
 
@@ -72,14 +74,18 @@ color: white;
           <span>Lista de Rumas</span>
 
        </strong>
+
        <!-- <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
             </button> -->
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
        <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
+
+       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
+
       </div>
         <div class="panel-body">
-          <table id="tabla" class="table table-bordered table-striped table-hover" >
+          <table class="table table-bordered table-striped table-hover" id="almacen">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
@@ -119,12 +125,12 @@ color: white;
               <?php endforeach; ?>
             </tbody>
           </table>
-          
        </div>
     </div>
     </div>
    </div>
   </div>
+
 
  <!-- script para busqueda por celda -->
  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -183,12 +189,10 @@ $(document).ready(function(){
     });
 </script>
 <!-- Script para imprimir -->
-  <script>
-  function ImprimirPagina(){
-    window.print();
-    }
-  </script>
-  <?php include_once('layouts/footer.php'); ?>
 
-  </body>
-</html>
+  <script>
+  var tablita= document.querySelector("#almacen");
+  var dataTable= new DataTable(tablita);
+  </script>
+
+  <?php include_once('layouts/footer.php'); ?>

@@ -5,7 +5,7 @@ $page_title = 'Reporte de ventas';
 $results = '';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-   page_require_level(4);
+   page_require_level(3);
    $tableActi = "";
    $SuperUser = current_user();
    if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}

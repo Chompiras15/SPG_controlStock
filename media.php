@@ -21,6 +21,7 @@
   
   $all_embarques = find_all($table)
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +42,9 @@ color: white;
 </style>
 </head>
 <body>
+
+
+
 <?php include_once('layouts/header.php'); ?>
 
   <div class="row">
@@ -56,25 +60,28 @@ color: white;
           <span class="glyphicon glyphicon-th"></span>
 
           <span>Lista de Despachos</span>
+
           <!-- <button id="btnExportar" class="btn btn-success">
                 <i class="fas fa-file-excel"></i> Exportar datos a Excel
             </button> -->
           <a href="add_media.php" class="btn btn-info pull-right">Agregar Despacho</a>
           
           <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
+
+          <a href="add_media.php" class="btn btn-info pull-right">Agregar Despacho</a>
+
        </strong>
       </div>
         <div class="panel-body">
-          <table id="tabla" class="table table-bordered table-striped table-hover" >
+          <table class="table table-bordered table-striped table-hover" id="despacho">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">Id</th>
-                    <th>Contrato</th>
-                    <th class="text-center" style="width: 50px;">Cantidad</th>
-                    <th>Cod.Ruma</th>
-                    <th class="text-center" style="width: 100px;">Fecha</th>
-                    <th>Supervisor</th>
-                    <th>Acciones</th>
+                    <th>CONTRATO</th>
+                    <th class="text-center" style="width: 50px;">CANTIDAD</th>
+                    <th>COD.RUMA</th>
+                    <th class="text-center" style="width: 100px;">FECHA</th>
+                    <th>SUPERVISOR</th>
                   
                 </tr>
             </thead>
@@ -109,6 +116,7 @@ color: white;
     </div>
    </div>
   </div>
+<<<<<<< HEAD
  <!-- script para busqueda por celda -->
  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -163,6 +171,10 @@ $(document).ready(function(){
     window.print();
     }
   </script> -->
+=======
+  <script>
+  var tablita= document.querySelector("#despacho");
+  var dataTable= new DataTable(tablita);
+  </script>
+>>>>>>> parent of 9459fba (busqueda)
   <?php include_once('layouts/footer.php'); ?>
-  </body>
-</html>

@@ -26,7 +26,6 @@
     </a>
     <ul class="nav submenu">
        <li><a href="actividad.php">Administrar Actividades</a> </li>
-       <li><a href="sales_report.php">Reporte Rangos </a></li>
    </ul>
   </li>
   
