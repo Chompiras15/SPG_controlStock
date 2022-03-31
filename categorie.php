@@ -81,6 +81,8 @@ color: white;
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
        <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
 
+       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
+
       </div>
         <div class="panel-body">
           <table class="table table-bordered table-striped table-hover" id="tabla">
@@ -129,37 +131,46 @@ color: white;
    </div>
   </div>
 
-   <!-- por celdas -->
-   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-          <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-          <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
-<!-- script para busqueda por celda -->
-          <script>
-          $(document).ready(function(){
-              var table = $('#tabla').DataTable({
-                orderCellsTop: true,
-                fixedHeader: true 
-              });
 
-              //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-              $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
+ <!-- script para busqueda por celda -->
+ <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>  -->
 
-              $('#tabla thead tr:eq(1) th').each( function (i) {
-                  var title = $(this).text(); //es el nombre de la columna
-                  $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
-          
-                  $( 'input', this ).on( 'keyup change', function () {
-                      if ( table.column(i).search() !== this.value ) {
-                          table
-                              .column(i)
-                              .search( this.value )
-                              .draw();
-                      }
-                  } );
-              } );   
-          });
+ <!-- <script>
+$(document).ready(function(){
+    var table = $('#tabla').DataTable({
+       orderCellsTop: true,
+       fixedHeader: true 
+    });
 
-           </script>
+    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
+
+    $('#tabla thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );   
+});
+
+
+ 
+
+</script>
+  -->
+
+
+
+
 
   <!-- script para exportar a excel -->
 <script>
@@ -184,9 +195,9 @@ color: white;
     }
   </script>
 
-  <!-- <script>
+  <script>
   var tablita= document.querySelector("#almacen");
   var dataTable= new DataTable(tablita);
-  </script> -->
+  </script>
 
   <?php include_once('layouts/footer.php'); ?>
