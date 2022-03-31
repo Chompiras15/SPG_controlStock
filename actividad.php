@@ -179,40 +179,7 @@
    </div>
   
   </div>
-<<<<<<< HEAD
-  
-  <!-- script para busqueda por celda -->
- <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script> 
 
- <script>
-$(document).ready(function(){
-    var table = $('#tabla').DataTable({
-       orderCellsTop: true,
-       fixedHeader: true 
-    });
-
-    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
-
-    $('#tabla thead tr:eq(1) th').each( function (i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html( '<input type="text" placeholder="Buscar..." />' );
- 
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( table.column(i).search() !== this.value ) {
-                table
-                    .column(i)
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );   
-});
-
-</script> -->
- 
  
    <!-- script para exportar a excel -->
    <script>
@@ -230,8 +197,7 @@ $(document).ready(function(){
         tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
 </script>
-=======
->>>>>>> parent of 9459fba (busqueda)
+
   <script>
   var tablita= document.querySelector("#actividad");
   var dataTable= new DataTable(tablita);

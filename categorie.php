@@ -30,19 +30,10 @@
   
   $all_categories = find_all($table)
 ?>
-<<<<<<< HEAD
-<!DOCTYPE html>
+
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Almacen</title>
-   <!-- links para exportar a excel -->
-   <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
-    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
-    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script> -->
-
     <style>
 /*estilos para la tabla*/
 table th {
@@ -53,10 +44,6 @@ color: white;
 
 </head>
 <body>
-  
-
-=======
->>>>>>> parent of 9459fba (busqueda)
 
 <?php include_once('layouts/header.php'); ?>
 
@@ -80,8 +67,6 @@ color: white;
             </button>
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
        <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
-
-       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
 
       </div>
         <div class="panel-body">
