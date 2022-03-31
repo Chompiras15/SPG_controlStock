@@ -12,7 +12,7 @@
     </a>
   </li>
   <li>
-    <a href="users.php" class="submenu-toggle">
+    <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-user"></i>
       <span>Accesos</span>
     </a>

@@ -30,14 +30,19 @@
   
   $all_categories = find_all($table)
 ?>
-
-<!-- <!DOCTYPE html>
+<<<<<<< HEAD
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Almacen</title>
+   <!-- links para exportar a excel -->
+   <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script> -->
+
     <style>
 /*estilos para la tabla*/
 table th {
@@ -46,9 +51,13 @@ color: white;
 }
 </style>
 
-</head> -->
+</head>
 <body>
   
+
+=======
+>>>>>>> parent of 9459fba (busqueda)
+
 <?php include_once('layouts/header.php'); ?>
 
   <div class="row">
@@ -72,6 +81,7 @@ color: white;
        <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
        <!-- <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button> -->
 
+       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
 
       </div>
         <div class="panel-body">
@@ -127,7 +137,7 @@ color: white;
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>  -->
 
-  <!-- <script>
+ <!-- <script>
 $(document).ready(function(){
     var table = $('#tabla').DataTable({
        orderCellsTop: true,
@@ -152,10 +162,18 @@ $(document).ready(function(){
     } );   
 });
 
-</script> -->
+
+ 
+
+</script>
+  -->
+
+
+
+
 
   <!-- script para exportar a excel -->
-<!-- <script>
+<script>
     const $btnExportar = document.querySelector("#btnExportar"),
         $tabla = document.querySelector("#tabla");
 
@@ -170,18 +188,11 @@ $(document).ready(function(){
         tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
 </script>
- Script para imprimir
-<script>
-  function ImprimirPagina(){
-    window.print();
-    }
-  </script> --> -->
+<!-- Script para imprimir -->
 
-  <!-- <script>
+  <script>
   var tablita= document.querySelector("#almacen");
   var dataTable= new DataTable(tablita);
-  </script> -->
+  </script>
 
   <?php include_once('layouts/footer.php'); ?>
-  </body>
-  </html>

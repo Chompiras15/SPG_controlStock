@@ -116,7 +116,7 @@ color: white;
     </div>
    </div>
   </div>
-
+<<<<<<< HEAD
  <!-- script para busqueda por celda -->
  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -171,7 +171,7 @@ $(document).ready(function(){
     window.print();
     }
   </script> -->
-
+=======
   <script>
   var tablita= document.querySelector("#despacho");
   var dataTable= new DataTable(tablita);
