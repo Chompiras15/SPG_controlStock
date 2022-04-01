@@ -172,29 +172,7 @@
     </script>
 
 
-    <!-- Script para sumar -->
-    <!-- <script>
-    $(document).ready(function() {
-        var tabla = $("#tabla").DataTable({
-            "createdRow": function(row, data, index) {
 
-            },
-            "drawCallback": function() {
-                //alert("La tabla se está recargando"); 
-                var api = this.api();
-                $(api.column(5).footer()).html(
-                    'Total: ' + api.column(5, {
-                        page: 'current'
-                    }).data().sum()
-                )
-            }
-        });
-
-
-        var tot = tabla.column(3).data().sum();
-        $("#total").text(tot);
-    });
-    </script> -->
 
     <!-- script para exportar a excel -->
     <script>
