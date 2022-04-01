@@ -17,6 +17,8 @@
 <!-- script para busqueda por celda -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<!-- SUM()  Datatables-->
+<script src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
    
 
 

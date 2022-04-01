@@ -1,4 +1,3 @@
-
 <!--   
  ====================================================================
         SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
@@ -33,120 +32,172 @@
 
 
 <html lang="en">
+
 <head>
     <style>
-/*estilos para la tabla*/
-table th {
-background-color: #001f3f;;
-color: white;   
-}
-</style>
+    /*estilos para la tabla*/
+    table th {
+        background-color: #001f3f;
+        ;
+        color: white;
+    }
+    </style>
 
 </head>
+
 <body>
 
-<?php include_once('layouts/header.php'); ?>
+    <?php include_once('layouts/header.php'); ?>
 
-  <div class="row">
-     <div class="col-md-12">
-       <?php echo display_msg($msg); ?>
-     </div>
-  </div>
-   
+    <div class="row">
+        <div class="col-md-12">
+            <?php echo display_msg($msg); ?>
+        </div>
+    </div>
+
     <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-      <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Rumas</span>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    <span>Lista de Rumas</span>
 
-       </strong>
+                </strong>
 
-       <button id="btnExportar" class="btn btn-success">
-                <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button>
-       <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-       <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
+                <button id="btnExportar" class="btn btn-success">
+                    <i class="fas fa-file-excel"></i> Exportar datos a Excel
+                </button>
+                <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
+                <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
 
-      </div>
-        <div class="panel-body">
-          <!-- tablaaaaaa -->
-          <table  class="table table-bordered table-striped table-hover" id="tabla" >
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th>Cod.Ruma</th>
-                    <th class="text-center" style="width: 50px;">Sector</th>
-                    <th>Cant_sacos</th>
-                    <th class="text-center" style="width: 50px;">Calidad</th>
-                    <th>Nicho</th>
-                    <th>Fecha</th>
-                    <th class="text-center" style="width: 100px;">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($all_categories as $cat):?>
-                <tr>
-                    <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
-                   
-                  
-                    <td class="text-center">
-                      <div class="btn-group">
-                        <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                          <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                          <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                      </div>
-                    </td>
+            </div>
+            <div class="panel-body">
+                <!-- tablaaaaaa -->
+                <table class="table table-bordered table-striped table-hover" id="tabla">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 50px;">Id</th>
+                            <th>Cod.Ruma</th>
+                            <th class="text-center" style="width: 50px;">Sector</th>
+                            <th>Cant_sacos</th>
+                            <th class="text-center" style="width: 50px;">Calidad</th>
+                            <th>Nicho</th>
+                            <th>Fecha</th>
+                            <th class="text-center" style="width: 100px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($all_categories as $cat):?>
+                        <tr>
+                            <td class="text-center"><?php echo count_id();?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
 
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-       </div>
+
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                        class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                        class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary">
+                                Total de sacos: <span id="total" class="badge badge-light"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
-   </div>
-  </div>
-  
-  <?php include_once('layouts/footer.php'); ?>
- <script>
-$(document).ready(function(){
-    var table = $('#tabla').DataTable({
-       orderCellsTop: true,
-       fixedHeader: true 
-    });
+    </div>
 
-    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
+    <?php include_once('layouts/footer.php'); ?>
+    <?php include_once('layouts/footer.php'); ?>
+    <script>
+    $(document).ready(function() {
+        var table = $('#tabla').DataTable({
+            "createdRow": function(row, data, index) {
 
-    $('#tabla thead tr:eq(1) th').each( function (i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
- 
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( table.column(i).search() !== this.value ) {
-                table
-                    .column(i)
-                    .search( this.value )
-                    .draw();
+            },
+            "drawCallback": function() {
+                //alert("La tabla se está recargando"); 
+                var api = this.api();
+                $(api.column(5).footer()).html(
+                    'Total: ' + api.column(5, {
+                        page: 'current'
+                    }).data().sum()
+                )
             }
-        } );
-    } );   
-});
+        });
+        var tot = table.column(3).data().sum();
+        $("#total").text(tot);
 
-</script>
 
-  <!-- script para exportar a excel -->
-<script>
+        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+        $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+
+        $('#tabla thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text" placeholder="Search...' + title + '" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+    });
+    </script>
+
+
+    <!-- Script para sumar -->
+    <!-- <script>
+    $(document).ready(function() {
+        var tabla = $("#tabla").DataTable({
+            "createdRow": function(row, data, index) {
+
+            },
+            "drawCallback": function() {
+                //alert("La tabla se está recargando"); 
+                var api = this.api();
+                $(api.column(5).footer()).html(
+                    'Total: ' + api.column(5, {
+                        page: 'current'
+                    }).data().sum()
+                )
+            }
+        });
+
+
+        var tot = tabla.column(3).data().sum();
+        $("#total").text(tot);
+    });
+    </script> -->
+
+    <!-- script para exportar a excel -->
+    <script>
     const $btnExportar = document.querySelector("#btnExportar"),
         $tabla = document.querySelector("#tabla");
 
@@ -158,19 +209,23 @@ $(document).ready(function(){
         });
         let datos = tableExport.getExportData();
         let preferenciasDocumento = datos.tabla.xlsx;
-        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
+            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
+            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
-</script>
-<!-- Script para imprimir -->
-<script>
-  function ImprimirPagina(){
-    window.print();
+    </script>
+    <!-- Script para imprimir -->
+    <script>
+    function ImprimirPagina() {
+        window.print();
     }
-  </script>
+    </script>
 
-  <!-- <script>
+
+
+    <!-- <script>
   var tablita= document.querySelector("#almacen");
   var dataTable= new DataTable(tablita);
   </script> -->
 
-  <?php include_once('layouts/footer.php'); ?>
+    <?php include_once('layouts/footer.php'); ?>
