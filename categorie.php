@@ -64,12 +64,7 @@
 
                 </strong>
 
-                <button id="btnExportar" class="btn btn-success">
-                    <i class="fas fa-file-excel"></i> Exportar datos a Excel
-                </button>
                 <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-                <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
-
             </div>
             <div class="panel-body">
                 <!-- tablaaaaaa -->
@@ -82,6 +77,7 @@
                             <th>Cant_sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th>Nicho</th>
+                            <th>Observacion</th>
                             <th>Fecha</th>
                             <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
@@ -95,6 +91,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
 
 
@@ -131,22 +128,65 @@
     </div>
 
     <?php include_once('layouts/footer.php'); ?>
-    <?php include_once('layouts/footer.php'); ?>
+
+    <!-- Busqueda por columna -->
+
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
+
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "sProcessing": "Procesando...",
+            },
+            //para usar los botones   
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-info'
+                },
+            ],
+
             "createdRow": function(row, data, index) {
 
             },
             "drawCallback": function() {
-                //alert("La tabla se está recargando"); 
+                //alert("La tabla se está recargando");
                 var api = this.api();
-                $(api.column(5).footer()).html(
-                    'Total: ' + api.column(5, {
+                $(api.column(3).footer()).html(
+                    'Total: ' + api.column(3, {
                         page: 'current'
                     }).data().sum()
                 )
             }
+
+
         });
         var tot = table.column(3).data().sum();
         $("#total").text(tot);
@@ -173,37 +213,5 @@
 
 
 
-
-    <!-- script para exportar a excel -->
-    <script>
-    const $btnExportar = document.querySelector("#btnExportar"),
-        $tabla = document.querySelector("#tabla");
-
-    $btnExportar.addEventListener("click", function() {
-        let tableExport = new TableExport($tabla, {
-            exportButtons: false, // No queremos botones
-            filename: "Reporte de prueba", //Nombre del archivo de Excel
-            sheetname: "Reporte de Actividades", //Título de la hoja
-        });
-        let datos = tableExport.getExportData();
-        let preferenciasDocumento = datos.tabla.xlsx;
-        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
-            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
-            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
-    });
-    </script>
-    <!-- Script para imprimir -->
-    <script>
-    function ImprimirPagina() {
-        window.print();
-    }
-    </script>
-
-
-
-    <!-- <script>
-  var tablita= document.querySelector("#almacen");
-  var dataTable= new DataTable(tablita);
-  </script> -->
 
     <?php include_once('layouts/footer.php'); ?>
