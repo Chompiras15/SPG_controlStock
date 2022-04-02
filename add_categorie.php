@@ -29,12 +29,21 @@
   
   $all_categories = find_all($table)
 ?>
+
 <?php
  if(isset($_POST['add_cat']))
  {
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
+<<<<<<< Updated upstream
    $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
     validate_fields($req_field);
+=======
+   
+   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'almacen');
+   else $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
+   
+   validate_fields($req_field);
+>>>>>>> Stashed changes
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -43,7 +52,11 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+<<<<<<< Updated upstream
     $cat_observation = remove_junk($db->escape($_POST['observation']));
+=======
+    if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
+>>>>>>> Stashed changes
     //$date   = make_date();
 
     $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
@@ -55,6 +68,7 @@
 
             if(empty($errors))
             {
+<<<<<<< Updated upstream
               $sql  = "INSERT INTO $table (";
               $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation";
               $sql .=") VALUES (";
@@ -62,6 +76,28 @@
               $sql .=")";
               $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
         
+=======
+              if( $SuperUser["sede"]=="E-Chimbote") 
+              {
+                $sql  = "INSERT INTO $table (";
+                $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,almacen";
+                $sql .=") VALUES (";
+                $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}','{$cat_almacen}'";
+                $sql .=")";
+                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+          
+              }else {
+                  $sql  = "INSERT INTO $table (";
+                  $sql .=" sector,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho";
+                  $sql .=") VALUES (";
+                  $sql .=" '{$cat_sector}', '{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}'";
+                  $sql .=")";
+                  $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+            
+              }
+
+              
+>>>>>>> Stashed changes
               if($db->query($sql)){
                 $session->msg("s", "Ruma agregada exitosamente.");
                 redirect('categorie.php',false);
@@ -69,25 +105,47 @@
                 $session->msg("d", "Lo siento, registro falló");
                 redirect('categorie.php',false);
               }
+              
+
+
             } else {
               $session->msg("d", $errors);
               redirect('categorie.php',false);
             }
 
-          
-        
-            
         }else 
         {
             //UPDATE DATA ALMACEN 
             
+            if( $SuperUser["sede"]=="E-Chimbote") 
+            {
 
+<<<<<<< Updated upstream
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
             $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+=======
+              $sql   = "UPDATE $table SET";
+              $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
+              $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',almacen='{$cat_almacen}'";
+              $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+>>>>>>> Stashed changes
 
-            $result = $db->query($sql);
+              $result = $db->query($sql);
+             
+
+
+            }else{
+                $sql   = "UPDATE $table SET";
+                $sql  .=" sector ='{$cat_sector}',cod_ruma ='{$cat_ruma}',";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}'";
+                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+                $result = $db->query($sql);
+               
+            }
+            
             if($result && $db->affected_rows() === 1) 
             {
               $session->msg("s", "Categoría actualizada con éxito.");
@@ -97,13 +155,22 @@
               $session->msg("d", "Lo siento, actualización falló.");
               redirect('categorie.php',false);
             }
-          
+
+
+
         }
+    }else
+    {
+      $session->msg("d", "Verifique la cantidad que va Almacenar");
+      redirect('categorie.php',false);
     }
+
+
  }
 ?>
 <?php include_once('layouts/header.php'); ?>
 
+<<<<<<< Updated upstream
 <div class="row">
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
@@ -173,5 +240,88 @@
             </div>
         </div>
     </div>
+=======
+  <div class="row">
+     <div class="col-md-12">
+       <?php echo display_msg($msg); ?>
+     </div>
+  </div>
+   <div class="row">
+    
+      <div class="panel panel-default">
+     <div class="panel-heading">
+        <strong>
+          <span class="glyphicon glyphicon-th"></span>
+          <span>Lista de Actividades</span>
+
+       </strong>
+ 
+      </div>
+
+      <div class="panel-body">
+        <div class="col-md-3">
+        </div>
+        
+        <div class="col-md-6 cont_form">
+
+          <form method="post" action="add_categorie.php">
+                <div class="material-textfield">
+                    <input placeholder=" " type="number" name="sector" required>
+                    <label>Sector</label>
+                </div>
+
+                <div class="material-textfield">
+                    <input placeholder=" " type="text" name="cod_ruma" required>
+                    <label>Cod.Ruma</label>
+                </div>
+
+                <div class="material-textfield">
+                    <input placeholder=" " type="number" name="cant_saco" required>
+                    <label>Cantidad sacos</label>
+                </div>
+                <div class="material-textfield">
+                <label class="select">Fecha Vencimiento</label>
+                    <input  placeholder=" " type="date" name="date_producc" required>
+                    
+                </div>
+
+                <div class="material-textfield">
+                <label class="select" >Fecha Produccion</label>
+                    <input  placeholder=" " type="date" name="date_vencimiento" required>
+                    
+                </div>
+                <div class="material-textfield">
+                    <input placeholder=" " type="text" name="calidad" required>
+                    <label>Calidad</label>
+                </div>
+
+                <div class="material-textfield">
+                    <input placeholder=" " type="number" name="nicho" required>
+                    <label>Carril</label>
+                </div>
+
+                <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                              
+                <div class="material-textfield">
+                    <label class="select" for="almacen" >Nombre de Almacen</label>
+                    <select class="form-control" name="almacen">
+                        <!-- Opciones de la lista -->
+                        <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                        <option value="Blackar" >Almacen de Blackar</option> 
+                        <option value="Bpo">Almacen de Bpo</option>
+                        <option value="Promosa">Almacen de Promasa</option>
+                    </select>
+                </div>
+
+                <?php } ?>
+                
+                  <div class="form-group clearfix">
+                  <button style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit" name="add_cat" class="btn btn-primary">Agregar Ruma</button>
+                  </div>
+          </form>
+        </div>
+      </div>
+  </div>
+>>>>>>> Stashed changes
 
     <?php include_once('layouts/footer.php'); ?>

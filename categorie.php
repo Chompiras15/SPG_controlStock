@@ -79,6 +79,8 @@
                             <th>Nicho</th>
                             <th>Observacion</th>
                             <th>Fecha</th>
+                
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
                             <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
                     </thead>
@@ -93,6 +95,9 @@
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
+                        
+                            
 
 
                             <td class="text-center">
