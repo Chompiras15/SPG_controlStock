@@ -12,18 +12,9 @@
 <script src='https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js' type='text/javascript'>
 </script>
 
-<!-- links para exportar a excel -->
-<!-- <script src = 'https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js'></script>
-<script src = 'https://unpkg.com/file-saverjs@latest/FileSaver.min.js'></script>
-<script src = 'https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js'></script> -->
-<!-- Bootstrap CSS -->
-
 <!-- script para busqueda por celda -->
 <script src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
 <link rel='stylesheet' href='https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css'>
-<!-- SUM()  Datatables-->
-<script src='https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script>
-
 < <!-- datatables JS -->
     <script type='text/javascript' src='datatables/datatables.min.js'></script>
 
@@ -35,7 +26,8 @@
     <script src='datatables/js/buttons.html5.min.js'></script>
 
     <!-- --------------------------------------------------------------------------------- -->
-
+    <!-- SUM()  Datatables-->
+    <script src='https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script>
     </body>
 
     </html>

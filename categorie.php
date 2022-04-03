@@ -134,7 +134,7 @@
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-
+            // cambiamos el lenguaje
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -150,9 +150,9 @@
                 },
                 "sProcessing": "Procesando...",
             },
-            //para usar los botones   
+            //para usar los botones de excel, imprimir y pdf  
             responsive: "true",
-            dom: 'Bfrtilp',
+            dom: 'Bfrtlpi',
             buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="fas fa-file-excel"></i> ',
@@ -174,7 +174,7 @@
             ],
 
             "createdRow": function(row, data, index) {
-
+                // elegimos la columna para sumae
             },
             "drawCallback": function() {
                 //alert("La tabla se está recargando");
@@ -188,6 +188,7 @@
 
 
         });
+        // sumamos y mostramos el total
         var tot = table.column(3).data().sum();
         $("#total").text(tot);
 
