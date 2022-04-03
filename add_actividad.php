@@ -91,7 +91,7 @@
                         <label for="nameActivity">Selecciona Actividad:</label>
                         <select class="form-control" name="nameActivity">
                             <!-- Opciones de la lista -->
-                            <option value="Embarque" selected>Descarga/Carga eslinga</option>
+                            <option value="Descarga/Carga eslinga" selected>Descarga/Carga eslinga</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>

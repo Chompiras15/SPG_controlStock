@@ -96,19 +96,19 @@ if(isset($_POST['edit_actividad'])){
            Selecciona la Actividad:
               <select name="nameActivity" <?php echo (int)$activity['id'];?>>
          <!-- Opciones de la lista -->
-               <option value="Embarque" selected>Descarga/Carga eslinga</option>
-               <option value="Etiquetado de sacos" >Etiquetado de sacos</option> <!-- Opción por defecto -->
-               <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
-               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-               <option value="Ventilacion de sacos con HP">Ventilacion de sacos con HP</option>
-               <option value="Corte y vaceado jumbo">Corte y vaceado jumbo</option>
-               <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-               <option value="Reproceso por Homogenizado">Reproceso por Homogenizado</option>
-               <option value="Manteado de plataformas">Manteado de plataformas</option>
-               <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
-               <option value="Limpieza de mantas">Limpieza de mantas</option>
-               <option value="Embarque">Embarque</option>
-               <option value="Manteniminto">Manteniminto</option>
+               <option value="Descarga/Carga eslinga" <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Descarga/Carga eslinga</option>
+               <option value="Etiquetado de sacos" <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected <?php } ?> >Etiquetado de sacos</option> <!-- Opción por defecto -->
+               <option value="Monitoreo de Temperatura" <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>Monitoreo de Temperatura</option>
+               <option value="Seleccion y armado eslinga" <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected <?php } ?>>Seleccion y armado eslinga</option>
+               <option value="Ventilacion de sacos con HP" <?php if($activity['nameActivity']=="Ventilacion de sacos con HP"){;?>selected <?php } ?>>Ventilacion de sacos con HP</option>
+               <option value="Corte y vaceado jumbo" <?php if($activity['nameActivity']=="Corte y vaceado jumbo"){;?>selected <?php } ?>>Corte y vaceado jumbo</option>
+               <option value="Seleccion y armado eslinga" <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected <?php } ?>>Seleccion y armado eslinga</option>
+               <option value="Reproceso por Homogenizado" <?php if($activity['nameActivity']=="Reproceso por Homogenizado"){;?>selected <?php } ?>>Reproceso por Homogenizado</option>
+               <option value="Manteado de plataformas" <?php if($activity['nameActivity']=="Manteado de plataformas"){;?>selected <?php } ?>>Manteado de plataformas</option>
+               <option value="Limpieza de tanques de aceite" <?php if($activity['nameActivity']=="Limpieza de tanques de aceite"){;?>selected <?php } ?>>Limpieza de tanques de aceite</option>
+               <option value="Limpieza de mantas" <?php if($activity['nameActivity']=="Limpieza de mantas"){;?>selected <?php } ?>>Limpieza de mantas</option>
+               <option value="Embarque" <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Embarque</option>
+               <option value="Manteniminto" <?php if($activity['nameActivity']=="Manteniminto"){;?>selected <?php } ?>>Manteniminto</option>
                </select>
                <input type="text" class="form-control" name="details" value="<?php echo remove_junk(ucfirst($activity['details']));?>">
                <input type="text" class="form-control" name="observation" value="<?php echo remove_junk(ucfirst($activity['observation']));?>">
