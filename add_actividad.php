@@ -85,14 +85,13 @@
         date_default_timezone_set("America/Lima");
         $fecha_actual=date("Y-m-s H:i:s");   
          ?>
-<<<<<<< Updated upstream
             <div class="panel-body">
                 <form method="post" action="add_actividad.php">
                     <div class="form-group">
                         <label for="nameActivity">Selecciona Actividad:</label>
                         <select class="form-control" name="nameActivity">
                             <!-- Opciones de la lista -->
-                            <option value="Embarque" selected>Descarga/Carga eslinga</option>
+                            <option value="Descarga/Carga eslinga" selected>Descarga/Carga eslinga</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
@@ -122,51 +121,8 @@
 
                 </form>
             </div>
-=======
-        <div class="panel-body">
-          <form method="post" action="add_actividad.php">
-            <div class="form-group">
-                <label for="nameActivity">Selecciona Actividad:</label>
-                    <select class="form-control" name="nameActivity">
-                      <!-- Opciones de la lista -->
-                      <option value="Embarque" selected>Descarga/Carga eslinga</option>
-                      <option value="Etiquetado de sacos" >Etiquetado de sacos</option> <!-- Opción por defecto -->
-                      <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
-                      <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-                      <option value="Ventilacion de sacos con HP">Ventilacion de sacos con HP</option>
-                      <option value="Corte y vaceado jumbo">Corte y vaceado jumbo</option>
-                      <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-                      <option value="Reproceso por Homogenizado">Reproceso por Homogenizado</option>
-                      <option value="Manteado de plataformas">Manteado de plataformas</option>
-                      <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
-                      <option value="Limpieza de mantas">Limpieza de mantas</option>
-                      <option value="Embarque">Embarque</option>
-                      <option value="Manteniminto">Manteniminto</option>
-                    </select>
-                    <input type="text" class="form-control" name="details" placeholder="Detalle" required>
-                    <input type="text" class="form-control" name="observation" placeholder="Observacion" required>
-                    <input type="text" class="form-control" name="auxiliares" placeholder="Auxiliares" required>
-                    <label for="hora_ini">Hora de inicio</label>
-                    <input  type="time" class="form-control" name="hora_ini"  placeholder="Inició" required>
-                    <label for="hora_fin">Hora de fin:</label>
-                    <input  type="time" class="form-control" name="hora_fin"  placeholder="Terminó" required>
-                    <input  type="date" class="form-control" name="fecha"  placeholder="Fecha" required>
-                
-                
-              </div>
-            
-            <button  type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
-        
-          </form>
->>>>>>> Stashed changes
         </div>
     </div>
-<<<<<<< Updated upstream
 
 
     <?php include_once('layouts/footer.php'); ?>
-=======
-    
-  
-  <?php include_once('layouts/footer.php'); ?>
->>>>>>> Stashed changes
