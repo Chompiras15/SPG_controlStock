@@ -57,7 +57,6 @@
     </div>
 
     <div class="col-md-12">
-<<<<<<< Updated upstream
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong>
@@ -77,6 +76,8 @@
                             <th>Cod.Ruma</th>
                             <th class="text-center" style="width: 100px;">Fecha</th>
                             <th>Supervisor</th>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
+                   
                             <th>Acciones</th>
 
                         </tr>
@@ -90,6 +91,8 @@
                             <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['date_out'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
+                      
 
 
                             <td class="text-center">
@@ -112,66 +115,6 @@
             </div>
         </div>
     </div>
-=======
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-
-          <span>Lista de Despachos</span>
-
-          <button id="btnExportar" class="btn btn-success">
-                <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button>
-          <a href="add_media.php" class="btn btn-info pull-right">Agregar Despacho</a>
-          
-          <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
-       </strong>
-      </div>
-        <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover" id="tabla">
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th>Contrato</th>
-                    <th class="text-center" style="width: 50px;">Cantidad</th>
-                    <th>Cod.Ruma</th>
-                    <th class="text-center" style="width: 100px;">Fecha</th>
-                    <th>Supervisor</th>
-                    <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
-                    <th>Acciones</th>
-                  
-                </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($all_embarques as $embar):?>
-                <tr>
-                    <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['date_out'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
-                    <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
-                        
-                  
-                    <td class="text-center">
-                      <div class="btn-group">
-                        <a href="edit_embarcaciones.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                          <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="delete_media.php?id=<?php echo (int)$embar['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                          <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                      </div>
-                    </td>
-
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-       </div>
->>>>>>> Stashed changes
     </div>
     </div>
 
