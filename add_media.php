@@ -24,20 +24,27 @@
 <?php
  if(isset($_POST['add_emb']))
  {
-   $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor');
+   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor','almacen');
+   else  $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor');
+  
+   
+   
    validate_fields($req_field);
    $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
    $cant_out = remove_junk($db->escape($_POST['cant_out']));
    $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
    $date_out = remove_junk($db->escape($_POST['date_out']));
    $supervisor = remove_junk($db->escape($_POST['supervisor']));
+   if( $SuperUser["sede"]=="E-Chimbote")  $almacen =remove_junk($db->escape($_POST['almacen']));
+   
  
 
    if(empty($errors))
    {
       if($cant_out<1001)
       {
-
+        if( $SuperUser["sede"]=="E-Chimbote") 
+        {
           $sql  = "INSERT INTO $table (";
           $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor";
           $sql .=") VALUES (";
@@ -45,6 +52,14 @@
           $sql .=")";
           $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
+        }else{
+          $sql  = "INSERT INTO $table (";
+          $sql .=" cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen";
+          $sql .=") VALUES (";
+          $sql .=" '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}', '{$almacen}'";
+          $sql .=")";
+          $sql .=" ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+        }
           if($db->query($sql))
           {
 
@@ -95,6 +110,8 @@
             $session->msg("d", "Lo siento, registro falló");
             redirect('media.php',false);
           }
+
+
       }else
       {
         $session->msg("d", "Excedio la Capacitad Límite, Verifique la cantidad que va Despachar");
@@ -153,6 +170,21 @@
                       <input placeholder=" " type="text" name="supervisor" required>
                       <label>Supervisor</label>
                   </div>
+
+                  <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                              
+                              <div class="material-textfield">
+                                  <label class="select" for="almacen" >Nombre de Almacen</label>
+                                  <select class="form-control" name="almacen">
+                                      <!-- Opciones de la lista -->
+                                      <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                                      <option value="Blackar" >Almacen de Blackar</option> 
+                                      <option value="Bpo">Almacen de Bpo</option>
+                                      <option value="Promosa">Almacen de Promasa</option>
+                                  </select>
+                              </div>
+                    
+                          <?php } ?>
 
                   <div class="form-group clearfix">
                         <button style="width:100%;border-radius: 35px;margin-top:10px" type="submit" name="add_emb" class="btn btn-info">Guardar</button>

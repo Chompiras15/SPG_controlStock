@@ -129,6 +129,7 @@
                                 <th class="text-center" style="width: 100px;">Inició</th>
                                 <th class="text-center" style="width: 100px;">Terminó</th>
                                 <th class="text-center" style="width: 100px;">Fecha</th>
+                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
                                 <th class="text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -143,6 +144,9 @@
                                 <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
+                                 <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
+                        
+                            
 
                                 <td class="text-center">
                                     <div class="btn-group">

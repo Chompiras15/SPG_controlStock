@@ -76,20 +76,7 @@ if(isset($_POST['edit_actividad'])){
    </div>
    <div class="col-md-5">
      <div class="panel panel-default">
-       <div class="panel-heading">
-         <strong>
-           <span class="glyphicon glyphicon-th"></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['nameActivity']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['details']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['observation']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['auxiliares']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['hora_ini']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['hora_fin']));?></span>
-           <span>Editando <?php echo remove_junk(ucfirst($activity['fecha']));?></span>
-           
-           
-        </strong>
-       </div>
+       
        <div class="panel-body">
          <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
            <div class="form-group">

@@ -157,7 +157,7 @@
         <div class="panel-heading">
             <strong>
                 <span class="glyphicon glyphicon-th"></span>
-                <span>Lista de Actividades</span>
+                <span>AÑADIR RUMA</span>
 
             </strong>
 
@@ -208,18 +208,18 @@
 
                     <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
                               
-                              <div class="material-textfield">
-                                  <label class="select" for="almacen" >Nombre de Almacen</label>
-                                  <select class="form-control" name="almacen">
-                                      <!-- Opciones de la lista -->
-                                      <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
-                                      <option value="Blackar" >Almacen de Blackar</option> 
-                                      <option value="Bpo">Almacen de Bpo</option>
-                                      <option value="Promosa">Almacen de Promasa</option>
-                                  </select>
-                              </div>
+                        <div class="material-textfield">
+                            <label class="select" for="almacen" >Nombre de Almacen</label>
+                            <select class="form-control" name="almacen">
+                                <!-- Opciones de la lista -->
+                                <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                                <option value="Blackar" >Almacen de Blackar</option> 
+                                <option value="Bpo">Almacen de Bpo</option>
+                                <option value="Promosa">Almacen de Promasa</option>
+                            </select>
+                        </div>
               
-                              <?php } ?>
+                    <?php } ?>
 
 
                     <div class="form-group clearfix">
