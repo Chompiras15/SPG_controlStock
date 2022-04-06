@@ -139,7 +139,7 @@
 
     <!-- Busqueda por columna -->
 
-    <!-- <script>
+    <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
             // cambiamos el lenguaje
@@ -218,7 +218,7 @@
             });
         });
     });
-    </script> -->
+    </script>
 
 
 

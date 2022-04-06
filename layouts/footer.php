@@ -13,21 +13,21 @@
 </script>
 
 <!-- script para busqueda por celda -->
-<!-- <script src = 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
-<link rel = 'stylesheet' href = 'https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css'> -->
+<script src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
+<link rel='stylesheet' href='https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css'>
 < <!-- datatables JS -->
-    <!-- <script type = 'text/javascript' src = 'datatables/datatables.min.js'></script> -->
+    <script type='text/javascript' src='datatables/datatables.min.js'></script>
 
     <!-- para usar botones en datatables JS -->
-    <!-- <script src = 'datatables/dataTables.buttons.min.js'></script>
-<script src = 'datatables/jszip.min.js'></script>
-<script src = 'datatables/pdfmake.min.js'></script>
-<script src = 'datatables/vfs_fonts.js'></script>
-<script src = 'datatables/js/buttons.html5.min.js'></script> -->
+    <script src='datatables/dataTables.buttons.min.js'></script>
+    <script src='datatables/jszip.min.js'></script>
+    <script src='datatables/pdfmake.min.js'></script>
+    <script src='datatables/vfs_fonts.js'></script>
+    <script src='datatables/js/buttons.html5.min.js'></script>
 
     <!-- --------------------------------------------------------------------------------- -->
     <!-- SUM()  Datatables-->
-    <!-- <script src = 'https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script> -->
+    <script src='https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script>
     </body>
 
     </html>
