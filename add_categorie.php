@@ -16,7 +16,7 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-  if( $SuperUser["sede"]=="T-Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="T-Chimb") $table="sede_tasachimbote";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
@@ -162,6 +162,7 @@
             </strong>
 
         </div>
+
         <div class="panel-body">
             <div class="col-md-3">
             </div>
@@ -219,16 +220,14 @@
                         </select>
                     </div>
 
+
                     <?php } ?>
-
-
-                    <div class="form-group clearfix">
-                        <button style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit"
-                            name="add_cat" class="btn btn-primary">Agregar Ruma</button>
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_cat'
+                            class='btn btn-info'>Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
 
-    <?php include_once('layouts/footer.php'); ?>
+        <?php include_once('layouts/footer.php'); ?>

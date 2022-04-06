@@ -17,7 +17,7 @@
 
   $tableActi = "";
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
@@ -35,40 +35,6 @@
 
 </div>
 <?php include_once('layouts/footer.php'); ?>
-<?php
- if(isset($_POST['add_actividad'])){
-   $req_field = array('nameActivity', 'details', 'observation','auxiliares','hora_ini','hora_fin','fecha','date');
-   validate_fields($req_field);
-   $act_name = remove_junk($db->escape($_POST['nameActivity']));
-   $act_details = remove_junk($db->escape($_POST['details']));
-   $act_observation = remove_junk($db->escape($_POST['observation']));
-   $act_aux = remove_junk($db->escape($_POST['auxiliares']));
-   $act_ini = remove_junk($db->escape($_POST['hora_ini']));
-   $act_fin = remove_junk($db->escape($_POST['hora_fin']));
-   $act_fecha = remove_junk($db->escape($_POST['fecha']));
-   $date   = make_date();
-
-   if(empty($errors)){
-      $sql  = "INSERT INTO $tableActi (";
-     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,fecha,date";
-     $sql .=") VALUES (";
-     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}','{$act_aux}','{$act_ini}','{$act_fin}', '{$act_fecha}', '{$date}'";
-     $sql .=")";
-     $sql .=" ON DUPLICATE KEY UPDATE nameActivity='{$act_name}'";
-
-      if($db->query($sql)){
-        $session->msg("s", "Actividad agregada exitosamente.");
-        redirect('actividad.php',false);
-      } else {
-        $session->msg("d", "Lo siento, registro falló");
-        redirect('actividad.php',false);
-      }
-   } else {
-     $session->msg("d", $errors);
-     redirect('actividad.php',false);
-   }
- }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +79,13 @@
 
                     </strong>
 
+                    <button id="btnExportar" class="btn btn-success">
+                        <i class="fas fa-file-excel"></i> Exportar datos a Excel
+                    </button>
                     <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
+                    <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
+
+
 
                 </div>
                 <div class="panel-body">
@@ -129,7 +101,8 @@
                                 <th class="text-center" style="width: 100px;">Inició</th>
                                 <th class="text-center" style="width: 100px;">Terminó</th>
                                 <th class="text-center" style="width: 100px;">Fecha</th>
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
+                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                                    style="width: 100px;">Almacen</th> <?php } ?>
                                 <th class="text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -144,9 +117,10 @@
                                 <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
-                                 <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
-                        
-                            
+                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
+                                    <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
+
+
 
                                 <td class="text-center">
                                     <div class="btn-group">
@@ -182,70 +156,12 @@
 
 
     <?php include_once('layouts/footer.php'); ?>
-
-    <!-- Busqueda por columna -->
-
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            // cambiamos el lenguaje
-            language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "sProcessing": "Procesando...",
-            },
-            //para usar los botones de excel, imprimir y pdf  
-            responsive: "true",
-            dom: 'Bfrtlpi',
-            buttons: [{
-                    extend: 'excelHtml5',
-                    text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
-                    titleAttr: 'Exportar a Excel',
-                    className: 'btn btn-success'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="glyphicon glyphicon-file"></i> ',
-                    titleAttr: 'Exportar a PDF',
-                    className: 'btn btn-danger'
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="glyphicon glyphicon-print"></i> ',
-                    titleAttr: 'Imprimir',
-                    className: 'btn btn-info'
-                },
-            ],
-
-            "createdRow": function(row, data, index) {
-                // elegimos la columna para sumae
-            },
-            "drawCallback": function() {
-                //alert("La tabla se está recargando");
-                var api = this.api();
-                $(api.column(3).footer()).html(
-                    'Total: ' + api.column(3, {
-                        page: 'current'
-                    }).data().sum()
-                )
-            }
-
-
+            orderCellsTop: true,
+            fixedHeader: true
         });
-        // sumamos y mostramos el total
-        var tot = table.column(3).data().sum();
-        $("#total").text(tot);
-
 
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
         $('#tabla thead tr').clone(true).appendTo('#tabla thead');
@@ -265,4 +181,32 @@
         });
     });
     </script>
+
+<<<<<<< HEAD
+=======
+    <!-- script para exportar a excel -->
+    <script>
+    const $btnExportar = document.querySelector("#btnExportar"),
+        $tabla = document.querySelector("#tabla");
+
+    $btnExportar.addEventListener("click", function() {
+        let tableExport = new TableExport($tabla, {
+            exportButtons: false, // No queremos botones
+            filename: "Reporte de prueba", //Nombre del archivo de Excel
+            sheetname: "Reporte de Actividades", //Título de la hoja
+        });
+        let datos = tableExport.getExportData();
+        let preferenciasDocumento = datos.tabla.xlsx;
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
+            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
+            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+    });
+    </script>
+    <!-- Script para imprimir -->
+    <script>
+    function ImprimirPagina() {
+        window.print();
+    }
+    </script>
+>>>>>>> parent of ea7a0fb (hecho impresion)
     <?php include_once('layouts/footer.php'); ?>

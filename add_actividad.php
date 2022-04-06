@@ -16,7 +16,7 @@
   
   $tableActi = "";
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
@@ -133,18 +133,18 @@
                         <input type="time" class="form-control" name="hora_fin" placeholder="Terminó">
                         <input type="date" class="form-control" name="fecha" placeholder="Fecha" required>
                         <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
-                              
-                              <div class="material-textfield">
-                                  <label class="select" for="almacen" >Nombre de Almacen</label>
-                                  <select class="form-control" name="almacen">
-                                      <!-- Opciones de la lista -->
-                                      <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
-                                      <option value="Blackar" >Almacen de Blackar</option> 
-                                      <option value="Bpo">Almacen de Bpo</option>
-                                      <option value="Promosa">Almacen de Promasa</option>
-                                  </select>
-                              </div>
-              
+
+                        <div class="material-textfield">
+                            <label class="select" for="almacen">Nombre de Almacen</label>
+                            <select class="form-control" name="almacen">
+                                <!-- Opciones de la lista -->
+                                <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                                <option value="Blackar">Almacen de Blackar</option>
+                                <option value="Bpo">Almacen de Bpo</option>
+                                <option value="Promosa">Almacen de Promasa</option>
+                            </select>
+                        </div>
+
                         <?php } ?>
 
                     </div>
@@ -153,8 +153,11 @@
 
                 </form>
             </div>
+
+
         </div>
     </div>
+
 
 
     <?php include_once('layouts/footer.php'); ?>
