@@ -32,11 +32,11 @@ if ( isset( $_POST[ 'sede_TChim' ] ) )
 
     if ( $var == true ) 
  {
-        $session->msg( 's', 'Se encuentra en la Sede de TASA-CHIMBOTE.' );
-        redirect( 'admin.php', false );
+        $session->msg( 's', 'Se encuentra en el almacen de TASA-CHIMBOTE.' );
+        redirect( 'categorie.php', false );
     } else {
         $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-CHIMBOTE' );
-        redirect( 'admin.php', false );
+        redirect( 'categorie.php', false );
     }
 }
 

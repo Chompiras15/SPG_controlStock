@@ -71,14 +71,15 @@
                 <table class="table table-bordered table-striped table-hover" id="tabla">
                     <thead>
                         <tr>
-                            <th class="text-center" style="width: 50px;">Id</th>
-                            <th>Cod.Ruma</th>
-                            <th class="text-center" style="width: 50px;">Sector</th>
-                            <th>Cant_sacos</th>
+                            <th class="text-center" style="width: 5px;">Id</th>
+                            <th class="text-center" style="width: 30px;">Codigo</th>
+                            <th class="text-center" style="width: 10px;">Sector</th>
+                            <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
-                            <th>Nicho</th>
-                            <th>Observacion</th>
-                            <th>Fecha</th>
+                            <th class="text-center" style="width: 10px;">Carril</th>
+                            <th class="text-center" style="width: 50px;">Observacion</th>
+                            <th class="text-center" style="width: 50px;">Fecha</th>
+
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
@@ -134,11 +135,11 @@
     </div>
     </div>
 
-    <?php include_once('layouts/footer.php'); ?>
+
 
     <!-- Busqueda por columna -->
 
-    <script>
+    <!-- <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
             // cambiamos el lenguaje
@@ -205,7 +206,7 @@
 
         $('#tabla thead tr:eq(1) th').each(function(i) {
             var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Search...' + title + '" />');
+            $(this).html('<input type="text" placeholder="Buscar..." />');
 
             $('input', this).on('keyup change', function() {
                 if (table.column(i).search() !== this.value) {
@@ -217,7 +218,7 @@
             });
         });
     });
-    </script>
+    </script> -->
 
 
 
