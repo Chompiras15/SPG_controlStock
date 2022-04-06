@@ -8,7 +8,7 @@ $table = '';
 $tabla_sed = '';
 //require_once( 'includes/load.php' );
 $SuperUser = current_user();
-if ( $SuperUser[ 'sede' ] == 'T-Chimb' ) {
+if ( $SuperUser[ 'sede' ] == 'T-Chimbote' ) {
     $table = 'emb_tasachim';
     $tabla_sed = 'sede_tasachimbote';
 }
@@ -69,7 +69,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
  {
         if ( $cant_out<1001 )
  {
-            if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) 
+            if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
  {
                 $sql  = "INSERT INTO $table (";
                 $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';

@@ -59,6 +59,7 @@ $sales = dailySales( $tableActi, $year, $month );
     <div class='col-md-6'>
         <?php echo display_msg( $msg );
 ?>
+<<<<<<< HEAD
     </div>
 </div>
 <div class='row'>
@@ -109,9 +110,62 @@ $sales = dailySales( $tableActi, $year, $month );
                     </tbody>
                 </table>
             </div>
+=======
+<?php include_once('layouts/header.php'); ?>
+<div class="row">
+  <div class="col-md-6">
+    <?php echo display_msg($msg); ?>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <strong>
+            <span class="glyphicon glyphicon-th"></span>
+            <span>Actividades Diarias</span>
+          </strong>
         </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th class="text-center" style="width: 20px;">ID</th>
+                <th class="text-center" style="width: 20px;"> Actividad</th>
+                <th class="text-center" style="width: 20px;"> Detalle </th>
+                <th class="text-center" style="width: 20px;"> Observacion </th>
+                <th class="text-center" style="width: 20px;"> Auxiliares </th>
+                <th class="text-center" style="width: 20px;"> Inició </th>
+                <th class="text-center" style="width: 20px;"> Finalizó </th>
+                <th class="text-center" style="width: 40px;"> Fecha </th>
+             </tr>
+            </thead>
+           <tbody>
+             <?php foreach ($sales as $sale):?>
+             <tr>
+               <td class="text-center"><?php echo count_id();?></td>
+               <td><?php echo remove_junk($sale['nameActivity']); ?></td>
+               <td><?php echo remove_junk($sale['details']); ?></td>
+               <td><?php echo remove_junk($sale['observation']); ?></td>
+               <td><?php echo remove_junk($sale['auxiliares']); ?></td>
+               <td><?php echo remove_junk($sale['hora_ini']); ?></td>
+               <td><?php echo remove_junk($sale['hora_fin']); ?></td>
+               <td class="text-center"><?php echo date("d/m/Y", strtotime ($sale['fecha'])); ?></td>
+             </tr>
+             <?php endforeach;?>
+           </tbody>
+         </table>
+>>>>>>> parent of ea7a0fb (hecho impresion)
+        </div>
+      </div>
     </div>
+<<<<<<< HEAD
 </div>
 
 <?php include_once( 'layouts/footer.php' );
 ?>
+=======
+  </div>
+
+<?php include_once('layouts/footer.php'); ?>
+>>>>>>> parent of ea7a0fb (hecho impresion)

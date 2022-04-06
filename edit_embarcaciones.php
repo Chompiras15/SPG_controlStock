@@ -44,12 +44,12 @@
 <?php
 if(isset($_POST['edit_emb']))
 {
-    $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out','supervisor');
+    $req_field = array('cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor');
     validate_fields($req_field);
     $cod_contrato = remove_junk($db->escape($_POST['cod_contrato']));
     $cant_out = remove_junk($db->escape($_POST['cant_out']));
     $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-      $date_out = remove_junk($db->escape($_POST['date_out']));
+    $date_out = remove_junk($db->escape($_POST['date_out']));
     $supervisor = remove_junk($db->escape($_POST['supervisor']));
     // $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
@@ -79,7 +79,7 @@ if(isset($_POST['edit_emb']))
                 
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
-              $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
+              $sql  .=" cod_ruma ='{$cod_ruma}', date_out ='{$date_out}', supervisor ='{$supervisor}'";
               $sql .= " WHERE id='{$categorie['id']}'";
               $result = $db->query($sql);
 
@@ -120,13 +120,17 @@ if(isset($_POST['edit_emb']))
                     <div class="form-group">
                         <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_contrato']));?>">
+
                         <input type="text" class="form-control" name="cant_out" placeholder="Cantidad "
                             value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
+
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
-                        <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
+
+                        <input type="date" class="form-control" name="date_out" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['date_out']));?>">
-                        <input type="text" class="form-control" name="date_out" placeholder="Fecha envio"
+
+                        <input type="text" class="form-control" name="supervisor" placeholder="Fecha envio"
                             value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
                     </div>
                     <button type="submit" name="edit_emb" class="btn btn-primary">Actualizar Embarcaciones</button>
@@ -134,6 +138,7 @@ if(isset($_POST['edit_emb']))
             </div>
         </div>
     </div>
+
 </div>
 
 
