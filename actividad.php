@@ -35,40 +35,6 @@
 
 </div>
 <?php include_once('layouts/footer.php'); ?>
-<?php
- if(isset($_POST['add_actividad'])){
-   $req_field = array('nameActivity', 'details', 'observation','auxiliares','hora_ini','hora_fin','fecha','date');
-   validate_fields($req_field);
-   $act_name = remove_junk($db->escape($_POST['nameActivity']));
-   $act_details = remove_junk($db->escape($_POST['details']));
-   $act_observation = remove_junk($db->escape($_POST['observation']));
-   $act_aux = remove_junk($db->escape($_POST['auxiliares']));
-   $act_ini = remove_junk($db->escape($_POST['hora_ini']));
-   $act_fin = remove_junk($db->escape($_POST['hora_fin']));
-   $act_fecha = remove_junk($db->escape($_POST['fecha']));
-   $date   = make_date();
-
-   if(empty($errors)){
-      $sql  = "INSERT INTO $tableActi (";
-     $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,fecha,date";
-     $sql .=") VALUES (";
-     $sql .=" '{$act_name}', '{$act_details}', '{$act_observation}','{$act_aux}','{$act_ini}','{$act_fin}', '{$act_fecha}', '{$date}'";
-     $sql .=")";
-     $sql .=" ON DUPLICATE KEY UPDATE nameActivity='{$act_name}'";
-
-      if($db->query($sql)){
-        $session->msg("s", "Actividad agregada exitosamente.");
-        redirect('actividad.php',false);
-      } else {
-        $session->msg("d", "Lo siento, registro falló");
-        redirect('actividad.php',false);
-      }
-   } else {
-     $session->msg("d", $errors);
-     redirect('actividad.php',false);
-   }
- }
-?>
 
 <!DOCTYPE html>
 <html lang="en">

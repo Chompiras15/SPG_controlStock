@@ -30,6 +30,7 @@
 <script src='https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script>
 </body>
 
+<<<<<<< HEAD
 </html>
 <script>
 function sleep(ms) {
@@ -41,6 +42,19 @@ async function putPhoto() {
     document.getElementsByClassName('img-perfil')[0].getElementsByTagName('img')[0].src =
         "uploads/users/<?php echo $user['image'];?>"
 }
+=======
+    </html>
+    <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function putPhoto() {
+        await sleep(50);
+        //console.log( document.getElementsByClassName( 'img-perfil' )[ 0 ] );
+        document.getElementsByClassName('img-perfil')[0].getElementsByTagName('img')[0].src =
+            "uploads/users/<?php echo $user['image'];?>"
+    }
+>>>>>>> parent of 710350e (xd)
 
 putPhoto();
 //console.log( document.getElementsByClassName( 'img-perfil' )[ 0 ].getElementsByTagName( 'img' )[ 0 ].src = "uploads/users/<?php echo $user['image'];?>" );

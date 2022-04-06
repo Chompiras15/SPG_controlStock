@@ -108,11 +108,10 @@ if(isset($_POST['edit_cat']))
                             value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
                         <input type="text" class="form-control" name="nicho"
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
-                        <<<<<<< HEAD <input type="text" class="form-control" name="observation"
+                        <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
 
-                            =======
-                            >>>>>>> parent of bf7ff50 (excel, print pdf)
+
                     </div>
                     <button type="submit" name="edit_cat" class="btn btn-primary">Actualizar Ruma</button>
                 </form>

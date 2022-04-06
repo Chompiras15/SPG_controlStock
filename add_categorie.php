@@ -220,74 +220,12 @@
                         </div>
 
                         <?php } ?>
-
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <?php echo display_msg($msg); ?>
-                            </div>
+                        <div class='form-group clearfix'>
+                            <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_cat'
+                                class='btn btn-info'>Guardar</button>
                         </div>
-                        <div class="row">
+                    </form>
+                </div>
+            </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <strong>
-                                        <span class="glyphicon glyphicon-th"></span>
-                                        <span>Lista de Actividades</span>
-
-                                    </strong>
-
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-3">
-                                    </div>
-                                    <div class="col-md-6 cont_form">
-                                        <form method="post" action="add_categorie.php">
-                                            <div class="material-textfield">
-                                                <input placeholder=" " type="text" name="sector" required>
-                                                <label>Sector</label>
-                                            </div>
-
-                                            <div class="material-textfield">
-                                                <input placeholder=" " type="text" name="cod_ruma" required>
-                                                <label>Cod.Ruma</label>
-                                            </div>
-
-                                            <div class="material-textfield">
-                                                <input placeholder=" " type="text" name="cant_saco" required>
-                                                <label>Cantidad sacos</label>
-                                            </div>
-                                            <div class="material-textfield">
-                                                <label class="select">Fecha Vencimiento</label>
-                                                <input placeholder=" " type="date" name="date_producc" required>
-
-                                            </div>
-
-                                            <div class="material-textfield">
-                                                <label class="select">Fecha Produccion</label>
-                                                <input placeholder=" " type="date" name="date_vencimiento" required>
-
-                                            </div>
-                                            <div class="material-textfield">
-                                                <input placeholder=" " type="text" name="calidad" required>
-                                                <label>Calidad</label>
-                                            </div>
-
-                                            <div class="material-textfield">
-                                                <input placeholder=" " type="text" name="nicho" required>
-                                                <label>Carril</label>
-                                            </div>
-                                            >>>>>>> parent of bf7ff50 (excel, print pdf)
-
-
-                                            <div class="form-group clearfix">
-                                                <button style="width:100%;border-radius: 50px;    margin-top: 15px;"
-                                                    type="submit" name="add_cat" class="btn btn-primary">Agregar
-                                                    Ruma</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <?php include_once('layouts/footer.php'); ?>
+            <?php include_once('layouts/footer.php'); ?>
