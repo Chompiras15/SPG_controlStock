@@ -14,7 +14,7 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(2);
-  if( $SuperUser["sede"]=="T-Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="T-Chimb") $table="sede_tasachimbote";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
@@ -86,29 +86,39 @@ if(isset($_POST['edit_cat']))
 <?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-   <div class="col-md-12">
-     <?php echo display_msg($msg); ?>
-   </div>
-   <div class="col-md-5">
-     <div class="panel panel-default">
-       <div class="panel-body">
-         <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
-           <div class="form-group">
-               <input type="text" class="form-control" name="sector" value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
-               <input type="text" class="form-control" name="cod_ruma" value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
-               <input type="text" class="form-control" name="cant_saco" value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
-               <input type="date" class="form-control" name="date_producc" value="<?php echo remove_junk(ucfirst($categorie['date_producc']));?>">
-               <input type="date" class="form-control" name="date_vencimiento" value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
-               <input type="text" class="form-control" name="calidad" value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
-                <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
-                <input type="text" class="form-control" name="observation" value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
-                
-           </div>
-           <button type="submit" name="edit_cat" class="btn btn-primary">Actualizar Ruma</button>
-       </form>
-       </div>
-     </div>
-   </div>
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="sector"
+                            value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
+                        <input type="text" class="form-control" name="cod_ruma"
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
+                        <input type="text" class="form-control" name="cant_saco"
+                            value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
+                        <input type="date" class="form-control" name="date_producc"
+                            value="<?php echo remove_junk(ucfirst($categorie['date_producc']));?>">
+                        <input type="date" class="form-control" name="date_vencimiento"
+                            value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
+                        <input type="text" class="form-control" name="calidad"
+                            value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
+                        <input type="text" class="form-control" name="nicho"
+                            value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
+                        <<<<<<< HEAD <input type="text" class="form-control" name="observation"
+                            value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
+
+                            =======
+                            >>>>>>> parent of bf7ff50 (excel, print pdf)
+                    </div>
+                    <button type="submit" name="edit_cat" class="btn btn-primary">Actualizar Ruma</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
