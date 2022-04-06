@@ -28,68 +28,45 @@
          if($result && $db->affected_rows() === 1){
           //sucess
           $session->msg('s',"Grupo se ha actualizado! ");
-          redirect('group.php?id='.(int)$e_group['id'], false);
+          redirect('edit_group.php?id='.(int)$e_group['id'], false);
         } else {
           //failed
           $session->msg('d','Lamentablemente no se ha actualizado el grupo!');
-          redirect('group.php?id='.(int)$e_group['id'], false);
+          redirect('edit_group.php?id='.(int)$e_group['id'], false);
         }
    } else {
      $session->msg("d", $errors);
-    redirect('group.php?id='.(int)$e_group['id'], false);
+    redirect('edit_group.php?id='.(int)$e_group['id'], false);
    }
  }
 ?>
 <?php include_once('layouts/header.php'); ?>
-
-
-<div class="row">
-    <div class="panel panel-default ">
-      <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Editar usuario</span>
-       </strong>
-      </div>
-      <div class="panel-body">
-        <div class="col-md-3">
+<div class="login-page">
+    <div class="text-center">
+       <h3>Editar Grupo</h3>
+     </div>
+     <?php echo display_msg($msg); ?>
+      <form method="post" action="edit_group.php?id=<?php echo (int)$e_group['id'];?>" class="clearfix">
+        <div class="form-group">
+              <label for="name" class="control-label">Nombre del grupo</label>
+              <input type="name" class="form-control" name="group-name" value="<?php echo remove_junk(ucwords($e_group['group_name'])); ?>">
         </div>
-        <div class="col-md-6 cont_formEdit">
-          <form method="post"  action="edit_group.php?id=<?php echo (int)$e_group['id'];?>">
-              <div class="material-textfield">
-                  <label class="select">Nombre de Grupo</label>
-                  <input type="name" class="inputEdit"  name="group-name" value="<?php echo remove_junk(ucwords($e_group['group_name'])); ?>">
-                  
-              </div>
-
-              <div class="material-textfield">
-                  <label class="select">Nivel de Grupo</label>
-                  <input type="number" class="inputEdit"  name="group-level" value="<?php echo (int)$e_group['group_level']; ?>">
-                  
-             </div>
-
-            <div class="material-textfield">
-                <label for="status">Estado</label>
-                    <select class="form-control selectEdit" name="status">
-                      <option <?php if($e_group['group_status'] === '1') echo 'selected="selected"';?> value="1"> Activo </option>
-                      <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
-          
-                    </select>
-              </div>
-
-              
-              <div class="col-md-3">
-              </div>   
-              
-              <div class="form-group clearfix">
-                      <button type="submit" style="width:100%;border-radius:50px" name="update" class="btn btn-info">Actualizar</button>
-              </div>
-          </form>
+        <div class="form-group">
+              <label for="level" class="control-label">Nivel del grupo</label>
+              <input type="number" class="form-control" name="group-level" value="<?php echo (int)$e_group['group_level']; ?>">
         </div>
-
-      </div>
-  </div>
+        <div class="form-group">
+          <label for="status">Estado</label>
+              <select class="form-control" name="status">
+                <option <?php if($e_group['group_status'] === '1') echo 'selected="selected"';?> value="1"> Activo </option>
+                <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+                <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+              </select>
+        </div>
+        <div class="form-group clearfix">
+                <button type="submit" name="update" class="btn btn-info">Actualizar</button>
+        </div>
+    </form>
 </div>
-
 
 <?php include_once('layouts/footer.php'); ?>
