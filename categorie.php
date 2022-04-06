@@ -64,7 +64,12 @@
 
                 </strong>
 
+                <button id="btnExportar" class="btn btn-success">
+                    <i class="fas fa-file-excel"></i> Exportar datos a Excel
+                </button>
                 <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
+                <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
+
             </div>
             <div class="panel-body">
                 <!-- tablaaaaaa -->
@@ -76,6 +81,7 @@
                             <th class="text-center" style="width: 10px;">Sector</th>
                             <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
+<<<<<<< HEAD
                             <th class="text-center" style="width: 10px;">Carril</th>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
@@ -83,6 +89,10 @@
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
+=======
+                            <th>Nicho</th>
+                            <th>Fecha</th>
+>>>>>>> parent of bf7ff50 (excel, print pdf)
                             <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
                     </thead>
@@ -95,7 +105,6 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
@@ -135,6 +144,7 @@
     </div>
     </div>
 
+<<<<<<< HEAD
 
 
     <!-- Busqueda por columna -->
@@ -181,20 +191,25 @@
                 },
             ],
 
+=======
+    <?php include_once('layouts/footer.php'); ?>
+    <?php include_once('layouts/footer.php'); ?>
+    <script>
+    $(document).ready(function() {
+        var table = $('#tabla').DataTable({
+>>>>>>> parent of bf7ff50 (excel, print pdf)
             "createdRow": function(row, data, index) {
                 // elegimos la columna para sumae
             },
             "drawCallback": function() {
-                //alert("La tabla se está recargando");
+                //alert("La tabla se está recargando"); 
                 var api = this.api();
-                $(api.column(3).footer()).html(
-                    'Total: ' + api.column(3, {
+                $(api.column(5).footer()).html(
+                    'Total: ' + api.column(5, {
                         page: 'current'
                     }).data().sum()
                 )
             }
-
-
         });
         // sumamos y mostramos el total
         var tot = table.column(3).data().sum();
@@ -222,5 +237,37 @@
 
 
 
+
+    <!-- script para exportar a excel -->
+    <script>
+    const $btnExportar = document.querySelector("#btnExportar"),
+        $tabla = document.querySelector("#tabla");
+
+    $btnExportar.addEventListener("click", function() {
+        let tableExport = new TableExport($tabla, {
+            exportButtons: false, // No queremos botones
+            filename: "Reporte de prueba", //Nombre del archivo de Excel
+            sheetname: "Reporte de Actividades", //Título de la hoja
+        });
+        let datos = tableExport.getExportData();
+        let preferenciasDocumento = datos.tabla.xlsx;
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
+            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
+            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+    });
+    </script>
+    <!-- Script para imprimir -->
+    <script>
+    function ImprimirPagina() {
+        window.print();
+    }
+    </script>
+
+
+
+    <!-- <script>
+  var tablita= document.querySelector("#almacen");
+  var dataTable= new DataTable(tablita);
+  </script> -->
 
     <?php include_once('layouts/footer.php'); ?>
