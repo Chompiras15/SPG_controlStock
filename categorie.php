@@ -16,7 +16,7 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(4);
-  if( $SuperUser["sede"]=="T-Chimbote") $table="sede_tasachimbote";
+  if( $SuperUser["sede"]=="T-Chimb") $table="sede_tasachimbote";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
@@ -64,12 +64,7 @@
 
                 </strong>
 
-                <button id="btnExportar" class="btn btn-success">
-                    <i class="fas fa-file-excel"></i> Exportar datos a Excel
-                </button>
                 <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-                <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
-
             </div>
             <div class="panel-body">
                 <!-- tablaaaaaa -->
@@ -100,6 +95,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
@@ -189,14 +185,16 @@
                 // elegimos la columna para sumae
             },
             "drawCallback": function() {
-                //alert("La tabla se está recargando"); 
+                //alert("La tabla se está recargando");
                 var api = this.api();
-                $(api.column(5).footer()).html(
-                    'Total: ' + api.column(5, {
+                $(api.column(3).footer()).html(
+                    'Total: ' + api.column(3, {
                         page: 'current'
                     }).data().sum()
                 )
             }
+
+
         });
         // sumamos y mostramos el total
         var tot = table.column(3).data().sum();
@@ -221,6 +219,8 @@
         });
     });
     </script>
+
+
 
 
     <?php include_once('layouts/footer.php'); ?>

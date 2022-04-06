@@ -17,7 +17,7 @@
 
   $tableActi = "";
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
@@ -72,108 +72,40 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actividad</title>
-     <!-- links para exportar a excel -->
-     <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad</title>
+    <!-- links para exportar a excel -->
+    <!-- <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
     <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script> -->
-    
+
 
     <style>
     /*estilos para la tabla*/
     table th {
-    background-color: #001f3f;;
-    color: white;   
-            }
-</style>
+        background-color: #001f3f;
+        ;
+        color: white;
+    }
+    </style>
 
 </head>
+
 <body>
-  
 
 
-<?php include_once('layouts/header.php'); ?>
 
-  <div class="row">
-     <div class="col-md-12">
-       <?php echo display_msg($msg); ?>
-     </div>
-  </div>
-   <div class="row">
-    <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de Actividades</span>
+    <?php include_once('layouts/header.php'); ?>
 
-       </strong>
-
-       <button id="btnExportar" class="btn btn-success">
-                <i class="fas fa-file-excel"></i> Exportar datos a Excel
-            </button>
-       <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
-           <button   class="btn btn-primary" onclick="ImprimirPagina();" > Imprimir</button>
-
-       
-
-      </div>
-        <div class="panel-body">
-          <table class="table table-bordered table-striped table-hover " id="tabla" >
-          
-            <thead >
-                <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th class="text-center" style="width: 100px;">Actividad</th>
-                    <th class="text-center" style="width: 100px;">Detalle</th>
-                    <th class="text-center" style="width: 100px;">Observacion</th>
-                    <th class="text-center" style="width: 100px;">auxiliares</th>
-                    <th class="text-center" style="width: 100px;">Inició</th>
-                    <th class="text-center" style="width: 100px;">Terminó</th>
-                    <th class="text-center" style="width: 100px;">Fecha</th>
-                    <th class="text-center" style="width: 100px;">Acciones</th>
-                </tr>
-            </thead>
-            <tbody >
-              <?php foreach ($all_actividades as $act):?>
-                <tr>
-                    <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($act['nameActivity'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['details'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['observation'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['auxiliares'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
-                    
-                    <td class="text-center">
-                      <div class="btn-group">
-                        <a href="edit_actividad.php?id=<?php echo (int)$act['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                          <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="delete_actividad.php?id=<?php echo (int)$act['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                          <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                      </div>
-                    </td>
-
-                </tr>
-                <!----------------------------------------------->
-              
-                <!----------------------------------------------->
-                
-              <?php endforeach; ?>
-            </tbody>
-     
-          </table>
-       </div>
-      
+    <div class="row">
+        <div class="col-md-12">
+            <?php echo display_msg($msg); ?>
+        </div>
     </div>
-<<<<<<< HEAD
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -206,7 +138,6 @@
                                 <th class="text-center" style="width: 100px;">Inició</th>
                                 <th class="text-center" style="width: 100px;">Terminó</th>
                                 <th class="text-center" style="width: 100px;">Fecha</th>
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 100px;">Almacen</th> <?php } ?>
                                 <th class="text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -221,9 +152,6 @@
                                 <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
-                                 <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
-                        
-                            
 
                                 <td class="text-center">
                                     <div class="btn-group">
@@ -250,49 +178,127 @@
                 </div>
 
             </div>
+            <<<<<<< HEAD <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>
+                                <span class="glyphicon glyphicon-th"></span>
+                                <span>Lista de Actividades</span>
 
+                            </strong>
+
+                            <button id="btnExportar" class="btn btn-success">
+                                <i class="fas fa-file-excel"></i> Exportar datos a Excel
+                            </button>
+                            <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
+                            <button class="btn btn-primary" onclick="ImprimirPagina();"> Imprimir</button>
+
+
+
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered table-striped table-hover " id="tabla">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;">Id</th>
+                                        <th class="text-center" style="width: 100px;">Actividad</th>
+                                        <th class="text-center" style="width: 100px;">Detalle</th>
+                                        <th class="text-center" style="width: 100px;">Observacion</th>
+                                        <th class="text-center" style="width: 100px;">auxiliares</th>
+                                        <th class="text-center" style="width: 100px;">Inició</th>
+                                        <th class="text-center" style="width: 100px;">Terminó</th>
+                                        <th class="text-center" style="width: 100px;">Fecha</th>
+                                        <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                                            style="width: 100px;">Almacen</th> <?php } ?>
+                                        <th class="text-center" style="width: 100px;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($all_actividades as $act):?>
+                                    <tr>
+                                        <td class="text-center"><?php echo count_id();?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['nameActivity'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['details'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['observation'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['auxiliares'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
+                                        <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
+                                        <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
+                                            <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
+
+
+
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <a href="edit_actividad.php?id=<?php echo (int)$act['id'];?>"
+                                                    class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                                    <span class="glyphicon glyphicon-edit"></span>
+                                                </a>
+                                                <a href="delete_actividad.php?id=<?php echo (int)$act['id'];?>"
+                                                    class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                    title="Eliminar">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <!----------------------------------------------->
+
+                                    <!----------------------------------------------->
+
+                                    <?php endforeach; ?>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                =======
+
+                >>>>>>> parent of bf7ff50 (excel, print pdf)
         </div>
 
-=======
-    
->>>>>>> parent of bf7ff50 (excel, print pdf)
     </div>
-   
-   </div>
-  
-  </div>
 
- 
-  <?php include_once('layouts/footer.php'); ?>
- <script>
-$(document).ready(function(){
-    var table = $('#tabla').DataTable({
-       orderCellsTop: true,
-       fixedHeader: true 
+    </div>
+
+
+    <?php include_once('layouts/footer.php'); ?>
+    <script>
+    $(document).ready(function() {
+        var table = $('#tabla').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true
+        });
+
+        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+        $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+
+        $('#tabla thead tr:eq(1) th').each(function(i) {
+            var title = $(this).text(); //es el nombre de la columna
+            $(this).html('<input type="text" placeholder="Search...' + title + '" />');
+
+            $('input', this).on('keyup change', function() {
+                if (table.column(i).search() !== this.value) {
+                    table
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
     });
+    </script>
 
-    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-    $('#tabla thead tr').clone(true).appendTo( '#tabla thead' );
-
-    $('#tabla thead tr:eq(1) th').each( function (i) {
-        var title = $(this).text(); //es el nombre de la columna
-        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
- 
-        $( 'input', this ).on( 'keyup change', function () {
-            if ( table.column(i).search() !== this.value ) {
-                table
-                    .column(i)
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );   
-});
-
-</script>
-
-  <!-- script para exportar a excel -->
-<script>
+    <!-- script para exportar a excel -->
+    <script>
     const $btnExportar = document.querySelector("#btnExportar"),
         $tabla = document.querySelector("#tabla");
 
@@ -304,14 +310,15 @@ $(document).ready(function(){
         });
         let datos = tableExport.getExportData();
         let preferenciasDocumento = datos.tabla.xlsx;
-        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
+        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
+            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
+            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
     });
-</script>
-<!-- Script para imprimir -->
-<script>
-  function ImprimirPagina(){
-    window.print();
+    </script>
+    <!-- Script para imprimir -->
+    <script>
+    function ImprimirPagina() {
+        window.print();
     }
-  </script>
-  <?php include_once('layouts/footer.php'); ?>
-                
+    </script>
+    <?php include_once('layouts/footer.php'); ?>

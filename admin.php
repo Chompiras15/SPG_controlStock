@@ -26,9 +26,9 @@ $findUser = find_by_user( 'users', 'admin' );
 </div>
 
 <?php
-if ( isset( $_POST[ 'sede_TChim' ] ) )
+if ( isset( $_POST[ 'sede_TChimb' ] ) )
  {
-    $var = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Chimbote' );
+    $var = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Chimb' );
 
     if ( $var == true ) 
  {
@@ -228,7 +228,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
 
             <form method='post'>
 
-                <button type='submit' name='sede_TChim' class='col-md-5 col-sm-12 cont_sede'>
+                <button type='submit' name='sede_TChimb' class='col-md-5 col-sm-12 cont_sede'>
 
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy '>

@@ -15,7 +15,7 @@
   page_require_level(2);
   $tableActi = "";
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
@@ -71,45 +71,75 @@ if(isset($_POST['edit_actividad'])){
 <?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-   <div class="col-md-12">
-     <?php echo display_msg($msg); ?>
-   </div>
-   <div class="col-md-5">
-     <div class="panel panel-default">
-       
-       <div class="panel-body">
-         <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-           <div class="form-group">
-           Selecciona la Actividad:
-              <select name="nameActivity" <?php echo (int)$activity['id'];?>>
-         <!-- Opciones de la lista -->
-               <option value="Descarga/Carga eslinga" <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Descarga/Carga eslinga</option>
-               <option value="Etiquetado de sacos" <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected <?php } ?> >Etiquetado de sacos</option> <!-- Opción por defecto -->
-               <option value="Monitoreo de Temperatura" <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>Monitoreo de Temperatura</option>
-               <option value="Seleccion y armado eslinga" <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected <?php } ?>>Seleccion y armado eslinga</option>
-               <option value="Ventilacion de sacos con HP" <?php if($activity['nameActivity']=="Ventilacion de sacos con HP"){;?>selected <?php } ?>>Ventilacion de sacos con HP</option>
-               <option value="Corte y vaceado jumbo" <?php if($activity['nameActivity']=="Corte y vaceado jumbo"){;?>selected <?php } ?>>Corte y vaceado jumbo</option>
-               <option value="Seleccion y armado eslinga" <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected <?php } ?>>Seleccion y armado eslinga</option>
-               <option value="Reproceso por Homogenizado" <?php if($activity['nameActivity']=="Reproceso por Homogenizado"){;?>selected <?php } ?>>Reproceso por Homogenizado</option>
-               <option value="Manteado de plataformas" <?php if($activity['nameActivity']=="Manteado de plataformas"){;?>selected <?php } ?>>Manteado de plataformas</option>
-               <option value="Limpieza de tanques de aceite" <?php if($activity['nameActivity']=="Limpieza de tanques de aceite"){;?>selected <?php } ?>>Limpieza de tanques de aceite</option>
-               <option value="Limpieza de mantas" <?php if($activity['nameActivity']=="Limpieza de mantas"){;?>selected <?php } ?>>Limpieza de mantas</option>
-               <option value="Embarque" <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Embarque</option>
-               <option value="Manteniminto" <?php if($activity['nameActivity']=="Manteniminto"){;?>selected <?php } ?>>Manteniminto</option>
-               </select>
-               <input type="text" class="form-control" name="details" value="<?php echo remove_junk(ucfirst($activity['details']));?>">
-               <input type="text" class="form-control" name="observation" value="<?php echo remove_junk(ucfirst($activity['observation']));?>">
-               <input type="text" class="form-control" name="auxiliares" value="<?php echo remove_junk(ucfirst($activity['auxiliares']));?>">
-               <input type="time" class="form-control" name="hora_ini" value="<?php echo remove_junk(ucfirst($activity['hora_ini']));?>">
-               <input type="time" class="form-control" name="hora_fin" value="<?php echo remove_junk(ucfirst($activity['hora_fin']));?>">
-               <input type="date" class="form-control" name="fecha" value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
 
-           </div>
-           <button type="submit" name="edit_actividad" class="btn btn-primary">Actualizar Actividad</button>
-       </form>
-       </div>
-     </div>
-   </div>
+            <div class="panel-body">
+                <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
+                    <div class="form-group">
+                        Selecciona la Actividad:
+                        <select name="nameActivity" <?php echo (int)$activity['id'];?>>
+                            <!-- Opciones de la lista -->
+                            <option value="Descarga/Carga eslinga"
+                                <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Descarga/Carga
+                                eslinga</option>
+                            <option value="Etiquetado de sacos"
+                                <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected <?php } ?>>
+                                Etiquetado de sacos</option> <!-- Opción por defecto -->
+                            <option value="Monitoreo de Temperatura"
+                                <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>
+                                Monitoreo de Temperatura</option>
+                            <option value="Seleccion y armado eslinga"
+                                <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected
+                                <?php } ?>>Seleccion y armado eslinga</option>
+                            <option value="Ventilacion de sacos con HP"
+                                <?php if($activity['nameActivity']=="Ventilacion de sacos con HP"){;?>selected
+                                <?php } ?>>Ventilacion de sacos con HP</option>
+                            <option value="Corte y vaceado jumbo"
+                                <?php if($activity['nameActivity']=="Corte y vaceado jumbo"){;?>selected <?php } ?>>
+                                Corte y vaceado jumbo</option>
+                            <option value="Seleccion y armado eslinga"
+                                <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected
+                                <?php } ?>>Seleccion y armado eslinga</option>
+                            <option value="Reproceso por Homogenizado"
+                                <?php if($activity['nameActivity']=="Reproceso por Homogenizado"){;?>selected
+                                <?php } ?>>Reproceso por Homogenizado</option>
+                            <option value="Manteado de plataformas"
+                                <?php if($activity['nameActivity']=="Manteado de plataformas"){;?>selected <?php } ?>>
+                                Manteado de plataformas</option>
+                            <option value="Limpieza de tanques de aceite"
+                                <?php if($activity['nameActivity']=="Limpieza de tanques de aceite"){;?>selected
+                                <?php } ?>>Limpieza de tanques de aceite</option>
+                            <option value="Limpieza de mantas"
+                                <?php if($activity['nameActivity']=="Limpieza de mantas"){;?>selected <?php } ?>>
+                                Limpieza de mantas</option>
+                            <option value="Embarque" <?php if($activity['nameActivity']=="Embarque"){;?>selected
+                                <?php } ?>>Embarque</option>
+                            <option value="Manteniminto" <?php if($activity['nameActivity']=="Manteniminto"){;?>selected
+                                <?php } ?>>Manteniminto</option>
+                        </select>
+                        <input type="text" class="form-control" name="details"
+                            value="<?php echo remove_junk(ucfirst($activity['details']));?>">
+                        <input type="text" class="form-control" name="observation"
+                            value="<?php echo remove_junk(ucfirst($activity['observation']));?>">
+                        <input type="text" class="form-control" name="auxiliares"
+                            value="<?php echo remove_junk(ucfirst($activity['auxiliares']));?>">
+                        <input type="time" class="form-control" name="hora_ini"
+                            value="<?php echo remove_junk(ucfirst($activity['hora_ini']));?>">
+                        <input type="time" class="form-control" name="hora_fin"
+                            value="<?php echo remove_junk(ucfirst($activity['hora_fin']));?>">
+                        <input type="date" class="form-control" name="fecha"
+                            value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
+
+                    </div>
+                    <button type="submit" name="edit_actividad" class="btn btn-primary">Actualizar Actividad</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 

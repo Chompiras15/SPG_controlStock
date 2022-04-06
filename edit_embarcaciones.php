@@ -20,7 +20,7 @@
   $tabla_sed="";
   //require_once('includes/load.php');
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$table="emb_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$table="emb_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
@@ -108,25 +108,29 @@ if(isset($_POST['edit_emb']))
 <?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-   <div class="col-md-12">
-     <?php echo display_msg($msg); ?>
-   </div>
-   <div class="col-md-5">
-     <div class="panel panel-default">
-       
-       <div class="panel-body">
-         <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
-           <div class="form-group">
-                <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato" value="<?php echo remove_junk(ucfirst($categorie['cod_contrato']));?>">
-                <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
-                <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma" value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>" >
-                <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
-           </div>
-           <button type="submit" name="edit_emb" class="btn btn-primary">Actualizar Embarcaciones</button>
-       </form>
-       </div>
-     </div>
-   </div>
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato"
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_contrato']));?>">
+                        <input type="text" class="form-control" name="cant_out" placeholder="Cantidad "
+                            value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
+                        <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
+                        <input type="text" class="form-control" name="supervisor" placeholder="Supervisor"
+                            value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
+                    </div>
+                    <button type="submit" name="edit_emb" class="btn btn-primary">Actualizar Embarcaciones</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
