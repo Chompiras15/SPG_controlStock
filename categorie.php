@@ -67,7 +67,7 @@
                 <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
             </div>
             <div class="panel-body">
-                <!-- tablaaaaaa -->
+                <!-- tablaaaaaaa -->
                 <table class="table table-bordered table-striped table-hover" id="tabla">
                     <thead>
                         <tr>
