@@ -129,29 +129,29 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     redirect( 'media.php', false );
                 }
 
+                // } else {
+                //  $session->msg( 'd', 'Lo siento, registro falló' );
+                //  redirect( 'media.php', false );
+                // }
+
             } else {
-                $session->msg( 'd', 'Lo siento, registro falló' );
+                $session->msg( 'd', 'Excedio la Capacitad Límite, Verifique la cantidad que va Despachar' );
                 redirect( 'media.php', false );
             }
-
         } else {
-            $session->msg( 'd', 'Excedio la Capacitad Límite, Verifique la cantidad que va Despachar' );
+            $session->msg( 'd', $errors );
             redirect( 'media.php', false );
         }
-    } else {
-        $session->msg( 'd', $errors );
-        redirect( 'media.php', false );
-    }
 
-}
-?>
+    }
+    ?>
 <?php include_once( 'layouts/header.php' );
-?>
+    ?>
 
 <div class='row'>
     <div class='col-md-12'>
         <?php echo display_msg( $msg );
-?>
+    ?>
     </div>
 </div>
 
@@ -195,7 +195,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     </div>
 
                     <?php if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) {
-    ?>
+        ?>
 
                     <div class='material-textfield'>
                         <label class='select' for='almacen'>Nombre de Almacen</label>
@@ -209,7 +209,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     </div>
 
                     <?php }
-    ?>
+        ?>
 
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_emb'
@@ -224,4 +224,4 @@ if ( isset( $_POST[ 'add_emb' ] ) )
 </div>
 
 <?php include_once( 'layouts/footer.php' );
-    ?>
+        ?>
