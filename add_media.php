@@ -66,11 +66,11 @@ if ( isset( $_POST[ 'add_emb' ] ) )
     if ( $SuperUser[ 'sede' ] == 'E-Chimbote' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
 
     if ( empty( $errors ) )
-    {
+ {
         if ( $cant_out<1001 )
-        {
+ {
             if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
-            {
+ {
                 $sql  = "INSERT INTO $table (";
                 $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
                 $sql .= ') VALUES (';
@@ -87,13 +87,13 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
             }
             if ( $db->query( $sql ) )
-            {
+ {
 
                 $findCatRuma = find_by_codRuma( $tabla_sed, $_POST[ 'cod_ruma' ] );
                 $restaSacos = ( int )$findCatRuma[ 'cant_saco' ]-( int )$cant_out;
 
                 if ( $restaSacos == 0 )
-                {
+ {
                     $delete_cod_ruma = delete_by_id( $tabla_sed, $findCatRuma[ 'id' ] );
                     //$delete_id = delete_by_id( 'sede_tasachimbote', ( int )$categorie[ 'id' ] );
                     if ( $delete_cod_ruma ) {
@@ -104,15 +104,15 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         redirect( 'media.php' );
                     }
 
-                } elseif ( $restaSacos > 0 && $restaSacos<1001)
-                {
+                } elseif ( $restaSacos > 0 )
+ {
                     $sql   = "UPDATE $tabla_sed SET";
                     $sql  .= " cant_saco ='{$restaSacos}'";
                     $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
                     $result = $db->query( $sql );
                     if ( $result && $db->affected_rows() == 1 ) 
-                    {
+ {
                         $session->msg( 's', 'Despacho actualizado con éxito' );
                         redirect( 'media.php', false );
                     } else {
@@ -124,7 +124,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     redirect( 'media.php', false );
 
                 } elseif ( $restaSacos < 0 )
-                {
+ {
                     $session->msg( 'd', 'Verificar la Cantidad Sacos' );
                     redirect( 'media.php', false );
                 }
