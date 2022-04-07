@@ -66,38 +66,34 @@ if ( isset( $_POST[ 'add_emb' ] ) )
     if ( $SuperUser[ 'sede' ] == 'E-Chimbote' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
 
     if ( empty( $errors ) )
-    {
+ {
         if ( $cant_out<1001 )
-        {
-            
-           // if ( $db->query( $sql ) )
-           // {
+ {
+            if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
+ {
+                $sql  = "INSERT INTO $table (";
+                $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
+                $sql .= ') VALUES (';
+                $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
+                $sql .= ')';
+                $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+
+            } else {
+                $sql  = "INSERT INTO $table (";
+                $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
+                $sql .= ') VALUES (';
+                $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}', '{$almacen}'";
+                $sql .= ')';
+                $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+            }
+            if ( $db->query( $sql ) )
+ {
 
                 $findCatRuma = find_by_codRuma( $tabla_sed, $_POST[ 'cod_ruma' ] );
                 $restaSacos = ( int )$findCatRuma[ 'cant_saco' ]-( int )$cant_out;
 
                 if ( $restaSacos == 0 )
-                {
-
-                    if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
-                    {
-                        $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
-                        $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
-                        $sql .= ')';
-                        $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                        $db->query( $sql );
-                    } else {
-                        $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
-                        $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}', '{$almacen}'";
-                        $sql .= ')';
-                        $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                        $db->query( $sql );
-                    }
-
+ {
                     $delete_cod_ruma = delete_by_id( $tabla_sed, $findCatRuma[ 'id' ] );
                     //$delete_id = delete_by_id( 'sede_tasachimbote', ( int )$categorie[ 'id' ] );
                     if ( $delete_cod_ruma ) {
@@ -108,35 +104,15 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         redirect( 'media.php' );
                     }
 
-                } elseif ( $restaSacos > 0)
-                {
-
-                    if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
-                    {
-                        $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
-                        $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}'";
-                        $sql .= ')';
-                        $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                        $db->query( $sql );
-                    } else {
-                        $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
-                        $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$date_out}', '{$supervisor}', '{$almacen}'";
-                        $sql .= ')';
-                        $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                        $db->query( $sql );
-                    }
-
+                } elseif ( $restaSacos > 0 )
+ {
                     $sql   = "UPDATE $tabla_sed SET";
                     $sql  .= " cant_saco ='{$restaSacos}'";
                     $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
                     $result = $db->query( $sql );
                     if ( $result && $db->affected_rows() == 1 ) 
-                    {
+ {
                         $session->msg( 's', 'Despacho actualizado con éxito' );
                         redirect( 'media.php', false );
                     } else {
@@ -148,34 +124,34 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     redirect( 'media.php', false );
 
                 } elseif ( $restaSacos < 0 )
-                {
+ {
                     $session->msg( 'd', 'Verificar la Cantidad Sacos' );
                     redirect( 'media.php', false );
                 }
 
-           // } else {
-              //  $session->msg( 'd', 'Lo siento, registro falló' );
-              //  redirect( 'media.php', false );
-           // }
+                // } else {
+                //  $session->msg( 'd', 'Lo siento, registro falló' );
+                //  redirect( 'media.php', false );
+                // }
 
+            } else {
+                $session->msg( 'd', 'Excedio la Capacitad Límite, Verifique la cantidad que va Despachar' );
+                redirect( 'media.php', false );
+            }
         } else {
-            $session->msg( 'd', 'Excedio la Capacitad Límite, Verifique la cantidad que va Despachar' );
+            $session->msg( 'd', $errors );
             redirect( 'media.php', false );
         }
-    } else {
-        $session->msg( 'd', $errors );
-        redirect( 'media.php', false );
-    }
 
-}
-?>
+    }
+    ?>
 <?php include_once( 'layouts/header.php' );
-?>
+    ?>
 
 <div class='row'>
     <div class='col-md-12'>
         <?php echo display_msg( $msg );
-?>
+    ?>
     </div>
 </div>
 
@@ -219,7 +195,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     </div>
 
                     <?php if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) {
-    ?>
+        ?>
 
                     <div class='material-textfield'>
                         <label class='select' for='almacen'>Nombre de Almacen</label>
@@ -233,7 +209,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     </div>
 
                     <?php }
-    ?>
+        ?>
 
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_emb'
@@ -248,4 +224,4 @@ if ( isset( $_POST[ 'add_emb' ] ) )
 </div>
 
 <?php include_once( 'layouts/footer.php' );
-    ?>
+        ?>
