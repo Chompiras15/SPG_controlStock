@@ -24,6 +24,7 @@
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
   if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
   if( $SuperUser["sede"]=="E-Chicama") $table="sede_exalmar_mala";
+
 ?>
 <?php
   //Display all catgories.
@@ -55,28 +56,39 @@ if(isset($_POST['edit_cat']))
   
   if(empty($errors))
   {
-    if($cat_saco<1001)
-    {
-          $sql   = "UPDATE $table SET";
-          $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
-          $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+    //$findCatRuma = find_by_codRuma( $table, $_POST[ 'cod_ruma']);
+    //if(!$findCatRuma)
+    //{
+      if($cat_saco<1001)
+      {
+            $sql   = "UPDATE $table SET";
+            $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
+            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
             $sql .= " WHERE id='{$categorie['id']}'";
-          $result = $db->query($sql);
-          
-     
-      if($result && $db->affected_rows() === 1) {
-        $session->msg("s", "Categoría actualizada con éxito.");
-        redirect('categorie.php',false);
-      } else {
-        $session->msg("d", "Lo siento, actualización falló.");
+            $result = $db->query($sql);
+            
+       
+            if($result && $db->affected_rows() === 1) 
+            {
+              $session->msg("s", "Categoría actualizada con éxito.");
+              redirect('categorie.php',false);
+            } else {
+              $session->msg("d", "Lo siento, actualización falló.");
+              redirect('categorie.php',false);
+            }
+         
+  
+      }else{
+        $session->msg("d", "Excedió el límite de cantidad.");
         redirect('categorie.php',false);
       }
-       
 
-    }else{
-      $session->msg("d", "Excedió el límite de cantidad.");
-      redirect('categorie.php',false);
-    }
+    /*}else{
+      $session->msg("d", "Ya existe ese Codigo de Ruma.");
+        redirect('categorie.php',false);
+    }*/
+   
+
   } else {
     $session->msg("d", $errors);
     redirect('categorie.php',false);

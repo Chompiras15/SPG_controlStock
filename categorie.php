@@ -120,13 +120,12 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
                     </button>
-
                 </div>
+
             </div>
         </div>
     </div>
