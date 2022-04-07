@@ -129,6 +129,22 @@
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
+            responsive: true,
+            dom: 'B<"clear">lfrtp',
+            fixedColumns: true,
+            fixedHeader: true,
+            scrollCollapse: true,
+            autoWidth: true,
+            scrollCollapse: true,
+            lengthMenu: [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "All"]
+            ],
+            info: true,
+            columnDefs: [{
+                targets: "_all",
+                sortable: false
+            }],
             // cambiamos el lenguaje
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
@@ -144,26 +160,31 @@
                     "sPrevious": "Anterior"
                 },
                 "sProcessing": "Procesando...",
+
             },
             //para usar los botones de excel, imprimir y pdf  
             responsive: "true",
-            dom: 'Bfrtlpi',
+            dom: 'Bfrtlp',
+
             buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
+                    title: 'SGP - Business',
                     className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
+                    title: 'SGP - Business',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
+                    title: 'SGP - Business',
                     className: 'btn btn-info'
                 },
             ],
@@ -189,21 +210,21 @@
 
 
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-        $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+        // $('#tabla thead tr').clone(true).appendTo('#tabla thead');
 
-        $('#tabla thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Buscar..." />');
+        // $('#tabla thead tr:eq(1) th').each(function(i) {
+        //     var title = $(this).text(); //es el nombre de la columna
+        //     $(this).html('<input type="text" placeholder="Buscar..." />');
 
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
-        });
+        //     $('input', this).on('keyup change', function() {
+        //         if (table.column(i).search() !== this.value) {
+        //             table
+        //                 .column(i)
+        //                 .search(this.value)
+        //                 .draw();
+        //         }
+        //     });
+        // });
     });
     </script>
 
