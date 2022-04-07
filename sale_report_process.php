@@ -200,7 +200,7 @@ $results = '';
                 tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
                     preferenciasDocumento.filename, preferenciasDocumento.fileExtension,
                     preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname
-                    );
+                );
             });
             </script>
             <script>

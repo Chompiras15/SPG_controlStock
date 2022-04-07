@@ -8,7 +8,7 @@ $table = '';
 $tabla_sed = '';
 //require_once( 'includes/load.php' );
 $SuperUser = current_user();
-if ( $SuperUser[ 'sede' ] == 'T-Chimbote' ) {
+if ( $SuperUser[ 'sede' ] == 'T-Chimb' ) {
     $table = 'emb_tasachim';
     $tabla_sed = 'sede_tasachimbote';
 }

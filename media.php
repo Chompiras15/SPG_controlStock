@@ -123,19 +123,77 @@
     </div>
 
     <?php include_once('layouts/footer.php'); ?>
+
+    <!-- Busqueda por columna -->
+
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            orderCellsTop: true,
-            fixedHeader: true
+            // cambiamos el lenguaje
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "sProcessing": "Procesando...",
+            },
+            //para usar los botones de excel, imprimir y pdf  
+            responsive: "true",
+            dom: 'Bfrtlpi',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="glyphicon glyphicon-file"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="glyphicon glyphicon-print"></i> ',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-info'
+                },
+            ],
+
+            "createdRow": function(row, data, index) {
+                // elegimos la columna para sumae
+            },
+            "drawCallback": function() {
+                //alert("La tabla se está recargando");
+                var api = this.api();
+                $(api.column(3).footer()).html(
+                    'Total: ' + api.column(3, {
+                        page: 'current'
+                    }).data().sum()
+                )
+            }
+
+
         });
+        // sumamos y mostramos el total
+        var tot = table.column(3).data().sum();
+        $("#total").text(tot);
+
 
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
         $('#tabla thead tr').clone(true).appendTo('#tabla thead');
 
         $('#tabla thead tr:eq(1) th').each(function(i) {
             var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Search...' + title + '" />');
+            $(this).html('<input type="text" placeholder="Buscar..." />');
 
             $('input', this).on('keyup change', function() {
                 if (table.column(i).search() !== this.value) {
@@ -149,29 +207,5 @@
     });
     </script>
 
-    <!-- script para exportar a excel -->
-    <script>
-    const $btnExportar = document.querySelector("#btnExportar"),
-        $tabla = document.querySelector("#tabla");
-
-    $btnExportar.addEventListener("click", function() {
-        let tableExport = new TableExport($tabla, {
-            exportButtons: false, // No queremos botones
-            filename: "Reporte de prueba", //Nombre del archivo de Excel
-            sheetname: "Reporte de Actividades", //Título de la hoja
-        });
-        let datos = tableExport.getExportData();
-        let preferenciasDocumento = datos.tabla.xlsx;
-        tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType,
-            preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento
-            .merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
-    });
-    </script>
-    <!-- Script para imprimir -->
-    <script>
-    function ImprimirPagina() {
-        window.print();
-    }
-    </script>
 
     <?php include_once('layouts/footer.php'); ?>
