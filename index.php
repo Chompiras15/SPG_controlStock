@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,6 +29,7 @@
 			<p class="text-center" style="font-size: 80px;">
 				<div class="spg_logoInit"></div>
 			</p>
+			
 			<p class="text-center text-condensedLight">Iniciar sesión con tu cuenta</p>
 			 <form method="post" action="auth.php" class="clearfix">
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

@@ -56,14 +56,13 @@ if(isset($_POST['edit_emb']))
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors))
   {
-
+    $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
+    if($findCatRuma)
+    {
       if($cant_out<1001)
       {
      
           //CAMBIO LA CNTIDAD DE SEDE
-          $findCatRuma = find_by_codRuma($tabla_sed,$_POST['cod_ruma']);
-          //$findAct = find_by_codRuma($table,$_POST['cod_ruma']);
-      
           $newCant=(int)$findCatRuma["cant_saco"]+(int)$categorie["cant_out"]-(int)$_POST['cant_out'];
           //$session->msg("d", $newCant);
           //redirect('media.php',false);
@@ -73,10 +72,8 @@ if(isset($_POST['edit_emb']))
 
           $result = $db->query($sql);
 
-          if($result && $db->affected_rows() === 1) 
-          {
-
-                
+          if($result || $db->affected_rows() === 1) 
+          { 
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}', date_out ='{$date_out}', supervisor ='{$supervisor}'";
@@ -92,13 +89,19 @@ if(isset($_POST['edit_emb']))
                 $session->msg("d", "Lo siento, actualización falló.");
                  redirect('media.php',false);
               }
-
-                
+ 
           }
       }else{
         $session->msg("d", "Excedió la cantidad Límite.");
         redirect('media.php',false);
       }
+
+    }else
+    {
+      $session->msg("d", "La Ruma no Existe.");
+      redirect('media.php',false);
+    }
+     
 
   } else {
     $session->msg("d", $errors);
