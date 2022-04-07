@@ -183,15 +183,14 @@
                         <label>Cantidad sacos</label>
                     </div>
                     <div class="material-textfield">
-                        <label class="select">Fecha Vencimiento</label>
-                        <input placeholder=" " type="date" name="date_producc" required>
-
-                    </div>
-
-                    <div class="material-textfield">
                         <label class="select">Fecha Produccion</label>
                         <input placeholder=" " type="date" name="date_vencimiento" required>
 
+                        <div class="material-textfield">
+                            <label class="select">Fecha Vencimiento</label>
+                            <input placeholder=" " type="date" name="date_producc" required>
+
+                        </div>
                     </div>
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="calidad" required>
