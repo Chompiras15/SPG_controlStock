@@ -65,14 +65,11 @@
                 </strong>
 
                 <a href="add_categorie.php" class="btn btn-info pull-right">Agregar Ruma</a>
-
             </div>
             <div class="panel-body">
-
+                <!-- tablaaaaaaa -->
                 <table class="table table-bordered table-striped table-hover" id="tabla">
-
                     <thead>
-
                         <tr>
                             <th class="text-center" style="width: 5px;">Id</th>
                             <th class="text-center" style="width: 30px;">Codigo</th>
@@ -123,12 +120,24 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
+<<<<<<< HEAD
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
                     </button>
                 </div>
+
+=======
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary">
+                                Total de sacos: <span id="total" class="badge badge-light"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> parent of 3411824 (a)
             </div>
         </div>
     </div>
@@ -142,22 +151,6 @@
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            responsive: true,
-            dom: 'B<"clear">lfrtp',
-            fixedColumns: true,
-            fixedHeader: true,
-
-            autoWidth: true,
-            scrollCollapse: true,
-            lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "Todo"]
-            ],
-
-            columnDefs: [{
-                targets: "_all",
-                sortable: false
-            }],
             // cambiamos el lenguaje
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
@@ -165,7 +158,7 @@
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar: ",
+                "sSearch": "Buscar:",
                 "oPaginate": {
                     "sFirst": "Primero",
                     "sLast": "Último",
@@ -176,26 +169,23 @@
             },
             //para usar los botones de excel, imprimir y pdf  
             responsive: "true",
-            dom: 'Bfrtlp',
+            dom: 'Bfrtlpi',
             buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business',
                     className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
-                    title: 'SGP - Business',
                     className: 'btn btn-info'
                 },
             ],
@@ -225,7 +215,7 @@
 
         $('#tabla thead tr:eq(1) th').each(function(i) {
             var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Buscar"/>');
+            $(this).html('<input type="text" placeholder="Buscar..." />');
 
             $('input', this).on('keyup change', function() {
                 if (table.column(i).search() !== this.value) {

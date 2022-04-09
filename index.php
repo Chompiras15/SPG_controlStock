@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+<?php
+  ob_start();
+  require_once('includes/load.php');
+  if($session->isUserLoggedIn(true)) { redirect('home.php', false);}
+?>
+<?//php include_once('layouts/header.php'); ?>
+
+>>>>>>> parent of 8eeb511 (loginOk)
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +20,7 @@
 	<link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
 
 	<link rel="stylesheet" href="assets/css/spg_login.css">
-	<script src="assets/js/material.min.js" ></script>
+	<script src="js/material.min.js" ></script>
 
 </head>
 <style>
@@ -50,3 +60,4 @@
 </html>
 
 
+<?php include_once('layouts/footer.php'); ?>
