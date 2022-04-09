@@ -16,12 +16,13 @@
   page_require_level(4); // verifica el nivel de usuario 
 
   $tableActi = "";
+  $tableTemp = "";
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimb"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimbote"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
-  if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tableTemp="temp_callao";$tabla_sed="sede_callao";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
   if( $SuperUser["sede"]=="T-Atico") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
@@ -154,22 +155,6 @@
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            responsive: false,
-            dom: 'B<"clear">lfrtp',
-            fixedColumns: true,
-            fixedHeader: true,
-            scrollCollapse: true,
-            autoWidth: true,
-            scrollCollapse: true,
-            lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "All"]
-            ],
-            info: true,
-            columnDefs: [{
-                targets: "_all",
-                sortable: false
-            }],
             // cambiamos el lenguaje
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
@@ -188,26 +173,23 @@
             },
             //para usar los botones de excel, imprimir y pdf  
             responsive: "true",
-            dom: 'Bfrtlp',
+            dom: 'Bfrtlpi',
             buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business',
                     className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
-                    title: 'SGP - Business',
                     className: 'btn btn-info'
                 },
             ],
