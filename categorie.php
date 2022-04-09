@@ -120,12 +120,24 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+<<<<<<< HEAD
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
                     </button>
                 </div>
 
+=======
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary">
+                                Total de sacos: <span id="total" class="badge badge-light"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> parent of 3411824 (a)
             </div>
         </div>
     </div>
