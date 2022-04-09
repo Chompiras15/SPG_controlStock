@@ -143,23 +143,7 @@ $sales = dailySales( $tableActi, $year, $month );
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            responsive: false,
-            dom: 'B<"clear">lfrtp',
-            fixedColumns: true,
-            fixedHeader: true,
-            scrollCollapse: true,
-            autoWidth: true,
-            scrollCollapse: true,
-            lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "todo"]
-            ],
-            info: true,
             // cambiamos el lenguaje
-            columnDefs: [{
-                targets: "_all",
-                sortable: false
-            }],
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -177,26 +161,23 @@ $sales = dailySales( $tableActi, $year, $month );
             },
             //para usar los botones de excel, imprimir y pdf  
             responsive: "true",
-            dom: 'Bfrtlp',
+            dom: 'Bfrtlpi',
             buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business',
                     className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
-                    title: 'SGP - Business',
                     className: 'btn btn-info'
                 },
             ],
