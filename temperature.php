@@ -15,7 +15,7 @@
   //require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
-  page_require_level(4);
+  page_require_level(5);
   if( $SuperUser["sede"]=="T-Chimb") $table="temp_tasachimbote";
   if( $SuperUser["sede"]=="T-Samanco") $table="temp_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="temp_supe";
