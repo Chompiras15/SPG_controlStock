@@ -28,8 +28,8 @@ if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
 ?>
 <?php
   //Display all catgories.
-  $temperature1 = find_by_id($tabletemp,(int)$_GET['id']);
-  if(!$temperature1){
+  $temperature = find_by_id($tabletemp,(int)$_GET['id']);
+  if(!$temperature){
     $session->msg("d","No se encontro el registro id.");
     redirect('temperature.php');
   }
