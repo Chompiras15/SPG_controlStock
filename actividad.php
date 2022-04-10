@@ -72,30 +72,30 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading clearfix">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
                         <span>Lista de Actividades</span>
 
                     </strong>
-                    <a href="add_actividad.php" class="btn btn-info pull-right">Agregar Actividad</a>
+                    <a href="add_actividad.php" class="btn btn-info pull-right btn-sm">Agregar Actividad</a>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered table-striped table-hover " id="tabla">
+                    <table class="table table-bordered " id="tabla">
 
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 50px;">Id</th>
-                                <th class="text-center" style="width: 100px;">Actividad</th>
-                                <th class="text-center" style="width: 100px;">Detalle</th>
-                                <th class="text-center" style="width: 100px;">Observacion</th>
-                                <th class="text-center" style="width: 100px;">auxiliares</th>
-                                <th class="text-center" style="width: 100px;">Inició</th>
+                                <th class="text-center" style="width: 50px;">Actividad</th>
+                                <th class="text-center" style="width: 50px;">Detalle</th>
+                                <th class="text-center" style="width: 50px;">Observacion</th>
+                                <th class="text-center" style="width: 50px;">auxiliares</th>
+                                <th class="text-center" style="width: 10px;">Inició</th>
                                 <th class="text-center" style="width: 100px;">Terminó</th>
-                                <th class="text-center" style="width: 100px;">Fecha</th>
+                                <th class="text-center" style="width: 10px;">Fecha</th>
                                 <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                     style="width: 100px;">Almacen</th> <?php } ?>
-                                <th class="text-center" style="width: 100px;">Acciones</th>
+                                <th class="text-center" style="width: 10px;">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,7 +154,7 @@
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            responsive: false,
+            responsive: true,
             dom: 'B<"clear">lfrtp',
             fixedColumns: true,
             fixedHeader: true,
