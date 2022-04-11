@@ -9,7 +9,7 @@
 -->
 
 <?php
-  $page_title = 'Almacen-Chimbote';
+  $page_title = 'Temperatura';
   require_once('includes/load.php');
   $tabletemp = "";
   //require_once('includes/load.php');
@@ -26,60 +26,61 @@
   if( $SuperUser["sede"]=="T-Matarani") $tabletemp="temp_matarani";
   if( $SuperUser["sede"]=="E-Chimbote") $tabletemp="temp_exalmar_chim";
   if( $SuperUser["sede"]=="E-Chicama") $tabletemp="temp_exalmar_mala";
+
   $all_temperaturas = find_all($tabletemp)
 ?>
 <?php
  if(isset($_POST['add_temperature']))
  {
-
-     if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('cod_ruma', 'cañon_1', 'cañon_2', 'cañon_3', 'cañon_4', 'cañon_5', 'cañon_6', 'cañon_7','cañon_8','cañon_9','supervisor','fecha','almacen');
-   else $req_field = array('cod_ruma', 'cañon_1', 'cañon_2', 'cañon_3', 'cañon_4', 'cañon_5', 'cañon_6', 'cañon_7','cañon_8','cañon_9','supervisor','fecha');
+     if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
+     else $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
    
     validate_fields($req_field);
    
-      $tem_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-    $tem_1 = remove_junk($db->escape($_POST['cañon_1']));
-    $tem_2 = remove_junk($db->escape($_POST['cañon_2']));
-    $tem_3 = remove_junk($db->escape($_POST['cañon_3']));
-    $tem_4 = remove_junk($db->escape($_POST['cañon_4']));
-    $tem_5 = remove_junk($db->escape($_POST['cañon_5']));
-    $tem_6 = remove_junk($db->escape($_POST['cañon_6']));
-     $tem_7 = remove_junk($db->escape($_POST['cañon_7']));
-    $tem_8 = remove_junk($db->escape($_POST['cañon_8']));
-    $tem_9 = remove_junk($db->escape($_POST['cañon_9']));
+    $tem_ruma = remove_junk($db->escape($_POST['codRuma']));
+    $tem_1 = remove_junk($db->escape($_POST['filter1']));
+    $tem_2 = remove_junk($db->escape($_POST['filter2']));
+    $tem_3 = remove_junk($db->escape($_POST['filter3']));
+    $tem_4 = remove_junk($db->escape($_POST['filter4']));
+    $tem_5 = remove_junk($db->escape($_POST['filter5']));
+    $tem_6 = remove_junk($db->escape($_POST['filter6']));
+    $tem_7 = remove_junk($db->escape($_POST['filter7']));
+    $tem_8 = remove_junk($db->escape($_POST['filter8']));
+    $tem_9 = remove_junk($db->escape($_POST['filter9']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
-    $tem_fecha = remove_junk($db->escape($_POST['fecha']));
+    //$tem_fecha = remove_junk($db->escape($_POST['fecha']));
     if( $SuperUser["sede"]=="E-Chimbote")  $tem_almacen =remove_junk($db->escape($_POST['almacen']));
 
     if(empty($errors))
     {
+        $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
 
-            if( $SuperUser["sede"]=="E-Chimbote")
-            {
-                $sql  = "INSERT INTO $tabletemp (";
-                $sql .="cod_ruma, cañon_1, cañon_2, cañon_3, cañon_4, cañon_5, cañon_6, cañon_7,cañon_8,cañon_9,supervisor,fecha,almacen";
-                $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$tem_fecha}','{$tem_almacen}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$tem_ruma}'";
-            }else{
+        if($SuperUser["sede"]=="E-Chimbote"){
+            $sql  = "INSERT INTO $tabletemp (";
+            $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
+            $sql .=") VALUES (";
+            $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$tem_almacen}'";
+            $sql .=")";
+            $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
 
-                $sql  = "INSERT INTO $tabletemp (";
-                $sql .=" cod_ruma, cañon_1, cañon_2, cañon_3, cañon_4, cañon_5, cañon_6, cañon_7,cañon_8,cañon_9,supervisor,fecha";
-                $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$tem_fecha}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$tem_ruma}'";
-            }
+        }else{
+
+            $sql  = "INSERT INTO $tabletemp (";
+            $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio";
+            $sql .=") VALUES (";
+            $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}'";
+            $sql .=")";
+            $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
+        }
             
-
-            if($db->query($sql)){
-                $session->msg("s", "Monitoreo agregado exitosamente.");
-                redirect('temperature.php',false);
-            } else {
-                $session->msg("d", "Lo siento, registro falló");
-                redirect('temperature.php',false);
-            }
+        if($db->query($sql))
+        {
+            $session->msg("s", "Monitoreo agregado exitosamente.");
+            redirect('temperature.php',false);
+        } else {
+            $session->msg("d", "Lo siento, registro falló");
+            redirect('temperature.php',false);
+        }
 
     } else {
         $session->msg("d", $errors);
@@ -104,25 +105,21 @@
                     <span>Agregar Monitoreo</span>
                 </strong>
             </div>
-            <?php  
-        date_default_timezone_set("America/Lima");
-        $fecha_actual=date("Y-m-s H:i:s");   
-         ?>
+        
             <div class="panel-body">
                 <form method="post" action="add_temperature.php">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo" required>
-                        <input type="text" class="form-control" name="cañon_1" placeholder="Cañon 1" required>
-                        <input type="text" class="form-control" name="cañon_2" placeholder="Cañon 2" required>
-                        <input type="text" class="form-control" name="cañon_3" placeholder="Cañon 3" required>
-                        <input type="text" class="form-control" name="cañon_4" placeholder="Cañon 4" required>
-                        <input type="text" class="form-control" name="cañon_5" placeholder="Cañon 5" required>
-                        <input type="text" class="form-control" name="cañon_6" placeholder="Cañon 6" required>
-                        <input type="text" class="form-control" name="cañon_7" placeholder="Cañon 7" required>
-                        <input type="text" class="form-control" name="cañon_8" placeholder="Cañon 8" required>
-                        <input type="text" class="form-control" name="cañon_9" placeholder="Cañon 9" required>
+                        <input type="text" class="form-control" name="codRuma" placeholder="Codigo" required>
+                        <input type="number" class="form-control" name="filter1" placeholder="Cañon 1" required>
+                        <input type="number" class="form-control" name="filter2" placeholder="Cañon 2" required>
+                        <input type="number" class="form-control" name="filter3" placeholder="Cañon 3" required>
+                        <input type="number" class="form-control" name="filter4" placeholder="Cañon 4" required>
+                        <input type="number" class="form-control" name="filter5" placeholder="Cañon 5" required>
+                        <input type="number" class="form-control" name="filter6" placeholder="Cañon 6" required>
+                        <input type="number" class="form-control" name="filter7" placeholder="Cañon 7" required>
+                        <input type="number" class="form-control" name="filter8" placeholder="Cañon 8" required>
+                        <input type="number" class="form-control" name="filter9" placeholder="Cañon 9" required>
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
-                        <input type="date" class="form-control" name="fecha" placeholder="Fecha" required>
                         <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
 
                         <div class="material-textfield">

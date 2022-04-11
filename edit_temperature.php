@@ -27,7 +27,7 @@ if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
   if( $SuperUser["sede"]=="E-Chicama") $tabletemp="temp_exalmar_mala";
 ?>
 <?php
-  //Display all catgories.
+  //Display all temperature.
   $temperature = find_by_id($tabletemp,(int)$_GET['id']);
   if(!$temperature){
     $session->msg("d","No se encontro el registro id.");
@@ -36,37 +36,47 @@ if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
 ?>
 
 <?php
-if(isset($_POST['edit_temperature'])){
-  $req_field = array('cod_ruma', 'cañon_1', 'cañon_2', 'cañon_3', 'cañon_4', 'cañon_5', 'cañon_6', 'cañon_7','cañon_8','cañon_9','supervisor','fecha');
+if(isset($_POST['edit_temperature']))
+{
+  if( $SuperUser["sede"]=="E-Chimbote") $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
+  else $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
+  
   validate_fields($req_field);
-       $tem_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-    $tem_1 = remove_junk($db->escape($_POST['cañon_1']));
-    $tem_2 = remove_junk($db->escape($_POST['cañon_2']));
-    $tem_3 = remove_junk($db->escape($_POST['cañon_3']));
-    $tem_4 = remove_junk($db->escape($_POST['cañon_4']));
-    $tem_5 = remove_junk($db->escape($_POST['cañon_5']));
-    $tem_6 = remove_junk($db->escape($_POST['cañon_6']));
-     $tem_7 = remove_junk($db->escape($_POST['cañon_7']));
-    $tem_8 = remove_junk($db->escape($_POST['cañon_8']));
-    $tem_9 = remove_junk($db->escape($_POST['cañon_9']));
+
+    $tem_ruma = remove_junk($db->escape($_POST['codRuma']));
+    $tem_1 = remove_junk($db->escape($_POST['filter1']));
+    $tem_2 = remove_junk($db->escape($_POST['filter2']));
+    $tem_3 = remove_junk($db->escape($_POST['filter3']));
+    $tem_4 = remove_junk($db->escape($_POST['filter4']));
+    $tem_5 = remove_junk($db->escape($_POST['filter5']));
+    $tem_6 = remove_junk($db->escape($_POST['filter6']));
+    $tem_7 = remove_junk($db->escape($_POST['filter7']));
+    $tem_8 = remove_junk($db->escape($_POST['filter8']));
+    $tem_9 = remove_junk($db->escape($_POST['filter9']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
-    $tem_fecha = remove_junk($db->escape($_POST['fecha']));
-    if( $SuperUser["sede"]=="E-Chimbote")  $tem_almacen =remove_junk($db->escape($_POST['almacen']));
-  /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
-  $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
-  if(empty($errors)){
-    $sql   = "UPDATE $tabletemp SET";
-    $sql  .=" cod_ruma ='{$tem_ruma}', cañon_1 ='{$tem_1}',";
-    $sql  .=" cañon_2 ='{$tem_2}', cañon_3 ='{$tem_3}', cañon_4 ='{$tem_4}', cañon_5 ='{$tem_5}', cañon_6 ='{$tem_6}', cañon_7 ='{$tem_7}', cañon_8 ='{$tem_8}', cañon_9 ='{$tem_9}', supervisor ='{$tem_supervisor}', fecha ='{$tem_fecha}'";
-       $sql .= " WHERE id='{$temperature['id']}'";
+
+
+  if(empty($errors))
+  {
+
+    $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
+
+
+   
+      $sql   = "UPDATE $tabletemp SET";
+      $sql  .=" codRuma ='{$tem_ruma}', filter1 ='{$tem_1}',";
+      $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', promedio ='{$promedio}' , supervisor ='{$tem_supervisor}'";
+      $sql .= " WHERE id='{$temperature['id']}'";
+   
      $result = $db->query($sql);
      if($result && $db->affected_rows() === 1) {
-       $session->msg("s", "Registro actualizado con éxito.");
+       $session->msg("s", "Temperatura actualizada con éxito.");
        redirect('temperature.php',false);
      } else {
        $session->msg("d", "Lo siento, actualización falló.");
        redirect('temperature.php',false);
      }
+
   } else {
     $session->msg("d", $errors);
     redirect('temperature.php',false);
@@ -86,31 +96,29 @@ if(isset($_POST['edit_temperature'])){
                 <form method="post" action="edit_temperature.php?id=<?php echo (int)$temperature['id'];?>">
                     <div class="form-group">
 
-                        <input type="text" class="form-control" name="cod_ruma"
-                            value="<?php echo remove_junk(ucfirst($temperature['cod_ruma']));?>">
-                        <input type="text" class="form-control" name="cañon_1"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_1']));?>">
-                        <input type="text" class="form-control" name="cañon_2"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_2']));?>">
-                        <input type="text" class="form-control" name="cañon_3"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_3']));?>">
-                        <input type="text" class="form-control" name="cañon_4"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_4']));?>">
-                        <input type="text" class="form-control" name="cañon_5"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_5']));?>">
-                        <input type="text" class="form-control" name="cañon_6"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_6']));?>">
-                        <input type="text" class="form-control" name="cañon_7"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_7']));?>">
-                        <input type="text" class="form-control" name="cañon_8"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_8']));?>">
-                        <input type="text" class="form-control" name="cañon_9"
-                            value="<?php echo remove_junk(ucfirst($temperature['cañon_9']));?>">
+                        <input type="text" class="form-control" name="codRuma"
+                            value="<?php echo remove_junk(ucfirst($temperature['codRuma']));?>">
+                        <input type="text" class="form-control" name="filter1"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter1']));?>">
+                        <input type="text" class="form-control" name="filter2"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter2']));?>">
+                        <input type="text" class="form-control" name="filter3"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter3']));?>">
+                        <input type="text" class="form-control" name="filter4"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter4']));?>">
+                        <input type="text" class="form-control" name="filter5"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter5']));?>">
+                        <input type="text" class="form-control" name="filter6"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter6']));?>">
+                        <input type="text" class="form-control" name="filter7"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter7']));?>">
+                        <input type="text" class="form-control" name="filter8"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter8']));?>">
+                        <input type="text" class="form-control" name="filter9"
+                            value="<?php echo remove_junk(ucfirst($temperature['filter9']));?>">
                         <input type="text" class="form-control" name="supervisor"
                             value="<?php echo remove_junk(ucfirst($temperature['supervisor']));?>">
-                        <input type="date" class="form-control" name="fecha"
-                            value="<?php echo remove_junk(ucfirst($temperature['fecha']));?>">
-
+                        
                     </div>
                     <button type="submit" name="edit_temperature" class="btn btn-primary">Actualizar
                         Temperatura</button>

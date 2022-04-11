@@ -28,12 +28,12 @@
 <?php
   $temperature1 = find_by_id($tabletemp,(int)$_GET['id']);
   if(!$temperature1){
-    $session->msg("d","ID de la actividad falta.");
-    redirect('actividad.php');
+    $session->msg("d","ID de la Temperatura falta.");
+    redirect('temperature.php');
   }
 ?>
 <?php
-  $delete_id = delete_by_id($tabletemp,(int)$temperature['id']);
+  $delete_id = delete_by_id($tabletemp,(int)$temperature1['id']);
   if($delete_id){
       $session->msg("s","Registro eliminado");
       redirect('temperature.php');
