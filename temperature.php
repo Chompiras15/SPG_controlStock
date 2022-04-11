@@ -27,7 +27,7 @@
   if( $SuperUser["sede"]=="E-Chimbote") $table="temp_exalmar_chim";
   if( $SuperUser["sede"]=="E-Chicama") $table="temp_exalmar_mala";
   
-  $all_categories = find_all($table)
+  $all_temperature = find_all($table)
 ?>
 
 
@@ -85,6 +85,7 @@
                             <th class="text-center" style="width: 10px;">Cañon_7</th>
                             <th class="text-center" style="width: 10px;">Cañon_8</th>
                             <th class="text-center" style="width: 10px;">Cañon_9</th>
+                            <th class="text-center" style="width: 10px;">Promedio</th>
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
 
@@ -95,34 +96,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($all_categories as $cat):?>
+                        <?php foreach ($all_temperature as $temp):?>
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
-                            <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_1'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_2'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_3'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_4'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_5'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_6'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_7'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_8'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cañon_9'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['supervisor'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['fecha'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
-                                <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
-
-
-
+                            <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter4'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter5'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter6'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter7'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter8'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter9'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="edit_temperature.php?id=<?php echo (int)$cat['id'];?>"
+                                    <a href="edit_temperature.php?id=<?php echo (int)$temp['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>
-                                    <a href="delete_temperature.php?id=<?php echo (int)$cat['id'];?>"
+                                    <a href="delete_temperature.php?id=<?php echo (int)$temp['id'];?>"
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
