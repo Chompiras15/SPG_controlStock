@@ -80,7 +80,7 @@
                             <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
-                            <th class="text-center" style="width: 10px;">Temperatura</th>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chimbote"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
 
@@ -99,9 +99,13 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php if((int)$cat['temperatura']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
-                            <?php if((int)$cat['temperatura']>=39 && (int)$cat['temperatura']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
-                            <?php if((int)$cat['temperatura']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chimbote"){?>
+
+                            <?php if((float)$cat['temperatura']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+                            <?php if((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+                            <?php if((float)$cat['temperatura']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+
+                            <?php } ?>
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
@@ -221,7 +225,7 @@
 
         });
         // sumamos y mostramos el total
-        var tot = table.column(3).data().sum();
+        var tot = table.column(2).data().sum();
         $("#total").text(tot);
 
 
