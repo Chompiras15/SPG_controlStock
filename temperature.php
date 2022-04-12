@@ -92,8 +92,7 @@
                             <th class="text-center" style="width: 10px;">Fecha</th>
 
 
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
-                                style="width: 100px;">Almacen</th> <?php } ?>
+                            
                             <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
                     </thead>
@@ -102,9 +101,9 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
-                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
                             <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
