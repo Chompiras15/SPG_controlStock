@@ -38,7 +38,6 @@
     /*estilos para la tabla*/
     table th {
         background-color: #001f3f;
-        ;
         color: white;
     }
     </style>
@@ -84,8 +83,6 @@
                         <tr>
                             <!-- <th class="text-center" style="width: 5px;">Id</th> -->
                             <th class="text-center" style="width: 30px;">Codigo</th>
-                            <th class="text-center" style="width: 10px;">Promedio</th>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 10px;">Almacen</th><?php } ?>
                             <th class="text-center" style="width: 10px;">Cañon_1</th>
                             <th class="text-center" style="width: 10px;">Cañon_2</th>
                             <th class="text-center" style="width: 50px;">Cañon_3</th>
@@ -95,6 +92,9 @@
                             <th class="text-center" style="width: 10px;">Cañon_7</th>
                             <th class="text-center" style="width: 10px;">Cañon_8</th>
                             <th class="text-center" style="width: 10px;">Cañon_9</th>
+                            <th class="text-center" style="width: 10px;">Promedio</th>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 10px;">Almacen</th><?php } ?>
+                           
                          
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
@@ -109,11 +109,7 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
-                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
-                            
+                           
                             <?php addFilter($temp,"filter1");
                             addFilter($temp,"filter2");
                             addFilter($temp,"filter3");
@@ -123,6 +119,10 @@
                             addFilter($temp,"filter7");
                             addFilter($temp,"filter8");
                             addFilter($temp,"filter9");?>
+                             <?php if((float)$temp['promedio']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
                             
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
