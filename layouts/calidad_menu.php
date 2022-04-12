@@ -21,7 +21,7 @@
     </li>
     <li>
         <a href="temperature.php">
-            <i class="glyphicon glyphicon-picture"></i>
+           <i class="glyphicon glyphicon-filter"></i>
             <span>Temperaturas</span>
         </a>
     </li>
