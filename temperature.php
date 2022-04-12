@@ -16,16 +16,16 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(5);
-  if( $SuperUser["sede"]=="T-Chimb") $table="temp_tasachimbote";
-  if( $SuperUser["sede"]=="T-Samanco") $table="temp_samanco";
-  if( $SuperUser["sede"]=="T-Supe") $table="temp_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="temp_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="temp_callao";
-  if( $SuperUser["sede"]=="T-Pisco") $table="temp_pisco";
-  if( $SuperUser["sede"]=="T-Atico") $table="temp_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $table="temp_matarani";
-  if( $SuperUser["sede"]=="E-Chimbote") $table="temp_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $table="temp_exalmar_mala";
+  if( $SuperUser["sede"]=="T-Chimb") {$table="temp_tasachimbote";$tableSed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$table="temp_samanco";$tableSed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$table="temp_supe";$tableSed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta") {$table="temp_vegueta";$tableSed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$table="temp_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$table="temp_pisco";$tableSed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$table="temp_atico";$tableSed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$table="temp_matarani"; $tableSed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$table="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$table="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
   $all_temperature = find_all($table)
 ?>
@@ -76,6 +76,7 @@
                         <tr>
                             <!-- <th class="text-center" style="width: 5px;">Id</th> -->
                             <th class="text-center" style="width: 30px;">Codigo</th>
+                            <th class="text-center" style="width: 10px;">Promedio</th>
                             <th class="text-center" style="width: 10px;">Cañon_1</th>
                             <th class="text-center" style="width: 10px;">Cañon_2</th>
                             <th class="text-center" style="width: 50px;">Cañon_3</th>
@@ -85,7 +86,7 @@
                             <th class="text-center" style="width: 10px;">Cañon_7</th>
                             <th class="text-center" style="width: 10px;">Cañon_8</th>
                             <th class="text-center" style="width: 10px;">Cañon_9</th>
-                            <th class="text-center" style="width: 10px;">Promedio</th>
+                         
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
 
@@ -100,6 +101,9 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
+                            <?php if((int)$temp['promedio']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((int)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((int)$temp['promedio']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
                             <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
@@ -109,7 +113,7 @@
                             <td><?php echo remove_junk(ucfirst($temp['filter7'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter8'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter9'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td>
+                           
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>

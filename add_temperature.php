@@ -16,16 +16,17 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(5);
-  if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
-  if( $SuperUser["sede"]=="T-Samanco") $tabletemp="temp_samanco";
-  if( $SuperUser["sede"]=="T-Supe") $tabletemp="temp_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $tabletemp="temp_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $tabletemp="temp_callao";
-  if( $SuperUser["sede"]=="T-Pisco") $tabletemp="temp_pisco";
-  if( $SuperUser["sede"]=="T-Atico") $tabletemp="temp_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $tabletemp="temp_matarani";
-  if( $SuperUser["sede"]=="E-Chimbote") $tabletemp="temp_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $tabletemp="temp_exalmar_mala";
+  if( $SuperUser["sede"]=="T-Chimb") {$tabletemp="temp_tasachimbote";$tableSed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$tabletemp="temp_samanco";$tableSed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$tabletemp="temp_supe";$tableSed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta") {$tabletemp="temp_vegueta";$tableSed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$tabletemp="temp_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$tabletemp="temp_pisco";$tableSed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$tabletemp="temp_atico";$tableSed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$tabletemp="temp_matarani"; $tableSed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tabletemp="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tabletemp="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
+  
 
   $all_temperaturas = find_all($tabletemp)
 ?>
@@ -53,34 +54,60 @@
 
     if(empty($errors))
     {
-        $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
 
-        if($SuperUser["sede"]=="E-Chimbote"){
-            $sql  = "INSERT INTO $tabletemp (";
-            $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
-            $sql .=") VALUES (";
-            $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$tem_almacen}'";
-            $sql .=")";
-            $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
+        $findAlmaRuma = find_by_codRuma( $tableSed, $_POST[ 'codRuma' ] );
+
+        if($findAlmaRuma)
+        {
+            $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
+
+            if($SuperUser["sede"]=="E-Chimbote")
+            {
+                $sql  = "INSERT INTO $tabletemp (";
+                $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
+                $sql .=") VALUES (";
+                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$tem_almacen}'";
+                $sql .=")";
+                $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
+
+            }else{
+
+                $sql  = "INSERT INTO $tabletemp (";
+                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio";
+                $sql .=") VALUES (";
+                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}'";
+                $sql .=")";
+                $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
+            }
+                
+            if($db->query($sql))
+            {   
+                $sql   = "UPDATE $tableSed SET";
+                $sql  .= " temperatura ='{$promedio}'";
+                $sql .= " WHERE cod_ruma='{$findAlmaRuma['cod_ruma']}'";
+                
+                $result = $db->query( $sql );
+                if ( $result && $db->affected_rows() == 1 ) 
+                {
+                    $session->msg( 's', 'Temperatura agregado con Exito' );
+                    redirect( 'temperature.php', false );
+                } else {
+                    $session->msg( 'd', 'Lo siento, No se añadio la temperatura.' );
+                    redirect( 'temperature.php', false );
+                }
+              
+            } else {
+
+                $session->msg("d", "Lo siento, No se añadio la temperatura.");
+                redirect('temperature.php',false);
+            }
 
         }else{
+            $session->msg("d", "Verifique el codigo de la Ruma.");
+                redirect('temperature.php',false);
+        }
 
-            $sql  = "INSERT INTO $tabletemp (";
-            $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio";
-            $sql .=") VALUES (";
-            $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}'";
-            $sql .=")";
-            $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
-        }
-            
-        if($db->query($sql))
-        {
-            $session->msg("s", "Monitoreo agregado exitosamente.");
-            redirect('temperature.php',false);
-        } else {
-            $session->msg("d", "Lo siento, registro falló");
-            redirect('temperature.php',false);
-        }
+        
 
     } else {
         $session->msg("d", $errors);
