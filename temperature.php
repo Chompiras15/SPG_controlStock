@@ -103,7 +103,7 @@
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
                             <?php if((float)$temp['promedio']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
                             <?php if((float)$temp['promedio']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
                             <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>

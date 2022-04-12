@@ -74,7 +74,7 @@
                     <thead>
 
                         <tr>
-                            <th class="text-center" style="width: 5px;">Id</th>
+                            
                             <th class="text-center" style="width: 30px;">Codigo</th>
                             <th class="text-center" style="width: 10px;">Sector</th>
                             <th class="text-center" style="width: 10px;">Sacos</th>
@@ -93,7 +93,7 @@
                     <tbody>
                         <?php foreach ($all_categories as $cat):?>
                         <tr>
-                            <td class="text-center"><?php echo count_id();?></td>
+                           
                             <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
