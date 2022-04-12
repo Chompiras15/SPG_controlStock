@@ -143,7 +143,7 @@ $sales = dailySales( $tableActi, $year, $month );
     <script>
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
-            responsive: true,
+            responsive: false,
             dom: 'B<"clear">lfrtp',
             fixedColumns: true,
             fixedHeader: true,
