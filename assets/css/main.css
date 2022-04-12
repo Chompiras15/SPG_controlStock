@@ -1,3 +1,4 @@
+
 input[type=time] {
   margin: 0 0 10px 0;
   line-height: 15px !important;
@@ -507,6 +508,7 @@ header>.logo {
 }
 
 .sidebar {
+  overflow: auto;
   position: fixed;
   z-index: 10;
   left: 0;
@@ -780,6 +782,7 @@ img.img-size-2 {
 @media screen and (max-width:800px) {
   .sidebar {
     left: -100%;
+  
   }
 
   .logo {
