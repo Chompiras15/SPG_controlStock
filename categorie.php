@@ -139,7 +139,7 @@
 
     <?php include_once('layouts/footer.php'); ?>
 
-    <!-- Busqueda por columna -->
+    <!-- Busqueda por columnas -->
 
     <script>
     $(document).ready(function() {
