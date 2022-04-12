@@ -1,7 +1,7 @@
 <?php
   $page_title = 'Editar Cuenta';
   require_once('includes/load.php');
-   page_require_level(5);
+   page_require_level(4);
 ?>
 <?php
 //update user image

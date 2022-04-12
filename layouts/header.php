@@ -76,12 +76,9 @@
       <?php include_once('user_menu.php');?>
 
       <?php elseif($user['user_level'] === '4'): ?>
-        <!-- Cliente menu -->
+        <!-- User menu -->
       <?php include_once('cliente_menu.php');?>
-        
-       <?php elseif($user['user_level'] === '5'): ?>
-        <!-- Calidad menu -->
-      <?php include_once('calidad_menu.php');?>
+
 
       <?php endif;?>
 
