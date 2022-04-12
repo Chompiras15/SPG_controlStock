@@ -59,7 +59,7 @@
 
         if($findAlmaRuma)
         {
-            $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
+            $promedio=((float)$tem_1+(float)$tem_2+(float)$tem_3+(float)$tem_4+(float)$tem_5+(float)$tem_6+(float)$tem_7+(float)$tem_8+(float)$tem_9)/9;
 
             if($SuperUser["sede"]=="E-Chimbote")
             {

@@ -15,16 +15,17 @@
   page_require_level(5);
   $tabletemp = "";
   $SuperUser = current_user();
-if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
-  if( $SuperUser["sede"]=="T-Samanco") $tabletemp="temp_samanco";
-  if( $SuperUser["sede"]=="T-Supe") $tabletemp="temp_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $tabletemp="temp_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $tabletemp="temp_callao";
-  if( $SuperUser["sede"]=="T-Pisco") $tabletemp="temp_pisco";
-  if( $SuperUser["sede"]=="T-Atico") $tabletemp="temp_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $tabletemp="temp_matarani";
-  if( $SuperUser["sede"]=="E-Chimbote") $tabletemp="temp_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $tabletemp="temp_exalmar_mala";
+  if( $SuperUser["sede"]=="T-Chimb") {$tabletemp="temp_tasachimbote";$tableSed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Samanco") {$tabletemp="temp_samanco";$tableSed="sede_samanco";}
+  if( $SuperUser["sede"]=="T-Supe") {$tabletemp="temp_supe";$tableSed="sede_supe";}
+  if( $SuperUser["sede"]=="T-Vegueta") {$tabletemp="temp_vegueta";$tableSed="sede_vegueta";}
+  if( $SuperUser["sede"]=="T-Callao") {$tabletemp="temp_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Pisco") {$tabletemp="temp_pisco";$tableSed="sede_pisco";}
+  if( $SuperUser["sede"]=="T-Atico") {$tabletemp="temp_atico";$tableSed="sede_atico";}
+  if( $SuperUser["sede"]=="T-Matarani") {$tabletemp="temp_matarani"; $tableSed="sede_matarani";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tabletemp="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tabletemp="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
+  
 ?>
 <?php
   //Display all temperature.
@@ -59,24 +60,41 @@ if(isset($_POST['edit_temperature']))
   if(empty($errors))
   {
 
-    $promedio=((int)$tem_1+(int)$tem_2+(int)$tem_3+(int)$tem_4+(int)$tem_5+(int)$tem_6+(int)$tem_7+(int)$tem_8+(int)$tem_9)/9;
+    $promedio=((float)$tem_1+(float)$tem_2+(float)$tem_3+(float)$tem_4+(float)$tem_5+(float)$tem_6+(float)$tem_7+(float)$tem_8+(float)$tem_9)/9;
+    $findAlmaRuma = find_by_codRuma( $tableSed,$_POST[ 'codRuma' ]);
+    
+    if($findAlmaRuma)
+    {
+        $sql   = "UPDATE $tabletemp SET";
+        $sql  .=" codRuma ='{$tem_ruma}', filter1 ='{$tem_1}',";
+        $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', promedio ='{$promedio}' , supervisor ='{$tem_supervisor}'";
+        $sql .= " WHERE id='{$temperature['id']}'";
 
+        if($db->query($sql))
+        {
+          $sql   = "UPDATE $tableSed SET";
+          $sql  .= " temperatura ='{$promedio}'";
+          $sql .= " WHERE cod_ruma='{$findAlmaRuma['cod_ruma']}'";
+          
+          $result = $db->query( $sql );
 
-   
-      $sql   = "UPDATE $tabletemp SET";
-      $sql  .=" codRuma ='{$tem_ruma}', filter1 ='{$tem_1}',";
-      $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', promedio ='{$promedio}' , supervisor ='{$tem_supervisor}'";
-      $sql .= " WHERE id='{$temperature['id']}'";
-   
-     $result = $db->query($sql);
-     if($result && $db->affected_rows() === 1) {
-       $session->msg("s", "Temperatura actualizada con éxito.");
-       redirect('temperature.php',false);
-     } else {
-       $session->msg("d", "Lo siento, actualización falló.");
-       redirect('temperature.php',false);
-     }
-
+          if ( $result && $db->affected_rows() == 1 ) 
+          {
+              $session->msg( 's', 'Temperatura actualizada con éxito.' );
+              redirect( 'temperature.php', false );
+          } else {
+              $session->msg( 'd', 'Lo siento, No se añadio la temperatura.' );
+              redirect( 'temperature.php', false );
+          }
+        } else {
+          $session->msg("d", "Lo siento, actualización falló.");
+          redirect('temperature.php',false);
+        }
+    
+    }else{
+      $session->msg("d", "NO SE ENCONTRO EL CODIGO DE RUMA");
+      redirect('temperature.php',false);
+    }
   } else {
     $session->msg("d", $errors);
     redirect('temperature.php',false);

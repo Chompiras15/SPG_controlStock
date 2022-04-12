@@ -77,6 +77,7 @@
                             <!-- <th class="text-center" style="width: 5px;">Id</th> -->
                             <th class="text-center" style="width: 30px;">Codigo</th>
                             <th class="text-center" style="width: 10px;">Promedio</th>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 10px;">Almacen</th><?php } ?>
                             <th class="text-center" style="width: 10px;">Cañon_1</th>
                             <th class="text-center" style="width: 10px;">Cañon_2</th>
                             <th class="text-center" style="width: 50px;">Cañon_3</th>
@@ -101,9 +102,10 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
-                            <?php if((int)$temp['promedio']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((int)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((int)$temp['promedio']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:yellow;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:green;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
                             <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
@@ -116,8 +118,7 @@
                            
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
-
+                           
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a href="edit_temperature.php?id=<?php echo (int)$temp['id'];?>"
