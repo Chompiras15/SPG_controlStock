@@ -47,7 +47,15 @@
 
 <body>
 
-    <?php include_once('layouts/header.php'); ?>
+    <?php include_once('layouts/header.php'); 
+    
+    function addFilter($temp,$filter)
+    {
+        if((float)$temp[$filter]>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
+        <?php if((float)$temp[$filter]>=39 && (float)$temp[$filter]<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
+        <?php if((float)$temp[$filter]<39)  {?> <td><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php }    
+    }
+    ?>
 
     <div class="row">
         <div class="col-md-12">
@@ -60,7 +68,7 @@
             <div class="panel-heading">
                 <strong>
                     <span class="glyphicon glyphicon-th"></span>
-                    <span>Lista de Rumas</span>
+                    <span>Monitoreo de Temperaturas</span>
 
                 </strong>
 
@@ -101,20 +109,21 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
-                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']>=39 && (float)$temp['promedio']<45)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                            <?php if((float)$temp['promedio']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
-                            <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter4'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter5'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter6'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter7'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter8'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter9'])); ?></td>
-                           
+                            
+                            <?php addFilter($temp,"filter1");
+                            addFilter($temp,"filter2");
+                            addFilter($temp,"filter3");
+                            addFilter($temp,"filter4");
+                            addFilter($temp,"filter5");
+                            addFilter($temp,"filter6");
+                            addFilter($temp,"filter7");
+                            addFilter($temp,"filter8");
+                            addFilter($temp,"filter9");?>
+                            
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
                            
