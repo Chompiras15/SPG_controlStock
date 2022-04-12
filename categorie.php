@@ -15,7 +15,7 @@
   //require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
-  page_require_level(4);
+  page_require_level(5);
   if( $SuperUser["sede"]=="T-Chimb") $table="sede_tasachimbote";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
@@ -81,6 +81,7 @@
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
                             <th class="text-center" style="width: 50px;">Observacion</th>
+                            <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
 
 
@@ -99,6 +100,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>

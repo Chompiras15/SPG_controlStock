@@ -27,15 +27,9 @@ if( $SuperUser["sede"]=="T-Chimb") $tabletemp="temp_tasachimbote";
   if( $SuperUser["sede"]=="E-Chicama") $tabletemp="temp_exalmar_mala";
 ?>
 <?php
-<<<<<<< HEAD
   //Display all temperature.
   $temperature = find_by_id($tabletemp,(int)$_GET['id']);
   if(!$temperature){
-=======
-  //Display all catgories.
-  $temperature1 = find_by_id($tabletemp,(int)$_GET['id']);
-  if(!$temperature1){
->>>>>>> parent of 9e11721 (corregi los errores del panel, ya funciona)
     $session->msg("d","No se encontro el registro id.");
     redirect('temperature.php');
   }

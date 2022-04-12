@@ -28,6 +28,12 @@
     <!-- --------------------------------------------------------------------------------- -->
     <!-- SUM()  Datatables-->
     <script src='https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js'></script>
+    <!--  extension responsive  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <!-- extension responsive -->
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    
     </body>
 
     </html>

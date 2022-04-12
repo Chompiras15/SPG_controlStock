@@ -79,6 +79,10 @@
         <!-- User menu -->
       <?php include_once('cliente_menu.php');?>
 
+      <?php elseif($user['user_level'] === '5'): ?>
+        <!-- User menu -->
+      <?php include_once('calidad_menu.php');?>
+
 
       <?php endif;?>
 
