@@ -4,9 +4,18 @@ input[type=time] {
   line-height: 15px !important;
 }
 
+.paginate_button
+{
+  padding: 0px !important;
+}
+.dataTables_length
+{
+  margin: 25px;
+}
 
 .panel-body {
   overflow: auto;
+  width: 100%;
 }
 
 .sidebar li {

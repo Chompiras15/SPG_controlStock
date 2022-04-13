@@ -92,7 +92,6 @@ $sales = monthlySales( $tableActi, $year );
                     <table id="tabla" class='table table-bordered table-striped'>
                         <thead>
                             <tr>
-                                <th class='text-center' style='width: 50px;'>ID</th>
                                 <th> Actividad </th>
                                 <th class='text-center' style='width: 15%;'> Detalle</th>
                                 <th class='text-center' style='width: 15%;'> Observacion</th>
@@ -106,8 +105,7 @@ $sales = monthlySales( $tableActi, $year );
                         <tbody>
                             <?php foreach ( $sales as $sale ):?>
                             <tr>
-                                <td class='text-center'><?php echo count_id();
-?></td>
+                                
                                 <td class='text-center'><?php echo remove_junk( $sale[ 'nameActivity' ] );
 ?></td>
                                 <td class='text-center'><?php echo remove_junk( $sale[ 'details' ] );
@@ -153,12 +151,13 @@ $sales = monthlySales( $tableActi, $year );
                         }],
                         // cambiamos el lenguaje
                         language: {
-                            "lengthMenu": "Mostrar _MENU_ registros",
+                            "lengthMenu": "_MENU_",
                             "zeroRecords": "No se encontraron resultados",
                             "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                             "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                             "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                            "sSearch": "Buscar:",
+                            "sSearch": "",
+                            "searchPlaceholder": "Buscar",
                             "oPaginate": {
                                 "sFirst": "Primero",
                                 "sLast": "Último",

@@ -97,7 +97,7 @@ $sales = dailySales( $tableActi, $year, $month );
                     <table id="tabla" class='table table-bordered table-striped'>
                         <thead>
                             <tr>
-                                <th class='text-center' style='width: 20px;'>ID</th>
+                              
                                 <th class='text-center' style='width: 20px;'> Actividad</th>
                                 <th class='text-center' style='width: 20px;'> Detalle </th>
                                 <th class='text-center' style='width: 20px;'> Observacion </th>
@@ -110,8 +110,7 @@ $sales = dailySales( $tableActi, $year, $month );
                         <tbody>
                             <?php foreach ( $sales as $sale ):?>
                             <tr>
-                                <td class='text-center'><?php echo count_id();
-?></td>
+                             
                                 <td><?php echo remove_junk( $sale[ 'nameActivity' ] );
 ?></td>
                                 <td><?php echo remove_junk( $sale[ 'details' ] );
@@ -161,12 +160,13 @@ $sales = dailySales( $tableActi, $year, $month );
                 sortable: false
             }],
             language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
+                "lengthMenu": "_MENU_",
                 "zeroRecords": "No se encontraron resultados",
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
+                "sSearch": "",
+                "searchPlaceholder": "Buscar",
                 "oPaginate": {
                     "sFirst": "Primero",
                     "sLast": "Último",
