@@ -3,7 +3,16 @@ input[type=time] {
   margin: 0 0 10px 0;
   line-height: 15px !important;
 }
+.contTitleTT
+{
+  display: flex;align-items: center
+}
 
+
+.contButtonTT
+{
+  right: 30px;position: absolute;
+}
 .paginate_button
 {
   padding: 0px !important;
@@ -845,7 +854,8 @@ img.img-size-2 {
 }
 
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:750px) 
+{
 
   .header-date {
     display: none;
@@ -930,6 +940,13 @@ img.img-size-2 {
 
 }
 
+@media screen and (max-width:800px) {
+  
+  .header_sede {
+    position: absolute;
+    left: 20px;
+  }
+}
 .panel-icon img {
   height: 100%;
   width: 80%;
@@ -937,10 +954,10 @@ img.img-size-2 {
 }
 
 
-/*@media screen and (max-width:600px)
+@media screen and (max-width:470px)
 {
-  .clearfix
+  .contButtonTT
   {
-    display: none;
+    right: 0px;position: relative;
   }
-}*/
+}

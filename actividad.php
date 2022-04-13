@@ -72,13 +72,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading clearfix">
+                <div class="panel-heading clearfix contTitleTT">
                     <strong>
                         <span class="glyphicon glyphicon-th"></span>
                         <span>Lista de Actividades</span>
 
                     </strong>
-                    <a href="add_actividad.php" class="btn btn-info pull-right btn-sm">Agregar Actividad</a>
+                    <a href="add_actividad.php" class="btn btn-info pull-right btn-sm contButtonTT">Agregar Actividad</a>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered " id="tabla">
