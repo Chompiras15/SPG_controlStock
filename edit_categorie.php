@@ -39,8 +39,8 @@
 if(isset($_POST['edit_cat']))
 {
 
-  if( $SuperUser["sede"]=="E-Chimbote") $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation','almacen');
-  else $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho');
+$req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+
  
   validate_fields($req_field);
 
