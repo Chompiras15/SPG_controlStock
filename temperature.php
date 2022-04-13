@@ -61,10 +61,10 @@
             <?php echo display_msg($msg); ?>
         </div>
     </div>
-
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading clearfix">
                 <strong>
                     <span class="glyphicon glyphicon-th"></span>
                     <span>Monitoreo de Temperaturas</span>
@@ -143,11 +143,16 @@
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </table>
+
+                    </table>
+                </div>
+
             </div>
+
         </div>
+
     </div>
-    </div>
+
     </div>
 
     <?php include_once('layouts/footer.php'); ?>
