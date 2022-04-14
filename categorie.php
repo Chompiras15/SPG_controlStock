@@ -101,13 +101,6 @@
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?>
-
-                            <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:#FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
-                            <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
-
-                            <?php } ?>
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
@@ -215,11 +208,15 @@
 
             "createdRow": function(row, data, index) {
                 // elegimos la columna para sumae
+                
             },
+           
             "drawCallback": function() {
                 //alert("La tabla se está recargando");
+                
                 var api = this.api();
                 $(api.column(3).footer()).html(
+                   
                     'Total: ' + api.column(3, {
                         page: 'current'
                     }).data().sum()

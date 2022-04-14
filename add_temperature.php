@@ -24,7 +24,7 @@
   if( $SuperUser["sede"]=="T-Pisco") {$tabletemp="temp_pisco";$tableSed="sede_pisco";}
   if( $SuperUser["sede"]=="T-Atico") {$tabletemp="temp_atico";$tableSed="sede_atico";}
   if( $SuperUser["sede"]=="T-Matarani") {$tabletemp="temp_matarani"; $tableSed="sede_matarani";}
-  if( $SuperUser["sede"]=="E-Chimbote") {$tabletemp="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tabletemp="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
   if( $SuperUser["sede"]=="E-Chicama") {$tabletemp="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
 
@@ -64,9 +64,13 @@
             if($SuperUser["sede"]=="E-Chimbote")
             {
                 $sql  = "INSERT INTO $tabletemp (";
+<<<<<<< Updated upstream
                 $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
+=======
+                $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,promedio,supervisor";
+>>>>>>> Stashed changes
                 $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$tem_almacen}'";
+                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
 

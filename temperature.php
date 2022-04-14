@@ -24,7 +24,7 @@
   if( $SuperUser["sede"]=="T-Pisco") {$table="temp_pisco";$tableSed="sede_pisco";}
   if( $SuperUser["sede"]=="T-Atico") {$table="temp_atico";$tableSed="sede_atico";}
   if( $SuperUser["sede"]=="T-Matarani") {$table="temp_matarani"; $tableSed="sede_matarani";}
-  if( $SuperUser["sede"]=="E-Chimbote") {$table="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$table="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
   if( $SuperUser["sede"]=="E-Chicama") {$table="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
   $all_temperature = find_all($table)
@@ -109,6 +109,21 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
+<<<<<<< Updated upstream
+=======
+                            <?php if((int)$temp['promedio']>=45) {?> <td style="background:#FD756A;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((int)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:#FAE22E"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <?php if((int)$temp['promedio']<39)  {?> <td style="background:#A4FA6F;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
+                            <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter4'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter5'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter6'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter7'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter8'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($temp['filter9'])); ?></td>
+>>>>>>> Stashed changes
                            
                             <?php addFilter($temp,"filter1");
                             addFilter($temp,"filter2");
