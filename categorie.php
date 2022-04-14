@@ -100,6 +100,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+<<<<<<< Updated upstream
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chimbote"){?>
 
                             <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
@@ -108,6 +109,11 @@
                             <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
 
                             <?php } ?>
+=======
+                            <?php if((int)$cat['temperatura']>=45) {?> <td style="background:#FD756A;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+                            <?php if((int)$cat['temperatura']>=39 && (int)$cat['temperatura']<45)  {?> <td style="background:#FAD04E;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+                            <?php if((int)$cat['temperatura']<39)  {?> <td style="background: #A4FA6F;"><?php echo remove_junk(ucfirst($cat['temperatura'])); ?></td><?php } ?>
+>>>>>>> Stashed changes
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
@@ -215,11 +221,15 @@
 
             "createdRow": function(row, data, index) {
                 // elegimos la columna para sumae
+                
             },
+           
             "drawCallback": function() {
                 //alert("La tabla se está recargando");
+                
                 var api = this.api();
                 $(api.column(3).footer()).html(
+                   
                     'Total: ' + api.column(3, {
                         page: 'current'
                     }).data().sum()
