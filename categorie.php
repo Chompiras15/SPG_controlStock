@@ -81,7 +81,7 @@
                             <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chimbote"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
 
@@ -107,7 +107,7 @@
                             <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
                             <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
 
-                            <?php } ?>
+                     
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
