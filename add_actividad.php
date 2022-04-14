@@ -90,26 +90,27 @@
         <?php echo display_msg($msg); ?>
     </div>
 </div>
-<div class="row">
 
-    <div class="col-md-5">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>
-                    <span class="glyphicon glyphicon-th"></span>
-                    <span>Agregar Actividad</span>
-                </strong>
-            </div>
-            <?php  
-        date_default_timezone_set("America/Lima");
-        $fecha_actual=date("Y-m-s H:i:s");   
-         ?>
-            <div class="panel-body">
-                <form method="post" action="add_actividad.php">
-                    <div class="form-group">
-                        <label for="nameActivity">Selecciona Actividad:</label>
-                        <select class="form-control" name="nameActivity">
-                            <!-- Opciones de la lista -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>
+            <span class="glyphicon glyphicon-th"></span>
+            <span>Agregar Actividad</span>
+        </strong>
+
+    </div>
+
+    <div class="panel-body">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-12 cont_form">
+            <form method="post" action="add_actividad.php">
+
+            
+                <div class="material-textfield">
+                    <label class="select" for="nameActivity">Selecciona Actividad:</label>
+                         <select class="form-control" name="nameActivity">
+                        <!-- Opciones de la lista -->
                             <option value="Descarga/Carga eslinga" selected>Descarga/Carga eslinga</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
@@ -124,40 +125,65 @@
                             <option value="Embarque">Embarque</option>
                             <option value="Manteniminto">Manteniminto</option>
                         </select>
-                        <input type="text" class="form-control" name="details" placeholder="Detalle" required>
-                        <input type="text" class="form-control" name="observation" placeholder="Observacion" required>
-                        <input type="text" class="form-control" name="auxiliares" placeholder="Auxiliares" required>
-                        <label for="hora_ini">Hora de inicio</label>
-                        <input type="time" class="form-control" name="hora_ini" placeholder="Inició" required>
-                        <label for="hora_fin">Hora de fin:</label>
-                        <input type="time" class="form-control" name="hora_fin" placeholder="Terminó">
-                        <input type="date" class="form-control" name="fecha" placeholder="Fecha" required>
-                        <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                </div>
+                <div class="material-textfield">
+                    <input type="text" name="details" placeholder=" " required>
+                    <label>Detalle</label>
+                </div>
 
-                        <div class="material-textfield">
-                            <label class="select" for="almacen">Nombre de Almacen</label>
-                            <select class="form-control" name="almacen">
-                                <!-- Opciones de la lista -->
-                                <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
-                                <option value="Blackar">Almacen de Blackar</option>
-                                <option value="Bpo">Almacen de Bpo</option>
-                                <option value="Promosa">Almacen de Promasa</option>
-                            </select>
-                        </div>
+                <div class="material-textfield">
+                    <input type="text"  name="observation" placeholder=" " required>
+                    <label>Observacion</label> 
+                </div>
 
-                        <?php } ?>
+                <div class="material-textfield">
+                    <input type="text" name="auxiliares" placeholder=" " required>  
+                    <label>Auxiliares</label>
+                </div>
 
+                <div class="material-textfield">
+                    <label class="select">Hora de Inicio</label>
+                    <input type="time"  name="hora_ini" placeholder="Inició" required>
+                      
+
+                </div>
+                <div class="material-textfield">
+                    <label class="select">Hora de Fin</label>
+                    <input type="time"  name="hora_fin" placeholder="Terminó">
+
+                </div>
+                <div class="material-textfield">
+                    <label class="select">Fecha</label>
+                    <input type="date"  name="fecha" placeholder="Fecha" required>
+                    
+                </div>
+                
+                <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+
+                    <div class="material-textfield">
+                        <label class="select" for="almacen">Nombre de Almacen</label>
+                        <select class="form-control" name="almacen">
+                            <!-- Opciones de la lista -->
+                            <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                            <option value="Blackar">Almacen de Blackar</option>
+                            <option value="Bpo">Almacen de Bpo</option>
+                            <option value="Promosa">Almacen de Promasa</option>
+                        </select>
                     </div>
-
-                    <button type="submit" name="add_actividad" class="btn btn-primary">Agregar Actividad</button>
-
-                </form>
-            </div>
+                <?php } ?>
+              
 
 
+                <div class='form-group clearfix'>
+                    <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_actividad'
+                        class='btn btn-info'>Añadir Actividad</button>
+                </div>
+            </form>
+     
         </div>
     </div>
-
+</div>
+</div>
 
 
     <?php include_once('layouts/footer.php'); ?>

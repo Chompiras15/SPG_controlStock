@@ -33,7 +33,7 @@
 <?php
  if(isset($_POST['add_temperature']))
  {
-     if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
+     if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','almacen','supervisor');
      else $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
    
     validate_fields($req_field);
@@ -64,7 +64,7 @@
             if($SuperUser["sede"]=="E-Chimbote")
             {
                 $sql  = "INSERT INTO $tabletemp (";
-                $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
+                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
                 $sql .=") VALUES (";
                 $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$tem_almacen}'";
                 $sql .=")";
@@ -122,32 +122,79 @@
         <?php echo display_msg($msg); ?>
     </div>
 </div>
+
 <div class="row">
 
-    <div class="col-md-5">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>
-                    <span class="glyphicon glyphicon-th"></span>
-                    <span>Agregar Monitoreo</span>
-                </strong>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-th"></span>
+                <span>Agregar Monitoreo</span>
+            </strong>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
             </div>
-        
-            <div class="panel-body">
+            <div class="col-md-12 cont_form">
                 <form method="post" action="add_temperature.php">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="codRuma" placeholder="Codigo" required>
-                        <input type="number" class="form-control" name="filter1" placeholder="Cañon 1" required>
-                        <input type="number" class="form-control" name="filter2" placeholder="Cañon 2" required>
-                        <input type="number" class="form-control" name="filter3" placeholder="Cañon 3" required>
-                        <input type="number" class="form-control" name="filter4" placeholder="Cañon 4" required>
-                        <input type="number" class="form-control" name="filter5" placeholder="Cañon 5" required>
-                        <input type="number" class="form-control" name="filter6" placeholder="Cañon 6" required>
-                        <input type="number" class="form-control" name="filter7" placeholder="Cañon 7" required>
-                        <input type="number" class="form-control" name="filter8" placeholder="Cañon 8" required>
-                        <input type="number" class="form-control" name="filter9" placeholder="Cañon 9" required>
-                        <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
-                        <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                    <div class="material-textfield">
+                        <input type="text"  name="codRuma" placeholder=" " required>
+                        <label>Cod_Ruma</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input type="number" name="filter1" placeholder=" " required>
+                      
+                        <label>Cañon 1</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input type="number" name="filter2" placeholder=" " required>
+                        <label>Cañon 2</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input type="number" name="filter3" placeholder=" " required>
+                        <label>Cañon 3</label>
+
+                    </div>
+                    <div class="material-textfield">
+                        <input type="number" name="filter4" placeholder=" " required>
+                        <label>Cañon 4</label>
+
+                    </div>
+                    <div class="material-textfield">
+                        <input type="number" name="filter5" placeholder=" " required>
+                        <label>Cañon 5</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input type="number" name="filter6" placeholder=" " required>
+                        <label>Cañon 6</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input type="number" name="filter7" placeholder=" " required>
+                        <label>Cañon 7</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input type="number" name="filter8" placeholder=" " required>
+                        <label>Cañon 8</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input type="number" name="filter9" placeholder=" " required>
+                        <label>Cañon 9</label>
+                    </div>
+                     <div class="material-textfield">
+                        
+                        <input type="text" name="supervisor" placeholder=" " required>
+                        <label> Supervisor</label>
+                    </div>
+                    
+
+                    <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
 
                         <div class="material-textfield">
                             <label class="select" for="almacen">Nombre de Almacen</label>
@@ -160,19 +207,19 @@
                             </select>
                         </div>
 
-                        <?php } ?>
+                    <?php } ?>
+
+
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit'
+                            class='btn btn-info' name="add_temperature">Agregar Monitoreo</button>
 
                     </div>
-
-                    <button type="submit" name="add_temperature" class="btn btn-primary">Agregar Monitoreo</button>
-
                 </form>
+         
             </div>
-
-
         </div>
     </div>
-
-
+</div>
 
     <?php include_once('layouts/footer.php'); ?>

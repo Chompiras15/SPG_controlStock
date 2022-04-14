@@ -51,7 +51,7 @@ CREATE TABLE `activity_exalmar_chim` (
   `date` datetime NOT NULL,
   `almacen` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO activity_exalmar_chim VALUES("1","Descarga/Carga eslinga","50 Rumas","Ninguna","Ddd","19:30:00","19:36:00","2022-04-02","2022-04-03 02:34:28","Oslo");
 INSERT INTO activity_exalmar_chim VALUES("2","Descarga/Carga eslinga","ss","ss","ss","19:40:00","19:44:00","2022-04-02","2022-04-02 00:00:00","Oslo");
@@ -368,7 +368,7 @@ INSERT INTO sede_callao VALUES("18","1","CNO2101364","1000","2022-04-02","2022-0
 INSERT INTO sede_callao VALUES("19","1","CNO2101365","1000","2022-04-02","2022-04-02","PRIME","17","2 sacos por trasegar","0","2022-04-02 18:09:19");
 INSERT INTO sede_callao VALUES("20","1","CNO2101366","1000","2022-04-02","2022-04-02","PRIME","10","2 sacos rotos","0","2022-04-02 11:10:03");
 INSERT INTO sede_callao VALUES("21","1","CNO2101367","1000","2022-04-02","2022-04-02","PRIME","18","Todo en orden","0","2022-04-02 11:10:42");
-INSERT INTO sede_callao VALUES("22","5","Callo_0000","25","2022-04-06","2022-04-04","Super","5","Ninguna","1","2022-04-12 18:34:49");
+INSERT INTO sede_callao VALUES("22","5","Callo_0000","25","2022-04-06","2022-04-04","Super","5","Ninguna","10","2022-04-13 23:51:04");
 INSERT INTO sede_callao VALUES("23","1","ssss","1000","2022-04-06","2022-04-06","55","55","gg","0","2022-04-06 21:50:20");
 
 
@@ -387,12 +387,12 @@ CREATE TABLE `sede_exalmar_chim` (
   `almacen` varchar(50) NOT NULL,
   `date_almacenamiento` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO sede_exalmar_chim VALUES("6","5","Ex_005","50","2022-04-02","2022-04-02","s","55","nada","28.8889","Promosa","2022-04-12 18:09:12");
+INSERT INTO sede_exalmar_chim VALUES("6","5","Ex_005","50","2022-04-02","2022-04-02","s","55","nada","4","Promosa","2022-04-14 00:07:46");
 INSERT INTO sede_exalmar_chim VALUES("7","1","VEG2101345","5","2022-04-06","2022-04-06","super","5","ninfuna","0","Blackar","2022-04-06 20:55:56");
-INSERT INTO sede_exalmar_chim VALUES("8","1","MAT2101589","150","2022-04-06","2022-04-06","a","2","ninguna","0","Oslo","2022-04-06 20:57:52");
-INSERT INTO sede_exalmar_chim VALUES("9","5","E-chombote","10","2022-04-12","2022-04-12","10","10","ninguno","0","Oslo","2022-04-12 18:12:59");
+INSERT INTO sede_exalmar_chim VALUES("8","1","MAT2101589","150","2022-04-06","2022-04-06","a","2","ninguna","5","Oslo","2022-04-13 23:47:08");
+INSERT INTO sede_exalmar_chim VALUES("10","15","Newcode","5","2022-04-13","2022-04-13","A","5","ninguno","1","Oslo","2022-04-14 00:04:36");
 
 
 
@@ -540,18 +540,20 @@ CREATE TABLE `temp_callao` (
   `supervisor` varchar(50) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 INSERT INTO temp_callao VALUES("12","ATI022030","100","25","3","40","5","6","7","8","90","31.5556","Ola","2022-04-12 16:09:33");
 INSERT INTO temp_callao VALUES("13","ATI022030","50","6","9","8","7","4","1","22","30","15.2222","Jhames","2022-04-12 15:47:12");
 INSERT INTO temp_callao VALUES("14","ATI022030","4","4","4","44","4","4","4","44","4","12.8889","v","2022-04-12 15:47:50");
 INSERT INTO temp_callao VALUES("15","ATI022030","5","5","5","5","5","5","10","15","10","7.22222","OLAaaaa","2022-04-12 16:11:17");
 INSERT INTO temp_callao VALUES("16","Callo_0000","1","1","1","1","1","1","1","1","1","1","Jhames","2022-04-12 18:34:49");
+INSERT INTO temp_callao VALUES("17","Callo_0000","9","9","9","9","9","9","9","9","9","9","josue","2022-04-13 23:50:29");
+INSERT INTO temp_callao VALUES("18","Callo_0000","10","10","10","10","10","10","10","10","10","10","kakak","2022-04-13 23:51:04");
 
 
 
 CREATE TABLE `temp_exalmar_chim` (
-  `id` int(15) NOT NULL,
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `codRuma` varchar(50) NOT NULL,
   `promedio` float NOT NULL,
   `filter1` float NOT NULL,
@@ -567,9 +569,11 @@ CREATE TABLE `temp_exalmar_chim` (
   `supervisor` varchar(30) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-INSERT INTO temp_exalmar_chim VALUES("0","Ex_005","28.8889","10","41","15","14","18","50","80","20","12","Oslo","Javs","2022-04-12 18:09:12");
+INSERT INTO temp_exalmar_chim VALUES("1","Newcode","28.8889","10","41","15","14","18","50","80","20","12","Oslo","Javs","2022-04-14 00:01:32");
+INSERT INTO temp_exalmar_chim VALUES("2","Newcode","1","1","1","1","1","1","1","1","1","1","Oslo","1lalal","2022-04-14 00:04:36");
+INSERT INTO temp_exalmar_chim VALUES("3","Ex_005","4","4","4","4","4","4","4","4","4","4","Bpo","Jaime","2022-04-14 00:07:46");
 
 
 
@@ -606,7 +610,7 @@ CREATE TABLE `users` (
   CONSTRAINT `FK_user` FOREIGN KEY (`user_level`) REFERENCES `user_groups` (`group_level`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
-INSERT INTO users VALUES("1","Jhonatan ","Admin","d033e22ae348aeb5660fc2140aec35850c4da997","1","z5yuzxl01.png","1","2022-04-13 01:35:22","E-Chicama");
+INSERT INTO users VALUES("1","Jhonatan ","Admin","d033e22ae348aeb5660fc2140aec35850c4da997","1","z5yuzxl01.png","1","2022-04-13 16:34:45","E-Chimbote");
 INSERT INTO users VALUES("3","David","David","7c222fb2927d828af22f592134e8932480637c0d","3","any0e1on3.jpg","1","2022-04-05 06:37:22","T-Callao");
 INSERT INTO users VALUES("7","Jamhes","Jamhes","7c4a8d09ca3762af61e59520943dc26494f8941b","2","36xr45oe7.png","1","2022-04-05 09:20:11","T-Callao");
 INSERT INTO users VALUES("8","Tasa","Tasa","7c4a8d09ca3762af61e59520943dc26494f8941b","4","qoki4rwi8.jpg","1","2022-03-27 23:49:04","T-Callao");

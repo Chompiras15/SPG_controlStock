@@ -158,7 +158,6 @@
             <strong>
                 <span class="glyphicon glyphicon-th"></span>
                 <span>AÑADIR RUMA</span>
-
             </strong>
 
         </div>
@@ -166,7 +165,7 @@
         <div class="panel-body">
             <div class="col-md-3">
             </div>
-            <div class="col-md-6 cont_form">
+            <div class="col-md-12 cont_form">
                 <form method="post" action="add_categorie.php">
                     <div class="material-textfield">
                         <input placeholder=" " type="number" name="sector" required>
@@ -186,11 +185,11 @@
                         <label class="select">Fecha Produccion</label>
                         <input placeholder=" " type="date" name="date_vencimiento" required>
 
-                        <div class="material-textfield">
-                            <label class="select">Fecha Vencimiento</label>
-                            <input placeholder=" " type="date" name="date_producc" required>
+                    </div>
+                    <div class="material-textfield">
+                        <label class="select">Fecha Vencimiento</label>
+                        <input placeholder=" " type="date" name="date_producc" required>
 
-                        </div>
                     </div>
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="calidad" required>
@@ -226,7 +225,10 @@
                             class='btn btn-info'>Guardar</button>
                     </div>
                 </form>
+         
             </div>
         </div>
+    </div>
+</div>
 
-        <?php include_once('layouts/footer.php'); ?>
+<?php include_once('layouts/footer.php'); ?>
