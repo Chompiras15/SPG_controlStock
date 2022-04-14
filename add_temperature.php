@@ -137,15 +137,15 @@
                 <form method="post" action="add_temperature.php">
                     <div class="form-group">
                         <input type="text" class="form-control" name="codRuma" placeholder="Codigo" required>
-                        <input type="number" class="form-control" name="filter1" placeholder="Cañon 1" required>
-                        <input type="number" class="form-control" name="filter2" placeholder="Cañon 2" required>
-                        <input type="number" class="form-control" name="filter3" placeholder="Cañon 3" required>
-                        <input type="number" class="form-control" name="filter4" placeholder="Cañon 4" required>
-                        <input type="number" class="form-control" name="filter5" placeholder="Cañon 5" required>
-                        <input type="number" class="form-control" name="filter6" placeholder="Cañon 6" required>
-                        <input type="number" class="form-control" name="filter7" placeholder="Cañon 7" required>
-                        <input type="number" class="form-control" name="filter8" placeholder="Cañon 8" required>
-                        <input type="number" class="form-control" name="filter9" placeholder="Cañon 9" required>
+                        <input type="number" class="form-control" name="filter1" step="any" placeholder="Cañon 1" required>
+                        <input type="number" class="form-control" name="filter2" step="any" placeholder="Cañon 2" required>
+                        <input type="number" class="form-control" name="filter3" step="any"placeholder="Cañon 3" required>
+                        <input type="number" class="form-control" name="filter4"step="any" placeholder="Cañon 4" required>
+                        <input type="number" class="form-control" name="filter5" step="any" placeholder="Cañon 5" required>
+                        <input type="number" class="form-control" name="filter6" step="any" placeholder="Cañon 6" required>
+                        <input type="number" class="form-control" name="filter7" step="any" placeholder="Cañon 7" required>
+                        <input type="number" class="form-control" name="filter8" step="any" placeholder="Cañon 8" required>
+                        <input type="number" class="form-control" name="filter9" step="any" placeholder="Cañon 9" required>
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" required>
                         <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
 
