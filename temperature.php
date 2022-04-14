@@ -35,7 +35,7 @@
 
 <head>
     <style>
-    /*estilos para la tabla*/
+    /*estilos para la tabla sx*/
     table th {
         background-color: #001f3f;
         color: white;
