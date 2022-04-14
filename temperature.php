@@ -109,21 +109,6 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
-<<<<<<< Updated upstream
-=======
-                            <?php if((int)$temp['promedio']>=45) {?> <td style="background:#FD756A;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((int)$temp['promedio']>=39 && (int)$temp['promedio']<45)  {?> <td style="background:#FAE22E"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <?php if((int)$temp['promedio']<39)  {?> <td style="background:#A4FA6F;"><?php echo remove_junk(ucfirst($temp['promedio'])); ?></td><?php } ?>
-                            <td><?php echo remove_junk(ucfirst($temp['filter1'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter2'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter3'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter4'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter5'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter6'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter7'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter8'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['filter9'])); ?></td>
->>>>>>> Stashed changes
                            
                             <?php addFilter($temp,"filter1");
                             addFilter($temp,"filter2");

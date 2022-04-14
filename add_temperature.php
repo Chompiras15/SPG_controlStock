@@ -64,11 +64,7 @@
             if($SuperUser["sede"]=="E-Chimbote")
             {
                 $sql  = "INSERT INTO $tabletemp (";
-<<<<<<< Updated upstream
                 $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,almacen";
-=======
-                $sql .="codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,promedio,supervisor";
->>>>>>> Stashed changes
                 $sql .=") VALUES (";
                 $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}'";
                 $sql .=")";
