@@ -3,7 +3,7 @@
         SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
  Descripción:Muestra Todas Las actividades y Agrega adicionalmente
  Creado: 11/03/2022
- Chimbote Peru 
+ Chimbote Peru -
  ====================================================================
   
 -->
@@ -100,7 +100,8 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chimbote"){?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?>
+
 
                             <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
                             <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:#FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
