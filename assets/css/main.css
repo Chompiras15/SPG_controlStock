@@ -1,4 +1,7 @@
-
+.cont_form form
+{
+  margin: 15px;
+}
 input[type=time] {
   margin: 0 0 10px 0;
   line-height: 15px !important;
@@ -38,17 +41,21 @@ input[type=date] {
 }
 
 .material-textfield {
-  position: relative;
+  width: 47%;
+    position: relative;
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .material-textfield label {
   background: transparent;
   position: absolute;
-  font-size: 1.1rem;
+  //font-size: 1.1rem;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
-  background-color: white;
+  //transform: translateY(-50%);
+  //background-color: white;
   color: gray;
   padding: 0 0.3rem;
   margin: 0 0.5rem;
@@ -64,7 +71,7 @@ input[type=date] {
 }
 
 input {
-  margin: 15px 0px 5px 0px;
+  margin: 20px 0px 5px 0px;
   width: 100%;
   font-family: "Segoe UI";
   font-size: 15px;
@@ -88,8 +95,9 @@ input:focus+label {
 }
 
 input:not(:placeholder-shown)+label {
-  top: 0;
-  transform: translateY(-50%) scale(.9);
+  top: -2px;
+  color:black;
+ // transform: translateY(-50%) scale(.9);
 }
 
 
@@ -650,7 +658,7 @@ table tfoot tr td:last-child {
 }
 
 .form-control {
-  margin-top: 0;
+  margin-top: 5px;
   color: #646464;
   border: 1px solid #e6e6e6;
   border-radius: 3px;
@@ -946,10 +954,15 @@ img.img-size-2 {
     position: absolute;
     left: 20px;
   }
+  .material-textfield {
+    margin: 0;
+    width: 100%;
+  }
 }
 .panel-icon img {
   height: 100%;
   width: 80%;
+  
 
 }
 

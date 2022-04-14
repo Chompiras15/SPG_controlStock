@@ -51,7 +51,7 @@
       <div class="panel-body">
         <div class="col-md-3">
         </div>
-        <div class="col-md-6 cont_form">
+        <div class="col-md-12 cont_form">
           <form method="post" action="add_user.php">
             <div class="material-textfield">
               <input placeholder=" " type="text" name="full-name" required>
