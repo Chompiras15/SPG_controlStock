@@ -107,7 +107,7 @@
                             <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
                             <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
 
-                     
+                            <?php } ?>
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
