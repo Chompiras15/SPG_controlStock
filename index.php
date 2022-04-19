@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="assets/css/material.min.css">
 
 	<link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
-
+	<link rel="icon" href="icono/icono.png" type="image/x-icon">  
 	<link rel="stylesheet" href="assets/css/spg_login.css">
 	<script src="assets/js/material.min.js" ></script>
 
