@@ -7,6 +7,16 @@
  ====================================================================
   
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="logobussiness.ico" style= "border-radius: 50%" type="image/x-icon">
+</head>
+<body>
+    
 
 <?php
   $page_title = 'Almacen-Chimbote';
@@ -261,3 +271,5 @@
 
 
     <?php include_once('layouts/footer.php'); ?>
+    </body>
+</html>
