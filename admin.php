@@ -27,11 +27,11 @@ $findUser = find_by_user( 'users', 'admin' );
 
 <?php
 if ( isset( $_POST[ 'sede_TChimb' ] ) )
- {
+{
     $var = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Chimb' );
 
     if ( $var == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la sede de TASA-CHIMBOTE.' );
         redirect( 'admin.php', false );
     } else {
@@ -41,11 +41,11 @@ if ( isset( $_POST[ 'sede_TChimb' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tSamanco' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Samanco' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-SAMANCO.' );
         redirect( 'admin.php', false );
     } else {
@@ -55,11 +55,11 @@ if ( isset( $_POST[ 'sede_tSamanco' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tSupe' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Supe' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-SUPE.' );
         redirect( 'admin.php', false );
     } else {
@@ -69,11 +69,11 @@ if ( isset( $_POST[ 'sede_tSupe' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tVegeta' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Vegueta' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-VÉGUETA.' );
         redirect( 'admin.php', false );
     } else {
@@ -83,11 +83,11 @@ if ( isset( $_POST[ 'sede_tVegeta' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tCallao' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Callao' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-CALLAO.' );
         redirect( 'admin.php', false );
     } else {
@@ -97,11 +97,11 @@ if ( isset( $_POST[ 'sede_tCallao' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tPisco' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Pisco' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-PISCO.' );
         redirect( 'admin.php', false );
     } else {
@@ -111,11 +111,11 @@ if ( isset( $_POST[ 'sede_tPisco' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tAtico' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Atico' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-ATICO.' );
         redirect( 'admin.php', false );
     } else {
@@ -125,11 +125,11 @@ if ( isset( $_POST[ 'sede_tAtico' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_tMatarani' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Matarani' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de TASA-MATARANI.' );
         redirect( 'admin.php', false );
     } else {
@@ -139,11 +139,11 @@ if ( isset( $_POST[ 'sede_tMatarani' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_eChimbote' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'E-Chimbote' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de EXALMAR-CHIMBOTE.' );
         redirect( 'admin.php', false );
     } else {
@@ -153,11 +153,11 @@ if ( isset( $_POST[ 'sede_eChimbote' ] ) )
 }
 
 if ( isset( $_POST[ 'sede_eChicama' ] ) )
- {
+{
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'E-Chicama' );
 
     if ( $var2 == true ) 
- {
+    {
         $session->msg( 's', 'Se encuentra en la Sede de EXALMAR-CHICAMA.' );
         redirect( 'admin.php', false );
     } else {
@@ -177,8 +177,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         <i class='glyphicon glyphicon-user'></i>
                     </div>
                     <div class='panel-value pull-right'>
-                        <h2 class='margin-top'> <?php  echo $c_userTotals[ 'total' ];
-?> </h2>
+                        <h2 class='margin-top'> <?php  echo $c_userTotals[ 'total' ];?> </h2>
                         <p class='text-muted'>Usuarios Totales</p>
                     </div>
                 </div>
@@ -206,8 +205,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         <i class='glyphicon glyphicon-user'></i>
                     </div>
                     <div class='panel-value pull-right'>
-                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ]-1;
-?> </h2>
+                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ]-1;?> </h2>
                         <p class='text-muted'>Usuarios por Sede</p>
                     </div>
                 </div>
@@ -220,113 +218,113 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
         <p class='p_sedes'>SEDES - CLIENTES</p>
     </div>
 
-    <div class='row' style='margin-top:20px;'>
+    <div class='row' style='margin-top:15px;'>
         <div class='col-md-6'>
             <div class='row titleClients'>
                 <p class='p_clientes'> CLIENTES - TASA</p>
             </div>
 
-            <form method='post'>
+            <form method='post'class='col-md-4 col-sm-12 panelForm'>
 
-                <button type='submit' name='sede_TChimb' class='col-md-5 col-sm-12 cont_sede'>
+                <button type='submit' name='sede_TChimb' class='cont_sede cont_Sedetasa'>
 
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy '>
-
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
 
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm'>
                             <h4 class='margin-top'> Chimbote </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post'>
-                <button type='submit' name='sede_tSamanco' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tSamanco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class='contTextForm'>
                             <h4 class='margin-top'> Samanco </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post' action='admin.php'>
-                <button type='submit' name='sede_tSupe' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tSupe' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class='contTextForm'>
                             <h4 class='margin-top'> Supe </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post' action='admin.php'>
-                <button type='submit' name='sede_tVegeta' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tVegeta' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm'>
                             <h4 class='margin-top'> Végueta </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-                <button type='submit' name='sede_tCallao' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tCallao' class=' cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm'>
                             <h4 class='margin-top'> Callao </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-                <button type='submit' name='sede_tPisco' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tPisco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm'>
                             <h4 class='margin-top'> Pisco </h4>
                         </div>
                     </div>
                 </button>
             </form>
 
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-                <button type='submit' name='sede_tAtico' class='col-md-5 col-sm-12 cont_sede'>
+            <div  class='col-md-1 col-sm-12'></div>
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-5 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tAtico' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
                             <i class='glyphicon glyphicon-home'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm2'>
                             <h4 class='margin-top'> Atico </h4>
                         </div>
                     </div>
                 </button>
             </form>
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-                <button type='submit' name='sede_tMatarani' class='col-md-5 col-sm-12 cont_sede'>
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-5 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tMatarani' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
                             <i class='glyphicon glyphicon-home'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class=' contTextForm2'>
                             <h4 class='margin-top'> Matarani </h4>
                         </div>
                     </div>
@@ -340,13 +338,14 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 <p class='p_clientes'>CLIENTES - EXALMAR</p>
             </div>
 
+            
             <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                 <button type='submit' name='sede_eChimbote' class='col-md-5  col-sm-12 cont_sede'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
                             <i class='glyphicon glyphicon-home'></i>
                         </div>
-                        <div class='panel-value pull-right'>
+                        <div class='contTextForm2'>
                             <h4 class='margin-top'> Chimbote </h4>
                         </div>
                     </div>
@@ -359,14 +358,16 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         <div class='panel-icon pull-left bg-navy'>
                             <i class='glyphicon glyphicon-home'></i>
                         </div>
-                        <div class='panel-value pull-right'>
-                            <h4 class='margin-top'> Chicama ( Malabrigo ) </h4>
+                        <div class='contTextForm2'>
+                            <h4 class='margin-top'> Malabrigo </h4>
                         </div>
                     </div>
                 </button>
             </form>
         </div>
+
     </div>
+</div>
 
     <?php include_once( 'layouts/footer.php' );
 ?>
