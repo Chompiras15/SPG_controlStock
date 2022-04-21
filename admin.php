@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Admin página de inicio';
+$page_title = 'Control de Sedes';
 
 require_once( 'includes/load.php' );
 $SuperUser = current_user();

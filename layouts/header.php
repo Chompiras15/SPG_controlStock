@@ -23,14 +23,17 @@
       <div class="logo pull-left"> SGP - BUSINESS </div>
       <div class="header-content">
           <div class="header-date pull-left">
-            <strong><?php //echo date("d/m/Y  g:i a");
-            date_default_timezone_set("America/Lima"); echo date("d/m/Y  g:i a");?></strong>
+            <strong id=time></strong>
           </div>
           <div class="header_user">
             <ul class="info-menu list-inline list-unstyled">
               <li class="profile">
                 <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
-                  <img src="uploads/users/<?php echo $user['image'];?>" alt="user-image" class="img-circle img-inline">
+                <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
+                  <img src="uploads/users/default.png" class="img-circle img-inline">
+                <?php }else{?>
+                  <img src="uploads/users/<?php echo $user['image'];?>"  class="img-circle img-inline">
+                <?php } ?>
                   <span><?php echo remove_junk(ucfirst($user['name'])); ?> <i class="caret"></i></span>
                 </a>
                 <ul class="dropdown-menu">

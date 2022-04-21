@@ -40,14 +40,48 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    async function putPhoto() {
+
+    
+ 
+    async function putPhoto() 
+    {
         await sleep(50);
         //console.log( document.getElementsByClassName( 'img-perfil' )[ 0 ] );
-        document.getElementsByClassName('img-perfil')[0].getElementsByTagName('img')[0].src =
-            "uploads/users/<?php echo $user['image'];?>"
+        <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
+            document.getElementsByClassName('img-perfil')[0].getElementsByTagName('img')[0].src ="uploads/users/default.png";
+        <?php }else{?>
+            document.getElementsByClassName('img-perfil')[0].getElementsByTagName('img')[0].src ="uploads/users/<?php echo $user['image'];?>"
+        <?php }?>
+
+        
+    }
+
+    function showTime()
+    {
+        //var dia=new Array(7);
+        var dia=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+        myDate=new Date();
+        day=myDate.getDay();
+        numDay=myDate.getDate();
+        mes=myDate.getMonth();
+        year=myDate.getFullYear();
+        hours=myDate.getHours();
+        minutes=myDate.getMinutes();
+        seconds=myDate.getSeconds();
+        
+        if(numDay<10) numDay=0+numDay;
+        if(mes<10) mes="0"+(mes+1);
+        if(hours<10) hours=0+hours;
+        if(minutes<10) minutes="0"+minutes;
+        if(seconds<10) seconds="0"+seconds;
+        $("#time").text(dia[day]+" "+numDay+"/"+mes+"/"+year+"  "+hours+ ":" + minutes+ ":"+seconds);
+        setTimeout("showTime()",1000);
+
     }
 
     putPhoto();
+    showTime();
+
     //console.log( document.getElementsByClassName( 'img-perfil' )[ 0 ].getElementsByTagName( 'img' )[ 0 ].src = "uploads/users/<?php echo $user['image'];?>" );
     </script>
     <?php if ( isset( $db ) ) {
