@@ -40,7 +40,7 @@ if ( isset( $_POST[ 'sede_TChimb' ] ) )
     }
 }
 
-/*if ( isset( $_POST[ 'sede_tSamanco' ] ) )
+if ( isset( $_POST[ 'sede_tSamanco' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Samanco' );
 
@@ -81,7 +81,7 @@ if ( isset( $_POST[ 'sede_tVegeta' ] ) )
         redirect( 'admin.php', false );
     }
 }
-*/
+
 if ( isset( $_POST[ 'sede_tCallao' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Callao' );
@@ -95,7 +95,7 @@ if ( isset( $_POST[ 'sede_tCallao' ] ) )
         redirect( 'admin.php', false );
     }
 }
-/*
+
 if ( isset( $_POST[ 'sede_tPisco' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Pisco' );
@@ -151,7 +151,7 @@ if ( isset( $_POST[ 'sede_eChimbote' ] ) )
         redirect( 'admin.php', false );
     }
 }
-*/
+
 if ( isset( $_POST[ 'sede_eChicama' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'E-Chicama' );
@@ -199,13 +199,13 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
         </div>
 
         <div class='col-md-4 cont_init' id='usersS'>
-            <a href='userSede.php'>
+            <a href='users.php'>
                 <div class='panel panel-box clearfix'>
                     <div class='panel-icon pull-left bg-celeste'>
                         <i class='glyphicon glyphicon-user'></i>
                     </div>
                     <div class='panel-value pull-right'>
-                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ];?> </h2>
+                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ]-1;?> </h2>
                         <p class='text-muted'>Usuarios por Sede</p>
                     </div>
                 </div>
@@ -240,7 +240,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 </button>
             </form>
 
-         <!--   <form method='post' class='col-md-4 col-sm-12 panelForm'>
+            <form method='post' class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tSamanco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -278,8 +278,8 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
--->
-            <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
+
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tCallao' class=' cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -291,7 +291,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-<!--
+
             <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tPisco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
@@ -332,14 +332,14 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
             </form>
 
         </div>
--->
+
         <div class='col-md-6 col-sm-12'>
-            <div class='row titleClients titleClientsEx'>
+            <div class='row titleClients'>
                 <p class='p_clientes'>CLIENTES - EXALMAR</p>
             </div>
 
-<!--  
-            <form method='post' action="admin.php">
+            
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                 <button type='submit' name='sede_eChimbote' class='col-md-5  col-sm-12 cont_sede'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -351,8 +351,8 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
--->
-            <form method='post' action="admin.php">
+
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
                 <button type='submit' name='sede_eChicama' class='col-md-5 col-sm-12 cont_sede'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>

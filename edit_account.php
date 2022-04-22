@@ -42,89 +42,69 @@
     }
   }
 ?>
-
 <?php include_once('layouts/header.php'); ?>
 <div class="row">
   <div class="col-md-12">
     <?php echo display_msg($msg); ?>
   </div>
-  <div class="row">
-    <div  class="col-md-3"></div>
-    <div class="col-md-6 contChangeProfile">
-        <div class="panel panel-default">
-          
+  <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <div class="panel-heading clearfix">
             <span class="glyphicon glyphicon-camera"></span>
-            <span style="font-weight: bold;">CAMBIAR FOTO DE PERFIL</span>
+            <span>Cambiar mi foto</span>
           </div>
-          
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-4">
-                  <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
-                    <img class="img-circle img-size-2" src="uploads/users/default.png" alt="" style="border: 1px solid #7e7474;">
-                  <?php }else{?>
-                    <img class="img-circle img-size-2" src="uploads/users/<?php echo $user['image'];?>" alt="" style="border: 1px solid #7e7474;">
-                  <?php } ?>
-                  
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+                <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
+                  <img class="img-circle img-size-2" src="uploads/users/default.png" alt="">
+                <?php }else{?>
+                  <img class="img-circle img-size-2" src="uploads/users/<?php echo $user['image'];?>" alt="">
+                <?php } ?>
+                
+            </div>
+            <div class="col-md-8">
+              <form class="form" action="edit_account.php" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="file" name="file_upload" multiple="multiple" class="btn btn-default btn-file"/>
               </div>
-              <div class="col-md-7"style="margin-left: 20px;">
-                <form class="form" style="margin-top:15px;" action="edit_account.php" method="POST" enctype="multipart/form-data">
-                  <div class="">
-                      <label class='__lk-fileInput'>
-                      
-                      <span data-default='Choose file'><i style="margin-right:20px;"class="glyphicon glyphicon-cloud-upload"></i>Choose file</span>
-                      <input type="file" name="file_upload" multiple="multiple">
-                    </label>
-                  
-                  </div>
-                  <div class="form-group contBtnEditAccount">
-                    <input type="hidden" name="user_id" value="<?php echo $user['id'];?>">
-                    <button style="width:100%;border-radius: 35px;margin-top:10px" type="submit" name="submit" class="btn btn-warning btnEditAccount">Cambiar</button>
-                  </div>
-              </form>
+              <div class="form-group">
+                <input type="hidden" name="user_id" value="<?php echo $user['id'];?>">
+                 <button type="submit" name="submit" class="btn btn-warning">Cambiar</button>
               </div>
-
+             </form>
             </div>
           </div>
         </div>
-    </div>
+      </div>
   </div>
-  <div class="row">
-    <div  class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading clearfix contTitleHead">
-          <span class="glyphicon glyphicon-edit"></span>
-          <span style="font-weight: bold;">Editar mi cuenta</span>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="edit_account.php?id=<?php echo (int)$user['id'];?>" class="clearfix">
-              <div class="form-group">
-                    <label for="name" class="control-label">Nombres</label>
-                    <input type="name" class="form-control" name="name" value="<?php echo remove_junk(ucwords($user['name'])); ?>">
-              </div>
-              <div class="form-group">
-                    <label for="username" class="control-label">Usuario</label>
-                    <input type="text" class="form-control" name="username" value="<?php echo remove_junk(ucwords($user['username'])); ?>">
-              </div>
-              <div class="form-group clearfix">         
-                <button style="width:100%;border-radius: 35px;margin-top:10px;font-weight: bold;font-size: 15px;" type="submit" name="update" class="btn btn-info">Actualizar</button>
-              </div>
-          </form>
-        </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <span class="glyphicon glyphicon-edit"></span>
+        <span>Editar mi cuenta</span>
+      </div>
+      <div class="panel-body">
+          <form method="post" action="edit_account.php?id=<?php echo (int)$user['id'];?>" class="clearfix">
+            <div class="form-group">
+                  <label for="name" class="control-label">Nombres</label>
+                  <input type="name" class="form-control" name="name" value="<?php echo remove_junk(ucwords($user['name'])); ?>">
+            </div>
+            <div class="form-group">
+                  <label for="username" class="control-label">Usuario</label>
+                  <input type="text" class="form-control" name="username" value="<?php echo remove_junk(ucwords($user['username'])); ?>">
+            </div>
+            <div class="form-group clearfix">
+                    <a href="change_password.php" title="change password" class="btn btn-danger pull-right">Cambiar contraseña</a>
+                    <button type="submit" name="update" class="btn btn-info">Actualizar</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div  class="col-md-3"></div>
-    <div class="form-group clearfix col-md-6">
-      <a href="change_password.php" style="width:100%;border-radius: 35px;margin-top:10px;font-weight: bold;font-size: 15px;" title="Cambiar Contraseña" class="btn btn-danger">Cambiar contraseña</a>
-    </div>                
-  </div>
 </div>
-
-
 
 
 <?php include_once('layouts/footer.php'); ?>

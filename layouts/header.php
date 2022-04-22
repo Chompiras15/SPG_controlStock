@@ -30,11 +30,11 @@
               <li class="profile">
                 <a href="#" data-toggle="dropdown" class="toggle" aria-expanded="false">
                 <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
-                  <img style="margin-left: 10px;" src="uploads/users/default.png" class="img-circle img-inline">
+                  <img src="uploads/users/default.png" class="img-circle img-inline">
                 <?php }else{?>
-                  <img  style="margin-left: 10px;" src="uploads/users/<?php echo $user['image'];?>"  class="img-circle img-inline">
+                  <img src="uploads/users/<?php echo $user['image'];?>"  class="img-circle img-inline">
                 <?php } ?>
-                  <span style="width:80px;"><?php echo remove_junk(ucfirst($user['name'])); ?> <i class="caret"></i></span>
+                  <span><?php echo remove_junk(ucfirst($user['name'])); ?> <i class="caret"></i></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
