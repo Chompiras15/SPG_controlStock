@@ -101,7 +101,8 @@ function delete_by_codRuma( $table, $cod_ruma )   ///  observacion
     if ( tableExists( $table ) )
  {
         $sql = 'DELETE FROM '.$db->escape( $table );
-        $sql .= ' WHERE cod_ruma='. $db->escape( $cod_ruma );
+        $sql .= ' 
+         cod_ruma='. $db->escape( $cod_ruma );
         $sql .= ' LIMIT 1';
         $db->query( $sql );
         return ( $db->affected_rows() === 1 ) ? true : false;
@@ -145,7 +146,7 @@ function count_by_id( $table ) {
 function count_by_id_sede( $table, $sede ) {
     global $db;
     if ( tableExists( $table ) )
- {
+    {
         $sql  = 'SELECT COUNT(*) AS total FROM '.$db->escape( $table );
         $sql .= " WHERE sede='". $db->escape( $sede )."'";
         $sql .= ' LIMIT 1';
@@ -238,6 +239,23 @@ function find_all_user() {
     $sql .= 'FROM users u ';
     $sql .= 'LEFT JOIN user_groups g ';
     $sql .= 'ON g.group_level=u.user_level ORDER BY u.name ASC';
+    $result = find_by_sql( $sql );
+    return $result;
+}
+
+/*--------------------------------------------------------------*/
+/* Find all user by
+/* Joining users table and user gropus table ----por sede
+/*--------------------------------------------------------------*/
+function find_all_user_sede($sede) {
+    global $db;
+    $results = array();
+    $sql = "SELECT u.id,u.name,u.username,u.user_level,u.status,u.last_login,u.sede,";
+    $sql .= 'g.group_name ';
+    $sql .= 'FROM users u ';
+    $sql .= 'LEFT JOIN user_groups g ';
+    $sql .= 'ON g.group_level=u.user_level ';
+    $sql .= "where u.sede= '{$sede}'";
     $result = find_by_sql( $sql );
     return $result;
 }
