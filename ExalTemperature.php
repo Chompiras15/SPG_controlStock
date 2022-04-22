@@ -27,7 +27,7 @@
   if( $SuperUser["sede"]=="E-Chimbote") {$table="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
   if( $SuperUser["sede"]=="E-Chicama") {$table="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
-  $all_temperature = find_all($table)
+  $all_temperature = find_all($table);
 ?>
 
 
@@ -56,11 +56,12 @@
     }
     ?>
 
-    <div class="row">
-        <div class="col-md-12">
-            <?php echo display_msg($msg); ?>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
     </div>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -70,10 +71,15 @@
                     <span>Monitoreo de Temperaturas</span>
 
                 </strong>
+<<<<<<< Updated upstream
 
                 <a href="add_ExalTemperature.php" class="btn btn-info pull-right contButtonTT" >Agregar</a>
+=======
+                <a href="add_temperature.php" class="btn btn-info pull-right contButtonTT" >Agregar</a>
+>>>>>>> Stashed changes
 
             </div>
+            
             <div class="panel-body">
 
                 <table style="width:100%;"class="table table-bordered table-striped table-hover" id="tabla">
@@ -180,9 +186,8 @@
 
     </div>
 
-    </div>
+</div>
 
-    <?php include_once('layouts/footer.php'); ?>
 
     <!-- Busqueda por columna -->
 
