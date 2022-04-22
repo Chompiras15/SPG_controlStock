@@ -497,7 +497,7 @@ a {
 
 .panel-default>.panel-heading {
     background-color: #f5f5f5;
-    border-bottom: 2px solid #3498DB;
+    border-bottom: 2px solid #001f3f;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: .5px;
@@ -1150,6 +1150,9 @@ img.img-size-2 {
 .panel-icon img {
     height: 100%;
     width: 80%;
+}
+.iconCat{
+    font-size: 40px;
 }
 
 

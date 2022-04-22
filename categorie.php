@@ -65,7 +65,7 @@
 
                 </strong>
 
-                <a href="add_categorie.php" class="btn btn-info pull-right contButtonTT">Agregar Ruma</a>
+                <a href="add_categorie.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
 
             </div>
             <div class="panel-body">
@@ -120,11 +120,11 @@
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                    <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                                        <span class="glyphicon glyphicon-edit"></span>
+                                        <span class="glyphicon glyphicon-edit" ></span>
                                     </a>
-                                    <a href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                    <a style ="padding: 5px;" href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
@@ -195,21 +195,21 @@
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business',
+                    title: 'SGP - Business_Reporte de Almacen',
                     className: 'btn btn-success'
                 },
                 {
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business',
+                    title: 'SGP - Business_Reporte de Almacen',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
-                    title: 'SGP - Business',
+                    title: 'SGP - Business_Reporte de Almacen',
                     className: 'btn btn-info'
                 },
             ],
