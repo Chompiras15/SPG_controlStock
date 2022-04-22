@@ -71,7 +71,7 @@
 
                 </strong>
 
-                <a href="add_temperature.php" class="btn btn-info pull-right contButtonTT" >Agregar</a>
+                <a href="add_ExalTemperature.php" class="btn btn-info pull-right contButtonTT" >Agregar</a>
 
             </div>
             <div class="panel-body">
