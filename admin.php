@@ -199,13 +199,13 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
         </div>
 
         <div class='col-md-4 cont_init' id='usersS'>
-            <a href='users.php'>
+            <a href='userSede.php'>
                 <div class='panel panel-box clearfix'>
                     <div class='panel-icon pull-left bg-celeste'>
                         <i class='glyphicon glyphicon-user'></i>
                     </div>
                     <div class='panel-value pull-right'>
-                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ]-1;?> </h2>
+                        <h2 class='margin-top'> <?php  echo $c_userSedes[ 'total' ];?> </h2>
                         <p class='text-muted'>Usuarios por Sede</p>
                     </div>
                 </div>

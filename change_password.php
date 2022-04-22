@@ -13,7 +13,8 @@
 
     if(empty($errors)){
 
-             if(sha1($_POST['old-password']) !== current_user()['password'] ){
+             if(sha1($_POST['old-password']) !== current_user()['password'] )
+             {
                $session->msg('d', "Tu antigua contraseña no coincide");
                redirect('change_password.php',false);
              }
@@ -37,24 +38,52 @@
   }
 ?>
 <?php include_once('layouts/header.php'); ?>
-<div class="login-page">
-    <div class="text-center">
-       <h3>Cambiar contraseña</h3>
-     </div>
-     <?php echo display_msg($msg); ?>
-      <form method="post" action="change_password.php" class="clearfix">
-        <div class="form-group">
-              <label for="newPassword" class="control-label">Nueva contraseña</label>
-              <input type="password" class="form-control" name="new-password" placeholder="Nueva contraseña">
-        </div>
-        <div class="form-group">
-              <label for="oldPassword" class="control-label">Antigua contraseña</label>
-              <input type="password" class="form-control" name="old-password" placeholder="Antigua contraseña">
-        </div>
-        <div class="form-group clearfix">
-               <input type="hidden" name="id" value="<?php echo (int)$user['id'];?>">
-                <button type="submit" name="update" class="btn btn-info">Cambiar</button>
-        </div>
-    </form>
+
+<div class="row">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
+    </div>
 </div>
+<div class="row">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-camera"></span>
+                <span> CAMBIAR CONTRASEÑA </span>
+            </strong>
+
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 cont_form">
+                <form method="post" action="change_password.php">
+                    <div class="material-textfield-pass">
+                            
+                            <input placeholder=" " type="password" class="form-control inputPass" name="old-password" placeholder="Antigua contraseña">
+                            <label for="oldPassword" class="control-label">Antigua contraseña</label>
+                      </div>
+                    <div class="material-textfield-pass">
+                        <input placeholder=" " type="password" class="form-control inputPass" name="new-password" placeholder="Nueva contraseña" required>
+                        <label for="newPassword" class="control-label">Nueva contraseña</label>
+                    </div>
+
+                   
+
+                    <div class="form-group clearfix">
+                        <input type="hidden" name="id" value="<?php echo (int)$user['id'];?>">
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="update" class="btn btn-info">Actualizar Contraseña</button>
+                    </div>
+                   
+                </form>
+         
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <?php include_once('layouts/footer.php'); ?>

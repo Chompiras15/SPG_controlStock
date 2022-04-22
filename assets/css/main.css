@@ -1,3 +1,54 @@
+.caret
+{
+    margin-left: 10px !important;
+}
+.contBtnEditAccount
+{
+    text-align: center;
+}
+
+.btnEditAccount
+{
+    font-size: 15px;
+    border-radius: 25px !important;
+    padding: 5px 10px 5px 10px;
+    background: #03c4eb !important;
+    font-weight: 800;
+}
+
+.__lk-fileInput input
+{
+   display: none; 
+  
+}
+
+.__lk-fileInput span
+{ 
+    text-align: center;
+    width: 100%;
+    display:block;
+    color: #fff;
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background: #418edb;
+    border-radius: 2px;
+    font: normal 20px/1.412 Helvetica; 
+}
+
+.__lk-fileInput span:hover
+{
+    background: #2683E1;
+}
+.__lk-fileInput
+{
+  cursor: pointer;
+  width:100%;
+ 
+}
+
+
+
 .cont_form form {
     margin: 15px;
 }
@@ -88,6 +139,29 @@ input[type=date] {
     margin-left: 10px;
 }
 
+.material-textfield-pass
+{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.material-textfield-pass label
+{
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    color: gray;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: .1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+}
+
 .material-textfield label {
     background: transparent;
     position: absolute;
@@ -124,6 +198,12 @@ input:focus {
     border-color: #6200EE;
 }
 
+.inputPass:focus+label {
+    background: transparent;
+    color: #6200EE;
+    top: -15px;
+    transform: translateY(-10%) scale(.9);
+}
 input:focus+label {
     background: transparent;
     color: #6200EE;
@@ -133,6 +213,11 @@ input:focus+label {
 
 input:not(:placeholder-shown)+label {
     top: -2px;
+    color: black;
+}
+
+.inputPass:not(:placeholder-shown)+label {
+    top: -18px;
     color: black;
 }
 
@@ -238,7 +323,7 @@ body::-webkit-scrollbar-track {
 
 .header_user {
     position: absolute;
-    right: 35px;
+    right: 0px;
 }
 
 .header_sede {
@@ -491,7 +576,7 @@ header>.logo {
 
 .header-date {
     color: #000000;
-    margin-left: 30%;
+    margin-left: 34%;
     margin-right: 20px;
 }
 
@@ -815,9 +900,10 @@ img.img-size-2 {
 
 @media screen and (max-width:1200px) 
 {
-
-    
-    
+    .header_user
+    {
+        right: 0px;
+    }
     .contTextForm2 h4 {
         margin-left: -10px;
         font-size: 15px;
@@ -852,6 +938,25 @@ img.img-size-2 {
 
 @media screen and (max-width:991px) 
 {
+
+    .header-date {
+        margin-left: 30%;
+    }
+    .titleClientsEx
+    {
+        margin-top: 15px;
+    }
+    .contTextForm {
+        left: 40%;
+    }
+    .contTitleHead
+    {
+        text-align: center;
+    }
+    .contChangeProfile
+    {
+        text-align: center;
+    }
     .cont_sede {
         width: 100%;
     }
@@ -875,7 +980,17 @@ img.img-size-2 {
 
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:800px) 
+{
+    .header_user {
+        right: 30px;
+    }
+    .header-date {
+        margin-left: 38%;
+    }
+    .contTextForm {
+        left: 40%;
+    }
     .sidebar {
         left: -100%;
     }
@@ -889,7 +1004,7 @@ img.img-size-2 {
         float: right;
         display: block;
         padding: 10px 5px 5px 6px;
-        background: white;
+        background: transparent;
         color: white;
         font-weight: bold;
         font-size: 25px;
@@ -920,16 +1035,55 @@ img.img-size-2 {
     .cont_cat {
         text-align: center;
     }
-}
+    .contTitleHead
+    {
+        text-align: center;
+    }
+    .contChangeProfile
+    {
+        text-align: center;
+    }
+    .header_sede {
+        position: absolute;
+        left: 20px;
+    }
+    .material-textfield {
+        margin: 0;
+        width: 100%;
+    }
 
-@media screen and (max-width:750px) {
+    .formIco 
+    {
+        font-size: 45px !important;
+    }
+
+    .contTextForm h4 
+    {
+        font-size: 25px;
+        margin-top: 20px;
+        font-weight: revert;
+    }
+
+    .contTextForm2 h4 
+    {
+        font-size: 25px;
+        margin-top: 20px;
+        font-weight: revert;
+    }
+
+}
+@media screen and (max-width:750px) 
+{   
+    .header_user {
+        right: 65px;
+    }
+    .contTextForm {
+        left: 40%;
+    }
     .header-date {
         display: none;
     }
-    .header_user {
-        position: absolute;
-        right: 80px;
-    }
+    
     .header_sede {
         position: absolute;
         left: 20px;
@@ -991,44 +1145,30 @@ img.img-size-2 {
     }
 }
 
-@media screen and (max-width:800px) 
-{
-    .header_sede {
-        position: absolute;
-        left: 20px;
-    }
-    .material-textfield {
-        margin: 0;
-        width: 100%;
-    }
 
-    .formIco 
-    {
-        font-size: 45px !important;
-    }
-
-    .contTextForm h4 
-    {
-        font-size: 25px;
-        margin-top: 20px;
-        font-weight: revert;
-    }
-
-    .contTextForm2 h4 
-    {
-        font-size: 25px;
-        margin-top: 20px;
-        font-weight: revert;
-    }
-
-}
 
 .panel-icon img {
     height: 100%;
     width: 80%;
 }
 
-@media screen and (max-width:470px) {
+
+@media screen and (max-width:470px) 
+{
+    .header_user {
+        right: 60px;
+    }
+    .contTextForm {
+        left: 40%;
+    }
+    .contTitleHead
+    {
+        text-align: center;
+    }
+    .contChangeProfile
+    {
+        text-align: center;
+    }
     .contButtonTT {
         right: 0px;
         position: relative;
