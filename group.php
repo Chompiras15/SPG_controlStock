@@ -31,7 +31,7 @@
         <span class="glyphicon glyphicon-th"></span>
         <span>Grupos</span>
      </strong>
-       <a href="add_group.php" class="pull-right btn-sm" style="right: 30px;position: absolute;"> <img style="width: 40px;height: 40px;" title="Añadir Grupo" src="assets/img/addGroup.png" alt=""></a>
+       <a href="add_group.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Grupo"></i></a>
     </div>
      <div class="panel-body">
       <table class="table table-bordered" id="grupo">

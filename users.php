@@ -30,7 +30,7 @@
           <span class="glyphicon glyphicon-th"></span>
           <span>Usuarios</span>
        </strong>
-         <a href="add_user.php" class="pull-right contButtonTT"><img style="width: 45px;height: 45px;" title="Añadir Usuario"src="assets/img/addUser.png" alt=""></a>
+         <a href="add_user.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Usuario"></i></a>
       </div>
      <div class="panel-body">
       <table class="table table-bordered table-striped" id="user">
