@@ -41,32 +41,58 @@
  }
 ?>
 <?php include_once('layouts/header.php'); ?>
-<div class="login-page">
-    <div class="text-center">
-       <h3>Editar Grupo</h3>
-     </div>
-     <?php echo display_msg($msg); ?>
-      <form method="post" action="edit_group.php?id=<?php echo (int)$e_group['id'];?>" class="clearfix">
-        <div class="form-group">
-              <label for="name" class="control-label">Nombre del grupo</label>
-              <input type="name" class="form-control" name="group-name" value="<?php echo remove_junk(ucwords($e_group['group_name'])); ?>">
-        </div>
-        <div class="form-group">
-              <label for="level" class="control-label">Nivel del grupo</label>
-              <input type="number" class="form-control" name="group-level" value="<?php echo (int)$e_group['group_level']; ?>">
-        </div>
-        <div class="form-group">
-          <label for="status">Estado</label>
-              <select class="form-control" name="status">
-                <option <?php if($e_group['group_status'] === '1') echo 'selected="selected"';?> value="1"> Activo </option>
-                <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
-                <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
-              </select>
-        </div>
-        <div class="form-group clearfix">
-                <button type="submit" name="update" class="btn btn-info">Actualizar</button>
-        </div>
-    </form>
+
+<div class="row">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
+    </div>
 </div>
+
+  
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>Editar Grupo</span>
+        </strong>
+
+    </div>
+
+    <div class="panel-body">
+        
+        <div class="col-md-12 cont_form" style ="margin-bottom:50px;">
+            <form method="post" action="edit_group.php?id=<?php echo (int)$e_group['id'];?>">
+
+                <div class="form-group col-md-6">
+                    <label for="name" class="control-label">Nombre del Grupo</label>
+                    <input type="name" class="form-control" name="group-name" value="<?php echo remove_junk(ucwords($e_group['group_name'])); ?>">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="level" class="control-label">Nivel del Grupo</label>
+                  <input type="number" class="form-control" name="group-level" value="<?php echo (int)$e_group['group_level']; ?>">
+                </div>
+
+                <div class="material-textfield col-md-12" style ="width:100%;">
+                    <label style ="color:black;margin:0;"class="select" for="status">Estado</label>
+                    <select class="form-control" name="status">
+                        <!-- Opciones de la lista -->
+                        <option <?php if($e_group['group_status'] === '1') echo 'selected="selected"';?> value="1"> Activo </option>
+                        <option <?php if($e_group['group_status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+                    </select>
+                </div>
+
+              <div class="form-group clearfix">         
+                <button style="width:100%;border-radius: 35px;margin-top:10px;font-weight: bold;font-size: 15px;" type="submit" name="update" class="btn btn-info">Actualizar Grupo</button>
+              </div>
+              
+              
+            </form>
+     
+        </div>
+    </div>
+</div>
+
+
 
 <?php include_once('layouts/footer.php'); ?>

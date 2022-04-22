@@ -131,8 +131,8 @@ if(isset($_POST['update-pass'])) {
     <div class="panel panel-default">
       <div class="panel-heading">
         <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          Cambiar <?php echo remove_junk(ucwords($e_user['name'])); ?> contraseña
+          <span class="glyphicon glyphicon-lock"></span>
+          Cambiar contraseña de <?php echo remove_junk(ucwords($e_user['name'])); ?> 
         </strong>
       </div>
       <div class="panel-body">

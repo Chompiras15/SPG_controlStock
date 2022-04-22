@@ -49,7 +49,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
-                <span class="glyphicon glyphicon-camera"></span>
+                <span class="glyphicon glyphicon-lock"></span>
                 <span> CAMBIAR CONTRASEÑA </span>
             </strong>
 
