@@ -68,6 +68,7 @@
                     <a href="add_categorie.php" class="pull-right contButtonTT"><i
                             class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
 
+<<<<<<< Updated upstream
                 </div>
                 <div class="panel-body">
 
@@ -149,6 +150,81 @@
                             Total de sacos: <span id="total" class="badge badge-light"></span>
                         </button>
                     </div>
+=======
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-bordered table-striped table-hover" id="tabla">
+
+                    <thead>
+
+                        <tr>
+                            
+                            <th class="text-center" style="width: 30px;">Codigo</th>
+                            <th class="text-center" style="width: 10px;">Sector</th>
+                            <th class="text-center" style="width: 10px;">Sacos</th>
+                            <th class="text-center" style="width: 50px;">Calidad</th>
+                            <th class="text-center" style="width: 10px;">Carril</th>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
+                            <th class="text-center" style="width: 50px;">Observacion</th>
+                            <th class="text-center" style="width: 50px;">Fecha</th>
+
+
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                                style="width: 100px;">Almacen</th> <?php } ?>
+                            <th class="text-center" style="width: 100px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($all_categories as $cat):?>
+                        <tr>
+                           
+                            <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?>
+
+
+                            <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                            <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:#FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                            <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
+                            <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
+
+                            <?php } ?>
+                         
+                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
+                            <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
+                                <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
+
+
+
+
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                        class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                        <span class="glyphicon glyphicon-edit" ></span>
+                                    </a>
+                                    <a style ="padding: 5px;" href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                        class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+                <div class="col">
+                    <button type="button" class="btn btn-primary">
+                        Total de sacos: <span id="total" class="badge badge-light"></span>
+                    </button>
+>>>>>>> Stashed changes
                 </div>
             </div>
 

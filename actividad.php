@@ -108,7 +108,7 @@
                                 <td><?php echo remove_junk(ucfirst($act['auxiliares'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
-                                <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
+                                <td><?php echo read_onlyDate($act['fecha']); ?></td>
                                 <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                     <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
 

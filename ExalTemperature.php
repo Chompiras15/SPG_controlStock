@@ -152,7 +152,7 @@
                             
                             
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
+                            <td><?php echo read_date($temp['fecha']); ?></td>
                            
                             <td class="text-center">
                                 <div class="btn-group">

@@ -125,7 +125,7 @@
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
                             
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['fecha'])); ?></td>
+                            <td><?php echo read_date($temp['fecha']); ?></td>
                            
                             <td class="text-center">
                                 <div class="btn-group">

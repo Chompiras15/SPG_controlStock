@@ -91,7 +91,7 @@
                             <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($embar['date_out'])); ?></td>
+                            <td><?php echo read_onlyDate($embar['date_out']); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>

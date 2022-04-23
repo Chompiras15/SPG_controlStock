@@ -91,6 +91,16 @@ function read_date($str){
      else
       return null;
   }
+
+/*--------------------------------------------------------------*/
+/* Function for Readable date time
+/*--------------------------------------------------------------*/
+function read_onlyDate($str){
+  if($str)
+   return date('d/m/Y', strtotime($str));
+  else
+   return null;
+}
 /*--------------------------------------------------------------*/
 /* Function for  Readable Make date time
 /*--------------------------------------------------------------*/
