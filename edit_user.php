@@ -44,7 +44,7 @@
 // Update user password
 if(isset($_POST['update-pass'])) {
   $req_fields = array('password');
-  validate_fields($req_fields);
+  validate_fields($req_fields); 
   if(empty($errors)){
            $id = (int)$e_user['id'];
      $password = remove_junk($db->escape($_POST['password']));
@@ -66,88 +66,104 @@ if(isset($_POST['update-pass'])) {
 
 ?>
 <?php include_once('layouts/header.php'); ?>
- <div class="row">
-   <div class="col-md-12"> <?php echo display_msg($msg); ?> </div>
-  <div class="col-md-6">
-     <div class="panel panel-default">
-       <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          Actualiza cuenta <?php echo remove_junk(ucwords($e_user['name'])); ?>
-        </strong>
-       </div>
-       <div class="panel-body">
-          <form method="post" action="edit_user.php?id=<?php echo (int)$e_user['id'];?>" class="clearfix">
-            <div class="form-group">
-                  <label for="name" class="control-label">Nombres</label>
-                  <input type="name" class="form-control" name="name" value="<?php echo remove_junk(ucwords($e_user['name'])); ?>">
+<div class="row">
+    <div class="col-md-12"> <?php echo display_msg($msg); ?> </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    <span class="glyphicon glyphicon-th"></span>
+                    Actualiza cuenta <?php echo remove_junk(ucwords($e_user['name'])); ?>
+                </strong>
             </div>
-            <div class="form-group">
-                  <label for="username" class="control-label">Usuario</label>
-                  <input type="text" class="form-control" name="username" value="<?php echo remove_junk(ucwords($e_user['username'])); ?>">
-            </div>
-            <div class="form-group">
-              <label for="level">Rol de usuario</label>
-                <select class="form-control" name="level">
-                  <?php foreach ($groups as $group ):?>
-                   <option <?php if($group['group_level'] === $e_user['user_level']) echo 'selected="selected"';?> value="<?php echo $group['group_level'];?>"><?php echo ucwords($group['group_name']);?></option>
-                <?php endforeach;?>
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="status">Estado</label>
-                <select class="form-control" name="status">
-                  <option <?php if($e_user['status'] === '1') echo 'selected="selected"';?>value="1">Activo</option>
-                  <option <?php if($e_user['status'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
-                </select>
-            </div>
+            <div class="panel-body">
+                <div class="col-md-12 cont_form" style="margin-bottom:50px;">
+                    <form method="post" action="edit_user.php?id=<?php echo (int)$e_user['id'];?>" class="clearfix">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Nombres</label>
+                            <input type="name" class="form-control" name="name"
+                                value="<?php echo remove_junk(ucwords($e_user['name'])); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="control-label">Usuario</label>
+                            <input type="text" class="form-control" name="username"
+                                value="<?php echo remove_junk(ucwords($e_user['username'])); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Rol de usuario</label>
+                            <select class="form-control" name="level">
+                                <?php foreach ($groups as $group ):?>
+                                <option
+                                    <?php if($group['group_level'] === $e_user['user_level']) echo 'selected="selected"';?>
+                                    value="<?php echo $group['group_level'];?>">
+                                    <?php echo ucwords($group['group_name']);?>
+                                </option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Estado</label>
+                            <select class="form-control" name="status">
+                                <option <?php if($e_user['status'] === '1') echo 'selected="selected"';?>value="1">
+                                    Activo
+                                </option>
+                                <option <?php if($e_user['status'] === '0') echo 'selected="selected"';?> value="0">
+                                    Inactivo
+                                </option>
+                            </select>
+                        </div>
 
-            <div class="form-group">
-              <label for="sede">SEDE</label>
-                <select class="form-control" name="sede">
-                <option value="T-Chimbote">Tasa - Chimbote</option>
-                <option value="T-Samanco">Tasa - Samanco</option>
-                <option value="T-Supe">Tasa - Supe</option>
-                <option value="T-Vegueta">Tasa - Végueta</option>
-                <option value="T-Callao">Tasa - Callao</option>
-                  <option value="T-Pisco">Tasa - Pisco</option>
-                  <option value="T-Atico">Tasa - Atico</option>
-                  <option value="T-Matarani">Tasa - Matarani</option>
-                  <option value="E-Chimbote">Exalmar - Chimbote</option>
-                  <option value="T-Chicama">Exalmar - Chicama</option>
-             
-                </select>
-            </div>
+                        <div class="form-group">
+                            <label for="sede">SEDE</label>
+                            <select class="form-control" name="sede">
+                                <option value="T-Chimbote">Tasa - Chimbote</option>
+                                <option value="T-Samanco">Tasa - Samanco</option>
+                                <option value="T-Supe">Tasa - Supe</option>
+                                <option value="T-Vegueta">Tasa - Végueta</option>
+                                <option value="T-Callao">Tasa - Callao</option>
+                                <option value="T-Pisco">Tasa - Pisco</option>
+                                <option value="T-Atico">Tasa - Atico</option>
+                                <option value="T-Matarani">Tasa - Matarani</option>
+                                <option value="E-Chimbote">Exalmar - Chimbote</option>
+                                <option value="T-Chicama">Exalmar - Chicama</option>
 
-            <div class="form-group clearfix">
-                    <button type="submit" name="update" class="btn btn-info">Actualizar</button>
+                            </select>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <button type="submit" name="update" class="btn btn-info">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
-       </div>
-     </div>
-  </div>
-  <!-- Change password form -->
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>
-          <span class="glyphicon glyphicon-lock"></span>
-          Cambiar contraseña de <?php echo remove_junk(ucwords($e_user['name'])); ?> 
-        </strong>
-      </div>
-      <div class="panel-body">
-        <form action="edit_user.php?id=<?php echo (int)$e_user['id'];?>" method="post" class="clearfix">
-          <div class="form-group">
-                <label for="password" class="control-label">Contraseña</label>
-                <input type="password" class="form-control" name="password" placeholder="Ingresa la nueva contraseña" required>
-          </div>
-          <div class="form-group clearfix">
-                  <button type="submit" name="update-pass" class="btn btn-danger pull-right">Cambiar</button>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
+    <!-- Change password form -->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    <span class="glyphicon glyphicon-lock"></span>
+                    Cambiar contraseña de <?php echo remove_junk(ucwords($e_user['name'])); ?>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 cont_form" style="margin-bottom:50px;">
 
- </div>
+                    <form action="edit_user.php?id=<?php echo (int)$e_user['id'];?>" method="post" class="clearfix">
+                        <div class="form-group">
+                            <label for="password" class="control-label">Contraseña</label>
+                            <input type="password" class="form-control" name="password"
+                                placeholder="Ingresa la nueva contraseña" required>
+                        </div>
+                        <div class="form-group clearfix">
+                            <button type="submit" name="update-pass" class="btn btn-danger pull-right">Cambiar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <?php include_once('layouts/footer.php'); ?>

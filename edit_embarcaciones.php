@@ -116,26 +116,49 @@ if(isset($_POST['edit_emb']))
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
     </div>
-    <div class="col-md-5">
-        <div class="panel panel-default">
 
-            <div class="panel-body">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-user"></span>
+                <span>Editar Despacho</span>
+            </strong>
+
+        </div>
+        <div class="panel-body">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 edit_form">
                 <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
-                    <div class="form-group">
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_contrato']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="cant_out" placeholder="Cantidad "
                             value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor"
                             value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
+
                     </div>
-                    <button type="submit" name="edit_emb" class="btn btn-primary">Actualizar Embarcaciones</button>
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_emb"
+                            class="btn btn-primary">Actualizar
+                            Embarcaciones</button>
+                    </div>
                 </form>
             </div>
+
         </div>
     </div>
+</div>
 </div>
 
 

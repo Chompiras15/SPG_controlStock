@@ -107,43 +107,76 @@ if(isset($_POST['edit_temperature']))
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
     </div>
-    <div class="col-md-5">
-        <div class="panel panel-default">
 
-            <div class="panel-body">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-user"></span>
+                <span>Editar Monitoreo</span>
+            </strong>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 edit_form">
                 <form method="post" action="edit_temperature.php?id=<?php echo (int)$temperature['id'];?>">
-                    <div class="form-group">
-
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="codRuma"
                             value="<?php echo remove_junk(ucfirst($temperature['codRuma']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter1"
                             value="<?php echo remove_junk(ucfirst($temperature['filter1']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter2"
                             value="<?php echo remove_junk(ucfirst($temperature['filter2']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter3"
                             value="<?php echo remove_junk(ucfirst($temperature['filter3']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter4"
                             value="<?php echo remove_junk(ucfirst($temperature['filter4']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter5"
                             value="<?php echo remove_junk(ucfirst($temperature['filter5']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter6"
                             value="<?php echo remove_junk(ucfirst($temperature['filter6']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter7"
                             value="<?php echo remove_junk(ucfirst($temperature['filter7']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter8"
                             value="<?php echo remove_junk(ucfirst($temperature['filter8']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter9"
                             value="<?php echo remove_junk(ucfirst($temperature['filter9']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="supervisor"
                             value="<?php echo remove_junk(ucfirst($temperature['supervisor']));?>">
-                        
                     </div>
-                    <button type="submit" name="edit_temperature" class="btn btn-primary">Actualizar
-                        Temperatura</button>
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit"
+                            name="edit_temperature" class="btn btn-primary">Actualizar
+                            Temperatura</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
+
 </div>
 
 

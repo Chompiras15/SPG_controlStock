@@ -74,17 +74,28 @@ if(isset($_POST['edit_actividad'])){
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
     </div>
-    <div class="col-md-5">
-        <div class="panel panel-default">
 
-            <div class="panel-body">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-user"></span>
+                <span>Editar Actividad</span>
+            </strong>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 edit_form">
                 <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-                    <div class="form-group">
+                    <div class="material-textfield">
                         Selecciona la Actividad:
                         <select name="nameActivity" <?php echo (int)$activity['id'];?>>
                             <!-- Opciones de la lista -->
                             <option value="Descarga/Carga eslinga"
-                                <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>Descarga/Carga
+                                <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
+                                Descarga/Carga
                                 eslinga</option>
                             <option value="Etiquetado de sacos"
                                 <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected <?php } ?>>
@@ -119,27 +130,47 @@ if(isset($_POST['edit_actividad'])){
                             <option value="Embarque" <?php if($activity['nameActivity']=="Embarque"){;?>selected
                                 <?php } ?>>Embarque</option>
                             <option value="Manteniminto" <?php if($activity['nameActivity']=="Manteniminto"){;?>selected
-                                <?php } ?>>Manteniminto</option>
+                                <?php } ?>>
+                                Manteniminto</option>
                         </select>
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="details"
                             value="<?php echo remove_junk(ucfirst($activity['details']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($activity['observation']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="auxiliares"
                             value="<?php echo remove_junk(ucfirst($activity['auxiliares']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="time" class="form-control" name="hora_ini"
                             value="<?php echo remove_junk(ucfirst($activity['hora_ini']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="time" class="form-control" name="hora_fin"
                             value="<?php echo remove_junk(ucfirst($activity['hora_fin']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="date" class="form-control" name="fecha"
                             value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
-
                     </div>
-                    <button type="submit" name="edit_actividad" class="btn btn-primary">Actualizar Actividad</button>
-                </form>
+
             </div>
+            <div class='form-group clearfix'>
+                <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_actividad"
+                    class="btn btn-primary">Actualizar
+                    Actividad</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
+</div>
+
 </div>
 
 

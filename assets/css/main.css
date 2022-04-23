@@ -240,6 +240,13 @@ input:not(:placeholder-shown)+label {
     font-weight: 900;
     color: white;
 }
+.edit_form{
+        background: lightgrey;
+        border-radius: 25px;
+        border: 3px solid #686a6a;
+        /* margin: 10px; */
+        padding: 10px;
+}
 
 
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/

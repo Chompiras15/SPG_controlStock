@@ -122,73 +122,136 @@ if(isset($_POST['Edit_ExalTemperature']))
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
     </div>
-    <div class="col-md-5">
-        <div class="panel panel-default">
 
-            <div class="panel-body">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+                <span class="glyphicon glyphicon-user"></span>
+                <span>Editar Monitoreo</span>
+            </strong>
+
+        </div>
+        <div class="panel-body">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 edit_form">
                 <form method="post" action="Edit_ExalTemperature.php?id=<?php echo (int)$temperature['id'];?>">
-                    <div class="form-group">
-
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="codRuma"
                             value="<?php echo remove_junk(ucfirst($temperature['codRuma']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter1"
                             value="<?php echo remove_junk(ucfirst($temperature['filter1']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter2"
                             value="<?php echo remove_junk(ucfirst($temperature['filter2']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter3"
                             value="<?php echo remove_junk(ucfirst($temperature['filter3']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter4"
                             value="<?php echo remove_junk(ucfirst($temperature['filter4']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter5"
                             value="<?php echo remove_junk(ucfirst($temperature['filter5']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter6"
                             value="<?php echo remove_junk(ucfirst($temperature['filter6']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter7"
                             value="<?php echo remove_junk(ucfirst($temperature['filter7']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter8"
                             value="<?php echo remove_junk(ucfirst($temperature['filter8']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter9"
                             value="<?php echo remove_junk(ucfirst($temperature['filter9']));?>">
-                              <input type="text" class="form-control" name="filter10"
+                    </div>
+                    <div class="material-textfield">
+                        <input type="text" class="form-control" name="filter10"
                             value="<?php echo remove_junk(ucfirst($temperature['filter10']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter11"
                             value="<?php echo remove_junk(ucfirst($temperature['filter11']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter12"
                             value="<?php echo remove_junk(ucfirst($temperature['filter12']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter13"
                             value="<?php echo remove_junk(ucfirst($temperature['filter13']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter14"
                             value="<?php echo remove_junk(ucfirst($temperature['filter14']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter15"
                             value="<?php echo remove_junk(ucfirst($temperature['filter15']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter16"
                             value="<?php echo remove_junk(ucfirst($temperature['filter16']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter17"
                             value="<?php echo remove_junk(ucfirst($temperature['filter17']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter18"
                             value="<?php echo remove_junk(ucfirst($temperature['filter18']));?>">
-                             <input type="text" class="form-control" name="filter19"
+                    </div>
+                    <div class="material-textfield">
+                        <input type="text" class="form-control" name="filter19"
                             value="<?php echo remove_junk(ucfirst($temperature['filter19']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter20"
                             value="<?php echo remove_junk(ucfirst($temperature['filter20']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter21"
                             value="<?php echo remove_junk(ucfirst($temperature['filter21']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter22"
                             value="<?php echo remove_junk(ucfirst($temperature['filter22']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter23"
                             value="<?php echo remove_junk(ucfirst($temperature['filter23']));?>">
-                            <input type="text" class="form-control" name="filter24"
+                    </div>
+                    <div class="material-textfield">
+                        <input type="text" class="form-control" name="filter24"
                             value="<?php echo remove_junk(ucfirst($temperature['filter24']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="filter25"
                             value="<?php echo remove_junk(ucfirst($temperature['filter25']));?>">
+                    </div>
+                    <div class="material-textfield">
                         <input type="text" class="form-control" name="supervisor"
                             value="<?php echo remove_junk(ucfirst($temperature['supervisor']));?>">
-                        
                     </div>
-                    <button type="submit" name="Edit_ExalTemperature" class="btn btn-primary">Actualizar
-                        Temperatura</button>
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit"
+                            name="Edit_ExalTemperature" class="btn btn-primary">Actualizar
+                            Temperatura</button>
+                    </div>
                 </form>
             </div>
+
         </div>
     </div>
 </div>
