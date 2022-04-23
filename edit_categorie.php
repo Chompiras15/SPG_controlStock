@@ -105,7 +105,7 @@ $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_venc
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-indent-left"></span>
                 <span>Editar Ruma</span>
             </strong>
 

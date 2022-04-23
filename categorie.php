@@ -5,7 +5,7 @@
  Creado: 11/03/2022
  Chimbote Peru 
  ====================================================================   -->
-  
+
 
 
 <?php
@@ -56,208 +56,216 @@
     </div>
 
     <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix contTitleTT">
-                <strong>
-                    <span class="glyphicon glyphicon-th"></span>
-                    <span>Lista de Rumas</span>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix contTitleTT">
+                    <strong>
+                        <span class="glyphicon glyphicon-indent-left"></span>
+                        <span>Lista de Rumas</span>
 
-                </strong>
+                    </strong>
 
-                <a href="add_categorie.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
+                    <a href="add_categorie.php" class="pull-right contButtonTT"><i
+                            class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
 
-            </div>
-            <div class="panel-body">
+                </div>
+                <div class="panel-body">
 
-                <table class="table table-bordered table-striped table-hover" id="tabla">
+                    <table class="table table-bordered table-striped table-hover" id="tabla">
 
-                    <thead>
+                        <thead>
 
-                        <tr>
-                            
-                            <th class="text-center" style="width: 30px;">Codigo</th>
-                            <th class="text-center" style="width: 10px;">Sector</th>
-                            <th class="text-center" style="width: 10px;">Sacos</th>
-                            <th class="text-center" style="width: 50px;">Calidad</th>
-                            <th class="text-center" style="width: 10px;">Carril</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
-                            <th class="text-center" style="width: 50px;">Observacion</th>
-                            <th class="text-center" style="width: 50px;">Fecha</th>
+                            <tr>
 
-
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
-                                style="width: 100px;">Almacen</th> <?php } ?>
-                            <th class="text-center" style="width: 100px;">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($all_categories as $cat):?>
-                        <tr>
-                           
-                            <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?>
+                                <th class="text-center" style="width: 30px;">Codigo</th>
+                                <th class="text-center" style="width: 10px;">Sector</th>
+                                <th class="text-center" style="width: 10px;">Sacos</th>
+                                <th class="text-center" style="width: 50px;">Calidad</th>
+                                <th class="text-center" style="width: 10px;">Carril</th>
+                                <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?> <th
+                                    class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
+                                <th class="text-center" style="width: 50px;">Observacion</th>
+                                <th class="text-center" style="width: 50px;">Fecha</th>
 
 
-                            <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:#FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
-                            <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
+                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                                    style="width: 100px;">Almacen</th> <?php } ?>
+                                <th class="text-center" style="width: 100px;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($all_categories as $cat):?>
+                            <tr>
 
-                            <?php } ?>
-                         
-                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
-                                <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
+                                <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                                <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"){?>
+
+
+                                <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;">
+                                    <?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td
+                                    style="background:#FAE22E;">
+                                    <?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
+                                <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;">
+                                    <?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
+
+                                <?php } ?>
+
+                                <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['date_almacenamiento'])); ?></td>
+                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
+                                    <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
 
 
 
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
-                                        class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
-                                        <span class="glyphicon glyphicon-edit" ></span>
-                                    </a>
-                                    <a style ="padding: 5px;" href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
-                                        class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </a>
-                                </div>
-                            </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a style="margin-right: 7px;padding: 5px;"
+                                            href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                            class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
+                                        <a style="padding: 5px;"
+                                            href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                            class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>
+                                </td>
 
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
 
-                <div class="col">
-                    <button type="button" class="btn btn-primary">
-                        Total de sacos: <span id="total" class="badge badge-light"></span>
-                    </button>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary">
+                            Total de sacos: <span id="total" class="badge badge-light"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
-     
-    </div>
-    
 
 
-    <?php include_once('layouts/footer.php'); ?>
 
-    <!-- Busqueda por columna -->
+        <?php include_once('layouts/footer.php'); ?>
 
-    <script>
-    $(document).ready(function() {
-        var table = $('#tabla').DataTable({
-            responsive: true,
-            dom: 'B<"clear">lfrtp',
-            fixedColumns: true,
-            fixedHeader: true,
+        <!-- Busqueda por columna -->
 
-            autoWidth: true,
-            scrollCollapse: true,
-            lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "Todo"]
-            ],
+        <script>
+        $(document).ready(function() {
+            var table = $('#tabla').DataTable({
+                responsive: true,
+                dom: 'B<"clear">lfrtp',
+                fixedColumns: true,
+                fixedHeader: true,
 
-            columnDefs: [{
-                targets: "_all",
-                sortable: false
-            }],
-            // cambiamos el lenguaje
-            language: {
-                "lengthMenu": "_MENU_",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "",
-                "searchPlaceholder": "Buscar",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
+                autoWidth: true,
+                scrollCollapse: true,
+                lengthMenu: [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "Todo"]
+                ],
+
+                columnDefs: [{
+                    targets: "_all",
+                    sortable: false
+                }],
+                // cambiamos el lenguaje
+                language: {
+                    "lengthMenu": "_MENU_",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "",
+                    "searchPlaceholder": "Buscar",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing": "Procesando...",
                 },
-                "sProcessing": "Procesando...",
-            },
-            //para usar los botones de excel, imprimir y pdf  
-            responsive: "true",
-            dom: 'Bfrtlp',
-            buttons: [{
-                    extend: 'excelHtml5',
-                    text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
-                    titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business_Reporte de Almacen',
-                    className: 'btn btn-success'
+                //para usar los botones de excel, imprimir y pdf  
+                responsive: "true",
+                dom: 'Bfrtlp',
+                buttons: [{
+                        extend: 'excelHtml5',
+                        text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        title: 'SGP - Business_Reporte de Almacen',
+                        className: 'btn btn-success'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="glyphicon glyphicon-file"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        title: 'SGP - Business_Reporte de Almacen',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="glyphicon glyphicon-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        title: 'SGP - Business_Reporte de Almacen',
+                        className: 'btn btn-info'
+                    },
+                ],
+
+                "createdRow": function(row, data, index) {
+                    // elegimos la columna para sumae
+
                 },
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="glyphicon glyphicon-file"></i> ',
-                    titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business_Reporte de Almacen',
-                    className: 'btn btn-danger'
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="glyphicon glyphicon-print"></i> ',
-                    titleAttr: 'Imprimir',
-                    title: 'SGP - Business_Reporte de Almacen',
-                    className: 'btn btn-info'
-                },
-            ],
 
-            "createdRow": function(row, data, index) {
-                // elegimos la columna para sumae
-                
-            },
-           
-            "drawCallback": function() {
-                //alert("La tabla se está recargando");
-                
-                var api = this.api();
-                $(api.column(3).footer()).html(
-                   
-                    'Total: ' + api.column(3, {
-                        page: 'current'
-                    }).data().sum()
-                )
-            }
+                "drawCallback": function() {
+                    //alert("La tabla se está recargando");
 
+                    var api = this.api();
+                    $(api.column(3).footer()).html(
 
-        });
-        // sumamos y mostramos el total
-        var tot = table.column(2).data().sum();
-        $("#total").text(tot);
-
-
-        //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-        $('#tabla thead tr').clone(true).appendTo('#tabla thead');
-
-        $('#tabla thead tr:eq(1) th').each(function(i) {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Buscar"/>');
-
-            $('input', this).on('keyup change', function() {
-                if (table.column(i).search() !== this.value) {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
+                        'Total: ' + api.column(3, {
+                            page: 'current'
+                        }).data().sum()
+                    )
                 }
+
+
+            });
+            // sumamos y mostramos el total
+            var tot = table.column(2).data().sum();
+            $("#total").text(tot);
+
+
+            //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+            $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+
+            $('#tabla thead tr:eq(1) th').each(function(i) {
+                var title = $(this).text(); //es el nombre de la columna
+                $(this).html('<input type="text" placeholder="Buscar"/>');
+
+                $('input', this).on('keyup change', function() {
+                    if (table.column(i).search() !== this.value) {
+                        table
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
             });
         });
-    });
-    </script>
+        </script>
 
 
 
 
-    <?php include_once('layouts/footer.php'); ?>
+        <?php include_once('layouts/footer.php'); ?>

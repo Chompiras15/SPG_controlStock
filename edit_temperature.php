@@ -111,7 +111,7 @@ if(isset($_POST['edit_temperature']))
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-filter"></span>
                 <span>Editar Monitoreo</span>
             </strong>
 

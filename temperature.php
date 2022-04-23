@@ -66,7 +66,7 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix contTitleTT">
                 <strong>
-                    <span class="glyphicon glyphicon-th"></span>
+                    <span class="glyphicon glyphicon-filter"></span>
                     <span>Monitoreo de Temperaturas</span>
 
                 </strong>

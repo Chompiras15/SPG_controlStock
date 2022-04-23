@@ -60,7 +60,7 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix contTitleTT">
                 <strong>
-                    <span class="glyphicon glyphicon-th"></span>
+                    <span class="glyphicon glyphicon-sort"></span>
 
                     <span>Lista de Despachos</span>
                   </strong>

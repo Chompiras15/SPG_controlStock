@@ -94,7 +94,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>
-            <span class="glyphicon glyphicon-th"></span>
+            <span class="glyphicon glyphicon-calendar"></span>
             <span>Agregar Actividad</span>
         </strong>
 
