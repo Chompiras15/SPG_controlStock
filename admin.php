@@ -26,6 +26,7 @@ $findUser = find_by_user( 'users', 'admin' );
 </div>
 
 <?php
+
 if ( isset( $_POST[ 'sede_TChimb' ] ) )
 {
     $var = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Chimb' );
@@ -39,7 +40,7 @@ if ( isset( $_POST[ 'sede_TChimb' ] ) )
         redirect( 'admin.php', false );
     }
 }
-
+/*
 if ( isset( $_POST[ 'sede_tSamanco' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Samanco' );
@@ -81,7 +82,7 @@ if ( isset( $_POST[ 'sede_tVegeta' ] ) )
         redirect( 'admin.php', false );
     }
 }
-
+*/
 if ( isset( $_POST[ 'sede_tCallao' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Callao' );
@@ -95,7 +96,7 @@ if ( isset( $_POST[ 'sede_tCallao' ] ) )
         redirect( 'admin.php', false );
     }
 }
-
+/*
 if ( isset( $_POST[ 'sede_tPisco' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Pisco' );
@@ -151,7 +152,7 @@ if ( isset( $_POST[ 'sede_eChimbote' ] ) )
         redirect( 'admin.php', false );
     }
 }
-
+*/
 if ( isset( $_POST[ 'sede_eChicama' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'E-Chicama' );
@@ -224,7 +225,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 <p class='p_clientes'> CLIENTES - TASA</p>
             </div>
 
-            <form method='post'class='col-md-4 col-sm-12 panelForm'>
+            <form method='post'class='col-md-6 col-sm-12 panelForm'>
 
                 <button type='submit' name='sede_TChimb' class='cont_sede cont_Sedetasa'>
 
@@ -240,7 +241,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 </button>
             </form>
 
-            <form method='post' class='col-md-4 col-sm-12 panelForm'>
+ <!--           <form method='post' class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tSamanco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -278,8 +279,8 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-4 col-sm-12 panelForm'>
+-->
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-6 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tCallao' class=' cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -292,7 +293,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 </button>
             </form>
 
-            <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
+ <!--           <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tPisco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -306,7 +307,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
             </form>
 
             <div  class='col-md-1 col-sm-12'></div>
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-5 col-sm-12 panelForm'>
+            <form method='post' action="admin.php" class='col-md-5 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tAtico' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -318,7 +319,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-5 col-sm-12 panelForm'>
+            <form method='post' action="admin.php" class='col-md-5 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tMatarani' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -330,7 +331,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-
+-->
         </div>
 
         <div class='col-md-6 col-sm-12'>
@@ -339,7 +340,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
             </div>
 
             
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
+<!--         <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm>
                 <button type='submit' name='sede_eChimbote' class='col-md-5  col-sm-12 cont_sede'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -351,9 +352,9 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-
-            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>">
-                <button type='submit' name='sede_eChicama' class='col-md-5 col-sm-12 cont_sede'>
+-->
+            <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>"class='col-md-12 col-sm-12 panelForm'>
+                <button style="margin:15px 0px 0px 0px !important;width:100%;"type='submit' name='sede_eChicama' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
                             <i class='glyphicon glyphicon-home'></i>

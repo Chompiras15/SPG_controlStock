@@ -71,7 +71,7 @@
 
                 </strong>
 
-                <a href="add_temperature.php" class="btn btn-info pull-right contButtonTT" >Agregar</a>
+                <a href="add_temperature.php" class="pull-right contButtonTT" ><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Usuario"></i></a>
 
             </div>
             <div class="panel-body">
@@ -130,11 +130,11 @@
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a href="edit_temperature.php?id=<?php echo (int)$temp['id'];?>"
-                                        class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                        class="btn btn-xs btn-warning"  style ="margin-right: 7px;padding: 5px;" data-toggle="tooltip" title="Editar">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>
                                     <a href="delete_temperature.php?id=<?php echo (int)$temp['id'];?>"
-                                        class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                                        class="btn btn-xs btn-danger"  style ="padding: 5px;" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
                                 </div>

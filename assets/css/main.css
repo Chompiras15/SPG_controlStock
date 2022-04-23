@@ -1179,10 +1179,7 @@ img.img-size-2 {
     {
         text-align: center;
     }
-    .contButtonTT {
-        right: 0px;
-        position: relative;
-    }
+    
 
     .formIco 
     {
@@ -1201,5 +1198,14 @@ img.img-size-2 {
         font-size: 25px;
         margin-top: 20px;
         font-weight: revert;
+    }
+}
+
+
+@media screen and (max-width:380px)
+{
+    .header_sede
+    {
+        display: none;
     }
 }

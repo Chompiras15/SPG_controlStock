@@ -131,19 +131,23 @@ if(isset($_POST['edit_emb']))
             </div>
             <div class="col-md-12 edit_form">
                 <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Código de Contrato</label>
                         <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_contrato']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Cantidad de sacos</label>
                         <input type="text" class="form-control" name="cant_out" placeholder="Cantidad "
                             value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Código de Ruma</label>
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Supervisor</label>
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor"
                             value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
 

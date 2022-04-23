@@ -89,9 +89,9 @@ if(isset($_POST['edit_actividad'])){
             </div>
             <div class="col-md-12 edit_form">
                 <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-                    <div class="material-textfield">
-                        Selecciona la Actividad:
-                        <select name="nameActivity" <?php echo (int)$activity['id'];?>>
+                    <div class="form-group col-md-12">
+                        <label for="name" class="control-label">Selecione Actividad</label>
+                        <select name="nameActivity" <?php echo (int)$activity['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
                             <option value="Descarga/Carga eslinga"
                                 <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
@@ -134,27 +134,33 @@ if(isset($_POST['edit_actividad'])){
                                 Manteniminto</option>
                         </select>
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Detalles</label>
                         <input type="text" class="form-control" name="details"
                             value="<?php echo remove_junk(ucfirst($activity['details']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($activity['observation']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Auxiliares</label>
                         <input type="text" class="form-control" name="auxiliares"
                             value="<?php echo remove_junk(ucfirst($activity['auxiliares']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Hora Inicial</label>
                         <input type="time" class="form-control" name="hora_ini"
                             value="<?php echo remove_junk(ucfirst($activity['hora_ini']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Hora Final</label>
                         <input type="time" class="form-control" name="hora_fin"
                             value="<?php echo remove_junk(ucfirst($activity['hora_fin']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Fecha</label>
                         <input type="date" class="form-control" name="fecha"
                             value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
                     </div>

@@ -116,35 +116,45 @@ $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_venc
             <div class="col-md-12 edit_form">
 
                 <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        
+                        <label for="name" class="control-label">Sector</label>
                         <input type="text" class="form-control" name="sector"
                             value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
+                        
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Codigo de Ruma</label>
                         <input type="text" class="form-control" name="cod_ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Cantidad de Sacos</label>
                         <input type="text" class="form-control" name="cant_saco"
                             value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Fecha de Producción</label>
                         <input type="date" class="form-control" name="date_producc"
                             value="<?php echo remove_junk(ucfirst($categorie['date_producc']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Fecha de Vencimiento</label>
                         <input type="date" class="form-control" name="date_vencimiento"
                             value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Calidad</label>
                         <input type="text" class="form-control" name="calidad"
                             value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Nicho</label>
                         <input type="text" class="form-control" name="nicho"
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
-                    <div class="material-textfield">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
                     </div>
