@@ -184,7 +184,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
     <div class='panel panel-default '>
         <div class='panel-heading'>
             <strong>
-                <span class='glyphicon glyphicon-th'></span>
+                <span class='glyphicon glyphicon-sort'></span>
                 <span>Agregar Despacho</span>
             </strong>
         </div>

@@ -78,7 +78,7 @@ if(isset($_POST['edit_actividad'])){
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
                 <span>Editar Actividad</span>
             </strong>
 
