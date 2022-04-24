@@ -78,6 +78,7 @@
                         <tr>
                             
                             <th class="text-center" style="width: 30px;">Codigo</th>
+                            <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 10px;">Sector</th>
                             <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
@@ -97,6 +98,7 @@
                         <tr>
                            
                             <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
+                             <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>

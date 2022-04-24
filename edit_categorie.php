@@ -39,12 +39,13 @@
 if(isset($_POST['edit_cat']))
 {
 
-$req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+$req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
 
  
   validate_fields($req_field);
 
   $cat_sector = remove_junk($db->escape($_POST['sector']));
+  $cat_tipo = remove_junk($db->escape($_POST['tipo']));
   $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
   $cat_saco = remove_junk($db->escape($_POST['cant_saco']));
   $cat_producc = remove_junk($db->escape($_POST['date_producc']));
@@ -62,7 +63,7 @@ $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_venc
       if($cat_saco<1001)
       {
             $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}', cod_ruma ='{$cat_ruma}',";
+            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,cod_ruma ='{$cat_ruma}',";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
             $sql .= " WHERE id='{$categorie['id']}'";
             $result = $db->query($sql);
@@ -70,7 +71,7 @@ $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_venc
        
             if($result && $db->affected_rows() === 1) 
             {
-              $session->msg("s", "Categoría actualizada con éxito.");
+              $session->msg("s", "Ruma actualizada con éxito.");
               redirect('categorie.php',false);
             } else {
               $session->msg("d", "Lo siento, actualización falló.");
@@ -123,6 +124,19 @@ $req_field = array('sector', 'cod_ruma', 'cant_saco', 'date_producc', 'date_venc
                             value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
                         
                     </div>
+                    <div class="form-group col-md-6">
+                    <label for="name" class="control-label">Selecione Antioxidante</label>
+                        <select name="tipo" <?php echo (int)$categorie['id'];?> style="width:100%;">
+                            <!-- Opciones de la lista -->
+                            <option value="BHT"
+                                <?php if($categorie['tipo']=="BHT"){;?>selected <?php } ?>>
+                                BHT</option>
+                            <option value="Etoxiquina"
+                                <?php if($categorie['tipo']=="Etoxiquina"){;?>selected <?php } ?>>
+                                Etoxiquina</option> <!-- Opción por defecto -->
+                         
+                        </select>
+                        </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Codigo de Ruma</label>
                         <input type="text" class="form-control" name="cod_ruma"
