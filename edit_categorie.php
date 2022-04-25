@@ -117,15 +117,9 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
             <div class="col-md-12 edit_form">
 
                 <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
-                    <div class="form-group col-md-6">
-                        
-                        <label for="name" class="control-label">Sector</label>
-                        <input type="text" class="form-control" name="sector"
-                            value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
-                        
-                    </div>
-                    <div class="form-group col-md-6">
-                    <label for="name" class="control-label">Selecione Antioxidante</label>
+                    
+                    <div class="form-group col-md-12">
+                      <label for="name" class="control-label">Selecione Antioxidante</label>
                         <select name="tipo" <?php echo (int)$categorie['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
                             <option value="BHT"
@@ -136,7 +130,15 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                                 Etoxiquina</option> <!-- Opción por defecto -->
                          
                         </select>
-                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        
+                        <label for="name" class="control-label">Sector</label>
+                        <input type="text" class="form-control" name="sector"
+                            value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
+                        
+                    </div>
+                   
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Codigo de Ruma</label>
                         <input type="text" class="form-control" name="cod_ruma"

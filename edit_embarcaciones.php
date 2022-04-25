@@ -11,7 +11,7 @@
 <?php
   $page_title = 'Editar Embarcaciones';
   require_once('includes/load.php');
-  $table = "";
+  
   //require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
@@ -20,7 +20,7 @@
   $tabla_sed="";
   //require_once('includes/load.php');
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimbote"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="T-Chimb"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
   if( $SuperUser["sede"]=="T-Samanco") {$table="emb_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$table="emb_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
