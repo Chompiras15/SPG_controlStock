@@ -106,11 +106,21 @@
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 
-                            <?php if((float)$cat['temperatura']>=45) {?> <td style="background:#FA5143;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']>=39 && (float)$cat['temperatura']<45)  {?> <td style="background:#FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                            <?php }elseif((float)$cat['temperatura']==0)  {?> <td>Sin Revision</td>
-                            <?php }elseif((float)$cat['temperatura']<39)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td><?php } ?>
-
+                             <?php if($cat['tipo']=="HBT") {?> 
+                                <?php if((float)$cat['temperatura']>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if((float)$cat['temperatura']>=38 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if((float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.' ;?></td> 
+                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
+                             
+                              }else{?>
+                                <?php if((float)$cat['temperatura']>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if((float)$cat['temperatura']>=36 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
+                                <?php }else if( (float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC'; ?></td>
+                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
+                            } ?> 
+                                
                             <?php } ?>
                          
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>

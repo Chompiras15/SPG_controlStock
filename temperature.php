@@ -51,12 +51,12 @@
     function addFilter($temp,$filter)
     {
         if($temp['typeRuma']=="BHT") {?> 
-            <?php if((float)$temp[$filter]>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br><b> CACHACO </b>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=50)  {?> <td style="background: #FF5252;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br><b> CACHACO </b>'; ?></td><?php } ?>
             <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> Eslinga Piso </b>'; ?></td><?php } ?>
             <?php if((float)$temp[$filter]>=38 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> Ventilación de Ruma </b> '; ?></td><?php } ?>
             <?php if((float)$temp[$filter]<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  <b> Ruma Tapada </b> '; ?></td><?php } 
           }else{?>
-            <?php if((float)$temp[$filter]>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> CACHACO </b> '; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=50){?> <td style="background:#FF5252;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> CACHACO </b> '; ?></td><?php } ?>
             <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b>  Eslinga Piso </b> '; ?></td><?php } ?>
             <?php if((float)$temp[$filter]>=36 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b>  Ventilación de Ruma </b> '; ?></td><?php } ?>
             <?php if((float)$temp[$filter]<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  <b> Ruma Tapada </b> '; ?></td><?php } 
@@ -130,12 +130,12 @@
                             addFilter($temp,"filter9");?>
                            
                            <?php if($temp['typeRuma']=="HBT") {?> 
-                                <?php if((float)$temp['promedio']>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                                <?php if((float)$temp['promedio']>=50)  {?> <td style="background: #FF5252;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=47 && (float)$temp['promedio']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp['promedio'])).' '; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=38 && (float)$temp['promedio']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } 
                               }else{?>
-                                <?php if((float)$temp['promedio']>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
+                                <?php if((float)$temp['promedio']>=50){?> <td style="background: #FF5252;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=47 && (float)$temp['promedio']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=36 && (float)$temp['promedio']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC'; ?></td><?php } 
