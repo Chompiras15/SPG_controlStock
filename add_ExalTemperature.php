@@ -70,7 +70,7 @@
     {
 
         $findAlmaRuma = find_by_codRuma( $tableSed, $_POST[ 'codRuma' ] );
-
+        $typeR=$findAlmaRuma['tipo'];
         if($findAlmaRuma)
         {
         $promedio=((float)$tem_1+(float)$tem_2+(float)$tem_3+(float)$tem_4+(float)$tem_5+(float)$tem_6+(float)$tem_7+(float)$tem_8+(float)$tem_9+(float)$tem_10+(float)$tem_11+(float)$tem_12+(float)$tem_13+(float)$tem_14+(float)$tem_15+(float)$tem_16+(float)$tem_17+(float)$tem_18+(float)$tem_19+(float)$tem_20+(float)$tem_21+(float)$tem_22+(float)$tem_23+(float)$tem_24+(float)$tem_25)/25;
@@ -78,9 +78,9 @@
             if($SuperUser["sede"]=="E-Chicama")
             {
                 $sql  = "INSERT INTO $tabletemp (";
-                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor";
+                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor,typeRuma";
                 $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}' ";
+                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}','{$typeR}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
 
