@@ -51,15 +51,15 @@
     function addFilter($temp,$filter)
     {
         if($temp['typeRuma']=="BHT") {?> 
-            <?php if((float)$temp[$filter]>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' '; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=38 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } 
+            <?php if((float)$temp[$filter]>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> Cachaco'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Eslinga Piso'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=38 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Ventilado Ruma'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Ruma Tapada'; ?></td><?php } 
           }else{?>
-            <?php if((float)$temp[$filter]>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=36 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC.'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC'; ?></td><?php } 
+            <?php if((float)$temp[$filter]>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> Cachaco'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Eslinga Piso'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=36 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Ventilado Ruma'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  Ruma Tapada'; ?></td><?php } 
         } 
     }
     ?>
