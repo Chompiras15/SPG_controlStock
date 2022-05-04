@@ -52,6 +52,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
   $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
   $cat_calidad = remove_junk($db->escape($_POST['calidad']));
   $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+  $cat_placa = remove_junk($db->escape($_POST['placa']));
   $cat_observation = remove_junk($db->escape($_POST['observation']));
   //if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen = remove_junk($db->escape($_POST['almacen']));
   
@@ -64,7 +65,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
       {
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
             $sql .= " WHERE id='{$categorie['id']}'";
             $result = $db->query($sql);
             
@@ -168,6 +169,12 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                         <label for="name" class="control-label">Nicho</label>
                         <input type="text" class="form-control" name="nicho"
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Placa</label>
+                        <input type="text" class="form-control" name="placa"
+                            value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Observación</label>

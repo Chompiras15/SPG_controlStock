@@ -48,6 +48,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+    $cat_placa = remove_junk($db->escape($_POST['placa']));
     $cat_observation = remove_junk($db->escape($_POST['observation']));
     if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
    
@@ -65,17 +66,17 @@
               if( $SuperUser["sede"]=="E-Chimbote") 
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,almacen";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_almacen}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
           
               }else {
                   $sql  = "INSERT INTO $table (";
-                  $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation";
+                  $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
                   $sql .=") VALUES (";
-                  $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}'";
+                  $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
                   $sql .=")";
                   $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
             
@@ -106,7 +107,7 @@
 
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
+            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
               $result = $db->query($sql);
@@ -116,7 +117,7 @@
             }else{
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
                 $result = $db->query($sql);
@@ -210,6 +211,10 @@
                     <div class="material-textfield">
                         <input placeholder=" " type="number" name="nicho" required>
                         <label>Carril</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " type="text" name="placa" required>
+                        <label>Placa</label>
                     </div>
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="observation" required>

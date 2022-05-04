@@ -83,6 +83,7 @@
                             <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
@@ -102,7 +103,9 @@
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                           
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td><?php } ?>
+                            <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td>
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 
@@ -122,7 +125,7 @@
                             } ?> 
                                 
                             <?php } ?>
-                         
+                            
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>

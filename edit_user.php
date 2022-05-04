@@ -125,7 +125,7 @@ if(isset($_POST['update-pass'])) {
                                 <option value="T-Atico">Tasa - Atico</option>
                                 <option value="T-Matarani">Tasa - Matarani</option>
                                 <option value="E-Chimbote">Exalmar - Chimbote</option>
-                                <option value="T-Chicama">Exalmar - Chicama</option>
+                                <option value="E-Chicama">Exalmar - Chicama</option>
 
                             </select>
                         </div>
