@@ -182,7 +182,7 @@
                     <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
-                            <label>Placa</label>
+                            <label>Placa Vehicular</label>
                         </div>
                     <?php } ?>
                     <div class="material-textfield">

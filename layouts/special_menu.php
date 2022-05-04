@@ -12,4 +12,5 @@
       <li><a href="sales_report.php">Reporte Rangos </a></li>
     </ul>
   </li>
+   <?php if( $SuperUser["sede"]=="T-Callao") {?><li><a href="temperature.php"><i class="glyphicon glyphicon-filter"></i><span>Temperaturas</span></a></li><?php } ?>
 </ul>
