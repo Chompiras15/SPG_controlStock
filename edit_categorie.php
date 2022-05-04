@@ -147,13 +147,13 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                             value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
                         
                     </div>
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
-                      <div class="form-group col-md-6">
-                          <label for="name" class="control-label">Codigo de Ruma</label>
-                          <input type="text" class="form-control" name="cod_ruma"
-                              value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
-                      </div>
-                    <?php }?> 
+                
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Codigo de Ruma</label>
+                        <input type="text" class="form-control" name="cod_ruma"
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
+                    </div>
+                 
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Cantidad de Sacos</label>
                         <input type="text" class="form-control" name="cant_saco"
@@ -180,11 +180,13 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Placa</label>
-                        <input type="text" class="form-control" name="placa"
-                            value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
-                    </div>
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                      <div class="form-group col-md-6">
+                          <label for="name" class="control-label">Placa</label>
+                          <input type="text" class="form-control" name="placa"
+                              value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
+                      </div>
+                    <?php }?> 
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observation"

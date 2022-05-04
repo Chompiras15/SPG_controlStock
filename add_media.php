@@ -61,6 +61,8 @@ if ( isset( $_POST[ 'add_emb' ] ) )
     $cod_contrato = remove_junk( $db->escape( $_POST[ 'cod_contrato' ] ) );
     $cant_out = remove_junk( $db->escape( $_POST[ 'cant_out' ] ) );
     $cod_ruma = remove_junk( $db->escape( $_POST[ 'cod_ruma' ] ) );
+    if( $SuperUser["sede"]=="T-Callao") $cod_placa = remove_junk( $db->escape( $_POST[ 'placa' ] ) );
+    if( $SuperUser["sede"]=="T-Callao") $cod_container = remove_junk( $db->escape( $_POST[ 'container' ] ) );
     $date_out = remove_junk( $db->escape( $_POST[ 'date_out' ] ) );
     $supervisor = remove_junk( $db->escape( $_POST[ 'supervisor' ] ) );
     if ( $SuperUser[ 'sede' ] == 'E-Chimbote' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
@@ -77,10 +79,10 @@ if ( isset( $_POST[ 'add_emb' ] ) )
             $restaSacos = ( int )$findCatRuma[ 'cant_saco' ]-( int )$cant_out;
 
             if ( $restaSacos == 0 )
- {
+            {
 
                 if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
- {
+                {
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
                     $sql .= ') VALUES (';
@@ -88,7 +90,16 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-                } else {
+                } else  if( $SuperUser["sede"]=="T-Callao")
+                {
+                    $sql  = "INSERT INTO $table (";
+                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor';
+                    $sql .= ') VALUES (';
+                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$placa}','{$cod_container}', '{$date_out}', '{$supervisor}'";
+                    $sql .= ')';
+                    $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+                }else
+                {
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
                     $sql .= ') VALUES (';
@@ -109,10 +120,10 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 }
 
             } elseif ( $restaSacos > 0 )
- {
+            {
 
                 if ( $SuperUser[ 'sede' ] != 'E-Chimbote' ) 
- {
+                {
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
                     $sql .= ') VALUES (';
@@ -120,7 +131,15 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-                } else {
+                } else if ( $SuperUser[ 'sede' ] != 'T-Callao' ) {
+                    $sql  = "INSERT INTO $table (";
+                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,almacen';
+                    $sql .= ') VALUES (';
+                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}', '{$almacen}'";
+                    $sql .= ')';
+                    $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+                }else
+                {
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
                     $sql .= ') VALUES (';
@@ -136,7 +155,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
 
                 $result = $db->query( $sql );
                 if ( $result && $db->affected_rows() == 1 ) 
- {
+                {
                     $session->msg( 's', 'Despacho actualizado con éxito' );
                     redirect( 'media.php', false );
                 } else {
@@ -148,7 +167,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 redirect( 'media.php', false );
 
             } elseif ( $restaSacos < 0 )
- {
+            {
                 $session->msg( 'd', 'Verificar la Cantidad Sacos' );
                 redirect( 'media.php', false );
             }
@@ -188,7 +207,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 <span>Agregar Despacho</span>
             </strong>
         </div>
-        <div class='panel-body' style='height: 400px;margin-top: 5%;'>
+        <div class='panel-body' style='margin-top: 5%;'>
             <div class='col-md-3'>
             </div>
             <div class='col-md-12 cont_form'>
@@ -207,6 +226,17 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         <input placeholder=' ' type='text' name='cod_ruma' required>
                         <label>Codigo Ruma</label>
                     </div>
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                        <div class='material-textfield'>
+                            <input placeholder=' ' type='text' name='placa' required>
+                            <label>Placa</label>
+                        </div>
+
+                        <div class='material-textfield'>
+                            <input placeholder=' ' type='text' name='container' required>
+                            <label>Codigo Container</label>
+                        </div>
+                    <?php } ?>
 
                     <div class='material-textfield'>
                         <label class='select'>Fecha de Salida</label>
@@ -219,8 +249,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         <label>Supervisor</label>
                     </div>
 
-                    <?php if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) {
-    ?>
+                    <?php if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) {?>
 
                     <div class='material-textfield'>
                         <label class='select' for='almacen'>Nombre de Almacen</label>
@@ -233,8 +262,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         </select>
                     </div>
 
-                    <?php }
-    ?>
+                    <?php }?>
 
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_emb'
