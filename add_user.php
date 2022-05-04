@@ -72,7 +72,7 @@
               <label class="select" for="sede">Selecciona Sede:</label>
                 <select class="form-control" name="sede">
               <!-- Opciones de la lista -->
-                <option value="T-Chimbote" selected>Tasa - Chimbote</option>
+                <option value="T-Chimb" selected>Tasa - Chimbote</option>
                 <option value="T-Samanco" >Tasa - Samanco</option> <!-- Opción por defecto -->
                 <option value="T-Supe">Tasa - Supe</option>
                 <option value="T-Vegueta">Tasa - Végueta</option>

@@ -116,7 +116,7 @@ if(isset($_POST['update-pass'])) {
                         <div class="form-group">
                             <label for="sede">SEDE</label>
                             <select class="form-control" name="sede">
-                                <option value="T-Chimbote">Tasa - Chimbote</option>
+                                <option value="T-Chimb">Tasa - Chimbote</option>
                                 <option value="T-Samanco">Tasa - Samanco</option>
                                 <option value="T-Supe">Tasa - Supe</option>
                                 <option value="T-Vegueta">Tasa - Végueta</option>

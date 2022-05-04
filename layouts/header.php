@@ -1,4 +1,6 @@
-<?php $user = current_user(); ?>
+<?php $user = current_user(); 
+//$dadaName="".$user["name"];
+//$resultado = explode(" ",$resultado);?>
 <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -34,7 +36,7 @@
                 <?php }else{?>
                   <img src="uploads/users/<?php echo $user['image'];?>"  class="img-circle img-inline">
                 <?php } ?>
-                  <span><?php echo remove_junk(ucfirst($user['name'])); ?> <i class="caret"></i></span>
+                  <span><?php echo $user['username']; ?> <i class="caret"></i></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
