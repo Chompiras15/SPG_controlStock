@@ -50,6 +50,11 @@ if(isset($_POST['edit_emb']))
     $cant_out = remove_junk($db->escape($_POST['cant_out']));
     $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
     $supervisor = remove_junk($db->escape($_POST['supervisor']));
+
+    if( $SuperUser["sede"]=="T-Callao") {
+      $placa = remove_junk($db->escape($_POST['placa']));
+      $cod_container = remove_junk($db->escape($_POST['cod_container']));
+    };
     $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
@@ -74,11 +79,18 @@ if(isset($_POST['edit_emb']))
           if($result || $db->affected_rows() === 1) 
           {
 
-                
+            if( $SuperUser["sede"]=="T-Callao") {
+              $sql   = "UPDATE $table SET";
+              $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
+              $sql  .=" cod_ruma ='{$cod_ruma}',placa ='{$placa}',cod_container ='{$cod_container}',date_out ='{$date}', supervisor ='{$supervisor}'";
+              $sql .= " WHERE id='{$categorie['id']}'";
+            }else
+            {
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
               $sql .= " WHERE id='{$categorie['id']}'";
+            }
               $result = $db->query($sql);
 
               if($result && $db->affected_rows() === 1) 
@@ -146,6 +158,19 @@ if(isset($_POST['edit_emb']))
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
                     </div>
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                      <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Código de Ruma</label>
+                        <input type="text" class="form-control" name="placa" placeholder="Placa"
+                            value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Código de Ruma</label>
+                        <input type="text" class="form-control" name="cod_container" placeholder="Codigo Container"
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_container']));?>">
+                      </div>
+                    <?php } ?>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Supervisor</label>
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor"

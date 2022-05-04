@@ -31,7 +31,7 @@
 ?>
 
 
-<html lang="en">
+<html lang="es">
 
 <head>
     <style>
@@ -103,9 +103,9 @@
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                           
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td><?php } ?>
-                            <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td>
+                           <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
+                            
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 

@@ -23,7 +23,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -75,8 +75,8 @@
                             <th>Contrato</th>
                             <th class="text-center" style="width: 50px;">Cantidad</th>
                             <th>Cod.Ruma</th>
-                            <th class="text-center" style="width: 50px;">Placa</th>
-                            <th class="text-center" style="width: 50px;">Container</th>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 50px;">Placa</th> <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 50px;">Container</th> <?php } ?>
                             <th class="text-center" style="width: 100px;">Fecha</th>
                             <th>Supervisor</th>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
