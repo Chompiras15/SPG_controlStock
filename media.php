@@ -75,6 +75,8 @@
                             <th>Contrato</th>
                             <th class="text-center" style="width: 50px;">Cantidad</th>
                             <th>Cod.Ruma</th>
+                            <th class="text-center" style="width: 50px;">Placa</th>
+                            <th class="text-center" style="width: 50px;">Container</th>
                             <th class="text-center" style="width: 100px;">Fecha</th>
                             <th>Supervisor</th>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
@@ -91,6 +93,10 @@
                             <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                                <td><?php echo remove_junk(ucfirst($embar['placa'])); ?></td><?php } ?>
+                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                                <td><?php echo remove_junk(ucfirst($embar['cod_container'])); ?></td><?php } ?>
                             <td><?php echo read_onlyDate($embar['date_out']); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>

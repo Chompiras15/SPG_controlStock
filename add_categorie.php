@@ -48,7 +48,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    $cat_placa = remove_junk($db->escape($_POST['placa']));
+    if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
     $cat_observation = remove_junk($db->escape($_POST['observation']));
     if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
    
@@ -66,20 +66,29 @@
               if( $SuperUser["sede"]=="E-Chimbote") 
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,almacen";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_almacen}'";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
-          
-              }else {
-                  $sql  = "INSERT INTO $table (";
-                  $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
-                  $sql .=") VALUES (";
-                  $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
-                  $sql .=")";
-                  $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+               
+              }else if($SuperUser["sede"]=="T-Callao") 
+              {
+                $sql  = "INSERT INTO $table (";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
+                $sql .=") VALUES (";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
+                $sql .=")";
+                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
             
+              }else
+              {
+                $sql  = "INSERT INTO $table (";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation";
+                $sql .=") VALUES (";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}'";
+                $sql .=")";
+                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
               }
 
               
@@ -169,30 +178,34 @@
             </div>
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_categorie.php">
-                    <div class="material-textfield">
-                        <input placeholder=" " type="number" name="sector" required>
-                        <label>Sector</label>
-                    </div>
-
-                    <div class="material-textfield">
-                        <label class="select" for="tipo">Selecciona Antioxidante:</label>
-                         <select class="form-control" name="tipo">
-                        <!-- Opciones de la lista -->
-                            <option value="BHT" selected>BHT</option>
-                            <option value="Etoxiquina">Etoxiquina</option> <!-- Opción por defecto -->
-                           
-                        </select>
-                    </div>
-
+                    
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                        <div class="material-textfield">
+                            <input placeholder=" " type="text" name="placa" required>
+                            <label>Placa</label>
+                        </div>
+                    <?php } ?>
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="cod_ruma" required>
                         <label>Cod.Ruma</label>
                     </div>
-
                     <div class="material-textfield">
                         <input placeholder=" " type="number" name="cant_saco" required>
                         <label>Cantidad sacos</label>
                     </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " type="number" name="sector" required>
+                        <label>Sector</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " type="number" name="nicho" required>
+                        <label>Carril</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " type="text" name="calidad" required>
+                        <label>Calidad</label>
+                    </div>
+
                     <div class="material-textfield">
                         <label class="select">Fecha Produccion</label>
                         <input placeholder=" " type="date" name="date_vencimiento" required>
@@ -203,19 +216,18 @@
                         <input placeholder=" " type="date" name="date_producc" required>
 
                     </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " type="text" name="calidad" required>
-                        <label>Calidad</label>
-                    </div>
+                   
 
                     <div class="material-textfield">
-                        <input placeholder=" " type="number" name="nicho" required>
-                        <label>Carril</label>
+                        <label class="select" for="tipo">Selecciona Antioxidante:</label>
+                         <select class="form-control" name="tipo">
+                        <!-- Opciones de la lista -->
+                            <option value="BHT" selected>BHT</option>
+                            <option value="Etoxiquina">Etoxiquina</option> <!-- Opción por defecto -->
+                           
+                        </select>
                     </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " type="text" name="placa" required>
-                        <label>Placa</label>
-                    </div>
+                   
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="observation" required>
                         <label>Observacion</label>
