@@ -17,7 +17,14 @@
    <div class="col-md-4">
        <div class="panel profile">
          <div class="jumbotron text-center bg-red">
-            <img class="img-circle img-size-2" src="uploads/users/<?php echo $user_p['image'];?>" alt="">
+            <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>
+              <img class="img-circle img-size-2" src="uploads/users/default.png" alt="">
+                
+            <?php }else{?>
+              <img class="img-circle img-size-2" src="uploads/users/<?php echo $user['image'];?>" alt="">
+               
+            <?php } ?>
+            
            <h3><?php echo first_character($user_p['name']); ?></h3>
          </div>
         <?php if( $user_p['id'] === $user['id']):?>
