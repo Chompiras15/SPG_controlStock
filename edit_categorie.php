@@ -29,7 +29,7 @@
 <?php
   //Display all catgories.
   $categorie = find_by_id($table,(int)$_GET['id']);
-  // $dateHistory = find_by_codRumaHistory($table,$_POST['cod_ruma'],$_POST['placa'])
+  // $dateHistory = find_by_codRumaHistory($table,$_POST['cod_ruma'],$_POST['placa']);
   if(!$categorie){
     $session->msg("d","Missing categorie id.");
     redirect('categorie.php');

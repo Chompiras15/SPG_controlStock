@@ -93,9 +93,9 @@
                             <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                            <?php if( $SuperUser["sede"]=="T-Callao") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['placa'])); ?></td><?php } ?>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                            <?php if( $SuperUser["sede"]=="T-Callao") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['cod_container'])); ?></td><?php } ?>
                             <td><?php echo read_onlyDate($embar['date_out']); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>

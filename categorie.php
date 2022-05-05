@@ -83,10 +83,11 @@
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 10px;">Sector</th>
                             <th class="text-center" style="width: 10px;">Sacos</th>
+                            <th class="text-center" style="width: 10px;">F.Produccion</th>
+                            <th class="text-center" style="width: 10px;">F.Vencimiento</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
 
@@ -104,30 +105,13 @@
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                             <td><?php echo remove_junk(ucfirst($cat['date_producc'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                             
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
-
-
-                             <?php if($cat['tipo']=="HBT") {?> 
-                                <?php if((float)$cat['temperatura']>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=38 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.' ;?></td> 
-                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
-                             
-                              }else{?>
-                                <?php if((float)$cat['temperatura']>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=36 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if( (float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC'; ?></td>
-                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
-                            } ?> 
-                                
-                            <?php } ?>
-                            
+                                            
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
@@ -159,9 +143,8 @@
                         Total de sacos: <span id="total" class="badge badge-light"></span>
                         
                     </button>
-                    <button type="button" class="btn btn-primary pull-right contButtonTT">
-                        <a href="historial_almacen.php">Ver Historial</a>
-                            </button>
+                <a href="historial_almacen.php" class="pull-right contButtonTT"><i
+                            class="iconCat glyphicon glyphicon-list-alt" title="Ver Historial"></i></a>
                 </div>
                 
                 

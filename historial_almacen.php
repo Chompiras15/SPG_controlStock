@@ -90,6 +90,7 @@
                             <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
+                             <th class="text-center" style="width: 50px;">Acciones</th>
 
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
@@ -136,18 +137,18 @@
 
 
 
-                            <!-- <td class="text-center">
+                            <td class="text-center">
                                 <div class="btn-group">
-                                    <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                    <!-- <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                         <span class="glyphicon glyphicon-edit" ></span>
-                                    </a>
-                                    <a style ="padding: 5px;" href="delete_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                    </a> -->
+                                    <a style ="padding: 5px;" href="delete_history_almacen.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
                                 </div>
-                            </td> -->
+                            </td>
 
                         </tr>
                         <?php endforeach; ?>
