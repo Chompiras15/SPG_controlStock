@@ -20,7 +20,7 @@
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="sede_callao";
+  if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
@@ -61,14 +61,15 @@
                 <div class="panel-heading clearfix contTitleTT">
                     <strong>
                         <span class="glyphicon glyphicon-indent-left"></span>
-                        <span>Lista de Rumas</span>
+                        <span>Historial de Rumas</span>
 
                     </strong>
 
-                    <a href="add_categorie.php" class="pull-right contButtonTT"><i
-                            class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
-                            
-        </div>
+                   <!--  <a href="add_categorie.php" class="pull-right contButtonTT"></a>
+                    <i
+                            class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i> -->
+
+            </div>
             <div class="panel-body">
 
                 <table class="table table-bordered table-striped table-hover" id="tabla">
@@ -93,7 +94,6 @@
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
-                            <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,7 +136,7 @@
 
 
 
-                            <td class="text-center">
+                            <!-- <td class="text-center">
                                 <div class="btn-group">
                                     <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
@@ -147,7 +147,7 @@
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
                                 </div>
-                            </td>
+                            </td> -->
 
                         </tr>
                         <?php endforeach; ?>
@@ -157,15 +157,8 @@
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
-                        
                     </button>
-                    <button type="button" class="btn btn-primary pull-right contButtonTT">
-                        <a href="historial_almacen.php">Ver Historial</a>
-                            </button>
                 </div>
-                
-                
-                
             </div>
 
         </div>
