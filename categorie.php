@@ -67,6 +67,9 @@
 
                     <a href="add_categorie.php" class="pull-right contButtonTT"><i
                             class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
+
+                            <a href="historial_almacen.php" class="pull-right historialicon"><i
+                            class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
                             
         </div>
             <div class="panel-body">
@@ -87,9 +90,10 @@
                             <th class="text-center" style="width: 10px;">F.Vencimiento</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?> -->
                             <th class="text-center" style="width: 50px;">Observacion</th>
-                            <th class="text-center" style="width: 50px;">Fecha</th>
+                            <th class="text-center" style="width: 50px;">Descripcion</th>
+                            <!-- <th class="text-center" style="width: 50px;">Fecha</th> -->
 
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
@@ -109,11 +113,12 @@
                             <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?> -->
                             
                                             
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
-                            <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['description'])); ?></td>
+                            <!-- <td><?php echo read_date($cat['date_almacenamiento']); ?></td> -->
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
@@ -143,8 +148,7 @@
                         Total de sacos: <span id="total" class="badge badge-light"></span>
                         
                     </button>
-                <a href="historial_almacen.php" class="pull-right contButtonTT"><i
-                            class="iconCat glyphicon glyphicon-list-alt" title="Ver Historial"></i></a>
+                
                 </div>
                 
                 

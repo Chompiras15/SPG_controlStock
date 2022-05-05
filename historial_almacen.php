@@ -87,8 +87,10 @@
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 10px;">Carril</th>
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
                             <th class="text-center" style="width: 50px;">Observacion</th>
+
+                            <th class="text-center" style="width: 50px;">Descripción</th>
                             <th class="text-center" style="width: 50px;">Fecha</th>
                              <th class="text-center" style="width: 50px;">Acciones</th>
 
@@ -109,7 +111,7 @@
                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                             
-                            <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 
                              <?php if($cat['tipo']=="HBT") {?> 
@@ -127,9 +129,10 @@
                                 <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
                             } ?> 
                                 
-                            <?php } ?>
+                            <?php } ?> -->
                             
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['descripcion'])); ?></td>
                             <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>

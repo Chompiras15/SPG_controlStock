@@ -55,6 +55,8 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
   $cat_nicho = remove_junk($db->escape($_POST['nicho']));
   if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
   $cat_observation = remove_junk($db->escape($_POST['observation']));
+  $cat_descripcion = remove_junk($db->escape($_POST['description']));
+
   //if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen = remove_junk($db->escape($_POST['almacen']));
   
   if(empty($errors))
@@ -68,7 +70,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
         {
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
+            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',description='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }else{
             $sql   = "UPDATE $table SET";
@@ -192,6 +194,11 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                         <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Descripcion</label>
+                        <input type="text" class="form-control" name="description"
+                            value="<?php echo remove_junk(ucfirst($categorie['description']));?>">
                     </div>
 
 

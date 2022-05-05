@@ -108,6 +108,11 @@ input[type=time] {
     right: 30px;
     position: absolute;
 }
+.historialicon{
+    padding-top: 5px;
+    right: 100px;
+    position: absolute;
+}
 
 .paginate_button {
     padding: 0px !important;

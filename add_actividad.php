@@ -123,7 +123,7 @@
                             <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
                             <option value="Limpieza de mantas">Limpieza de mantas</option>
                             <option value="Embarque">Embarque</option>
-                            <option value="Manteniminto">Manteniminto</option>
+                            <option value="Manteniminto">Mantenimiento</option>
                         </select>
                 </div>
                 <div class="material-textfield">

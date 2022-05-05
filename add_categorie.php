@@ -36,7 +36,7 @@
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
    
    if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector', 'tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
-   else $req_field = array('sector', 'tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation');
+   else $req_field = array('sector', 'tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
    
    validate_fields($req_field);
 
@@ -50,6 +50,7 @@
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
     if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
     $cat_observation = remove_junk($db->escape($_POST['observation']));
+    $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
    
     //$date   = make_date();
@@ -72,14 +73,13 @@
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
                
-              }else if($SuperUser["sede"]=="T-Callao ") 
+              }else if($SuperUser["sede"]=="T-Callao") 
               {
-                $sql  = "INSERT INTO $table (";
-                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
-                $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+                $sql= "INSERT INTO $table (";
+                $sql.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation";
+                $sql.=") VALUES (";
+                $sql.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}'";
+                $sql.=")";
 
                 
               }else
@@ -96,9 +96,9 @@
               if($db->query($sql))
               {
                 $sql2= "INSERT INTO $tableHistory (";
-                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
+                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion";
                 $sql2.=") VALUES (";
-                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
+                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}'";
                 $sql2.=")";
                 if($db->query($sql2))
                 {
@@ -141,7 +141,7 @@
             }else{
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', descripcion='{$cat_descripcion}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
                  
@@ -151,9 +151,9 @@
             if($result && $db->affected_rows() === 1) 
             {
                 $sql2= "INSERT INTO $tableHistory (";
-                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
+                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion";
                 $sql2.=") VALUES (";
-                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
+                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}'";
                 $sql2.=")";
 
                 $history = $db->query($sql2);
@@ -256,6 +256,10 @@
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="observation" required>
                         <label>Observacion</label>
+                    </div>
+                     <div class="material-textfield">
+                        <input placeholder=" " type="text" name="descripcion" required>
+                        <label>Descripcion</label>
                     </div>
 
                     <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
