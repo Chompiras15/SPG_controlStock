@@ -58,6 +58,23 @@ function find_by_codRuma( $table, $cod_ruma )
 }
 
 /*--------------------------------------------------------------*/
+/*  Function for Find data from table by Cod_Ruma - HISTORY_CALLAO
+/*--------------------------------------------------------------*/
+function find_by_codRumaHistory( $table, $cod_ruma, $placa )
+ {
+    global $db;
+    //$id = ( int )$id;
+    if ( tableExists( $table ) ) {
+        $sql = $db->query( "SELECT * FROM {$db->escape($table)} WHERE cod_ruma='{$db->escape($cod_ruma)}' and placa='{$db->escape($placa)}' LIMIT 1" );
+        if ( $result = $db->fetch_assoc( $sql ) )
+        return $result;
+        else
+        return null;
+    }
+}
+
+
+/*--------------------------------------------------------------*/
 /*  Function for Find data from table by sedeUser
 /*--------------------------------------------------------------*/
 
