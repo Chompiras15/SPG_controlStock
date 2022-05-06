@@ -29,6 +29,12 @@
 
   $all_actividades = find_all($tableActi)
 ?>
+<style>
+    .cont_select div
+    {
+        width:95% !important;
+    }
+</style>
 <?php
  if(isset($_POST['add_actividad']))
  {
@@ -107,9 +113,9 @@
             <form method="post" action="add_actividad.php">
 
             
-                <div class="material-textfield">
-                    <label class="select" for="nameActivity">Selecciona Actividad:</label>
-                         <select class="form-control" name="nameActivity">
+                <div class="col-md-12 cont_select" style="margin:0;padding:0;">
+                   
+                         <select  class="selectpicker" data-show-subtext="true" data-live-search="true" name="nameActivity">
                         <!-- Opciones de la lista -->
                             <option value="Descarga/Carga eslinga" selected>Descarga/Carga eslinga</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
