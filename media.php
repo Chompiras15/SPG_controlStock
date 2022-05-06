@@ -146,6 +146,7 @@
             fixedHeader: true,
             scrollCollapse: true,
             autoWidth: true,
+            ordering: false,
             scrollCollapse: true,
             lengthMenu: [
                 [5, 10, 25, 50, -1],

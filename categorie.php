@@ -170,7 +170,7 @@
                 dom: 'B<"clear">lfrtp',
                 fixedColumns: true,
                 fixedHeader: true,
-
+                ordering: false,
                 autoWidth: true,
                 scrollCollapse: true,
                 lengthMenu: [
