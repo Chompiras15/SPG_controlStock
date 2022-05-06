@@ -128,7 +128,7 @@
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Corte y vaceado en jumbo">Corte y vaceado en jumbo</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-                            <option value="Ventilacion de sacos con HP">Ventilacion de sacos con HP</option>
+                            <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
                             <option value="Embarque">Embarque</option>
                             <option value="Encintado y serrado de contenedores">Encintado y serrado de contenedores</option>
                             <option value="Reproceso">Reproceso</option>

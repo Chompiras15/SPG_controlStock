@@ -115,6 +115,7 @@
                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                             <!-- <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?> -->
                             
+
                                             
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['description'])); ?></td>
