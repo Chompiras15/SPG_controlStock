@@ -87,7 +87,7 @@ function total_price($totals){
 /*--------------------------------------------------------------*/
 function read_date($str){
      if($str)
-      return date('d/m/Y g:i:s a', strtotime($str));
+      return date('d/m/Y g:i:s a', strtotime($str)-5*3600);
      else
       return null;
   }
