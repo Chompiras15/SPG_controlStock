@@ -141,7 +141,7 @@
             }else{
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', descripcion='{$cat_descripcion}'";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', description='{$cat_descripcion}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
                  
