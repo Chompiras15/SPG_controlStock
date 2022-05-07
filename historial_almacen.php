@@ -180,7 +180,7 @@
                 dom: 'B<"clear">lfrtp',
                 fixedColumns: true,
                 fixedHeader: true,
-
+                ordering: false,
                 autoWidth: true,
                 scrollCollapse: true,
                 lengthMenu: [
@@ -190,7 +190,8 @@
 
                 columnDefs: [{
                     targets: "_all",
-                    sortable: false
+                    sortable: false,
+                    className: "text-center"
                 }],
                 // cambiamos el lenguaje
                 language: {
@@ -216,8 +217,11 @@
                         extend: 'excelHtml5',
                         text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                         titleAttr: 'Exportar a Excel',
-                        title: 'SGP - Business_Reporte de Almacen',
-                        className: 'btn btn-success'
+                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
+                        className: 'btn btn-success',
+                         excelStyles:{
+                            template:'blue_gray_medium'
+                        }
                     },
                     {
                         extend: 'pdfHtml5',

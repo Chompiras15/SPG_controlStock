@@ -96,7 +96,11 @@
             info: true,
             columnDefs: [{
                 targets: "_all",
-                sortable: false
+                sortable: false,
+                 className: "text-center",
+                 excelStyles:{
+                            template:'blue_gray_medium'
+                        }
             }],
             // cambiamos el lenguaje
             language: {

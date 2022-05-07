@@ -170,7 +170,8 @@
 
                 columnDefs: [{
                     targets: "_all",
-                    sortable: false
+                    sortable: false,
+                    className: "text-center"
                 }],
                 // cambiamos el lenguaje
                 language: {

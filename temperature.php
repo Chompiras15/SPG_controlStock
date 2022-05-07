@@ -195,7 +195,8 @@
 
             columnDefs: [{
                 targets: "_all",
-                sortable: false
+                sortable: false,
+                className: "text-center"
             }],
             // cambiamos el lenguaje
             language: {
@@ -222,7 +223,10 @@
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
                     title: 'SGP - Business',
-                    className: 'btn btn-success'
+                    className: 'btn btn-success',
+                     excelStyles:{
+                            template:'blue_gray_medium'
+                        }
                 },
                 {
                     extend: 'pdfHtml5',
