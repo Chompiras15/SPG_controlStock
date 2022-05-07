@@ -83,15 +83,18 @@
                                 <th class="text-center" style="width: 30px;">Lote</th>
                             <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
                             <?php } ?>
-                            <th class="text-center" style="width: 10px;">Sacos</th>
+                            <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 10px;">Sector</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>
-                                <th class="text-center" style="width: 30px;">Ubicación</th>
-                            <?php }else { ?><th class="text-center" style="width: 30px;">Carril</th>
-                            <?php } ?>
+                            <th class="text-center" style="width: 10px;">Sacos</th>
                             <th class="text-center" style="width: 10px;">F.Produccion</th>
                             <th class="text-center" style="width: 10px;">F.Vencimiento</th>
-                          
+                            <th class="text-center" style="width: 50px;">Calidad</th>
+                            <th class="text-center" style="width: 10px;">Carril</th>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?> -->
+                            <th class="text-center" style="width: 50px;">Observacion</th>
+                            <th class="text-center" style="width: 50px;">Descripcion</th>
+                            <!-- <th class="text-center" style="width: 50px;">Fecha</th> -->
+
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
@@ -103,12 +106,20 @@
                         <tr>
                            
                             <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
+                             <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                              <td><?php echo remove_junk(ucfirst($cat['date_producc'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
-                           
+                            <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                           <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?> -->
+                            
+
+                                            
+                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['description'])); ?></td>
+                            <!-- <td><?php echo read_date($cat['date_almacenamiento']); ?></td> -->
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
@@ -197,7 +208,10 @@
                         text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                         titleAttr: 'Exportar a Excel',
                         title: 'SGP - Business_Reporte de Almacen',
-                        className: 'btn btn-success'
+                        className: 'btn btn-success',
+                        excelStyles:{
+                            template:'header_blue'
+                        }
                     },
                     {
                         extend: 'pdfHtml5',
