@@ -68,10 +68,14 @@
                     <a href="add_categorie.php" class="pull-right contButtonTT"><i
                             class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
 
+<<<<<<< HEAD
                             <a href="historial_almacen.php" class="pull-right historialicon"><i
                             class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
                             
         </div>
+=======
+            </div>
+>>>>>>> parent of 964d6b6 (historial)
             <div class="panel-body">
 
                 <table class="table table-bordered table-striped table-hover" id="tabla">
@@ -147,13 +151,12 @@
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
-                        
                     </button>
+<<<<<<< HEAD
                 
+=======
+>>>>>>> parent of 964d6b6 (historial)
                 </div>
-                
-                
-                
             </div>
 
         </div>

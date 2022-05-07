@@ -26,15 +26,15 @@
   if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 ?>
 <?php
-  $categorieDelete = find_by_id($tabla_sed,(int)$_GET['id']);
-  if(!$categorieDelete){
+  $categorie = find_by_id($tabla_sed,(int)$_GET['id']);
+  if(!$categorie){
     $session->msg("d","ID de la ruma falta.");
     redirect('categorie.php');
   }
 ?>
 <?php
-  $delete_idDelete = delete_by_id($tabla_sed,(int)$categorieDelete['id']);
-  if($delete_idDelete){
+  $delete_id = delete_by_id($tabla_sed,(int)$categorie['id']);
+  if($delete_id){
       $session->msg("s","Ruma eliminada");
       redirect('categorie.php');
   } else {
