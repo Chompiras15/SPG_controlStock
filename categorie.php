@@ -182,7 +182,7 @@
                 columnDefs: [{
                     targets: "_all",
                     sortable: false,
-                    className: "text-center"
+                    // className: "text-center"
                 }],
                 // cambiamos el lenguaje
                 language: {
@@ -210,9 +210,9 @@
                         titleAttr: 'Exportar a Excel',
                         title: 'SGP - Business_Reporte de Almacen',
                         className: 'btn btn-success',
-                        excelStyles:{
-                            template:'header_blue'
-                        }
+                        // excelStyles:{
+                        //     template:'header_blue'
+                        // }
                     },
                     {
                         extend: 'pdfHtml5',

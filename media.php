@@ -156,7 +156,7 @@
             columnDefs: [{
                 targets: "_all",
                 sortable: false,
-                className: "text-center"
+                // className: "text-center"
             }],
             // cambiamos el lenguaje
             language: {
@@ -186,9 +186,9 @@
                     titleAttr: 'Exportar a Excel',
                     title: 'SGP - Business_Reporte de despachos',
                     className: 'btn btn-success',
-                     excelStyles:{
-                            template:'blue_gray_medium'
-                        }
+                    //  excelStyles:{
+                    //         template:'blue_gray_medium'
+                    //     }
                 },
                 {
                     extend: 'pdfHtml5',
