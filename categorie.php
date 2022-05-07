@@ -106,8 +106,8 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                             <td><?php echo remove_junk(ucfirst($cat['date_producc'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
+                             <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
+                            <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
                            
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
