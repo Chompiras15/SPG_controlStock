@@ -57,7 +57,15 @@ $number_of_lines=fwrite($fileHandler,$backupSQL);
 fclose($fileHandler);
 
 header("location: $backup_file_name");
+header('Content-Description: File Transfer');
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename='.basename($backup_file_name));
+header('Content-Transfer-Encoding: binary');
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
 header('Content-Length: '.filesize($backup_file_name));
-ob_clean(); 
-flush();
+// ob_clean(); 
+// flush();
+readfile($backup_file_name);
 }
