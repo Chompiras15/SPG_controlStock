@@ -89,8 +89,9 @@ if(isset($_POST['edit_actividad'])){
             </div>
             <div class="col-md-12 edit_form">
                 <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-                    <div class="col-md-12 cont_select" style="margin:0;padding:0;">
-                        <select class="selectpicker" data-show-subtext="true" data-live-search="true" name="nameActivity" <?php echo (int)$activity['id'];?> style="width:100%;">
+                    <div class="form-group col-md-12">
+                        <label for="name" class="control-label">Selecione Actividad</label>
+                        <select name="nameActivity" class="selectpicker" data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
                             <option value="Armado de eslingas"
                                 <?php if($activity['nameActivity']=="Armado de eslingas"){;?>selected <?php } ?>>
