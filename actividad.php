@@ -196,7 +196,7 @@
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP - BUSINESS REPORTE DE ACTIVIDADES',
+                    title: 'SGP - BUSINESS_REPORTE DE ACTIVIDADES',
                     className: 'btn btn-success',
                      excelStyles:{
                             template:'blue_gray_medium'
@@ -206,14 +206,14 @@
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP - BUSINESS REPORTE DE ACTIVIDADES',
+                    title: 'SGP - BUSINESS_REPORTE DE ACTIVIDADES',
                     className: 'btn btn-danger'
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
-                    title: 'SGP - BUSINESS REPORTE DE ACTIVIDADESs ',
+                    title: 'SGP - BUSINESS_REPORTE DE ACTIVIDADESs ',
                     className: 'btn btn-info'
                 },
             ],

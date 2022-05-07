@@ -116,10 +116,17 @@
                 <div class="col-md-12 cont_select" style="margin:0;padding:0;">
                    
                          <select  class="selectpicker" data-show-subtext="true" data-live-search="true" name="nameActivity">
-                        <!-- Opciones de la lista -->
-                            <option value="Descarga/Carga eslinga" selected>Descarga/Carga eslinga</option>
-                            <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
+                        <!-- Opciones dae la lista -->
+                            <option value="Armado de eslingas" selected>Armado de eslingas</option>
+                            <option value="Recepcion de Producción">Recepcion de Producción</option>
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
+                            <option value="Eslinga a Piso">Eslinga a Piso</option>
+                            <option value="Ventilación de sacos (Cachaquitos)">Ventilación de sacos (Cachaquitos)</option>
+                            <option value="Descarga/Carga eslinga">Descarga/Carga eslinga</option>
+                            <option value="Muestreo de rumas">Muestreo de rumas</option>
+                            <option value="Borrado y codificado de código">Borrado y codificado de código</option>
+                            <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
+                            <option value="Corte y vaceado en jumbo">Corte y vaceado en jumbo</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
                             <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
                             <option value="Embarque">Embarque</option>
@@ -131,9 +138,7 @@
                             <option value="Control de Calidad">Control de Calidad</option>
                             <option value="Manteado de plataformas">Manteado de plataformas</option>
                             <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
-                            <option value="Limpieza de mantas">Limpieza de mantas</option>
-                            <option value="Embarque">Embarque</option>
-                            <option value="Manteniminto">Mantenimiento</option>
+                            <option value="Limpieza de mantas">Limpieza de mantas</option>  
                         </select>
                 </div>
                 <div class="material-textfield">
