@@ -20,7 +20,7 @@
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="sede_callao";
+  if( $SuperUser["sede"]=="T-Callao") {$table="sede_callao"; $tableHistory="history_callao";}
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
@@ -75,7 +75,6 @@
                
               }else if($SuperUser["sede"]=="T-Callao") 
               {
-<<<<<<< HEAD
                 $sql= "INSERT INTO $table (";
                 $sql.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation";
                 $sql.=") VALUES (";
@@ -83,15 +82,6 @@
                 $sql.=")";
 
                 
-=======
-                $sql  = "INSERT INTO $table (";
-                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation";
-                $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
-            
->>>>>>> parent of 964d6b6 (historial)
               }else
               {
                 $sql  = "INSERT INTO $table (";
@@ -103,7 +93,6 @@
               }
 
               
-<<<<<<< HEAD
               if($db->query($sql))
               {
                 $sql2= "INSERT INTO $tableHistory (";
@@ -121,11 +110,6 @@
                 }
                 //$session->msg("s", "Ruma agregada exitosamente.");
                 //redirect('categorie.php',false);
-=======
-              if($db->query($sql)){
-                $session->msg("s", "Ruma agregada exitosamente.");
-                redirect('categorie.php',false);
->>>>>>> parent of 964d6b6 (historial)
               } else {
                 $session->msg("d", "Lo siento, registro falló");
                 redirect('categorie.php',false);
@@ -150,23 +134,22 @@
             $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
             $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-              $result = $db->query($sql);
+             // $result = $db->query($sql);
              
 
-
+                
             }else{
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', description='{$cat_descripcion}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-                $result = $db->query($sql);
-               
-            }
-            
+                 
+            };
+            $result = $db->query($sql);
+
             if($result && $db->affected_rows() === 1) 
             {
-<<<<<<< HEAD
                 $sql2= "INSERT INTO $tableHistory (";
                 $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion";
                 $sql2.=") VALUES (";
@@ -177,15 +160,13 @@
 
                 if($history){
                       $session->msg("s", "Categoría actualizada con éxito.");
-=======
-              $session->msg("s", "Categoría actualizada con éxito.");
->>>>>>> parent of 964d6b6 (historial)
               redirect('categorie.php',false);
-            } else 
-            {
-              $session->msg("d", "Lo siento, actualización falló.");
-              redirect('categorie.php',false);
-            }
+                 } else {
+                    $session->msg("d", "no se guardo.");
+                    redirect('categorie.php',false);
+                } 
+            
+            } 
 
 
 

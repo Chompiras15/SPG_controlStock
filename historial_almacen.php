@@ -227,14 +227,14 @@
                         extend: 'pdfHtml5',
                         text: '<i class="glyphicon glyphicon-file"></i> ',
                         titleAttr: 'Exportar a PDF',
-                        title: 'SGP - Business_Reporte de Almacen',
+                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
                         className: 'btn btn-danger'
                     },
                     {
                         extend: 'print',
                         text: '<i class="glyphicon glyphicon-print"></i> ',
                         titleAttr: 'Imprimir',
-                        title: 'SGP - Business_Reporte de Almacen',
+                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
                         className: 'btn btn-info'
                     },
                 ],

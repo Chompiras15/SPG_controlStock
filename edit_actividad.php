@@ -89,49 +89,97 @@ if(isset($_POST['edit_actividad'])){
             </div>
             <div class="col-md-12 edit_form">
                 <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-                    <div class="form-group col-md-12">
-                        <label for="name" class="control-label">Selecione Actividad</label>
-                        <select name="nameActivity" <?php echo (int)$activity['id'];?> style="width:100%;">
+                    <div class="col-md-12 cont_select" style="margin:0;padding:0;">
+                        <select class="selectpicker" data-show-subtext="true" data-live-search="true" name="nameActivity" <?php echo (int)$activity['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
-                            <option value="Descarga/Carga eslinga"
-                                <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
-                                Descarga/Carga
-                                eslinga</option>
-                            <option value="Etiquetado de sacos"
-                                <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected <?php } ?>>
-                                Etiquetado de sacos</option> <!-- Opción por defecto -->
+                            <option value="Armado de eslingas"
+                                <?php if($activity['nameActivity']=="Armado de eslingas"){;?>selected <?php } ?>>
+                                Armado de eslingas</option>
+
+                            <option value="Recepcion de Producción"
+                                <?php if($activity['nameActivity']=="Recepcion de Producción"){;?>selected <?php } ?>>
+                                Recepcion de Producción</option> <!-- Opción por defecto -->
                             <option value="Monitoreo de Temperatura"
                                 <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>
                                 Monitoreo de Temperatura</option>
-                            <option value="Seleccion y armado eslinga"
-                                <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected
-                                <?php } ?>>Seleccion y armado eslinga</option>
-                            <option value="Ventilacion de sacos con HP"
-                                <?php if($activity['nameActivity']=="Ventilacion de sacos con HP"){;?>selected
-                                <?php } ?>>Ventilacion de sacos con HP</option>
-                            <option value="Corte y vaceado jumbo"
-                                <?php if($activity['nameActivity']=="Corte y vaceado jumbo"){;?>selected <?php } ?>>
-                                Corte y vaceado jumbo</option>
-                            <option value="Seleccion y armado eslinga"
-                                <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected
-                                <?php } ?>>Seleccion y armado eslinga</option>
-                            <option value="Reproceso por Homogenizado"
-                                <?php if($activity['nameActivity']=="Reproceso por Homogenizado"){;?>selected
-                                <?php } ?>>Reproceso por Homogenizado</option>
+                            
+                                <option value="Eslinga a Piso"
+                                <?php if($activity['nameActivity']=="Eslinga a Piso"){;?>selected
+                                <?php } ?>>Eslinga a Piso</option>
+
+                            <option value="Ventilación de sacos (Cachaquitos)"
+                                <?php if($activity['nameActivity']=="Ventilación de sacos (Cachaquitos)"){;?>selected
+                                <?php } ?>>Ventilación de sacos (Cachaquitos)</option>
+
+                            <option value="Descarga/Carga eslinga"
+                                <?php if($activity['nameActivity']=="Descarga/Carga eslinga"){;?>selected <?php } ?>>
+                                Descarga/Carga eslinga</option>
+
+                            <option value="Muestreo de rumas"
+                                <?php if($activity['nameActivity']=="Muestreo de rumas"){;?>selected
+                                <?php } ?>>Muestreo de rumas</option>
+
+                            <option value="Borrado y codificado de código"
+                                <?php if($activity['nameActivity']=="Borrado y codificado de código"){;?>selected
+                                <?php } ?>>Borrado y codificado de código</option>
+
                             <option value="Manteado de plataformas"
                                 <?php if($activity['nameActivity']=="Manteado de plataformas"){;?>selected <?php } ?>>
                                 Manteado de plataformas</option>
-                            <option value="Limpieza de tanques de aceite"
-                                <?php if($activity['nameActivity']=="Limpieza de tanques de aceite"){;?>selected
-                                <?php } ?>>Limpieza de tanques de aceite</option>
-                            <option value="Limpieza de mantas"
+
+                            <option value="Etiquetado de sacos"
+                                <?php if($activity['nameActivity']=="Etiquetado de sacos"){;?>selected
+                                <?php } ?>>Etiquetado de sacos</option>
+
+                            <option value="Corte y vaceado en jumbo"
+                                <?php if($activity['nameActivity']=="Corte y vaceado en jumbo"){;?>selected <?php } ?>>
+                                Corte y vaceado en jumbo</option>
+
+                            <option value="Seleccion y armado eslinga" <?php if($activity['nameActivity']=="Seleccion y armado eslinga"){;?>selected
+                                <?php } ?>>Seleccion y armado eslinga</option>
+                            <option value="Ventilación de sacos con HP" <?php if($activity['nameActivity']=="Ventilación de sacos con HP"){;?>selected
+                                <?php } ?>>
+                                Ventilación de sacos con HP</option>
+
+                                 <option value="Embarque"
+                                <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
+                                Embarque</option>
+                                
+                                 <option value="Encintado y serrado de contenedores"
+                                <?php if($activity['nameActivity']=="Encintado y serrado de contenedores"){;?>selected <?php } ?>>
+                                Encintado y serrado de contenedores</option>
+
+                                 <option value="Reproceso"
+                                <?php if($activity['nameActivity']=="Reproceso"){;?>selected <?php } ?>>
+                                Reproceso</option>
+
+                                 <option value="Homogenizado"
+                                <?php if($activity['nameActivity']=="Homogenizado"){;?>selected <?php } ?>>
+                                Homogenizado</option>
+
+                                 <option value="Mantenimiento"
+                                <?php if($activity['nameActivity']=="Mantenimiento"){;?>selected <?php } ?>>
+                                Mantenimiento</option>
+
+                                 <option value="Corte de Drizas"
+                                <?php if($activity['nameActivity']=="Corte de Drizas"){;?>selected <?php } ?>>
+                                Corte de Drizas</option>
+
+                                <option value="Control de Calidad"
+                                <?php if($activity['nameActivity']=="Control de Calidad"){;?>selected <?php } ?>>
+                                Control de Calidad</option>
+
+                                <option value="Manteado de plataformas"
+                                <?php if($activity['nameActivity']=="Manteado de plataformas"){;?>selected <?php } ?>>
+                                Manteado de plataformas</option>
+
+                                <option value="Limpieza de tanques de aceite"
+                                <?php if($activity['nameActivity']=="Limpieza de tanques de aceite"){;?>selected <?php } ?>>
+                                Limpieza de tanques de aceite</option>
+
+                                <option value="Limpieza de mantas"
                                 <?php if($activity['nameActivity']=="Limpieza de mantas"){;?>selected <?php } ?>>
                                 Limpieza de mantas</option>
-                            <option value="Embarque" <?php if($activity['nameActivity']=="Embarque"){;?>selected
-                                <?php } ?>>Embarque</option>
-                            <option value="Manteniminto" <?php if($activity['nameActivity']=="Manteniminto"){;?>selected
-                                <?php } ?>>
-                                Manteniminto</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
