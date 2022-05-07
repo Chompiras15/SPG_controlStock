@@ -2,23 +2,21 @@
 //$dadaName="".$user["name"];
 //$resultado = explode(" ",$resultado);?>
 <!DOCTYPE html>
-  <html lang="en">
+  <html lang="es">
     <head>
-    <meta charset="UTF-8">
-    <title><?php if (!empty($page_title))
-           echo remove_junk($page_title);
-            elseif(!empty($user))
-           echo ucfirst($user['name']);
-            else echo "Sistema simple de inventario";?>
-    </title>
-	
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-
-     <link rel="icon" href="logobussiness1.ico" style= "border-radius: 50%" type="image/x-icon">
-  </head>
+      <meta charset="UTF-8">
+      <title>
+        <?php if (!empty($page_title)) echo remove_junk($page_title);
+              elseif(!empty($user)) echo ucfirst($user['name']);
+              else echo "Sistema simple de inventario";?>
+      </title>
+      <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/main.css" />
+      <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
+      <link href='assets/css/dataTables.min.css' rel='stylesheet' type='text/css'>
+      <link href='assets/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+      <link rel="icon" href="logobussiness1.ico" style= "border-radius: 50%" type="image/x-icon">
+    </head>
 
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>
