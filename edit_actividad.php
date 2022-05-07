@@ -89,8 +89,7 @@ if(isset($_POST['edit_actividad'])){
             </div>
             <div class="col-md-12 edit_form">
                 <form method="post" action="edit_actividad.php?id=<?php echo (int)$activity['id'];?>">
-                    <div class="form-group col-md-12">
-                        <label for="name" class="control-label">Selecione Actividad</label>
+                    <div class="col-md-12 cont_selectEdit">
                         <select name="nameActivity" class="selectpicker" data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
                             <option value="Armado de eslingas"
@@ -214,19 +213,18 @@ if(isset($_POST['edit_actividad'])){
                             value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
                     </div>
 
+            
+                    <div class='form-group clearfix'>
+                        <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_actividad"
+                            class="btn btn-primary">Actualizar
+                            Actividad</button>
+                    </div>
+                </form>
             </div>
-            <div class='form-group clearfix'>
-                <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_actividad"
-                    class="btn btn-primary">Actualizar
-                    Actividad</button>
-            </div>
-            </form>
         </div>
     </div>
 </div>
-</div>
 
-</div>
 
 
 

@@ -29,12 +29,7 @@
 
   $all_actividades = find_all($tableActi)
 ?>
-<style>
-    .cont_select div
-    {
-        width:95% !important;
-    }
-</style>
+
 <?php
  if(isset($_POST['add_actividad']))
  {

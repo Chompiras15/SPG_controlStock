@@ -1,3 +1,14 @@
+.cont_selectEdit div
+{
+    width:100% !important;
+    margin-bottom: 10px;
+}
+
+.cont_select div
+    {
+        width:95% !important;
+    }
+
 .caret
 {
     margin-left: 10px !important;
