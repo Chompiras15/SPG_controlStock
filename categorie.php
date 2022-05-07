@@ -196,8 +196,11 @@
                         extend: 'excelHtml5',
                         text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                         titleAttr: 'Exportar a Excel',
-                        title: 'SGP - Business_Reporte de Almacen',
-                        className: 'btn btn-success'
+                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN',
+                        className: 'btn btn-success',
+                        excelStyles:{
+                            template:'blue_gray_medium'
+                        }
                     },
                     {
                         extend: 'pdfHtml5',

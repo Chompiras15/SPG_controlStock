@@ -28,7 +28,7 @@
     <script src='datatables/vfs_fonts.js'></script>
     <script src='datatables/js/buttons.html5.min.js'></script>
 <!-- para funcion de estilos de exportacion de excel -->
-  <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
 
     <!-- --------------------------------------------------------------------------------- -->
