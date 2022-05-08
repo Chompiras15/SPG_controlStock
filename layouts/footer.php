@@ -67,12 +67,16 @@
         minutes=myDate.getMinutes();
         seconds=myDate.getSeconds();
         
-        if(numDay<10) numDay=0+numDay;
+        if(numDay<10) numDay="0"+numDay;
         if(mes<10) mes="0"+(mes+1);
-        if(hours<10) hours=0+hours;
+        if(hours<10) hours="0"+hours;
         if(minutes<10) minutes="0"+minutes;
         if(seconds<10) seconds="0"+seconds;
-        $("#time").text(dia[day-1]+" "+numDay+"/"+mes+"/"+year+"  "+hours+ ":" + minutes+ ":"+seconds);
+      // console.log(day);
+        if(day==0) day=6;
+        else day=day-1;
+       // document.getElementById("time").innerHTML=dia[day]+" "+numDay+"/"+mes+"/"+year+"  "+hours+ ":" + minutes+ ":"+seconds;
+        $("#time").text(dia[day]+" "+numDay+"/"+mes+"/"+year+"  "+hours+ ":" + minutes+ ":"+seconds);
         setTimeout("showTime()",1000);
 
     }
