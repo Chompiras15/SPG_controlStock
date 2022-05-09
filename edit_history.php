@@ -115,7 +115,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
         <div class="panel-heading">
             <strong>
                 <span class="glyphicon glyphicon-indent-left"></span>
-             <span>Editando Ruma: <?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></span>
+                 <span>Editando Ruma: <b style="color: red;"><?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></b></span>
 
             </strong>
 
