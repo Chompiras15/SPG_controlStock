@@ -111,8 +111,8 @@
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['date_producc'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
+                            <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
+                            <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
                             <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 
