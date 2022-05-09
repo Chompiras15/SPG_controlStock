@@ -9,7 +9,7 @@
 
 
 <?php
-  $page_title = 'Almacen-Chimbote';
+  $page_title = 'Historial - Almacen';
   require_once('includes/load.php');
   $table = "";
   //require_once('includes/load.php');
@@ -250,9 +250,9 @@
                     //alert("La tabla se está recargando");
 
                     var api = this.api();
-                    $(api.column(3).footer()).html(
+                    $(api.column(2).footer()).html(
 
-                        'Total: ' + api.column(3, {
+                        'Total: ' + api.column(2, {
                             page: 'current'
                         }).data().sum()
                     )
@@ -261,7 +261,7 @@
 
             });
             // sumamos y mostramos el total
-            var tot = table.column(3).data().sum();
+            var tot = table.column(2).data().sum();
             $("#total").text(tot);
 
 

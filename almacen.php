@@ -9,7 +9,7 @@
 
 
 <?php
-  $page_title = 'Almacen-Chimbote';
+  $page_title = 'Almacen';
   require_once('includes/load.php');
   $table = "";
   //require_once('includes/load.php');
