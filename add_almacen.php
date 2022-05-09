@@ -224,12 +224,12 @@
 
                     <div class="material-textfield">
                         <label class="select">Fecha Produccion</label>
-                        <input placeholder=" " type="date" name="date_vencimiento" required>
+                        <input placeholder=" " type="date" name="date_producc" required>
 
                     </div>
                     <div class="material-textfield">
                         <label class="select">Fecha Vencimiento</label>
-                        <input placeholder=" " type="date" name="date_producc" required>
+                        <input placeholder=" " type="date" name="date_vencimiento" required>
 
                     </div>
                    
