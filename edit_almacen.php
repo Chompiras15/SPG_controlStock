@@ -148,9 +148,9 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                         <input type="text" class="form-control" name="cod_ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>" disabled>
                     </div>
-                    
+
                     <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Sacos</label>
+                        <label for="name" class="control-label">Cantidad de Sacos</label>
                         <input type="text" class="form-control" name="cant_saco"
                             value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
                     </div>

@@ -115,7 +115,7 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
         <div class="panel-heading">
             <strong>
                 <span class="glyphicon glyphicon-indent-left"></span>
-                 <span>Editando Ruma: <b style="color: red;"><?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></b></span>
+                 <span>Editando Historial Ruma: <b style="color: red;"><?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></b></span>
 
             </strong>
 
@@ -156,13 +156,13 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                     </div>
 
                       <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Sacos</label>
+                        <label for="name" class="control-label">Cantidad de Sacos</label>
                         <input type="text" class="form-control" name="cant_saco"
                             value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="name" class="control-label">ubicación</label>
+                        <label for="name" class="control-label">Ubicación</label>
                         <input type="text" class="form-control" name="nicho"
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
