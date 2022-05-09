@@ -40,7 +40,7 @@
 if(isset($_POST['edit_cat']))
 {
 
-$req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+$req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
 
  
   validate_fields($req_field);
@@ -69,7 +69,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
         if($SuperUser["sede"]=="T-Callao") 
         {
             $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,cod_ruma ='{$cat_ruma}',";
+            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }else{
@@ -141,11 +141,11 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                         </select>
                     </div>
 
-                    <!-- <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="name" class="control-label">Lote</label>
                         <input type="text" class="form-control" name="cod_ruma"
-                            value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
-                    </div> -->
+                            value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>" disabled>
+                    </div>
 
                     <div class="form-group col-md-6">
                         

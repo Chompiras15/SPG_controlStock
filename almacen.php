@@ -122,6 +122,7 @@
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
+                                    
                                 </div>
                             </td>
 

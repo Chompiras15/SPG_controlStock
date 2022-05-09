@@ -87,6 +87,8 @@
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
+                            <th class="text-center" style="width: 50px;">F.Producción</th>
+                            <th class="text-center" style="width: 50px;">F.Vencimiento</th>
                             <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
                             <th class="text-center" style="width: 50px;">Observacion</th>
                             <th class="text-center" style="width: 50px;">Descripción</th>
@@ -109,6 +111,8 @@
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['date_producc'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['date_vencimiento'])); ?></td>
                             <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
 
 
