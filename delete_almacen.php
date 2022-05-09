@@ -29,16 +29,16 @@
   $categorieDelete = find_by_id($tabla_sed,(int)$_GET['id']);
   if(!$categorieDelete){
     $session->msg("d","ID de la ruma falta.");
-    redirect('categorie.php');
+    redirect('almacen.php');
   }
 ?>
 <?php
   $delete_idDelete = delete_by_id($tabla_sed,(int)$categorieDelete['id']);
   if($delete_idDelete){
       $session->msg("s","Ruma eliminada");
-      redirect('categorie.php');
+      redirect('almacen.php');
   } else {
       $session->msg("d","Eliminación falló");
-      redirect('categorie.php');
+      redirect('almacen.php');
   }
 ?>

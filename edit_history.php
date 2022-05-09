@@ -1,7 +1,7 @@
 <!--   
  ====================================================================
         SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
- Descripción:Edita Categoria
+ Descripción:Edita Historial
  Creado: 11/03/2022
  Chimbote Peru 
  ====================================================================
@@ -9,7 +9,7 @@
 -->
 
 <?php
-  $page_title = 'Editar categoría';
+  $page_title = 'Editar Almacen';
   require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
@@ -18,7 +18,7 @@
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="sede_callao";
+  if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
@@ -32,7 +32,7 @@
   // $dateHistory = find_by_codRumaHistory($table,$_POST['cod_ruma'],$_POST['placa']);
   if(!$categorie){
     $session->msg("d","Missing categorie id.");
-    redirect('categorie.php');
+    redirect('history.php');
   }
 ?>
 
@@ -70,7 +70,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
         {
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',description='{$cat_descripcion}'";
+            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }else{
             $sql   = "UPDATE $table SET";
@@ -84,27 +84,23 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
             if($result && $db->affected_rows() === 1) 
             {
               $session->msg("s", "Ruma actualizada con éxito.");
-              redirect('categorie.php',false);
+              redirect('history.php',false);
             } else {
               $session->msg("d", "Lo siento, actualización falló.");
-              redirect('categorie.php',false);
+              redirect('history.php',false);
             }
          
   
       }else{
         $session->msg("d", "Excedió el límite de cantidad.");
-        redirect('categorie.php',false);
+        redirect('history.php',false);
       }
 
-    /*}else{
-      $session->msg("d", "Ya existe ese Codigo de Ruma.");
-        redirect('categorie.php',false);
-    }*/
    
 
   } else {
     $session->msg("d", $errors);
-    redirect('categorie.php',false);
+    redirect('history.php',false);
   }
 }
 ?>
@@ -128,7 +124,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
             </div>
             <div class="col-md-12 edit_form">
 
-                <form method="post" action="edit_categorie.php?id=<?php echo (int)$categorie['id'];?>">
+                <form method="post" action="edit_history.php?id=<?php echo (int)$categorie['id'];?>">
                     
                     <div class="form-group col-md-12">
                       <label for="name" class="control-label">Selecione Antioxidante</label>
@@ -198,7 +194,7 @@ $req_field = array('sector','tipo','cod_ruma', 'cant_saco', 'date_producc', 'dat
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Descripcion</label>
                         <input type="text" class="form-control" name="description"
-                            value="<?php echo remove_junk(ucfirst($categorie['description']));?>">
+                            value="<?php echo remove_junk(ucfirst($categorie['descripcion']));?>">
                     </div>
 
 

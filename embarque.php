@@ -64,7 +64,7 @@
 
                     <span>Lista de Despachos</span>
                   </strong>
-                  <a href="add_media.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Despacho"></i></a>
+                  <a href="add_embarque.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Despacho"></i></a>
              
             </div>
             <div class="panel-body">
@@ -110,7 +110,7 @@
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </a>
-                                    <a style ="padding: 5px;" href="delete_media.php?id=<?php echo (int)$embar['id'];?>"
+                                    <a style ="padding: 5px;" href="delete_embarque.php?id=<?php echo (int)$embar['id'];?>"
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>

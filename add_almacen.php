@@ -1,11 +1,10 @@
 <!--   
  ====================================================================
         SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
- Descripción:Muestra Todas Las actividades y Agrega adicionalmente
+ Descripción:Añade Almacen
  Creado: 11/03/2022
  Chimbote Peru 
  ====================================================================
-  
 -->
 
 <?php
@@ -92,7 +91,6 @@
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
               }
 
-              
               if($db->query($sql))
               {
                 $sql2= "INSERT INTO $tableHistory (";
@@ -102,24 +100,23 @@
                 $sql2.=")";
                 if($db->query($sql2))
                 {
-                    $session->msg("s", "Historial Agregago.");
-                    redirect('categorie.php',false);
+                    $session->msg("s", "RUMA AGREGADO CON EXITO.");
+                    redirect('almacen.php',false);
                 }else{
-                    $session->msg("d", "Lo siento, Historial falló");
-                    redirect('categorie.php',false);
+                    $session->msg("d", "Lo siento, Registro falló");
+                    redirect('almacen.php',false);
                 }
                 //$session->msg("s", "Ruma agregada exitosamente.");
-                //redirect('categorie.php',false);
+                //redirect('almacen.php',false);
               } else {
-                $session->msg("d", "Lo siento, registro falló");
-                redirect('categorie.php',false);
+                $session->msg("d", "Lo siento, Registro falló");
+                redirect('almacen.php',false);
               }
               
 
-
             } else {
               $session->msg("d", $errors);
-              redirect('categorie.php',false);
+              redirect('almacen.php',false);
             }
 
         }else 
@@ -129,23 +126,20 @@
             if( $SuperUser["sede"]=="E-Chimbote") 
             {
 
-            $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
-            $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
-            $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+                $sql   = "UPDATE $table SET";
+                $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
+                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-             // $result = $db->query($sql);
-             
-
-                
             }else{
+
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', description='{$cat_descripcion}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-
-                 
+    
             };
+
             $result = $db->query($sql);
 
             if($result && $db->affected_rows() === 1) 
@@ -158,27 +152,24 @@
 
                 $history = $db->query($sql2);
 
-                if($history){
-                      $session->msg("s", "Categoría actualizada con éxito.");
-              redirect('categorie.php',false);
+                if($history)
+                {
+                    $session->msg("s", "Almacen actualizada con éxito.");
+                    redirect('almacen.php',false);
                  } else {
                     $session->msg("d", "no se guardo.");
-                    redirect('categorie.php',false);
+                    redirect('almacen.php',false);
                 } 
             
             } 
 
-
-
         }
-    }else
-    {
+
+    }else{
       $session->msg("d", "Verifique la cantidad que va Almacenar");
-      redirect('categorie.php',false);
+      redirect('almacen.php',false);
     }
-
-
- }
+}
 ?>
 <?php include_once('layouts/header.php'); ?>
 
@@ -202,7 +193,7 @@
             <div class="col-md-3">
             </div>
             <div class="col-md-12 cont_form">
-                <form method="post" action="add_categorie.php">
+                <form method="post" action="add_almacen.php">
                     
                     <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
                         <div class="material-textfield">
@@ -258,7 +249,7 @@
                         <label>Observacion</label>
                     </div>
                      <div class="material-textfield">
-                        <input placeholder=" " type="text" name="descripcion" required>
+                        <input placeholder=" " type="text" name="descripcion" >
                         <label>Descripcion</label>
                     </div>
 

@@ -36,16 +36,16 @@
   $categorie = find_by_id($table,(int)$_GET['id']);
   if(!$categorie){
     $session->msg("d","ID de la ruma falta.");
-    redirect('media.php');
+    redirect('embarque.php');
   }
 ?>
 <?php
   $delete_id = delete_by_id($table,(int)$categorie['id']);
   if($delete_id){
       $session->msg("s","Ruma eliminada");
-      redirect('media.php');
+      redirect('embarque.php');
   } else {
       $session->msg("d","Eliminación falló");
-      redirect('media.php');
+      redirect('embarque.php');
   }
 ?>

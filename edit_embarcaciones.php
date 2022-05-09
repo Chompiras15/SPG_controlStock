@@ -37,7 +37,7 @@
   $categorie = find_by_id($table,(int)$_GET['id']);
   if(!$categorie){
     $session->msg("d","Missing Embarcaciones id.");
-    redirect('media.php');
+    redirect('embarque.php');
   }
 ?>
 
@@ -69,7 +69,7 @@ if(isset($_POST['edit_emb']))
           //CAMBIO LA CNTIDAD DE SEDE
           $newCant=(int)$findCatRuma["cant_saco"]+(int)$categorie["cant_out"]-(int)$_POST['cant_out'];
           //$session->msg("d", $newCant);
-          //redirect('media.php',false);
+          //redirect('embarque.php',false);
           $sq   = "UPDATE $tabla_sed SET";
           $sq  .=" cant_saco ='{$newCant}'";
           $sq .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
@@ -97,28 +97,28 @@ if(isset($_POST['edit_emb']))
               {
 
                 $session->msg("s", "Despacho actualizado con éxito");
-                redirect('media.php',false);
+                redirect('embarque.php',false);
               } else {
                 $session->msg("d", "Lo siento, actualización falló.");
-                 redirect('media.php',false);
+                 redirect('embarque.php',false);
               }
  
           }
       }else{
         $session->msg("d", "Excedió la cantidad Límite.");
-        redirect('media.php',false);
+        redirect('embarque.php',false);
       }
 
     }else
     {
       $session->msg("d", "La Ruma no Existe.");
-      redirect('media.php',false);
+      redirect('embarque.php',false);
     }
      
 
   } else {
     $session->msg("d", $errors);
-    redirect('media.php',false);
+    redirect('embarque.php',false);
   }
 }
 ?>

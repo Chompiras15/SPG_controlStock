@@ -115,10 +115,10 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 //$delete_id = delete_by_id( 'sede_tasachimbote', ( int )$categorie[ 'id' ] );
                 if ( $delete_cod_ruma ) {
                     $session->msg( 's', 'Ruma despachada totalmente' );
-                    redirect( 'media.php' );
+                    redirect( 'embarque.php' );
                 } else {
                     $delete_cod_ruma->msg( 'd', 'Eliminación falló' );
-                    redirect( 'media.php' );
+                    redirect( 'embarque.php' );
                 }
 
             } elseif ( $restaSacos > 0 )
@@ -161,33 +161,33 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 if ( $result && $db->affected_rows() == 1 ) 
                 {
                     $session->msg( 's', 'Despacho actualizado con éxito' );
-                    redirect( 'media.php', false );
+                    redirect( 'embarque.php', false );
                 } else {
                     $session->msg( 'd', 'Lo siento, actualización falló.' );
-                    redirect( 'media.php', false );
+                    redirect( 'embarque.php', false );
                 }
 
                 $session->msg( 's', 'Ruma agregada exitosamente.' );
-                redirect( 'media.php', false );
+                redirect( 'embarque.php', false );
 
             } elseif ( $restaSacos < 0 )
             {
                 $session->msg( 'd', 'Verificar la Cantidad Sacos' );
-                redirect( 'media.php', false );
+                redirect( 'embarque.php', false );
             }
 
             // } else {
             //  $session->msg( 'd', 'Lo siento, registro falló' );
-            //  redirect( 'media.php', false );
+            //  redirect( 'embarque.php', false );
             // }
 
             //} else {
             //   $session->msg( 'd', 'Excedio la Capacitad Límite, Verifique la cantidad que va Despachar' );
-            // redirect( 'media.php', false );
+            // redirect( 'embarque.php', false );
             // }
         } else {
             $session->msg( 'd', $errors );
-            redirect( 'media.php', false );
+            redirect( 'embarque.php', false );
         }
 
     }
@@ -215,7 +215,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
             <div class='col-md-3'>
             </div>
             <div class='col-md-12 cont_form'>
-                <form method='post' action='add_media.php'>
+                <form method='post' action='add_embarque.php'>
                     <div class='material-textfield'>
                         <input placeholder=' ' type='text' name='cod_contrato' required>
                         <label>Contrato</label>

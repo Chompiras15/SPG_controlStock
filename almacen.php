@@ -20,7 +20,7 @@
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
+  if( $SuperUser["sede"]=="T-Callao") $table="sede_callao";
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
@@ -61,15 +61,17 @@
                 <div class="panel-heading clearfix contTitleTT">
                     <strong>
                         <span class="glyphicon glyphicon-indent-left"></span>
-                        <span>Historial de Rumas</span>
+                        <span>Lista de Rumas</span>
 
                     </strong>
 
-                   <!--  <a href="add_categorie.php" class="pull-right contButtonTT"></a>
-                    <i
-                            class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i> -->
+                    <a href="add_almacen.php" class="pull-right contButtonTT"><i
+                            class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
 
-            </div>
+                            <a href="history.php" class="pull-right historialicon"><i
+                            class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
+                            
+        </div>
             <div class="panel-body">
 
                 <table class="table table-bordered table-striped table-hover" id="tabla">
@@ -81,22 +83,19 @@
                                 <th class="text-center" style="width: 30px;">Lote</th>
                             <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
                             <?php } ?>
-                            <th class="text-center" style="width: 30px;">Tipo</th>
-                            <th class="text-center" style="width: 10px;">Sector</th>
                             <th class="text-center" style="width: 10px;">Sacos</th>
-                            <th class="text-center" style="width: 50px;">Calidad</th>
-                            <th class="text-center" style="width: 10px;">Carril</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
-                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
-                            <th class="text-center" style="width: 50px;">Observacion</th>
-
-                            <th class="text-center" style="width: 50px;">Descripción</th>
-                            <th class="text-center" style="width: 50px;">Fecha</th>
-                             <th class="text-center" style="width: 50px;">Acciones</th>
-
+                            <th class="text-center" style="width: 10px;">Sector</th>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                                <th class="text-center" style="width: 30px;">Ubicación</th>
+                            <?php }else { ?><th class="text-center" style="width: 30px;">Carril</th>
+                            <?php } ?>
+                            <th class="text-center" style="width: 10px;">F.Produccion</th>
+                            <th class="text-center" style="width: 10px;">F.Vencimiento</th>
+                          
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
+                            <th class="text-center" style="width: 100px;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,49 +103,22 @@
                         <tr>
                            
                             <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
-                             <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
-                           <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
-                            
-                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
-
-
-                             <?php if($cat['tipo']=="HBT") {?> 
-                                <?php if((float)$cat['temperatura']>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=38 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.' ;?></td> 
-                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
-                             
-                              }else{?>
-                                <?php if((float)$cat['temperatura']>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=47 && (float)$cat['temperatura']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if((float)$cat['temperatura']>=36 && (float)$cat['temperatura']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC.'; ?></td>
-                                <?php }else if( (float)$cat['temperatura']>=0.1 && (float)$cat['temperatura']<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($cat['temperatura'])).' ºC'; ?></td>
-                                <?php }else if((float)$cat['temperatura']==0 || $cat['temperatura']=="")  {?> <td style="background:#C8F2F0;"> Sin Revisión</td><?php } 
-                            } ?> 
-                                
-                            <?php } ?> -->
-                            
-                            <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['descripcion'])); ?></td>
-                            <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                             <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
+                            <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
+                           
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
-
-
-
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <!-- <a style ="margin-right: 7px;padding: 5px;" href="edit_categorie.php?id=<?php echo (int)$cat['id'];?>"
+                                    <a style ="margin-right: 7px;padding: 5px;" href="edit_almacen.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                         <span class="glyphicon glyphicon-edit" ></span>
-                                    </a> -->
-                                    <a style ="padding: 5px;" href="delete_history_almacen.php?id=<?php echo (int)$cat['id'];?>"
+                                    </a>
+                                    <a style ="padding: 5px;" href="delete_almacen.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
@@ -161,8 +133,13 @@
                 <div class="col">
                     <button type="button" class="btn btn-primary">
                         Total de sacos: <span id="total" class="badge badge-light"></span>
+                        
                     </button>
+                
                 </div>
+                
+                
+                
             </div>
 
         </div>
@@ -217,9 +194,9 @@
                         extend: 'excelHtml5',
                         text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                         titleAttr: 'Exportar a Excel',
-                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
+                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN',
                         className: 'btn btn-success',
-                         excelStyles:{
+                        excelStyles:{
                             template:'blue_gray_medium'
                         }
                     },
@@ -227,14 +204,14 @@
                         extend: 'pdfHtml5',
                         text: '<i class="glyphicon glyphicon-file"></i> ',
                         titleAttr: 'Exportar a PDF',
-                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
+                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN',
                         className: 'btn btn-danger'
                     },
                     {
                         extend: 'print',
                         text: '<i class="glyphicon glyphicon-print"></i> ',
                         titleAttr: 'Imprimir',
-                        title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN',
+                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN',
                         className: 'btn btn-info'
                     },
                 ],
@@ -259,7 +236,7 @@
 
             });
             // sumamos y mostramos el total
-            var tot = table.column(3).data().sum();
+            var tot = table.column(1).data().sum();
             $("#total").text(tot);
 
 
