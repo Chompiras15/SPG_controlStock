@@ -95,7 +95,10 @@ if(isset($_POST['edit_actividad'])){
                             <option value="Armado de eslingas"
                                 <?php if($activity['nameActivity']=="Armado de eslingas"){;?>selected <?php } ?>>
                                 Armado de eslingas</option>
-
+								
+							<option value="Descarga Provincia"
+                                <?php if($activity['nameActivity']=="Descarga Provincia"){;?>selected <?php } ?>>
+								
                             <option value="Recepcion de Producción"
                                 <?php if($activity['nameActivity']=="Recepcion de Producción"){;?>selected <?php } ?>>
                                 Recepcion de Producción</option> <!-- Opción por defecto -->

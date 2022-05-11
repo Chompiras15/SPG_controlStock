@@ -114,6 +114,7 @@
                         <!-- Opciones dae la lista -->
                             <option value="Armado de eslingas" selected>Armado de eslingas</option>
                             <option value="Recepcion de Producción">Recepcion de Producción</option>
+							<option value="Descarga Provincia">Descarga Provincia</option>
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
                             <option value="Eslinga a Piso">Eslinga a Piso</option>
                             <option value="Ventilación de sacos (Cachaquitos)">Ventilación de sacos (Cachaquitos)</option>
