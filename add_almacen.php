@@ -224,16 +224,15 @@
 
                     <div class="material-textfield">
                         <label class="select">Fecha Produccion</label>
-                        <input placeholder=" " type="date" name="date_producc" required>
+                        <input placeholder=" " type="date" name="date_producc" onblur="changeDateVen(this)" required>
 
                     </div>
                     <div class="material-textfield">
                         <label class="select">Fecha Vencimiento</label>
-                        <input placeholder=" " type="date" name="date_vencimiento" required>
+                        <input placeholder=" " type="date" name="date_vencimiento" id="dateV" required>
 
                     </div>
-                   
-
+                    
                     <div class="material-textfield">
                         <label class="select" for="tipo">Selecciona Antioxidante:</label>
                          <select class="form-control" name="tipo">
@@ -280,3 +279,17 @@
 </div>
 
 <?php include_once('layouts/footer.php'); ?>
+<script>
+    function changeDateVen(data){
+        var fecha =data.value;
+        var domDateV= document.getElementById("dateV");
+        var start=new Date(fecha);
+        if((start.getMonth()+1)<10) mes="0"+(start.getMonth()+1);
+        else mes=start.getMonth()+1;
+
+        if((start.getDate()+1)<10) dia="0"+(start.getDate()+1);
+        else dia=start.getDate()+1;
+        domDateV.value=start.getFullYear()+1+"-"+mes+"-"+dia;
+        
+    }
+</script>
