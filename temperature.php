@@ -179,6 +179,8 @@
     <!-- Busqueda por columna -->
 
     <script>
+        var today=Date.now();
+        var t=new Date(today);
     $(document).ready(function() {
         var table = $('#tabla').DataTable({
             responsive: true,
@@ -222,8 +224,16 @@
                     extend: 'excelHtml5',
                     text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
                     titleAttr: 'Exportar a Excel',
-                    title: 'SGP BUSINESS-REPORTE DE TEMPERATURA',
+                    title: 'SGP BUSINESS-REPORTE DE TEMPERATURA  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
                     className: 'btn btn-success',
+                        exportOptions: {
+                 columns: function(column, data, node) {
+                        if (column <14) {//Oculta todas las columnas
+                            return true;
+                        }
+                        return false;
+                    }
+                },
                      excelStyles:{
                             template:'blue_gray_medium'
                         }
@@ -232,15 +242,31 @@
                     extend: 'pdfHtml5',
                     text: '<i class="glyphicon glyphicon-file"></i> ',
                     titleAttr: 'Exportar a PDF',
-                    title: 'SGP BUSINESS-REPORTE DE TEMPERATURA',
-                    className: 'btn btn-danger'
+                    title: 'SGP BUSINESS-REPORTE DE TEMPERATURA  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
+                    className: 'btn btn-danger',
+                        exportOptions: {
+                 columns: function(column, data, node) {
+                        if (column <14) {//Oculta todas las columnas
+                            return true;
+                        }
+                        return false;
+                    }
+                },
                 },
                 {
                     extend: 'print',
                     text: '<i class="glyphicon glyphicon-print"></i> ',
                     titleAttr: 'Imprimir',
                     title: 'SGP BUSINESS-REPORTE DE TEMPERATURA',
-                    className: 'btn btn-info'
+                    className: 'btn btn-info',
+                        exportOptions: {
+                 columns: function(column, data, node) {
+                        if (column <14) {//Oculta todas las columnas
+                            return true;
+                        }
+                        return false;
+                    }
+                },
                 },
             ],
         });
