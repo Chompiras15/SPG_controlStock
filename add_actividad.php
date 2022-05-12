@@ -117,6 +117,7 @@
 							<option value="Descarga Provincia">Descarga Provincia</option>
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
                             <option value="Eslinga a Piso">Eslinga a Piso</option>
+                            <option value=" Movimiento Interno"> Movimiento Interno</option>
                             <option value="Ventilación de sacos (Cachaquitos)">Ventilación de sacos (Cachaquitos)</option>
                             <option value="Descarga/Carga eslinga">Descarga/Carga eslinga</option>
                             <option value="Muestreo de rumas">Muestreo de rumas</option>

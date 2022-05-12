@@ -105,6 +105,10 @@ if(isset($_POST['edit_actividad'])){
                             <option value="Monitoreo de Temperatura"
                                 <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>
                                 Monitoreo de Temperatura</option>
+                                
+                            <option value="Movimiento Interno"
+                                <?php if($activity['nameActivity']=="Movimiento Interno"){;?>selected
+                                <?php } ?>>Movimiento Interno</option>
                             
                                 <option value="Eslinga a Piso"
                                 <?php if($activity['nameActivity']=="Eslinga a Piso"){;?>selected

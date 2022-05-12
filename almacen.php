@@ -152,6 +152,8 @@
         <!-- Busqueda por columna -->
 
         <script>
+            var today=Date.now();
+            var t=new Date(today);
         $(document).ready(function() {
             var table = $('#tabla').DataTable({
                 responsive: true,
@@ -194,12 +196,14 @@
                 buttons: [{
                         extend: 'excelHtml5',
                         text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
-                        titleAttr: 'Exportar a Excel',
-                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN',
+                        titleAttr: 'Exportar a Excel', 
+                        today: true,
+                        title: 'SGP - BUSINESS_REPORTE DE ALMACEN  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
                         className: 'btn btn-success',
                         excelStyles:{
                             template:'blue_gray_medium'
                         }
+                        
                     },
                     {
                         extend: 'pdfHtml5',
@@ -264,3 +268,4 @@
 
 
         <?php include_once('layouts/footer.php'); ?>
+        
