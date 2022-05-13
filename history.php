@@ -287,7 +287,7 @@
 
             });
             // sumamos y mostramos el total
-            var tot = table.column(2).data().sum();
+            var tot = table.column(1).data().sum();
             $("#total").text(tot);
 
 
