@@ -117,6 +117,13 @@ function make_date(){
   return strftime("%Y-%m-%d %H:%M:%S", time());
 }
 /*--------------------------------------------------------------*/
+/* Function for  Readable Make date for Backup
+/*--------------------------------------------------------------*/
+
+function date_backup(){
+  return strftime("%Y-%m-%d");
+}
+/*--------------------------------------------------------------*/
 /* Function for  Readable date time
 /*--------------------------------------------------------------*/
 function count_id(){
