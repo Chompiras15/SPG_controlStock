@@ -19,12 +19,12 @@
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") {$table="sede_callao"; $tableHistory="history_callao";}
+  if( $SuperUser["sede"]=="T-Callao") {$table="sede_callao"; $tableHistory="history_callao";};
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
   if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $table="sede_exalmar_mala";
+  if( $SuperUser["sede"]=="E-Chicama") {$table="sede_exalmar_mala"; $tableHistory="history_exalmal";};
   
   $all_categories = find_all($table)
 ?>

@@ -25,7 +25,7 @@
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
   if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
   if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $table="sede_exalmar_mala";
+  if( $SuperUser["sede"]=="E-Chicama") $table="history_exalmal";
   
   $all_categories = find_all($table)
 ?>
