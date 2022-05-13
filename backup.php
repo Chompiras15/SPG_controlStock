@@ -1,4 +1,5 @@
 <?php
+
  require_once('includes/load.php');
  if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
 page_require_level(1);
@@ -51,7 +52,7 @@ $backupSQL.="\n";
 }
 
 if(!empty($backupSQL)){
-$backup_file_name=$database_name.'_backup_'.time().'.sql';
+$backup_file_name=date_backup().'_'.$database_name.'_backup_'.'.sql';
 $fileHandler=fopen($backup_file_name,'w+');
 $number_of_lines=fwrite($fileHandler,$backupSQL);
 fclose($fileHandler);
