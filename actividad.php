@@ -13,7 +13,7 @@
   require_once('includes/load.php');
 
   // Checkin What level user has permission to view this page
-  page_require_level(4); // verifica el nivel de usuario 
+  page_require_level(5); // verifica el nivel de usuario 
 
   $tableActi = "";
   $SuperUser = current_user();
