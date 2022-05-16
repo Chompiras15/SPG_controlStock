@@ -196,11 +196,13 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                         <input type="text" class="form-control" name="observation"
                             value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
                     </div>
+                   
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Descripcion</label>
                         <input type="text" class="form-control" name="description"
                             value="<?php echo remove_junk(ucfirst($categorie['descripcion']));?>">
                     </div>
+                  
 
 
 
