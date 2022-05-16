@@ -23,22 +23,22 @@
   if( $SuperUser["sede"]=="T-Atico") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
-  if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="history_exalmal";}
 ?>
 <?php
   $categorieDelete = find_by_id($tabla_sed,(int)$_GET['id']);
   if(!$categorieDelete){
     $session->msg("d","ID de la ruma falta.");
-    redirect('categorie.php');
+    redirect('history.php');
   }
 ?>
 <?php
   $delete_idDelete = delete_by_id($tabla_sed,(int)$categorieDelete['id']);
   if($delete_idDelete){
       $session->msg("s","Ruma eliminada");
-      redirect('historial_almacen.php');
+      redirect('history.php');
   } else {
       $session->msg("d","Eliminación falló");
-      redirect('historial_almacen.php');
+      redirect('history.php');
   }
 ?>
