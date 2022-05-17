@@ -247,10 +247,12 @@
                         <input placeholder=" " type="text" name="observation" required>
                         <label>Observacion</label>
                     </div>
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
                      <div class="material-textfield">
                         <input placeholder=" " type="text" name="descripcion" >
                         <label>Descripcion</label>
                     </div>
+                    <?php }?> 
 
                     <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
 
