@@ -34,7 +34,7 @@ function validate_fields($var){
   foreach ($var as $field) {
     $val = remove_junk($_POST[$field]);
     if(isset($val) && $val==''){
-      $errors = $field ." No puede estar en blanco.";
+      $errors ="Los campos no pueden estar en blanco.";
       return $errors;
     }
   }
