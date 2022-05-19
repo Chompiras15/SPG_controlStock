@@ -127,6 +127,7 @@
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
                             <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
                             <option value="Embarque">Embarque</option>
+                            <option value="Trasiego de sacos">Trasiego de sacos</option>
                             <option value="Encintado y serrado de contenedores">Encintado y serrado de contenedores</option>
                             <option value="Reproceso">Reproceso</option>
                             <option value="Homogenizado">Homogenizado</option>
