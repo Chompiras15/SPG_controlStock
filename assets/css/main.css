@@ -1,3 +1,25 @@
+.deR:before 
+{    
+    content: attr(placeholder) !important;
+}
+
+.deR:focus:before,.deR:valid:before
+{
+
+    content: "DESDE -> " !important;
+}
+
+.hastaR:before 
+{    
+    content: attr(placeholder) !important;
+}
+
+.hastaR:focus:before,.hastaR:valid:before
+{
+
+    content: "HASTA  ->  " !important;
+}
+
 .cont_selectEdit div
 {
     width:100% !important;

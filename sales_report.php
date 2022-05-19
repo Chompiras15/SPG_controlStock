@@ -21,9 +21,9 @@ $page_title = 'Reporte de Actividades';
             <div class="form-group" style="text-align:center">
               <label class="form-label" style="font-size: 25px;margin-bottom: 15px;">Rango de fechas</label>
                 <div class="input-group">
-                  <input id="fecha1" type="date" class="form-control" name="start-date" placeholder="DESDE">
+                  <input id="fecha1" type="date" class="deR" name="start-date">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
-                  <input id="fecha2" type="date" class="form-control" name="end-date" placeholder="HASTA">
+                  <input id="fecha2" type="date" class="hastaR" name="end-date" >
                 </div>
             </div>
             <div class="form-group">
@@ -37,28 +37,3 @@ $page_title = 'Reporte de Actividades';
 
 </div>
 <?php include_once('layouts/footer.php'); ?>
-<script>
-  window.addEventListener('load',function(){
-document.getElementById('fecha1').type= 'text';
-document.getElementById('fecha2').type= 'text';
-
-document.getElementById('fecha1').addEventListener('blur',function(){
-document.getElementById('fecha1').type= 'text';
-
-});
-
-document.getElementById('fecha2').addEventListener('blur',function(){
-document.getElementById('fecha2').type= 'text';
-})
-
-document.getElementById('fecha1').addEventListener('focus',function(){
-document.getElementById('fecha1').type= 'date';
-});
-
-document.getElementById('fecha2').addEventListener('focus',function(){
-document.getElementById('fecha2').type= 'date';
-
-});
-
-});
-  </script>
