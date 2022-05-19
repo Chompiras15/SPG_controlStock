@@ -4,37 +4,14 @@
 <!DOCTYPE html>
   <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <title><?php if (!empty($page_title))
-           echo remove_junk($page_title);
-            elseif(!empty($user))
-           echo ucfirst($user['name']);
-            else echo "Sistema simple de inventario";?>
-    </title>
-	
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src='assets/js/bootstrap-datepicker.min.js'></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#dateRangeReport0').datepicker({
-                format: "dd-mm-yyyy"
-            });
-        });
-        
-        $(function () {
-            $('#dateRangeReport1').datepicker({
-                format: "dd-mm-yyyy"
-            });
-        });
-
-</script>
-
-     <link rel="icon" href="logobussiness1.ico" style= "border-radius: 50%" type="image/x-icon">
+      <meta charset="UTF-8">
+      <title><?php if (!empty($page_title))
+            echo remove_junk($page_title);
+              elseif(!empty($user))
+            echo ucfirst($user['name']);
+              else echo "Sistema simple de inventario";?>
+      </title>
+    
   </head>
 
   <body>

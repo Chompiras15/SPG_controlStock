@@ -21,9 +21,9 @@ $page_title = 'Reporte de Actividades';
             <div class="form-group" style="text-align:center">
               <label class="form-label" style="font-size: 25px;margin-bottom: 15px;">Rango de fechas</label>
                 <div class="input-group">
-                  <input type="text" id="dateRangeReport0" class="datepicker form-control" name="start-date" placeholder="Hasta">
+                  <input type="text" class="datepicker form-control" name="start-date" placeholder="From">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-menu-right"></i></span>
-                  <input type="text" id="dateRangeReport1" class="datepicker form-control" name="end-date" placeholder="De">
+                  <input type="text" class="datepicker form-control" name="end-date" placeholder="To">
                 </div>
             </div>
             <div class="form-group">
@@ -36,8 +36,4 @@ $page_title = 'Reporte de Actividades';
   </div>
 
 </div>
-
-
 <?php include_once('layouts/footer.php'); ?>
-
-

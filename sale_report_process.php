@@ -18,19 +18,13 @@ $results = '';
    if( $SuperUser["sede"]=="E-Chicama") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 ?>
 <?php
-  if(isset($_POST['submit']))
-  {
+  if(isset($_POST['submit'])){
     $req_dates = array('start-date','end-date');
     validate_fields($req_dates);
 
-    $init = $_POST['start-date'];
-    $end = $_POST['end-date'];
-    $newInit = date("Y-m-d", strtotime($init));
-    $newEnd = date("Y-m-d", strtotime($end));
-
     if(empty($errors)):
-      $start_date   = $newInit;
-      $end_date     = $newEnd;
+      $start_date   = remove_junk($db->escape($_POST['start-date']));
+      $end_date     = remove_junk($db->escape($_POST['end-date']));
       $results      = find_sale_by_dates($tableActi,$start_date,$end_date);
     else:
       $session->msg("d", $errors);
@@ -146,7 +140,7 @@ $results = '';
         <img src="assets/img/logobussiness.png">
         <div class="sale-head pull-right">
             <h1>Reporte de Actividades</h1>
-            <strong><?php if(isset($init)){ echo $init;}?> a <?php if(isset($end)){echo $end;}?>
+            <strong><?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?>
             </strong>
         </div>
         <button id="btnExportar" class="btn btn-success">
@@ -177,7 +171,7 @@ $results = '';
                     <td class="text-justify"><?php echo remove_junk($result['auxiliares']);?></td>
                     <td class="text-left"><?php echo remove_junk($result['hora_ini']);?></td>
                     <td class="text-left"><?php echo remove_junk($result['hora_fin']);?></td>
-                    <td class="text-justify"><?php echo changeFormat_date($result['fecha'],'d/m/Y');?></td>
+                    <td class="text-justify"><?php echo remove_junk($result['fecha']);?></td>
 
                 </tr>
                 <?php endforeach; ?>
