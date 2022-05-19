@@ -151,6 +151,10 @@ if(isset($_POST['edit_actividad'])){
                                  <option value="Embarque"
                                 <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
                                 Embarque</option>
+
+                                <option value="Trasiego de sacos"
+                                <?php if($activity['nameActivity']=="Trasiego de sacos"){;?>selected <?php } ?>>
+                                Trasiego de sacos</option>
                                 
                                  <option value="Encintado y serrado de contenedores"
                                 <?php if($activity['nameActivity']=="Encintado y serrado de contenedores"){;?>selected <?php } ?>>
