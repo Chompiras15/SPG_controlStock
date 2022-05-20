@@ -81,9 +81,18 @@
                                 <th class="text-center" style="width: 30px;">Lote</th>
                             <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
                             <?php } ?>
+
                             <th class="text-center" style="width: 10px;">Sacos</th>
-                             <th class="text-center" style="width: 10px;">Sector</th>
-                            <th class="text-center" style="width: 10px;">Ubicación</th>
+
+                            <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
+                            <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
+                            <?php } ?> 
+                            
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
+                            <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
+                            <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
+                            <?php } ?>
+
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>

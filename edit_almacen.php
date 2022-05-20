@@ -144,7 +144,9 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                         </select>
                     </div>
                      <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Lote</label>
+                        <?php  if( $SuperUser["sede"]=="T-Callao"){?> <label for="name" class="control-label">Lote</label>
+                        <?php }else {  ?> <label for="name" class="control-label">Codigo Ruma</label>
+                        <?php } ?> 
                         <input type="text" class="form-control" name="cod_ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>" disabled>
                     </div>
@@ -157,13 +159,16 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
 
                     <div class="form-group col-md-6">
                         
-                        <label for="name" class="control-label">Sector</label>
-                        <input type="text" class="form-control" name="sector"
-                            value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
+                        <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <label for="name" class="control-label">Cuartel</label>
+                        <?php }else {  ?> <label for="name" class="control-label">Sector</label>
+                        <?php } ?>  
+                        <input type="text" class="form-control" name="sector" value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
                         
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Ubicación</label>
+                        <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <label for="name" class="control-label">Ubicación</label>
+                        <?php }else {  ?>  <label for="name" class="control-label">Carril</label>
+                        <?php } ?>  
                         <input type="text" class="form-control" name="nicho"
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
@@ -187,12 +192,12 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                     
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Fecha de Producción</label>
-                        <input type="date" class="form-control" name="date_producc"
+                        <input type="date" class="form-control" name="date_producc" onblur="changeDateVen(this)"
                             value="<?php echo remove_junk(ucfirst($categorie['date_producc']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Fecha de Vencimiento</label>
-                        <input type="date" class="form-control" name="date_vencimiento"
+                        <input type="date" class="form-control" name="date_vencimiento" id="dateV"
                             value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
                     </div>
                     
@@ -225,3 +230,18 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
 
 
 <?php include_once('layouts/footer.php'); ?>
+
+<script>
+    function changeDateVen(data){
+        var fecha =data.value;
+        var domDateV= document.getElementById("dateV");
+        var start=new Date(fecha);
+        if((start.getMonth()+1)<10) mes="0"+(start.getMonth()+1);
+        else mes=start.getMonth()+1;
+
+        if((start.getDate()+1)<10) dia="0"+(start.getDate()+1);
+        else dia=start.getDate()+1;
+        domDateV.value=start.getFullYear()+1+"-"+mes+"-"+dia;
+        
+    }
+</script>
