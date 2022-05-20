@@ -234,7 +234,7 @@
                         className: 'btn btn-success',
                               exportOptions: {
                  columns: function(column, data, node) {
-                        if (column < 12) {//Oculta todas las columnas
+                        if (column < 11) {//Oculta todas las columnas
                             return true;
                         }
                         return false;
@@ -246,13 +246,14 @@
                     },
                     {
                         extend: 'pdfHtml5',
+                        orientation: 'landscape',
                         text: '<i class="glyphicon glyphicon-file"></i> ',
                         titleAttr: 'Exportar a PDF',
                         title: 'SGP - BUSINESS_HISTORIAL DE ALMACEN  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
                         className: 'btn btn-danger',
                               exportOptions: {
                  columns: function(column, data, node) {
-                        if (column < 12) {//Oculta todas las columnas
+                        if (column < 11) {//Oculta todas las columnas
                             return true;
                         }
                         return false;
@@ -267,7 +268,7 @@
                         className: 'btn btn-info',
                               exportOptions: {
                  columns: function(column, data, node) {
-                        if (column < 12) {//Oculta todas las columnas
+                        if (column < 11) {//Oculta todas las columnas
                             return true;
                         }
                         return false;

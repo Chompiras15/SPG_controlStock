@@ -33,11 +33,12 @@
 <?php
  if(isset($_POST['add_ExalTemperature']))
  {
-  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor');
+  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor');
    
     validate_fields($req_field);
    
     $tem_ruma = remove_junk($db->escape($_POST['codRuma']));
+    $tem_observacion = remove_junk($db->escape($_POST['observacion']));
     $tem_1 = remove_junk($db->escape($_POST['filter1']));
     $tem_2 = remove_junk($db->escape($_POST['filter2']));
     $tem_3 = remove_junk($db->escape($_POST['filter3']));
@@ -64,6 +65,7 @@
     $tem_24 = remove_junk($db->escape($_POST['filter24']));
     $tem_25 = remove_junk($db->escape($_POST['filter25']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
+  
     //$tem_fecha = remove_junk($db->escape($_POST['fecha']));
 
     if(empty($errors))
@@ -78,9 +80,9 @@
             if($SuperUser["sede"]=="E-Chicama")
             {
                 $sql  = "INSERT INTO $tabletemp (";
-                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor,typeRuma";
+                $sql .=" codRuma, observacion, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor, typeRuma";
                 $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}','{$typeR}'";
+                $sql .=" '{$tem_ruma}','{$tem_observacion}' ,'{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}','{$typeR}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
 
@@ -147,137 +149,142 @@
                 <form method="post" action="add_ExalTemperature.php">
                     <div class="material-textfield">
                         <input type="text"  name="codRuma"  placeholder=" " required>
-                        <label>Cod_Ruma</label>
+                        <label>Código de Ruma</label>
                     </div>
-
+                     
                     <div class="material-textfield">
                         <input type="number" name="filter1" step="any" placeholder=" " required>
                       
-                        <label>Cañon 1</label>
+                        <label>Temperatura 1</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter2" step="any" placeholder=" " required>
-                        <label>Cañon 2</label>
+                        <label>Temperatura 2</label>
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter3" step="any" placeholder=" " required>
-                        <label>Cañon 3</label>
+                        <label>Temperatura 3</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter4"step="any"  placeholder=" " required>
-                        <label>Cañon 4</label>
+                        <label>Temperatura 4</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter5" step="any" placeholder=" " required>
-                        <label>Cañon 5</label>
+                        <label>Temperatura 5</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter6" step="any" placeholder=" " required>
-                        <label>Cañon 6</label>
+                        <label>Temperatura 6</label>
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter7" step="any" placeholder=" " required>
-                        <label>Cañon 7</label>
+                        <label>Temperatura 7</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter8" step="any" placeholder=" " required>
-                        <label>Cañon 8</label>
+                        <label>Temperatura 8</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter9" step="any" placeholder=" " required>
-                        <label>Cañon 9</label>
+                        <label>Temperatura 9</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter10" step="any" placeholder=" " required>
                       
-                        <label>Cañon 10</label>
+                        <label>Temperatura 10</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter11" step="any" placeholder=" " required>
-                        <label>Cañon 11</label>
+                        <label>Temperatura 11</label>
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter12" step="any" placeholder=" " required>
-                        <label>Cañon 12</label>
+                        <label>Temperatura 12</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter13"step="any"  placeholder=" " required>
-                        <label>Cañon 13</label>
+                        <label>Temperatura 13</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter14" step="any" placeholder=" " required>
-                        <label>Cañon 14</label>
+                        <label>Temperatura 14</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter15" step="any" placeholder=" " required>
-                        <label>Cañon 15</label>
+                        <label>Temperatura 15</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter16" step="any" placeholder=" " required>
-                        <label>Cañon 16</label>
+                        <label>Temperatura 16</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter17" step="any" placeholder=" " required>
-                        <label>Cañon 17</label>
+                        <label>Temperatura 17</label>
                     </div>
 
                         <div class="material-textfield">
                         <input type="number" name="filter18" step="any" placeholder=" " required>
-                        <label>Cañon 18</label>
+                        <label>Temperatura 18</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter19"step="any"  placeholder=" " required>
-                        <label>Cañon 19</label>
+                        <label>Temperatura 19</label>
 
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter20" step="any" placeholder=" " required>
-                        <label>Cañon 20</label>
+                        <label>Temperatura 20</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter21" step="any" placeholder=" " required>
-                        <label>Cañon 21</label>
+                        <label>Temperatura 21</label>
                     </div>
                     <div class="material-textfield">
                         <input type="number" name="filter22" step="any" placeholder=" " required>
-                        <label>Cañon 22</label>
+                        <label>Temperatura 22</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter23" step="any" placeholder=" " required>
-                        <label>Cañon 23</label>
+                        <label>Temperatura 23</label>
                     </div>
 
                     <div class="material-textfield">
                         <input type="number" name="filter24" step="any" placeholder=" " required>
-                        <label>Cañon 24</label>
+                        <label>Temperatura 24</label>
                     </div>
 
                      <div class="material-textfield">
                         <input type="number" name="filter25" step="any" placeholder=" " required>
-                        <label>Cañon 25</label>
+                        <label>Temperatura 25</label>
                     </div>
-
+                    <div class="material-textfield">
+                        
+                        <input type="text" name="observacion" placeholder=" " required>
+                        <label> Observación</label>
+                    </div>
                      <div class="material-textfield">
                         
                         <input type="text" name="supervisor" placeholder=" " required>
                         <label> Supervisor</label>
                     </div>
+                   
 
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit'

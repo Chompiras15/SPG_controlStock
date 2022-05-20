@@ -117,6 +117,7 @@
                             <th class="text-center" style="width: 10px;">Cañon_24</th>
                             <th class="text-center" style="width: 10px;">Cañon_25</th>
                             <th class="text-center" style="width: 10px;">Promedio</th>
+                            <th class="text-center" style="width: 10px;">Observacion</th>
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Tipo_Ruma</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
@@ -128,6 +129,7 @@
                         <tr>
                             <!-- <td class="text-center"><?php echo count_id();?></td> -->
                             <td><?php echo remove_junk(ucfirst($temp['codRuma'])); ?></td>
+                            
                            
                             <?php addFilter($temp,"filter1");
                             addFilter($temp,"filter2");
@@ -157,6 +159,7 @@
                             ?>
                              
                              <?php if($temp['typeRuma']=="HBT") {?> 
+                                
                                 <?php if((float)$temp['promedio']>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=47 && (float)$temp['promedio']<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp['promedio'])).' '; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']>=38 && (float)$temp['promedio']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
@@ -167,9 +170,10 @@
                                 <?php if((float)$temp['promedio']>=36 && (float)$temp['promedio']<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC.'; ?></td><?php } ?>
                                 <?php if((float)$temp['promedio']<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp['promedio'])).' ºC'; ?></td><?php } 
                             } ?> 
-
-                            <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($temp['typeRuma'])); ?></td>
+                            
+                            <td><?php echo remove_junk(ucfirst($temp['observacion'])); ?></td>
+                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
+                             <td><?php echo remove_junk(ucfirst($temp['typeRuma'])); ?></td>
                             <td><?php echo read_date($temp['fecha']); ?></td>
                            
                             <td class="text-center">
@@ -200,76 +204,152 @@
 
     </div>
 
-    <?php include_once('layouts/footer.php'); ?>
+   <?php include_once('layouts/footer.php'); ?>
 
-    <!-- Busqueda por columna -->
+        <!-- Busqueda por columna -->
 
-    <script>
-    $(document).ready(function() {
-        var table = $('#tabla').DataTable({
-            responsive: true,
-            dom: 'B<"clear">lfrtp',
-            fixedColumns: true,
-            fixedHeader: true,
+        <script>
+            var today=Date.now();
+            var t=new Date(today);
+        $(document).ready(function() {
+            var table = $('#tabla').DataTable({
+                responsive: true,
+                dom: 'B<"clear">lfrtp',
+                fixedColumns: true,
+                fixedHeader: true,
+                ordering: false,
+                autoWidth: true,
+                scrollCollapse: true,
+                lengthMenu: [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "Todo"]
+                ],
 
-            autoWidth: true,
-            scrollCollapse: true,
-            lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "Todo"]
-            ],
+                columnDefs: [{
+                    targets: "_all",
+                    sortable: false,
+                    className: "text-center"
+                }],
+                // cambiamos el lenguaje
+                language: {
+                    "lengthMenu": "_MENU_",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "",
+                    "searchPlaceholder": "Buscar",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing": "Procesando...",
+                },
+                //para usar los botones de excel, imprimir y pdf  
+                responsive: "true",
+                dom: 'Bfrtlp',
+                buttons: [{
+                        extend: 'excelHtml5',
+                        text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
+                        titleAttr: 'Exportar a Excel', 
+                        today: true,
+                        title: 'SGP - BUSINESS_REPORTE DE TEMPERATURAS  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
+                        className: 'btn btn-success',
+                        exportOptions: {
+                    columns: function(column, data, node) {
+                        if (column <31) {//Oculta todas lac
+                            return true;
+                        }
+                        return false;
+                    }
+                },
+                        excelStyles:{
+                            template:'blue_gray_medium'
+                        }
+                        
+                        // 
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: '<i class="glyphicon glyphicon-file"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        title: 'SGP - BUSINESS_REPORTE DE TEMPERATURAS  '+t.getDate()+'/'+(parseInt(t.getMonth())+1)+'/'+t.getFullYear()+"  "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds(),
+                        className: 'btn btn-danger',
+                        exportOptions: {
+                    columns: function(column, data, node) {
+                        if (column <32) {//Oculta todas lac
+                            return true;
+                        }
+                        return false;
+                    }
+                },
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="glyphicon glyphicon-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        title: 'SGP - BUSINESS_REPORTE DE TEMPERATURAS',
+                        className: 'btn btn-info',
+                        exportOptions: {
+                    columns: function(column, data, node) {
+                        if (column <32) {//Oculta todas lac
+                            return true;
+                        }
+                        return false;
+                    }
+                },
+                    },
+                ],
 
-            columnDefs: [{
-                targets: "_all",
-                sortable: false
-            }],
-            // cambiamos el lenguaje
-            language: {
-                "lengthMenu": "_MENU_",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "",
-                "searchPlaceholder": "Buscar",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
+                "createdRow": function(row, data, index) {
+                    // elegimos la columna para sumae
+
                 },
-                "sProcessing": "Procesando...",
-            },
-            //para usar los botones de excel, imprimir y pdf  
-            responsive: "true",
-            dom: 'Bfrtlp',
-            buttons: [{
-                    extend: 'excelHtml5',
-                    text: '<i class="glyphicon glyphicon-cloud-download"></i> ',
-                    titleAttr: 'Exportar a Excel',
-                    title: 'SGP - Business_Reporte de monitoreos',
-                    className: 'btn btn-success'
-                },
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="glyphicon glyphicon-file"></i> ',
-                    titleAttr: 'Exportar a PDF',
-                    title: 'SGP - Business_Reporte de monitoreos',
-                    className: 'btn btn-danger'
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="glyphicon glyphicon-print"></i> ',
-                    titleAttr: 'Imprimir',
-                    title: 'SGP - Business_Reporte de monitoreos',
-                    className: 'btn btn-info'
-                },
-            ],
+
+                "drawCallback": function() {
+                    //alert("La tabla se está recargando");
+
+                    var api = this.api();
+                    $(api.column(3).footer()).html(
+
+                        'Total: ' + api.column(3, {
+                            page: 'current'
+                        }).data().sum()
+                    )
+                }
+
+
+            });
+            // sumamos y mostramos el total
+            var tot = table.column(1).data().sum();
+            $("#total").text(tot);
+
+
+            //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+            $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+
+            $('#tabla thead tr:eq(1) th').each(function(i) {
+                var title = $(this).text(); //es el nombre de la columna
+                $(this).html('<input type="text" placeholder="Buscar"/>');
+
+                $('input', this).on('keyup change', function() {
+                    if (table.column(i).search() !== this.value) {
+                        table
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
         });
-    });
-    </script>
+        </script>
 
 
 
 
-    <?php include_once('layouts/footer.php'); ?>
+        <?php include_once('layouts/footer.php'); ?>
+        
