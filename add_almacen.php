@@ -15,7 +15,7 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-  if( $SuperUser["sede"]=="T-Chimb") $table="sede_tasachimbote";
+if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="history_tasaChimb";};
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
@@ -79,29 +79,42 @@
               }else if($SuperUser["sede"]=="T-Callao") 
               {
                 $sql= "INSERT INTO $table (";
-                $sql.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation";
+                $sql.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
                 $sql.=") VALUES (";
-                $sql.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}'";
+                $sql.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
                 
               }else
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}'";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
               }
 
               if($db->query($sql))
               {
-                $sql2= "INSERT INTO $tableHistory (";
-                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion";
-                $sql2.=") VALUES (";
-                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}'";
-                $sql2.=")";
+
+                if( $SuperUser["sede"]=="T-Callao")
+                {
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                    $sql2.=")";
+
+                }else 
+                {
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                };
+                
                 if($db->query($sql2))
                 {
                     $session->msg("s", "RUMA AGREGADO CON EXITO.");
@@ -139,14 +152,14 @@
 
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', description='{$cat_descripcion}'";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
     
             }else
             {
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
             };
 
@@ -154,11 +167,22 @@
 
             if($result && $db->affected_rows() === 1) 
             {
-                $sql2= "INSERT INTO $tableHistory (";
-                $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion";
-                $sql2.=") VALUES (";
-                $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}'";
-                $sql2.=")";
+                if( $SuperUser["sede"]=="T-Callao")
+                {
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                    $sql2.=")";
+
+                }else 
+                {
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                };
 
                 $history = $db->query($sql2);
 
