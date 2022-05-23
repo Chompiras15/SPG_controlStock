@@ -47,9 +47,13 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+    if($SuperUser["sede"]=="T-Callao")  
+    {
+        $cat_placa = remove_junk($db->escape($_POST['placa']));
+        $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
+    };
     $cat_observation = remove_junk($db->escape($_POST['observation']));
-    $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
+ 
     if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
    
     //$date   = make_date();
@@ -131,13 +135,19 @@
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-            }else{
+            }else if( $SuperUser["sede"]=="T-Callao") {
 
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}', description='{$cat_descripcion}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
     
+            }else
+            {
+                $sql   = "UPDATE $table SET";
+                $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
             };
 
             $result = $db->query($sql);
