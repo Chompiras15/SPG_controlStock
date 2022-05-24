@@ -104,7 +104,7 @@
                             <th class="text-center" style="width: 10px;">tipo_Ruma</th>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center" style="width: 10px;">Almacen</th><?php } ?>
                            
-                         
+                            <th class="text-center" style="width: 10px;">Observacion</th>
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
 
@@ -143,6 +143,7 @@
 
                             <td><?php echo remove_junk(ucfirst($temp['typeRuma'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($temp['almacen'])); ?></td> <?php } ?>
+                            <td><?php echo remove_junk(ucfirst($temp['observacion'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                             <td><?php echo read_date($temp['fecha']); ?></td>
                            

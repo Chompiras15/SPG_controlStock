@@ -34,7 +34,7 @@
  if(isset($_POST['add_temperature']))
  {
      if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','almacen','supervisor');
-     else $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9','supervisor');
+     else $req_field = array('codRuma', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'observacion','supervisor');
    
     validate_fields($req_field);
    
@@ -48,6 +48,7 @@
     $tem_7 = remove_junk($db->escape($_POST['filter7']));
     $tem_8 = remove_junk($db->escape($_POST['filter8']));
     $tem_9 = remove_junk($db->escape($_POST['filter9']));
+    $tem_observacion = remove_junk($db->escape($_POST['observacion']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
     //$tem_fecha = remove_junk($db->escape($_POST['fecha']));
     if( $SuperUser["sede"]=="E-Chimbote")  $tem_almacen =remove_junk($db->escape($_POST['almacen']));
@@ -74,9 +75,9 @@
             }else{
 
                 $sql  = "INSERT INTO $tabletemp (";
-                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,supervisor,promedio,typeRuma";
+                $sql .=" codRuma, filter1, filter2, filter3, filter4, filter5, filter6, filter7,filter8,filter9,observacion,supervisor,promedio,typeRuma ";
                 $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_supervisor}','{$promedio}','{$typeR}'";
+                $sql .=" '{$tem_ruma}', '{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_observacion}','{$tem_supervisor}','{$promedio}','{$typeR}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
             }
@@ -142,7 +143,7 @@
                 <form method="post" action="add_temperature.php">
                     <div class="material-textfield">
                         <input type="text"  name="codRuma"  placeholder=" " required>
-                        <label>Cod_Ruma</label>
+                        <label>Codigo_Ruma</label>
                     </div>
 
                     <div class="material-textfield">
@@ -188,6 +189,13 @@
                         <input type="number" name="filter9" step="any" placeholder=" " required>
                         <label>Cañon 9</label>
                     </div>
+
+                     <div class="material-textfield">
+                        
+                        <input type="text" name="observacion" placeholder=" " required>
+                        <label> Observacion</label>
+                    </div>
+
                      <div class="material-textfield">
                         
                         <input type="text" name="supervisor" placeholder=" " required>

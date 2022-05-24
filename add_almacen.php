@@ -15,7 +15,7 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="history_tasaChimb";};
+if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="history_chimb";};
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
   if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";

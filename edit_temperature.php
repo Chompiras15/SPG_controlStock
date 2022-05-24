@@ -54,6 +54,7 @@ if(isset($_POST['edit_temperature']))
     $tem_7 = remove_junk($db->escape($_POST['filter7']));
     $tem_8 = remove_junk($db->escape($_POST['filter8']));
     $tem_9 = remove_junk($db->escape($_POST['filter9']));
+    $tem_observacion = remove_junk($db->escape($_POST['observacion']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
 
 
@@ -67,7 +68,7 @@ if(isset($_POST['edit_temperature']))
     {
         $sql   = "UPDATE $tabletemp SET";
         $sql  .=" codRuma ='{$tem_ruma}', filter1 ='{$tem_1}',";
-        $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', promedio ='{$promedio}' , supervisor ='{$tem_supervisor}'";
+        $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', promedio ='{$promedio}' ,observacion ='{$tem_observacion}' ,supervisor ='{$tem_supervisor}'";
         $sql .= " WHERE id='{$temperature['id']}'";
 
         if($db->query($sql))
@@ -171,6 +172,11 @@ if(isset($_POST['edit_temperature']))
                         <label for="name" class="control-label">Cañon 9</label>
                         <input type="text" class="form-control" name="filter9"
                             value="<?php echo remove_junk(ucfirst($temperature['filter9']));?>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="name" class="control-label">Observacion</label>
+                        <input type="text" class="form-control" name="observacion"
+                            value="<?php echo remove_junk(ucfirst($temperature['observacion']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Supervisor</label>
