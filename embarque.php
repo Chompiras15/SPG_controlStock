@@ -75,7 +75,7 @@
                             <th>Contrato</th>
                             <th class="text-center" style="width: 50px;">Cantidad</th>
                             <th>Cod.Ruma</th>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 50px;">Placa</th> <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"|| $SuperUser["sede"]=="T-Chimb"){?>  <th class="text-center" style="width: 50px;">Placa</th> <?php } ?>
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 50px;">Container</th> <?php } ?>
                             <th class="text-center" style="width: 100px;">Fecha</th>
                             <th>Supervisor</th>
@@ -93,7 +93,7 @@
                             <td><?php echo remove_junk(ucfirst($embar['cod_contrato'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cant_out'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['cod_ruma'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="T-Callao") {?>
+                            <?php if( $SuperUser["sede"]=="T-Callao"|| $SuperUser["sede"]=="T-Chimb") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['placa'])); ?></td><?php } ?>
                             <?php if( $SuperUser["sede"]=="T-Callao") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['cod_container'])); ?></td><?php } ?>
