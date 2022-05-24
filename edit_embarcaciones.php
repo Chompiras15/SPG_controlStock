@@ -51,9 +51,12 @@ if(isset($_POST['edit_emb']))
     $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
     $supervisor = remove_junk($db->escape($_POST['supervisor']));
 
-    if( $SuperUser["sede"]=="T-Callao") {
+    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb") {
       $placa = remove_junk($db->escape($_POST['placa']));
-      $cod_container = remove_junk($db->escape($_POST['cod_container']));
+      
+    };
+    if($SuperUser["sede"]=="T-Callao"){
+    $cod_container = remove_junk($db->escape($_POST['cod_container']));
     };
     $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
@@ -84,8 +87,12 @@ if(isset($_POST['edit_emb']))
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}',placa ='{$placa}',cod_container ='{$cod_container}',date_out ='{$date}', supervisor ='{$supervisor}'";
               $sql .= " WHERE id='{$categorie['id']}'";
-            }else
-            {
+            }else if($SuperUser["sede"]=="T-Chimb"){
+              $sql   = "UPDATE $table SET";
+              $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
+              $sql  .=" cod_ruma ='{$cod_ruma}', placa ='{$placa}',date_out ='{$date}', supervisor ='{$supervisor}'";
+              $sql .= " WHERE id='{$categorie['id']}'";
+            }else{
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}',date_out ='{$date}', supervisor ='{$supervisor}'";
@@ -158,19 +165,22 @@ if(isset($_POST['edit_emb']))
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
                     </div>
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                    <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"){?>
                       <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Código de Ruma</label>
+                        <label for="name" class="control-label">Placa</label>
                         <input type="text" class="form-control" name="placa" placeholder="Placa"
                             value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
                       </div>
+                    <?php } ?>
 
-                      <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Código de Ruma</label>
-                        <input type="text" class="form-control" name="cod_container" placeholder="Codigo Container"
+                    <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                        <div class="form-group col-md-6">
+                          <label for="name" class="control-label">Código Contenedor</label>
+                          <input type="text" class="form-control" name="cod_container" placeholder="Codigo Container"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_container']));?>">
                       </div>
-                    <?php } ?>
+                     <?php } ?> 
+
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Supervisor</label>
                         <input type="text" class="form-control" name="supervisor" placeholder="Supervisor"
