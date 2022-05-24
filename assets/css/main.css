@@ -1,3 +1,29 @@
+.contAddCont
+{
+    width:20% !important;
+    margin-left:30px !important;
+}
+
+.contAddDateOut:before 
+{    
+    content: attr(placeholder) !important;
+}
+
+.inpContainer
+{
+    width: 48% !important;
+    
+}
+
+.m-l
+{
+    margin-left: 4%;
+}
+
+.m-t
+{
+    margin-top: 15px !important;
+}
 .deR:before 
 {    
     content: attr(placeholder) !important;
@@ -1237,6 +1263,27 @@ img.img-size-2 {
         margin-top: 20px;
         font-weight: revert;
     }
+    .inpContainer
+    {
+        width: 100% !important;
+        
+    }
+
+    .m-l
+    {
+        margin-left: 0%;
+    }
+
+    .m-t
+    {
+        margin-top: 15px !important;
+    }
+
+    .contAddCont
+    {
+        width:50% !important;
+        margin-left:0px !important;
+    }
 }
 
 
@@ -1245,5 +1292,27 @@ img.img-size-2 {
     .header_sede
     {
         display: none;
+    }
+
+    .inpContainer
+    {
+        width: 100% !important;
+        
+    }
+
+    .m-l
+    {
+        margin-left: 0%;
+    }
+
+    .m-t
+    {
+        margin-top: 15px !important;
+    }
+
+    .contAddCont
+    {
+        width:50% !important;
+        margin-left:0px !important;
     }
 }

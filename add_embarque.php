@@ -165,7 +165,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 } else {
                     $session->msg( 'd', 'Lo siento, actualización falló.' );
                     redirect( 'embarque.php', false );
-                }
+                };
 
                 $session->msg( 's', 'Ruma agregada exitosamente.' );
                 redirect( 'embarque.php', false );

@@ -65,6 +65,7 @@
                     <span>Lista de Despachos</span>
                   </strong>
                   <a href="add_embarque.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Despacho"></i></a>
+                  <?php if( $SuperUser["sede"]=="T-Callao")  {?> <a href="add_container.php" style="right: 90px !important;"class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Container"></i></a> <?php } ?>
              
             </div>
             <div class="panel-body">
