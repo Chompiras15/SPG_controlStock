@@ -146,127 +146,127 @@ if(isset($_POST['Edit_ExalTemperature']))
                    
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 1</label>
-                        <input type="text" class="form-control" name="filter1"
+                        <input type="number" step="any" class="form-control"  name="filter1"
                             value="<?php echo remove_junk(ucfirst($temperature['filter1']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 2</label>
-                        <input type="text" class="form-control" name="filter2"
+                        <input type="number" step="any" class="form-control" name="filter2"
                             value="<?php echo remove_junk(ucfirst($temperature['filter2']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 3</label>
-                        <input type="text" class="form-control" name="filter3"
+                        <input type="number" step="any" class="form-control" name="filter3"
                             value="<?php echo remove_junk(ucfirst($temperature['filter3']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 4</label>
-                        <input type="text" class="form-control" name="filter4"
+                        <input type="number" step="any" class="form-control" name="filter4"
                             value="<?php echo remove_junk(ucfirst($temperature['filter4']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 5</label>
-                        <input type="text" class="form-control" name="filter5"
+                        <input type="number" step="any" class="form-control" name="filter5"
                             value="<?php echo remove_junk(ucfirst($temperature['filter5']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 6</label>
-                        <input type="text" class="form-control" name="filter6"
+                        <input type="number" step="any" class="form-control" name="filter6"
                             value="<?php echo remove_junk(ucfirst($temperature['filter6']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 7</label>
-                        <input type="text" class="form-control" name="filter7"
+                        <input type="number" step="any" class="form-control" name="filter7"
                             value="<?php echo remove_junk(ucfirst($temperature['filter7']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 8</label>
-                        <input type="text" class="form-control" name="filter8"
+                        <input type="number" step="any" class="form-control" name="filter8"
                             value="<?php echo remove_junk(ucfirst($temperature['filter8']));?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Temperatura 9</label>
-                        <input type="text" class="form-control" name="filter9"
+                        <input type="number" step="any" class="form-control" name="filter9"
                             value="<?php echo remove_junk(ucfirst($temperature['filter9']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 10</label>
-                        <input type="text" class="form-control" name="filter10"
+                        <input type="number" step="any" class="form-control" name="filter10"
                             value="<?php echo remove_junk(ucfirst($temperature['filter10']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 11</label>
-                        <input type="text" class="form-control" name="filter11"
+                        <input type="number" step="any" class="form-control" name="filter11"
                             value="<?php echo remove_junk(ucfirst($temperature['filter11']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 12</label>
-                        <input type="text" class="form-control" name="filter12"
+                        <input type="number" step="any" class="form-control" name="filter12"
                             value="<?php echo remove_junk(ucfirst($temperature['filter12']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 13</label>
-                        <input type="text" class="form-control" name="filter13"
+                        <input type="number" step="any" class="form-control" name="filter13"
                             value="<?php echo remove_junk(ucfirst($temperature['filter13']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 14</label>
-                        <input type="text" class="form-control" name="filter14"
+                        <input type="number" step="any" class="form-control" name="filter14"
                             value="<?php echo remove_junk(ucfirst($temperature['filter14']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 15</label>
-                        <input type="text" class="form-control" name="filter15"
+                        <input type="number" step="any" class="form-control" name="filter15"
                             value="<?php echo remove_junk(ucfirst($temperature['filter15']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 16</label>
-                        <input type="text" class="form-control" name="filter16"
+                        <input type="number" step="any" class="form-control" name="filter16"
                             value="<?php echo remove_junk(ucfirst($temperature['filter16']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 17</label>
-                        <input type="text" class="form-control" name="filter17"
+                        <input type="number" step="any" class="form-control" name="filter17"
                             value="<?php echo remove_junk(ucfirst($temperature['filter17']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 18</label>
-                        <input type="text" class="form-control" name="filter18"
+                        <input type="number" step="any" class="form-control" name="filter18"
                             value="<?php echo remove_junk(ucfirst($temperature['filter18']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 19</label>
-                        <input type="text" class="form-control" name="filter19"
+                        <input type="number" step="any" class="form-control" name="filter19"
                             value="<?php echo remove_junk(ucfirst($temperature['filter19']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 20</label>
-                        <input type="text" class="form-control" name="filter20"
+                        <input type="number" step="any" class="form-control" name="filter20"
                             value="<?php echo remove_junk(ucfirst($temperature['filter20']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 21</label>
-                        <input type="text" class="form-control" name="filter21"
+                        <input type="number" step="any" class="form-control" name="filter21"
                             value="<?php echo remove_junk(ucfirst($temperature['filter21']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 22</label>
-                        <input type="text" class="form-control" name="filter22"
+                        <input type="number" step="any" class="form-control" name="filter22"
                             value="<?php echo remove_junk(ucfirst($temperature['filter22']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 23</label>
-                        <input type="text" class="form-control" name="filter23"
+                        <input type="number" step="any" class="form-control" name="filter23"
                             value="<?php echo remove_junk(ucfirst($temperature['filter23']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 24</label>
-                        <input type="text" class="form-control" name="filter24"
+                        <input type="number" step="any" class="form-control" name="filter24"
                             value="<?php echo remove_junk(ucfirst($temperature['filter24']));?>">
                     </div>
                     <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Temperatura 25</label>
-                        <input type="text" class="form-control" name="filter25"
+                        <input type="number" step="any" class="form-control" name="filter25"
                             value="<?php echo remove_junk(ucfirst($temperature['filter25']));?>">
                     </div>
 
