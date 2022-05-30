@@ -172,7 +172,12 @@ input[type=time] {
     right: 100px;
     position: absolute;
 }
-
+.pnc_btnAlmacen
+{
+    padding-top: 5px;
+    right: 170px;
+    position: absolute;
+}
 .paginate_button {
     padding: 0px !important;
 }
