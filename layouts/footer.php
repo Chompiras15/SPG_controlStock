@@ -41,9 +41,10 @@
     }
 
     
- 
+  
     async function putPhoto() 
     {
+      
         await sleep(50);
         //console.log( document.getElementsByClassName( 'img-perfil' )[ 0 ] );
         <?php if($user['image'] =="no_image.jpg"  || empty($user['image'])) {?>

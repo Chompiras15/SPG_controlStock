@@ -109,6 +109,10 @@ if(isset($_POST['edit_actividad'])){
                             <option value="Movimiento Interno"
                                 <?php if($activity['nameActivity']=="Movimiento Interno"){;?>selected
                                 <?php } ?>>Movimiento Interno</option>
+                                
+                            <option value="Corte y Vaceado a Dino"
+                                <?php if($activity['nameActivity']=="Corte y Vaceado a Dino"){;?>selected
+                                <?php } ?>>Corte y Vaceado a Dino</option>
                             
                                 <option value="Eslinga a Piso"
                                 <?php if($activity['nameActivity']=="Eslinga a Piso"){;?>selected

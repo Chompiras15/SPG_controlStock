@@ -124,6 +124,7 @@
                             <option value="Borrado y codificado de código">Borrado y codificado de código</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Corte y vaceado en jumbo">Corte y vaceado en jumbo</option>
+                            <option value="Corte y vaceado a Dino">Corte y vaceado en jumbo</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
                             <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
                             <option value="Embarque">Embarque</option>
