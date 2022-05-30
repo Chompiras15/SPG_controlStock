@@ -90,7 +90,6 @@
                              <?php if( $SuperUser["sede"]=="T-Callao") {?>
                                 <th class="text-center" style="width: 100px;">Tipo</th> <?php } ?>
                             <th>Acciones</th>
-
                         </tr>
                     </thead>
                     <tbody>
