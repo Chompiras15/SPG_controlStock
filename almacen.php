@@ -70,7 +70,10 @@
 
                             <a href="history.php" class="pull-right historialicon"><i
                             class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
-                            
+
+                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                                 <a href="pnc_almacen.php" class="pull-right pnc_btnAlmacen"><i class="iconCat glyphicon glyphicon glyphicon-ban-circle" title="No Conforme"></i></a>
+                            <?php } ?>
         </div>
             <div class="panel-body">
 

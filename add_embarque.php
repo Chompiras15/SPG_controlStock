@@ -24,9 +24,17 @@ if ( $SuperUser[ 'sede' ] == 'T-Vegueta' ) {
     $table = 'emb_vegueta';
     $tabla_sed = 'sede_vegueta';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Callao' ) {
+if ( $SuperUser[ 'sede' ] == 'T-Callao' ) 
+{
+   
     $table = 'emb_callao';
-    $tabla_sed = 'sede_callao';
+    if($_GET['option']==0)  {
+        $tabla_sed = 'sede_callao';
+        $type='pc';
+     } else{ 
+         $tabla_sed = 'sede_pnc_callao';
+         $type='pnc';
+     };
 }
 if ( $SuperUser[ 'sede' ] == 'T-Pisco' ) {
     $table = 'emb_pisco';
@@ -95,9 +103,9 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                 } else  if( $SuperUser["sede"]=="T-Callao")
                 {
                     $sql  = "INSERT INTO $table (";
-                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor';
+                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,type';
                     $sql .= ') VALUES (';
-                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}'";
+                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
                 }else if( $SuperUser["sede"]=="T-Chimb")
@@ -145,9 +153,9 @@ if ( isset( $_POST[ 'add_emb' ] ) )
 
                 } else if ( $SuperUser[ 'sede' ] == 'T-Callao' ) {
                     $sql  = "INSERT INTO $table (";
-                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor';
+                    $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,type';
                     $sql .= ') VALUES (';
-                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}'";
+                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
@@ -231,7 +239,8 @@ if ( isset( $_POST[ 'add_emb' ] ) )
             <div class='col-md-3'>
             </div>
             <div class='col-md-12 cont_form'>
-                <form method='post' action='add_embarque.php'>
+                <?php if($_GET['option']==0) {?> <form method='post' action='add_embarque.php?option=0'>
+                <?php }else{ ?>   <form method='post' action='add_embarque.php?option=1'> <?php } ?> 
                     <div class='material-textfield'>
                         <input placeholder=' ' type='text' name='cod_contrato' required>
                         <label>Contrato</label>

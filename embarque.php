@@ -64,8 +64,12 @@
 
                     <span>Lista de Despachos</span>
                   </strong>
-                  <a href="add_embarque.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Despacho"></i></a>
-                  <?php if( $SuperUser["sede"]=="T-Callao")  {?> <a href="add_container.php" style="right: 90px !important;"class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-inbox" title="Nuevo Container"></i></a> <?php } ?>
+                  <a href="add_embarque.php?option=0" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nuevo Despacho"></i></a>
+                  <?php if( $SuperUser["sede"]=="T-Callao")  {?> 
+                    <a href="add_container.php" style="right: 90px !important;"class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-inbox" title="Nuevo Container"></i></a>
+                    <a href="add_embarque.php?option=1" style="right: 155px !important;"class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-ban-circle" title="Despacho Producto no Conforme"></i></a>
+          
+                <?php } ?>
              
             </div>
             <div class="panel-body">
@@ -82,7 +86,9 @@
                             <th>Supervisor</th>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
-
+                            
+                             <?php if( $SuperUser["sede"]=="T-Callao") {?>
+                                <th class="text-center" style="width: 100px;">Tipo</th> <?php } ?>
                             <th>Acciones</th>
 
                         </tr>
@@ -102,8 +108,8 @@
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
-
-
+                             <?php if( $SuperUser["sede"]=="T-Callao") {?>
+                                <td><?php echo remove_junk(ucfirst($embar['type'])); ?></td><?php } ?>
 
                             <td class="text-center">
                                 <div class="btn-group">

@@ -24,7 +24,11 @@
   if( $SuperUser["sede"]=="T-Samanco") {$table="emb_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="T-Supe") {$table="emb_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="T-Vegueta"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
-  if( $SuperUser["sede"]=="T-Callao") {$table="emb_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="T-Callao") 
+  {
+    $table="emb_callao"; 
+   
+  }
   if( $SuperUser["sede"]=="T-Pisco") {$table="emb_pisco";$tabla_sed="sede_pisco";}
   if( $SuperUser["sede"]=="T-Atico") {$table="emb_atico";$tabla_sed="sede_atico";}
   if( $SuperUser["sede"]=="T-Matarani") {$table="emb_matarani";$tabla_sed="sede_matarani";}
@@ -39,6 +43,12 @@
     $session->msg("d","Missing Embarcaciones id.");
     redirect('embarque.php');
   }
+
+  if( $SuperUser["sede"]=="T-Callao") 
+  {
+    if($categorie['type']=="" || $categorie['type']=="pc")  $tabla_sed = 'sede_callao';
+    else $tabla_sed = 'sede_pnc_callao';
+  };
 ?>
 
 <?php
@@ -149,7 +159,8 @@ if(isset($_POST['edit_emb']))
             <div class="col-md-3">
             </div>
             <div class="col-md-12 edit_form">
-                <form method="post" action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
+               
+                <form method="post"action="edit_embarcaciones.php?id=<?php echo (int)$categorie['id'];?>">
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Código de Contrato</label>
                         <input type="text" class="form-control" name="cod_contrato" placeholder="Cod_Contrato"
