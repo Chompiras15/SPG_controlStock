@@ -59,7 +59,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading clearfix contTitleTT">
-                    <strong>
+                    <strong class="titleA">
                         <span class="glyphicon glyphicon-indent-left"></span>
                         <span>Lista de Rumas</span>
 
@@ -73,6 +73,7 @@
 
                             <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
                                  <a href="pnc_almacen.php" class="pull-right pnc_btnAlmacen"><i class="iconCat glyphicon glyphicon glyphicon-ban-circle" title="No Conforme"></i></a>
+                                <!-- <a href="add_MultAlmacen.php" style="padding-top: 5px;right: 250px;position: absolute;"class="pull-right"><i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>-->
                             <?php } ?>
         </div>
             <div class="panel-body">

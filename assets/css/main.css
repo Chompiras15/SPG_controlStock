@@ -1320,4 +1320,39 @@ img.img-size-2 {
         width:50% !important;
         margin-left:0px !important;
     }
+
+    .contTitleTT
+    {
+        text-align: center;
+        display: block;
+    }
+
+    .contButtonTT
+    {
+        padding-top: 0px;
+        right: none;
+        position: relative;
+        float: initial !important;
+        right: 0px;
+    }
+
+    .historialicon
+    {
+        position: relative;
+        float: initial !important; 
+        right: 0px;
+    }
+
+    .pnc_btnAlmacen
+    {
+        position: relative;
+        float: initial !important;
+        right: 0px;
+    }
+
+    .titleA
+    {
+        display: block;
+        margin-bottom: 15px;
+    }
 }
