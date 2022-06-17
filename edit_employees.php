@@ -42,8 +42,8 @@ validate_fields($req_field);
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors)){
     $sql   = "UPDATE $tableEmployes SET";
-    $sql  .="tipo_doc ='{$emplo_doc}', numero ='{$emplo_numero}', nombre ='{$emplo_nombre}'";
-    $sql  .="genero ='{$emplo_genero}', f_nacimiento ='{$emplo_nacimiento}', cargo ='{$cargo}', sede ='{$emplo_sede}', banco ='{$emplo_banco}', cuenta ='{$emplo_cuenta}'";
+    $sql  .=" tipo_doc ='{$emplo_doc}', numero ='{$emplo_numero}',";
+    $sql  .=" nombre ='{$emplo_nombre}', genero ='{$emplo_genero}', f_nacimiento ='{$emplo_nacimiento}', cargo ='{$emplo_cargo}', sede ='{$emplo_sede}', banco ='{$emplo_banco}', cuenta ='{$emplo_cuenta}'";
        $sql .= " WHERE id='{$employees['id']}'";
      $result = $db->query($sql);
      if($result && $db->affected_rows() === 1) {
