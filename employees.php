@@ -102,7 +102,7 @@
 
                                   <td class="text-center">
                                     <div class="btn-group">
-                                        <a style ="margin-right: 7px;padding: 5px;" href="edit_employess.php?id=<?php echo (int)$emplo['id'];?>"
+                                        <a style ="margin-right: 7px;padding: 5px;" href="edit_employees.php?id=<?php echo (int)$emplo['id'];?>"
                                             class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                             <span class="glyphicon glyphicon-edit"></span>
                                         </a>
