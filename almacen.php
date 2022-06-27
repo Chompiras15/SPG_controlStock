@@ -100,7 +100,6 @@
 
                             <th class="text-center" style="width: 10px;">F.Produccion</th>
                             <th class="text-center" style="width: 10px;">F.Vencimiento</th>
-                             <th class="text-center" style="width: 10px;">Fecha_Ejecución</th>
                             <th class="text-center" style="width: 10px;">Responsable</th>
 
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
@@ -118,7 +117,6 @@
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
                              <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
                             <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
-                            <td><?php echo changeFormat_date($cat['f_actividad'],'d/m/Y'); ?></td>
                             <td><?php echo $cat['responsable']; ?></td>
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>

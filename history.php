@@ -99,7 +99,6 @@
                             <th class="text-center" style="width: 50px;">F.Producción</th>
                             <th class="text-center" style="width: 50px;">F.Vencimiento</th>
                             <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
-                            <th class="text-center" style="width: 50px;">Fecha_Ejecucion</th>
                             <th class="text-center" style="width: 50px;">Responsable</th>
                             <th class="text-center" style="width: 50px;">Observación</th>
                             <?php if( $SuperUser["sede"]=="T-Callao") {?><th class="text-center" style="width: 50px;">Descripción</th><?php } ?>
@@ -144,7 +143,6 @@
                             } ?> 
                                 
                             <?php } ?> -->
-                            <td><?php echo remove_junk(ucfirst($cat['f_actividad'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['responsable'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
                             <?php if( $SuperUser["sede"]=="T-Callao") {?><td><?php echo remove_junk(ucfirst($cat['descripcion'])); ?></td><?php } ?>

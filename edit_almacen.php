@@ -40,13 +40,12 @@
 if(isset($_POST['edit_cat']))
 {
 
-$req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+$req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
 
  
   validate_fields($req_field);
 
   $cat_sector = remove_junk($db->escape($_POST['sector']));
-  $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
   $cat_tipo = remove_junk($db->escape($_POST['tipo']));
   $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
   $cat_saco = remove_junk($db->escape($_POST['cant_saco']));
@@ -70,12 +69,12 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
         if($SuperUser["sede"]=="T-Callao") 
         {
             $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',f_actividad='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
+            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',description='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }else{
             $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
+            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }
@@ -186,7 +185,11 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
                         <label for="name" class="control-label">Calidad</label>
                         <input type="text" class="form-control" name="calidad"
                             value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
-                    </div>  
+                    </div>
+                
+                   
+                 
+                    
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Fecha de Producción</label>
                         <input type="date" class="form-control" name="date_producc" onblur="changeDateVen(this)"
@@ -197,12 +200,10 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
                         <input type="date" class="form-control" name="date_vencimiento" id="dateV"
                             value="<?php echo remove_junk(ucfirst($categorie['date_vencimiento']));?>">
                     </div>
-                     <div class="form-group col-md-6">
-                        <label for="name" class="control-label">Fecha_Ejecución</label>
-                        <input type="date" class="form-control" name="f_actividad" id="dateV"
-                            value="<?php echo remove_junk(ucfirst($categorie['f_actividad']));?>">
-                    </div>
                     
+                    
+
+                   
                     <div class="form-group col-md-6">
                         <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observation"

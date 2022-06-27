@@ -26,13 +26,12 @@
  {
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
    
-   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
-   else $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector', 'tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
+   else $req_field = array('sector', 'tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
    
    validate_fields($req_field);
 
     $cat_sector = remove_junk($db->escape($_POST['sector']));
-    $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
     $cat_tipo = remove_junk($db->escape($_POST['tipo']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
     $cat_sacos = remove_junk($db->escape($_POST['cant_saco']));
@@ -63,27 +62,27 @@
               if( $SuperUser["sede"]=="E-Chimbote") 
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
                
               }else if($SuperUser["sede"]=="T-Callao") 
               {
                 $sql= "INSERT INTO $table (";
-                $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
+                $sql.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
                 $sql.=") VALUES (";
-                $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
+                $sql.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
                 
               }else
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                $sql .=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                $sql .=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
               }
@@ -94,17 +93,17 @@
                 if( $SuperUser["sede"]=="T-Callao")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
                     $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}',{$cat_actividad},'{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
 
                 }else 
                 {
                     $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
                     $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
                     $sql2.=")";
                 };
                 
@@ -137,21 +136,21 @@
             {
 
                 $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
+                $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
             }else if( $SuperUser["sede"]=="T-Callao") {
 
                 $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}' ,tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
     
             }else
             {
                 $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}', f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                $sql  .=" sector ='{$cat_sector}', tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
             };
@@ -163,17 +162,17 @@
                 if( $SuperUser["sede"]=="T-Callao")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
                     $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
 
                 }else 
                 {
                     $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                    $sql2.=" sector,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
                     $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=" '{$cat_sector}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
                     $sql2.=")";
                 };
 
@@ -258,11 +257,6 @@
                     <div class="material-textfield">
                         <label class="select">Fecha Vencimiento</label>
                         <input placeholder=" " type="date" name="date_vencimiento" id="dateV" required>
-
-                    </div>
-                     <div class="material-textfield">
-                        <label class="select">Fecha_Ejecución</label>
-                        <input placeholder=" " type="date" name="f_actividad" required>
 
                     </div>
                     
