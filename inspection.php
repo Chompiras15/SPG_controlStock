@@ -14,7 +14,7 @@
 
   // Checkin What level user has permission to view this page
 
-  $tableInspec = "inspection";
+  $tableInspec = "inspection_callao";
   $SuperUser = current_user();
   $all_inspections = find_all($tableInspec)
 ?>
@@ -184,7 +184,7 @@
                     <!-- <a href="add_inspection.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva inspeccion"></i></a> -->
                     <!-- <a href="company.php" class="pull-right btn-sm"><i class="iconCat glyphicon glyphicon-arrow-left" title="Ver Estadisticas"></i></a> -->
                     <a href="add_inspection.php"> <button class="pull-right btn-sm estaticButton contButtonT" >Nuevo</button></a>
-                    <a href="statistics.php"> <button class="pull-right btn-sm estaticButton" >Ver estadísticas</button></a>
+                    <a href="home.php"> <button class="pull-right btn-sm estaticButton" >Ver estadísticas</button></a>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered " id="tabla">
@@ -201,7 +201,7 @@
                                 <th class="text-center" style="width: 10px;">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="bos">
+                        <tbody>
                             <?php foreach ($all_inspections as $act):?>
                             <tr>
                                 

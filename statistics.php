@@ -710,10 +710,11 @@ window.onload= function ()
 <div class="col-md-12 content-estadist">
 	<div id="chartdiv2"><strong>Resumen general</strong></div>
 	<div id="chartdiv3"><strong>Si trajeron manta pañuelo</strong></div>
-	<div id="chartdiv"><strong>No trajeron manta pañuelo</strong></div>
+
 </div>
 
-<div class="col-md-12 content">
+<div class="col-md-12 content-estadist">
+    <div id="chartdiv"><strong>No trajeron manta pañuelo</strong></div>
 	<div id="chartdiv8"><strong>Comparación del Si y No</strong></div>
 </div>
 	</body>

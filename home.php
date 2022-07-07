@@ -26,7 +26,7 @@
             
 		}
 		#chartdiv {
-			width: 50%;
+			width: 100%;
 			/* border: white solid 3px; */
 			height:320px;
 			margin: 10px;
@@ -43,24 +43,27 @@
 			background: white;
 			
 			box-shadow: 0px 0px 12px -4px black;	
-			height:420px;
+			height:320px;
 			margin: 10px 15px 15px 5px;
 			color: #001f3f;
 
 		}
 		#chartdiv2 {
-			width: 50%;
+    
+			width: 100%;
 			/* border: #001f3f solid 3px; */
 			border-radius: 8px;
 			background: white;
 			box-shadow: 0px 0px 12px -4px black;	
-			
 			height:320px;
-			margin: 10px 15px 15px 5px;
+			margin: 10px;
 			color: #001f3f;
+      text-align: center;
+      justify-content: center;
+
 		}
 		#chartdiv3 {
-			width: 50%;
+			width: 100%;
 			/* border: #001f3f solid 3px; */
 			border-radius: 8px;
 			background: white;
@@ -68,10 +71,22 @@
 			box-shadow: 0px 0px 12px -4px black;	
 			height:320px;
 			margin: 10px;
-		
-	
-			
 		}
+    	#chartdiv4 {
+			width: 100%;
+			border: #001f3f solid 3px;
+			border-radius: 8px;
+			background: white;
+			color: #001f3f;
+			box-shadow: 0px 0px 12px -4px black;	
+			height:320px;
+			margin: 10px;
+      display: flex;
+		}
+    #chartdiv4 p{
+      text-align: center;
+      
+    }
 		.content{
 			text-align: center;
 		}
@@ -118,7 +133,7 @@
     <?php echo display_msg($msg); ?>
   </div>
  <div class="col-md-12">
-    <<div class="container-fluid">
+    <div class="container-fluid">
 			
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Datos Estadisticos <small>EMPRESA DE TRASPORTE</small></h1>
@@ -162,8 +177,6 @@ window.onload= function ()
 		var tabl=datoSelec.options[datoSelec.selectedIndex].value;
 		crateGraf(tabl);	
 		})
-	
- console.log("ppopopop")
 };	
 	function crateGraf (table)
 	{
@@ -711,13 +724,18 @@ window.onload= function ()
 
 </script>
 <div class="col-md-12 content-estadist">
-	<div id="chartdiv2"><strong>Resumen general</strong></div>
-	<div id="chartdiv3"><strong>Si trajeron manta pañuelo</strong></div>
-	<div id="chartdiv"><strong>No trajeron manta pañuelo</strong></div>
+  <div id="chartdiv4"><img src="assets/img/1.jpg" alt="" style="width:150px; height:310px;">
+ <p class="lead">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspeción de las empresas de trasporte que
+				cumplen con traer la manta tipo pañuelo y quienes no. <strong style="color: red; font-size:16px;">(Una vez generado un grafico debe limpiar el panel para gestionar un nuevo resultado).</strong></p></div>
+  <div id="chartdiv2"><strong>RESUMEN GENERAL</strong></div>
+      </div>
+<div class="col-md-12 content-estadist">
+ <div id="chartdiv3"><strong>SI TRAJERON MANTA TIPO PAÑUELO</strong></div>
+ <div id="chartdiv"><strong>NO TRAJERON MANTA TIPO PAÑUELO</strong></div>	
 </div>
 
 <div class="col-md-12 content">
-	<div id="chartdiv8"><strong>Comparación del Si y No</strong></div>
+	<div id="chartdiv8"><strong>CRUZE DE RESULTADOS DEL SI Y NO</strong></div>
 </div>
 	</body>
 	
