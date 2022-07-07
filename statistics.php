@@ -122,12 +122,17 @@
 		<div class="tromper">
 			  	<select name="combo" id="combo">
 					<option selected="selected" value="">---Seleccione una Sede---</option>
-					<option value="inspection">Tasa Callao</option>
-					<option value="inspection2">Tasa Chimbote</option>
-					<option value="inspection3">Tasa Vegueta</option>
-					<option value="inspectionpisco">Tasa Pisco</option>
-					<option value="inspection5">Exalmar Malabrigo</option>
-					<option value="inspection6">Exalmar Chimbote</option>
+					<option value="inspection_callao">Tasa Callao</option>
+					<option value="inspection_pisco">Tasa Pisco</option>
+					<option value="inspection_mala">Exlamar Malabrigo</option>
+					<option value="inspection_matarani">Tasa Matarani</option>
+					<option value="inspection_vegueta">Tasa Vegueta</option>
+					<option value="inspection_supe">Tasa Supe</option>
+                    <option value="inspection_chim">Tasa Chimbote</option>
+                     <option value="inspection_atico">Tasa Atico</option>
+        			<option value="inspection_samanco">Tasa Samanco</option>
+
+
 				</select>
 				<button id=generate onclick=location.reload() title="Limpiar Panel">Limpiar Panel</button>
 		</div>
@@ -157,8 +162,6 @@ window.onload= function ()
 		var tabl=datoSelec.options[datoSelec.selectedIndex].value;
 		crateGraf(tabl);	
 		})
-	
- console.log("ppopopop")
 };	
 	function crateGraf (table)
 	{
@@ -169,7 +172,6 @@ window.onload= function ()
 		var data = new FormData();
 		data.append("id", JSON.stringify(payload));
 	// data={id:"{t: table}"};
-    console.log("loool")
 		fetch("getDataInspec.php",
 			{
 				method: "POST",
