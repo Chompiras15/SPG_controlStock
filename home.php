@@ -191,10 +191,14 @@
 	
 		dataJson=await getDataGraf(table);
 		//console.log(dataJson);
-		chart2=createAllGraf(dataJson,"chartdiv2",1,"RESUMEN GENERAL");
-		chart=createAllGraf(dataJson,"chartdiv",2,"NO TRAJERON MANTA TIPO PAÑUELO");
-		chart3=createAllGraf(dataJson,"chartdiv3",3,"SI TRAJERON MANTA TIPO PAÑUELO");
-		chart8=createAllGraf(dataJson,"chartdiv8",4,"CRUZE DE RESULTADOS DEL SI Y NO");
+		title2={title:"RESUMEN GENERAL",size:15}
+		chart2=createAllGraf(dataJson,"chartdiv2",1,title2);
+		title={title:"NO TRAJERON MANTA TIPO PAÑUELO",size:15}
+		chart=createAllGraf(dataJson,"chartdiv",2,title);
+		title3={title:"SI TRAJERON MANTA TIPO PAÑUELO",size:15}
+		chart3=createAllGraf(dataJson,"chartdiv3",3,title3);
+		title8={title:"CRUZE DE RESULTADOS DEL SI Y NO"}
+		chart8=createAllGraf(dataJson,"chartdiv8",4,title8);
 		//createAllGraf(dataJson,chart,"chartdiv2",0);
 		<?php if( $SuperUser["user_level"]=="1"){ ?>
 			const datoSelec= document.getElementById("combo");
@@ -359,6 +363,9 @@
 				pieSeries.slices.template.strokeWidth = 1;
 				pieSeries.slices.template.strokeOpacity = 1;
 				// Disabling labels and ticks on inner circle
+				// Disabling labels and ticks on inner circle
+				pieSeries.labels.template.disabled = true;
+				pieSeries.ticks.template.disabled = true;
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
@@ -392,6 +399,10 @@
 				pieSeries.slices.template.stroke = am4core.color("#fff");
 				pieSeries.slices.template.strokeWidth = 1;
 				pieSeries.slices.template.strokeOpacity = 1;
+
+				// Disable ticks and labels
+				pieSeries.labels.template.disabled = true;
+				pieSeries.ticks.template.disabled = true;
 				// Disabling labels and ticks on inner circle
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
@@ -426,6 +437,9 @@
 				pieSeries.slices.template.strokeWidth = 1;
 				pieSeries.slices.template.strokeOpacity = 1;
 				// Disabling labels and ticks on inner circle
+				pieSeries.labels.template.disabled = true;
+				pieSeries.ticks.template.disabled = true;
+
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
@@ -462,24 +476,33 @@
 				var series = chart.series.push(new am4charts.ColumnSeries3D());
 				series.dataFields.valueY = "value";
 				series.dataFields.categoryX = "country";
-				series.name = "value";
+				series.name = "SI";
 				series.tooltipText = "{name}: [bold]{valueY}[/]";
 
 				var series2 = chart.series.push(new am4charts.ColumnSeries3D());
 				series2.dataFields.valueY = "valueNo";
 				series2.dataFields.categoryX = "country";
-				series2.name = "valueNo";
+				series2.name = "No";
 				series2.tooltipText = "{name}: [bold]{valueY}[/]";
 				
 				break;
 		};
 
-			// Add chart title
-			var title = chart.titles.create();
-			title.text = titleGraf;
-			title.fontSize = 25;
-			title.marginBottom = 30;
+		// Add chart title
+		var title = chart.titles.create();
+		title.text =  '[bold]'+titleGraf["title"];
+		if(titleGraf["size"])  title.fontSize = titleGraf["size"]
+		else title.fontSize = 20;
+		title.marginBottom = 30;
+		title.marginTop = 20;
 		
+		chart.legend = new am4charts.Legend();
+		chart.legend.position = "right";
+		chart.legend.scrollable = true;
+		//chart.legend.width = 10;
+		let markerTemplate = chart.legend.markers.template;
+		markerTemplate.width = 10;
+		markerTemplate.height = 10;
 		// Add cursor
 		chart.cursor = new am4charts.XYCursor();
 
@@ -651,22 +674,7 @@
 	<div class="col-md-12 content">
 		<div id="chartdiv8"><strong>CRUZE DE RESULTADOS DEL SI Y NO</strong></div>
 	</div>
-</body>
-</script>
-<div class="col-md-12 content-estadist wrapper">
-  <div id="chartdiv4"><img src="assets/img/1.jpg" alt="" style="width:150px; height:310px;">
- <p class="lead">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspeción de las empresas de trasporte que
-				cumplen con traer la manta tipo pañuelo y quienes no. <strong style="color: red; font-size:16px;">(Una vez generado un grafico debe limpiar el panel para gestionar un nuevo resultado).</strong></p></div>
-  <div id="chartdiv2"><strong>RESUMEN GENERAL</strong></div>
-      </div>
-<div class="col-md-12 content-estadist wrapper">
- <div id="chartdiv3"><strong>SI TRAJERON MANTA TIPO PAÑUELO</strong></div>
- <div id="chartdiv"><strong>NO TRAJERON MANTA TIPO PAÑUELO</strong></div>	
-</div>
 
-<div class="col-md-12 content wrapper">
-	<div id="chartdiv8"><strong>CRUZE DE RESULTADOS DEL SI Y NO</strong></div>
-</div>
 	</body>
 	
 	</html>
