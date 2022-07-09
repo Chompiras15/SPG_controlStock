@@ -659,9 +659,9 @@
 
 	<div class="col-md-12 content-estadist">
 		<div id="chartdiv4">´
-			<img src="assets/img/1.jpg" alt="" style="width:150px; height:310px;">
-			<p class="lead">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspeción de las empresas de trasporte que
-				cumplen con traer la manta tipo pañuelo y quienes no. <strong style="color: red; font-size:16px;">(Una vez generado un grafico debe limpiar el panel para gestionar un nuevo resultado).</strong></p>
+			<img src="assets/img/1.jpg" alt="" style="width: 170px;height: 300px;margin: auto;">
+			<p class="lead" style="margin: auto !important;font-size: 20px !important;text-align: justify !important;padding: 10px; !important">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspección de las empresas de trasporte que
+				cumplen con traer manta tipo pañuelo y quienes no. </p>
 		</div>
 		<div id="chartdiv2"><strong>RESUMEN GENERAL</strong></div>
 	</div>
