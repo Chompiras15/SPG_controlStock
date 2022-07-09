@@ -87,18 +87,37 @@
 		}
     	#chartdiv4 {
 			width: 100%;
-			border: #001f3f solid 3px;
+			/* border: #001f3f solid 3px; */
 			border-radius: 8px;
 			background: white;
 			color: #001f3f;
 			box-shadow: 0px 0px 12px -4px black;	
 			height:320px;
 			margin: 10px;
-      display: flex;
+      		display: flex;
+		}
+		#chartdiv4:hover{
+			box-shadow: 5px 2px 2px #001f3f ;
 		}
 		#chartdiv4 p{
 		text-align: center;
 		
+		}
+		#chartdiv:hover{
+/* border: 2px dashed #f00; */
+		box-shadow: 5px 2px 2px #001f3f;
+		}
+		#chartdiv3:hover{
+/* border: 2px dashed #001f3f; */
+		box-shadow: 5px 2px 2px #001f3f;
+		}
+		#chartdiv8:hover{
+/* border: 2px dashed #001f3f; */
+		box-shadow: 5px 2px 2px #001f3f;
+		}
+		#chartdiv2:hover{
+/* border: 2px dashed #001f3f; */
+		box-shadow: 5px 2px 2px #001f3f;
 		}
 			.content{
 				text-align: center;
@@ -115,9 +134,13 @@
 			}
 			#combo{
 				border:2px solid #001f3f;
+				border-radius: 5px;
+				width: 50%;
 				color: #001f3f;
 				font-weight: bolder;
 				margin: 0px 0px 15px 0px;
+				padding: 10px !important;
+				text-transform: uppercase;
 
 			}
 			#generate{
@@ -178,6 +201,7 @@
 	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
 
 	<!-- -----------------Intento numero_1---------------------------- -->
@@ -352,7 +376,7 @@
 				
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
@@ -389,7 +413,7 @@
 				
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
@@ -426,7 +450,7 @@
 			
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
