@@ -9,12 +9,23 @@
 -->
 
 <?php
-  $page_title = 'SGP - INSPECCIONES';
+  $page_title = 'Home Page';
   require_once('includes/load.php');
+  if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
+  
+  $SuperUser = current_user();
 
-  // Checkin What level user has permission to view this page
-
-  $tableInspec = "inspection_callao";
+  if( $SuperUser["sede"]=="T-Chimb") {$tableIns="instachim";}
+  if( $SuperUser["sede"]=="T-Samanco") {$tableIns="instasama";}
+  if( $SuperUser["sede"]=="T-Supe") {$tableIns="instasupe";}
+  if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
+  if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
+  if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
+  if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
+  if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}//falta crear BD
+  $tableInspec = $tableIns;
   $SuperUser = current_user();
   $all_inspections = find_all($tableInspec)
 ?>
