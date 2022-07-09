@@ -24,6 +24,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
+	
 
 </head>
 <body>
@@ -64,6 +65,7 @@
 	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
 	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
 
 	<!-- -----------------Intento numero_1---------------------------- -->
@@ -238,7 +240,7 @@
 				
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
@@ -275,7 +277,7 @@
 				
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
@@ -312,7 +314,7 @@
 			
 				
 				am4core.useTheme(am4themes_animated);
-				am4core.useTheme(am4themes_kelly);
+				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
 				chart.angle = 20;
