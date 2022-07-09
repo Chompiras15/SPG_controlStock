@@ -116,9 +116,9 @@
                     <input type="text" name="placa" placeholder=" " required>
                     <label>Placa</label>
                 </div>
-                <div class="col-md-6 cont_select">
+                <div class="col-md-12 cont_select" style="padding:0 !important; margin:0 !important;">
                     <label for="">Seleciona el trasportista</label>
-                    <select name="empresa" id="">
+                    <select name="empresa" id="" style="width:100%">
                         <option value="Agersa">Agersa</option>
                         <option value="Anticona">Anticona</option>
 						 <option value="Figueroa">Figueroa</option>
@@ -134,9 +134,9 @@
                     <input type="text" name="conductor" placeholder=" " required>
                     <label>Conductor</label>
                 </div>
-                 <div class="col-md-6 cont_select">
+                 <div class="col-md-12 cont_select "style="padding:0 !important; margin:0 !important;">
                     <label for="">¿Tiene Manta tipo Pañuelo?</label>
-                    <select name="manta" id="">
+                    <select name="manta" id="" style="width:100%">
                         <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select>

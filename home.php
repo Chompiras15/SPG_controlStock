@@ -24,120 +24,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<style>
-		body{
-			width: 100%;
-			margin: 0;
-			background: #f1f2f7;
-			/* background: rgb(233, 231, 231); */
-			
-		
-			border-radius: 8px;
-		}
-		.contend{
-			width: 100%; 
-            
-		}
-		#chartdiv {
-			width: 100%;
-			/* border: white solid 3px; */
-			height:320px;
-			margin: 10px;
-			background: white;
-			color: #001f3f;
-			box-shadow: 0px 0px 12px -4px black;
-			border-radius: 8px;
-
-		}
-			#chartdiv8 {
-			width: 100%;
-			/* border: #001f3f solid 3px; */
-			border-radius: 8px;
-			background: white;
-			
-			box-shadow: 0px 0px 12px -4px black;	
-			height:320px;
-			margin: 10px 15px 15px 5px;
-			color: #001f3f;
-
-		}
-		#chartdiv2 {
-    
-			width: 100%;
-			/* border: #001f3f solid 3px; */
-			border-radius: 8px;
-			background: white;
-			box-shadow: 0px 0px 12px -4px black;	
-			height:320px;
-			margin: 10px;
-			color: #001f3f;
-      text-align: center;
-      justify-content: center;
-
-		}
-		#chartdiv3 {
-			width: 100%;
-			/* border: #001f3f solid 3px; */
-			border-radius: 8px;
-			background: white;
-			color: #001f3f;
-			box-shadow: 0px 0px 12px -4px black;	
-			height:320px;
-			margin: 10px;
-		}
-    	#chartdiv4 {
-			width: 100%;
-			border: #001f3f solid 3px;
-			border-radius: 8px;
-			background: white;
-			color: #001f3f;
-			box-shadow: 0px 0px 12px -4px black;	
-			height:320px;
-			margin: 10px;
-      display: flex;
-		}
-		#chartdiv4 p{
-		text-align: center;
-		
-		}
-			.content{
-				text-align: center;
-			}
-			
-			.content-estadist{
-				display: flex;
-				text-align: center;
-
-			}
-			.tromper{
-				display: flex;
-				
-			}
-			#combo{
-				border:2px solid #001f3f;
-				color: #001f3f;
-				font-weight: bolder;
-				margin: 0px 0px 15px 0px;
-
-			}
-			#generate{
-				width:20%;
-				font-weight: bolder;
-				color: #001f3f;
-				background: white;
-				border:2px solid #001f3f;
-				border-radius:5px;
-				margin: 0px 0px 15px 5px;
-				
-			}
-			#generate:hover{
-				background: #001f3f;
-				color:white;
-				font-weight: bolder;
-			}
-			
-			
-	</style>
 
 </head>
 <body>
@@ -658,7 +544,7 @@
 
 
 	<div class="col-md-12 content-estadist">
-		<div id="chartdiv4">´
+		<div id="chartdiv4">
 			<img src="assets/img/1.jpg" alt="" style="width: 170px;height: 300px;margin: auto;">
 			<p class="lead" style="margin: auto !important;font-size: 20px !important;text-align: justify !important;padding: 10px; !important">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspección de las empresas de trasporte que
 				cumplen con traer manta tipo pañuelo y quienes no. </p>
