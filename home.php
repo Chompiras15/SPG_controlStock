@@ -191,18 +191,16 @@
 	
 		dataJson=await getDataGraf(table);
 		//console.log(dataJson);
-		chart2=createAllGraf(dataJson,"chartdiv2",1,false);
-		chart=createAllGraf(dataJson,"chartdiv",2,false);
-		chart3=createAllGraf(dataJson,"chartdiv3",3,false);
-		chart8=createAllGraf(dataJson,"chartdiv8",4,false);
+		chart2=createAllGraf(dataJson,"chartdiv2",1,"RESUMEN GENERAL");
+		chart=createAllGraf(dataJson,"chartdiv",2,"NO TRAJERON MANTA TIPO PAÑUELO");
+		chart3=createAllGraf(dataJson,"chartdiv3",3,"SI TRAJERON MANTA TIPO PAÑUELO");
+		chart8=createAllGraf(dataJson,"chartdiv8",4,"CRUZE DE RESULTADOS DEL SI Y NO");
 		//createAllGraf(dataJson,chart,"chartdiv2",0);
 		<?php if( $SuperUser["user_level"]=="1"){ ?>
 			const datoSelec= document.getElementById("combo");
 
 			datoSelec.addEventListener('change', async  ()=>
 			{
-				//const contPie= document.getElementById("chartdiv2");
-				///contPie.innerHTML="";
 				var tabl=datoSelec.options[datoSelec.selectedIndex].value;
 				console.log(tabl);	
 				dataJson=await getDataGraf(tabl);
@@ -241,7 +239,7 @@
 		return dataJson;
 	};
 
-	function createAllGraf(data,dom,option,setData)
+	function createAllGraf(data,dom,option,titleGraf)
 	{
 		var chart=null;
 		var conSi = 0; var conNo = 0;
@@ -320,27 +318,25 @@
 					{opciones: "Uceda",cantidad: conUceda}
 				];
 		
-				if(setData==false || setData=="false")
-				{
-					am4core.useTheme(am4themes_animated);
-					am4core.useTheme(am4themes_kelly);
-					//am4core.useTheme(am4themes_animated);
-					chart = am4core.create(dom, am4charts.PieChart3D);
-					chart.angle = 20;
-
-					var pieSeries = chart.series.push(new am4charts.PieSeries3D());
-					pieSeries.dataFields.value = "cantidad";
-					pieSeries.dataFields.category = "opciones";
-					pieSeries.slices.template.stroke = am4core.color("#fff");
-					pieSeries.slices.template.strokeWidth = 1;
-					pieSeries.slices.template.strokeOpacity = 1;
-
-					// Disabling labels and ticks on inner circle
-					// Disable sliding out of slices
-					pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
-					pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
 				
-				};
+				am4core.useTheme(am4themes_animated);
+				am4core.useTheme(am4themes_kelly);
+				//am4core.useTheme(am4themes_animated);
+				chart = am4core.create(dom, am4charts.PieChart3D);
+				chart.angle = 20;
+
+				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+				pieSeries.dataFields.value = "cantidad";
+				pieSeries.dataFields.category = "opciones";
+				pieSeries.slices.template.stroke = am4core.color("#fff");
+				pieSeries.slices.template.strokeWidth = 1;
+				pieSeries.slices.template.strokeOpacity = 1;
+
+				// Disabling labels and ticks on inner circle
+				// Disable sliding out of slices
+				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
+				
 				break;
 
 			case 1:  //CANTIDAD DE MANTOS TOTALES DE SI Y NO 
@@ -350,27 +346,23 @@
 					{opciones: "No",cantidad: conNo}
 				];
 				
-				if(setData==false || setData=="false")
-				{
-					am4core.useTheme(am4themes_animated);
-					am4core.useTheme(am4themes_kelly);
-					//am4core.useTheme(am4themes_animated);
-
-					chart = am4core.create(dom, am4charts.PieChart3D);
-					chart.angle = 20;
-
-					var pieSeries = chart.series.push(new am4charts.PieSeries3D());
-					pieSeries.dataFields.value = "cantidad";
-					pieSeries.dataFields.category = "opciones";
-					pieSeries.slices.template.stroke = am4core.color("#fff");
-					pieSeries.slices.template.strokeWidth = 1;
-					pieSeries.slices.template.strokeOpacity = 1;
-
-					// Disabling labels and ticks on inner circle
-					// Disable sliding out of slices
-					pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
-					pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-				};	
+				
+				am4core.useTheme(am4themes_animated);
+				am4core.useTheme(am4themes_kelly);
+				//am4core.useTheme(am4themes_animated);
+				chart = am4core.create(dom, am4charts.PieChart3D);
+				chart.angle = 20;
+				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+				pieSeries.dataFields.value = "cantidad";
+				pieSeries.dataFields.category = "opciones";
+				pieSeries.slices.template.stroke = am4core.color("#fff");
+				pieSeries.slices.template.strokeWidth = 1;
+				pieSeries.slices.template.strokeOpacity = 1;
+				// Disabling labels and ticks on inner circle
+				// Disable sliding out of slices
+				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
+				
 				break;
 				
 
@@ -388,27 +380,23 @@
 					{opciones: "Uceda",cantidad: conUcedaNo}
 				];
 				
-				if(setData==false || setData=="false")
-				{
-					am4core.useTheme(am4themes_animated);
-					am4core.useTheme(am4themes_kelly);
-					//am4core.useTheme(am4themes_animated);
-
-					chart = am4core.create(dom, am4charts.PieChart3D);
-					chart.angle = 20;
-
-					var pieSeries = chart.series.push(new am4charts.PieSeries3D());
-					pieSeries.dataFields.value = "cantidad";
-					pieSeries.dataFields.category = "opciones";
-					pieSeries.slices.template.stroke = am4core.color("#fff");
-					pieSeries.slices.template.strokeWidth = 1;
-					pieSeries.slices.template.strokeOpacity = 1;
-
-					// Disabling labels and ticks on inner circle
-					// Disable sliding out of slices
-					pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
-					pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-				};
+				
+				am4core.useTheme(am4themes_animated);
+				am4core.useTheme(am4themes_kelly);
+				//am4core.useTheme(am4themes_animated);
+				chart = am4core.create(dom, am4charts.PieChart3D);
+				chart.angle = 20;
+				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+				pieSeries.dataFields.value = "cantidad";
+				pieSeries.dataFields.category = "opciones";
+				pieSeries.slices.template.stroke = am4core.color("#fff");
+				pieSeries.slices.template.strokeWidth = 1;
+				pieSeries.slices.template.strokeOpacity = 1;
+				// Disabling labels and ticks on inner circle
+				// Disable sliding out of slices
+				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
+				
 				break;
 
 			case 3: //CANTIDAD DE MANTOS SI POR EMPRESA DE TRANSPORTE
@@ -425,27 +413,23 @@
 					{opciones: "Uceda",cantidad: conUceda}
 				];
 			
-				if(setData==false || setData=="false")
-				{
-					am4core.useTheme(am4themes_animated);
-					am4core.useTheme(am4themes_kelly);
-					//am4core.useTheme(am4themes_animated);
-
-					chart = am4core.create(dom, am4charts.PieChart3D);
-					chart.angle = 20;
-
-					var pieSeries = chart.series.push(new am4charts.PieSeries3D());
-					pieSeries.dataFields.value = "cantidad";
-					pieSeries.dataFields.category = "opciones";
-					pieSeries.slices.template.stroke = am4core.color("#fff");
-					pieSeries.slices.template.strokeWidth = 1;
-					pieSeries.slices.template.strokeOpacity = 1;
-
-					// Disabling labels and ticks on inner circle
-					// Disable sliding out of slices
-					pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
-					pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-				};	
+				
+				am4core.useTheme(am4themes_animated);
+				am4core.useTheme(am4themes_kelly);
+				//am4core.useTheme(am4themes_animated);
+				chart = am4core.create(dom, am4charts.PieChart3D);
+				chart.angle = 20;
+				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+				pieSeries.dataFields.value = "cantidad";
+				pieSeries.dataFields.category = "opciones";
+				pieSeries.slices.template.stroke = am4core.color("#fff");
+				pieSeries.slices.template.strokeWidth = 1;
+				pieSeries.slices.template.strokeOpacity = 1;
+				// Disabling labels and ticks on inner circle
+				// Disable sliding out of slices
+				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
+			
 				break;
 
 			case 4:
@@ -462,36 +446,39 @@
 					{country: "Uceda",value: conUceda,valueNo: conUcedaNo}
 				];
 				
-				if(setData==false || setData=="false")
-				{
-					am4core.useTheme(am4themes_animated);
-					am4core.useTheme(am4themes_kelly);
-					// Create chart instance
-					chart = am4core.create(dom, am4charts.XYChart3D);
 				
-					// Create axes
-					var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-					categoryAxis.dataFields.category = "country";
-					categoryAxis.title.text = "[bold]Empresa Transporte";
+				am4core.useTheme(am4themes_animated);
+				am4core.useTheme(am4themes_kelly);
+				// Create chart instance
+				chart = am4core.create(dom, am4charts.XYChart3D);
+			
+				// Create axes
+				var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+				categoryAxis.dataFields.category = "country";
+				categoryAxis.title.text = "[bold]Empresa Transporte";
+				var  valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+				valueAxis.title.text = "[bold]Cantidad";
+				// Create series
+				var series = chart.series.push(new am4charts.ColumnSeries3D());
+				series.dataFields.valueY = "value";
+				series.dataFields.categoryX = "country";
+				series.name = "value";
+				series.tooltipText = "{name}: [bold]{valueY}[/]";
 
-					var  valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-					valueAxis.title.text = "[bold]Cantidad";
-
-					// Create series
-					var series = chart.series.push(new am4charts.ColumnSeries3D());
-					series.dataFields.valueY = "value";
-					series.dataFields.categoryX = "country";
-					series.name = "value";
-					series.tooltipText = "{name}: [bold]{valueY}[/]";
-
-					var series2 = chart.series.push(new am4charts.ColumnSeries3D());
-					series2.dataFields.valueY = "valueNo";
-					series2.dataFields.categoryX = "country";
-					series2.name = "valueNo";
-					series2.tooltipText = "{name}: [bold]{valueY}[/]";
-				};
+				var series2 = chart.series.push(new am4charts.ColumnSeries3D());
+				series2.dataFields.valueY = "valueNo";
+				series2.dataFields.categoryX = "country";
+				series2.name = "valueNo";
+				series2.tooltipText = "{name}: [bold]{valueY}[/]";
+				
 				break;
 		};
+
+			// Add chart title
+			var title = chart.titles.create();
+			title.text = titleGraf;
+			title.fontSize = 25;
+			title.marginBottom = 30;
 		
 		// Add cursor
 		chart.cursor = new am4charts.XYCursor();
