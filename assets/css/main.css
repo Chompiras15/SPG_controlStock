@@ -79,7 +79,7 @@ justify-content: center;
 }
 #chartdiv4 {
     width: 100%;
-    border: #001f3f solid 3px;
+    /* border: #001f3f solid 3px; */
     border-radius: 8px;
     background: white;
     color: #001f3f;
@@ -90,6 +90,26 @@ display: flex;
 }
 #chartdiv4 p{
 text-align: center;
+
+}
+#chartdiv4:hover{
+box-shadow: 5px 2px 2px #001f3f;
+
+}
+#chartdiv:hover {
+    box-shadow: 5px 2px 2px #001f3f;
+
+}
+#chartdiv3:hover {
+    box-shadow: 5px 2px 2px #001f3f;
+
+}
+#chartdiv2:hover {
+    box-shadow: 5px 2px 2px #001f3f;
+
+}
+#chartdiv8:hover {
+    box-shadow: 5px 2px 2px #001f3f;
 
 }
     .content{
