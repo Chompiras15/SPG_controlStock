@@ -42,7 +42,7 @@
 			</div>
 			
 			<?php if( $SuperUser["user_level"]=="1"){ ?>	
-				<div class="col-md-8">
+				<div class="col-md-12 lool">
 					<div class="tromper">
 						<select name="combo" id="combo">
 							<option selected="selected" value="">---Seleccione una Sede---</option>
@@ -56,8 +56,18 @@
 							<option value="instaatic">Tasa Atico</option>
 							<option value="instasama">Tasa Samanco</option>
 						</select>
+						<!-- <a href="javascript:imprSelec('ContPrint')" >Imprimir texto</a> -->
+					<!-- <input type="button"  placeholder="Imprimir " required> -->
+					
+					
 					</div>
+					
+					<button onclick="imprSelec('ContPrint')" class="btn_print">Imprimir</button>
+					
 				</div>
+				
+					
+				
 			<?php }?>	
 		</div>
 	</div>
@@ -215,6 +225,7 @@
 				am4core.useTheme(am4themes_kelly);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
+				// chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
@@ -243,6 +254,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
+				// chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -280,6 +292,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
+				// chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -317,6 +330,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
+				// chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -353,6 +367,7 @@
 				am4core.useTheme(am4themes_kelly);
 				// Create chart instance
 				chart = am4core.create(dom, am4charts.XYChart3D);
+				// chart.exporting.menu = new am4core.ExportMenu();
 			
 				// Create axes
 				var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -386,7 +401,7 @@
 		
 		chart.legend = new am4charts.Legend();
 		chart.legend.position = "right";
-		chart.legend.scrollable = true;
+		// chart.legend.scrollable = true;
 		//chart.legend.width = 10;
 		let markerTemplate = chart.legend.markers.template;
 		markerTemplate.width = 10;
@@ -542,10 +557,24 @@
 		chart.data = send;
 	};
 
+	
+
+	 function imprSelec(nombre) {
+	  var ficha = document.getElementById(nombre);
+	  var ventimp = window.open(' ', 'popimpr');
+	  ventimp.document.write( ficha.innerHTML );
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+	}
+
 	</script>
-
-
-	<div class="col-md-12 content-estadist">
+<div id="ContPrint">
+	<link rel="stylesheet" href="assets/css/main.css">
+<div id="ContPrint1">
+	
+<div class="col-md-12 content-estadist">
+		
 		<div id="chartdiv4">
 			<img src="assets/img/1.jpg" alt="" style="width: 170px;height: 300px;margin: auto;">
 			<p class="lead" style="margin: auto !important;font-size: 20px !important;text-align: justify !important;padding: 10px; !important">Seleccione la sede que desea gestionar las estadísticas. Dichos reportes están enfocados a la inspección de las empresas de trasporte que
@@ -562,6 +591,9 @@
 	<div class="col-md-12 content">
 		<div id="chartdiv8"><strong>CRUZE DE RESULTADOS DEL SI Y NO</strong></div>
 	</div>
+	
+</div>
+</div>
 
 </body>
 	
