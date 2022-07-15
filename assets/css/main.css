@@ -1336,6 +1336,10 @@ img.img-size-2 {
 }
 @media screen and (max-width:750px) 
 {   
+    .title_home
+    {
+        font-size: 30px;
+    }
     .content-estadist{
         display: block;
         text-align: center;
@@ -1424,6 +1428,13 @@ img.img-size-2 {
 
 @media screen and (max-width:470px) 
 {
+    #chartdiv4 {
+        display:none;
+    }
+    .title_home
+    {
+        font-size: 22px;
+    }
     .content-estadist{
         display: block;
         text-align: center;
@@ -1488,6 +1499,13 @@ img.img-size-2 {
 
 @media screen and (max-width:380px)
 {
+    .title_home
+    {
+        font-size: 20px;
+    }
+    #chartdiv4 {
+        display:none;
+    }
     .content-estadist{
         display: block;
         text-align: center;
