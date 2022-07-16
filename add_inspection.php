@@ -15,14 +15,14 @@
   //require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
-  page_require_level(3);
+  page_require_level(6);
   if( $SuperUser["sede"]=="T-Chimb") {$tableIns="instachim";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableIns="instasama";}
   if( $SuperUser["sede"]=="T-Supe") {$tableIns="instasupe";}
   if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
   if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
-  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaastic";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
   if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}
@@ -34,7 +34,7 @@
  if(isset($_POST['add_inspection']))
  {
 
-    $req_field = array('placa','empresa', 'conductor', 'brevete', 'manta');
+    $req_field = array('placa','empresa', 'conductor', 'brevete', 'manta', 'soga','e_manta','observaciones');
     
     validate_fields($req_field);
     $act_placa = remove_junk($db->escape($_POST['placa']));
@@ -42,23 +42,26 @@
     $act_conductor = remove_junk($db->escape($_POST['conductor']));
     $act_brevete = remove_junk($db->escape($_POST['brevete']));
     $act_manta = remove_junk($db->escape($_POST['manta']));
+    $act_soga = remove_junk($db->escape($_POST['soga']));
+    $act_eManta = remove_junk($db->escape($_POST['e_manta']));
+    $act_observaciones = remove_junk($db->escape($_POST['observaciones']));
     if(empty($errors))
     {
 
             if( $SuperUser["sede"]=="E-Chimbote")
             {
                 $sql  = "INSERT INTO $tableActi (";
-                $sql .=" placa, empresa, conductor, brevete, manta, responsable";
+                $sql .=" placa, empresa, conductor, brevete, manta, soga, e_manta, observaciones, responsable";
                 $sql .=") VALUES (";
-                $sql .="'{$act_placa}', '{$act_empresa}', '{$act_conductor}','{$act_brevete}','{$act_manta}','{$SuperUser['name']}'";
+                $sql .="'{$act_placa}', '{$act_empresa}', '{$act_conductor}','{$act_brevete}','{$act_manta}','{$act_soga}','{$act_eManta}','{$act_observaciones}','{$SuperUser['name']}'";
                 $sql .=")";
          
             }else{
 
                 $sql  = "INSERT INTO $tableActi (";
-                $sql .=" placa, empresa, conductor, brevete, manta, responsable";
+                $sql .=" placa, empresa, conductor, brevete, manta, soga, e_manta, observaciones,responsable";
                 $sql .=") VALUES (";
-                $sql .=" '{$act_placa}', '{$act_empresa}', '{$act_conductor}','{$act_brevete}','{$act_manta}','{$SuperUser['name']}'";
+                $sql .=" '{$act_placa}', '{$act_empresa}', '{$act_conductor}','{$act_brevete}','{$act_manta}','{$act_soga}','{$act_eManta}','{$act_observaciones}','{$SuperUser['name']}'";
                 $sql .=")";
                
             }
@@ -104,7 +107,7 @@
             <span class="glyphicon glyphicon-calendar"></span>
             <span>Agregar Inspeción</span>
         </strong>
-
+<a href="inspection.php"> <button class="pull-right btn-sm estaticButton contButtonT back">ATRAS</button></a>
     </div>
 
     <div class="panel-body">
@@ -116,9 +119,17 @@
                     <input type="text" name="placa" placeholder=" " required>
                     <label>Placa</label>
                 </div>
-                <div class="col-md-12 cont_select" style="padding:0 !important; margin:0 !important;">
-                    <label for="">Seleciona el trasportista</label>
-                    <select name="empresa" id="" style="width:100%">
+                 <div class="material-textfield" style="width:100%;">
+                    <input type="text" name="conductor" placeholder=" " required>
+                    <label>Conductor</label>
+                </div>
+                   <div class="material-textfield" style="width:100%;">
+                    <input type="text" name="brevete" placeholder=" " required>
+                    <label>Brevete</label>
+                </div>
+                <div class="col-md-6 cont_select" style="padding:0 !important; margin:0 !important;">
+                    <label style="padding:7px;">Seleciona el trasportista</label>
+                    <select name="empresa" id="" style="width:100%;border-radius:5px; margin: 5px;">
                         <option value="Agersa">Agersa</option>
                         <option value="Anticona">Anticona</option>
 						 <option value="Figueroa">Figueroa</option>
@@ -130,21 +141,34 @@
                         <option value="Uceda">Uceda</option>
                     </select>
                 </div>
-                <div class="material-textfield" style="width:100%;">
-                    <input type="text" name="conductor" placeholder=" " required>
-                    <label>Conductor</label>
-                </div>
-                 <div class="col-md-12 cont_select "style="padding:0 !important; margin:0 !important;">
-                    <label for="">¿Tiene Manta tipo Pañuelo?</label>
-                    <select name="manta" id="" style="width:100%">
+               
+                 <div class="col-md-6 cont_select "style="padding:0 !important; margin:0 !important;">
+                    <label style="padding:7px;">¿Tiene Manta tipo Pañuelo?</label>
+                    <select name="manta" id="" style="width:100%; border-radius:5px;margin:5px;">
                         <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select>
                 </div>
-                <div class="material-textfield" style="width:100%;">
-                    <input type="text" name="brevete" placeholder=" " required>
-                    <label>Brevete</label>
+                <div class="col-md-6 cont_select" style="padding:0 !important; margin:0 !important;">
+                    <label style="padding:7px;">¿Estado de la manta?</label>
+                    <select name="e_manta" id="" style="width:100%;border-radius:5px;margin:5px;">
+                        <option value="Buena">Buena</option>
+                        <option value="Sucia">Sucia</option>
+						 <option value="Rota">Rota</option>
+                    </select>
                 </div>
+                <div class="col-md-6 cont_select" style="padding:0 !important; margin:0 !important;">
+                    <label style="padding:7px;">¿Estado de la Soga?</label>
+                    <select name="soga" id="" style="width:100%;border-radius:5px;margin:5px;">
+                        <option value="Buena">Buena</option>
+                        <option value="Mala">Mala</option>
+                    </select>
+                </div>
+                 <div class="material-textfield" style="width:100%;">
+                    <input type="text" name="observaciones" placeholder=" " required>
+                    <label>Observaciones</label>
+                </div>
+             
 
                
 

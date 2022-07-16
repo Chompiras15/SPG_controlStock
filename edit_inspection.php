@@ -15,14 +15,14 @@
   //require_once('includes/load.php');
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
-  page_require_level(3);
+  page_require_level(6);
   if( $SuperUser["sede"]=="T-Chimb") {$tableIns="instachim";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableIns="instasama";}
   if( $SuperUser["sede"]=="T-Supe") {$tableIns="instasupe";}
   if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
   if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
-  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaastic";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
   if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}
@@ -40,19 +40,22 @@
 
 <?php
 if(isset($_POST['edit_inspection'])){
-  $req_field = array('placa','empresa','conductor','brevete','manta');
+  $req_field = array('placa','empresa','conductor','brevete','manta','soga','e_manta','observaciones');
   validate_fields($req_field);
   $act_placa = remove_junk($db->escape($_POST['placa']));
   $act_empresa = remove_junk($db->escape($_POST['empresa']));
   $act_conductor = remove_junk($db->escape($_POST['conductor']));
   $act_brevete = remove_junk($db->escape($_POST['brevete']));
   $act_manta = remove_junk($db->escape($_POST['manta']));
+  $act_soga = remove_junk($db->escape($_POST['soga']));
+  $act_eManta = remove_junk($db->escape($_POST['e_manta']));
+  $act_observaciones = remove_junk($db->escape($_POST['observaciones']));
   $date=make_date();
   /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
   $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
   if(empty($errors)){
     $sql   = "UPDATE $tableActi SET";
-    $sql  .=" placa ='{$act_placa}', empresa ='{$act_empresa}', conductor ='{$act_conductor}', brevete ='{$act_brevete}', manta ='{$act_manta}',";
+    $sql  .=" placa ='{$act_placa}', empresa ='{$act_empresa}', conductor ='{$act_conductor}', brevete ='{$act_brevete}', manta ='{$act_manta}', soga='{$act_soga}', e_manta='{$act_eManta}', observaciones='{$act_observaciones}',";
     $sql  .=" responsable ='{$SuperUser['name']}'";
     $sql .= " WHERE id='{$activity['id']}'";
      $result = $db->query($sql);
@@ -94,6 +97,7 @@ if(isset($_POST['edit_inspection'])){
                 <span class="glyphicon glyphicon-calendar"></span>
                 <span>Editar Inspección</span>
             </strong>
+    <a href="inspection.php"> <button class="pull-right btn-sm estaticButton contButtonT back">ATRAS</button></a>
 
         </div>
 
@@ -108,9 +112,20 @@ if(isset($_POST['edit_inspection'])){
                         <input type="text" name="placa"
                             value="<?php echo remove_junk(ucfirst($activity['placa']));?>">
                     </div>
+                    <div class="col-md-6 cont_selectEdit" style="width:100%;">
+                        <label for="name" class="control-label">Conductor</label>
+                        <input type="text" name="conductor"
+                            value="<?php echo remove_junk(ucfirst($activity['conductor']));?>">
+                    </div>
+
+					 <div class="col-md-6 cont_selectEdit" style="width:100%;">
+                        <label for="name" class="control-label">Brevete</label>
+                        <input type="text" name="brevete"
+                            value="<?php echo remove_junk(ucfirst($activity['brevete']));?>">
+                    </div>
 					 <div class="col-md-6 cont_ cont_selectEdit">
                            <label for="name" class="control-label">Seleccionar Empresa</label>
-                        <select name="empresa"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;">
+                        <select name="empresa"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%; border-radius:5px;">
                             <!-- Opciones de la lista -->
                             <option value="Agersa"
                                 <?php if($activity['empresa']=="Agersa"){;?>selected <?php } ?>>
@@ -145,21 +160,11 @@ if(isset($_POST['edit_inspection'])){
                                 Uceda</option>
                         </select>
                     </div>
-					 <div class="col-md-6 cont_selectEdit" style="width:100%;">
-                        <label for="name" class="control-label">Conductor</label>
-                        <input type="text" name="conductor"
-                            value="<?php echo remove_junk(ucfirst($activity['conductor']));?>">
-                    </div>
-
-					 <div class="col-md-6 cont_selectEdit" style="width:100%;">
-                        <label for="name" class="control-label">Brevete</label>
-                        <input type="text" name="brevete"
-                            value="<?php echo remove_junk(ucfirst($activity['brevete']));?>">
-                    </div>
+					 
 
 					 <div class="col-md-6 cont_ cont_selectEdit">
                            <label for="name" class="control-label">¿Tiene manta tipo pañuelo?</label>
-                        <select name="manta"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;">
+                        <select name="manta"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;border-radius:5px;">
                             <!-- Opciones de la lista -->
                             <option value="Si"
                                 <?php if($activity['manta']=="Si"){;?>selected <?php } ?>>
@@ -169,6 +174,41 @@ if(isset($_POST['edit_inspection'])){
                                 <?php if($activity['manta']=="No"){;?>selected <?php } ?>>
                                 No</option>
                         </select>
+                    </div>
+                    <div class="col-md-6 cont_ cont_selectEdit">
+                           <label for="name" class="control-label">¿Estado de la Manta?</label>
+                        <select name="e_manta"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;border-radius:5px;">
+                            <!-- Opciones de la lista -->
+                            <option value="Buena"
+                                <?php if($activity['e_manta']=="Buena"){;?>selected <?php } ?>>
+                                Buena</option>
+								
+							<option value="Sucia"
+                                <?php if($activity['e_manta']=="Sucia"){;?>selected <?php } ?>>
+                                Sucia</option>
+
+                            <option value="Rota"
+                                <?php if($activity['e_manta']=="Rota"){;?>selected <?php } ?>>
+                                Rota</option>
+                        </select>
+                    </div>
+                     <div class="col-md-6 cont_ cont_selectEdit">
+                           <label for="name" class="control-label">¿Estado de la Soga?</label>
+                        <select name="soga"  data-show-subtext="true" data-live-search="true" <?php echo (int)$activity['id'];?> style="width:100%;border-radius:5px;">
+                            <!-- Opciones de la lista -->
+                            <option value="Buena"
+                                <?php if($activity['soga']=="Buena"){;?>selected <?php } ?>>
+                                Buena</option>
+								
+							<option value="Mala"
+                                <?php if($activity['soga']=="Mala"){;?>selected <?php } ?>>
+                                Mala</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 cont_selectEdit" style="width:100%;">
+                        <label for="name" class="control-label">Observaciones</label>
+                        <input type="text" name="observaciones"
+                            value="<?php echo remove_junk(ucfirst($activity['observaciones']));?>">
                     </div>
                     <div class='clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_inspection"

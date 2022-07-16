@@ -11,7 +11,7 @@
   if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
   if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
-  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaastic";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
   if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}//falta crear BD
@@ -35,39 +35,31 @@
 		<div class="col-md-12">
 			<div class="container-fluid">
 				<div class="page-header">
-					<h1 class="text-titles title_home"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Datos Estadisticos <small>EMPRESA DE TRASPORTE</small></h1>
+					<h1 class="text-titles"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> Datos Estadisticos <small>EMPRESA DE TRASPORTE</small></h1>
 				</div>
 					<!-- <p class="lead">Seleccione la sede que desea gestionar las estadísticas. Dicho reporte están enfocadas a la inspeción de las empresas de trasporte que
 						cumplen con traer la manta tipo pañuelo y quienes no. <strong style="color: red; font-size:16px;">(Una vez generado un grafico debe limpiar el panel para gestionar un nuevo resultado).</strong></p> -->
 			</div>
 			
 			<?php if( $SuperUser["user_level"]=="1"){ ?>	
-				<div class="col-md-12 lool">
+				<div class="col-md-8">
 					<div class="tromper">
 						<select name="combo" id="combo">
 							<option selected="selected" value="">---Seleccione una Sede---</option>
-							<option value="instacall">Tasa Callao</option>
+							<!-- <option value="instacall">Tasa Callao</option>
 							<option value="instapisc">Tasa Pisco</option>
 							<option value="insexchic">Exalmar Malabrigo</option>
 							<option value="instamata">Tasa Matarani</option>
-							<option value="instavegu">Tasa Vegueta</option>
+							<option value="instavegu">Tasa Vegueta</option> -->
 							<option value="instasupe">Tasa Supe</option>
-							<option value="instachim">Tasa Chimbote</option>
-							<option value="instaatic">Tasa Atico</option>
+							<!-- <option value="instachim">Tasa Chimbote</option> -->
+							<option value="instaastic">Tasa Atico</option>
 							<option value="instasama">Tasa Samanco</option>
 						</select>
-						<!-- <a href="javascript:imprSelec('ContPrint')" >Imprimir texto</a> -->
-					<!-- <input type="button"  placeholder="Imprimir " required> -->
-					
-					
+						
 					</div>
 					
-					<button onclick="imprSelec('ContPrint')" class="btn_print">Imprimir</button>
-					
 				</div>
-				
-					
-				
 			<?php }?>	
 		</div>
 	</div>
@@ -225,7 +217,7 @@
 				am4core.useTheme(am4themes_kelly);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
-				// chart.exporting.menu = new am4core.ExportMenu();
+				chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
@@ -240,22 +232,6 @@
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
 				
-						// Add chart title
-				var title = chart.titles.create();
-				title.text =  '[bold]'+titleGraf["title"];
-				if(titleGraf["size"])  title.fontSize = titleGraf["size"]
-				else title.fontSize = 20;
-				title.marginBottom = 30;
-				title.marginTop = 20;
-				
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				// chart.legend.scrollable = true;
-				//chart.legend.width = 10;
-				var markerTemplate0= chart.legend.markers.template;
-				markerTemplate0.width = 10;
-				markerTemplate0.height = 10;
-		// Add cursor
 				break;
 
 			case 1:  //CANTIDAD DE MANTOS TOTALES DE SI Y NO 
@@ -270,7 +246,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
-				// chart.exporting.menu = new am4core.ExportMenu();
+				chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -285,23 +261,6 @@
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-
-				// Add chart title
-				var title = chart.titles.create();
-				title.text =  '[bold]'+titleGraf["title"];
-				if(titleGraf["size"])  title.fontSize = titleGraf["size"]
-				else title.fontSize = 20;
-				title.marginBottom = 30;
-				title.marginTop = 20;
-				
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				// chart.legend.scrollable = true;
-				//chart.legend.width = 10;
-				var markerTemplate1 = chart.legend.markers.template;
-				markerTemplate1.width = 10;
-				markerTemplate1.height = 10;
-				// Add cursor
 				
 				break;
 				
@@ -325,7 +284,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
-				// chart.exporting.menu = new am4core.ExportMenu();
+				chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -341,133 +300,6 @@
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-
-				// Add chart title
-				var title = chart.titles.create();
-				title.text =  '[bold]'+titleGraf["title"];
-				if(titleGraf["size"])  title.fontSize = titleGraf["size"]
-				else title.fontSize = 20;
-				title.marginBottom = 30;
-				title.marginTop = 20;
-				
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				// chart.legend.scrollable = true;
-				//chart.legend.width = 10;
-				var markerTemplate2 = chart.legend.markers.template;
-				markerTemplate2.width = 10;
-				markerTemplate2.height = 10;
-				// Add cursor
-
-				chart.responsive.enabled=true;
-				chart.responsive.rules.push({
-					relevant: function(target) 
-					{
-					
-						if( target.pixelWidth>0 && target.pixelWidth<304)
-						{
-							if( target.pixelWidth>0 && target.pixelWidth<200 ) 
-							{
-								title.fontSize = 5;
-								chart.radius = am4core.percent(80);
-								chart.legend.disabled = true;
-							
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							}else{
-								title.fontSize = 10;
-								chart.radius = am4core.percent(80);
-								chart.legend.disabled = true;
-						
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							};
-							
-						}else if (target.pixelWidth>=304 && target.pixelWidth <= 750) 
-						{
-							
-							if(target.pixelWidth>400 && target.pixelWidth<=576)
-							{
-								//console.log("oliiiii")
-								chart.radius = am4core.percent(80);
-								chart.legend.maxWidth = 200;
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							}else if(target.pixelWidth>=576) 
-							{
-								title.fontSize = 12;
-								chart.radius = am4core.percent(90);
-								markerTemplate2.width = 10;
-								markerTemplate2.height = 10;
-								chart.legend.disabled = false;
-								chart.legend.maxHeight = 100;
-								chart.legend.scrollable = true;
-								chart.legend.position = "bottom";
-								pieSeries.labels.template.disabled = false;
-								pieSeries.ticks.template.disabled = false;
-								return true;
-
-							}else {
-								//console.log("bye");
-								chart.legend.position = "right";
-								title.fontSize = 15;
-								chart.radius = am4core.percent(80);
-								markerTemplate2.width = 10;
-								markerTemplate2.height = 10;
-								chart.legend.disabled = false;
-								chart.legend.maxHeight = 200;
-								chart.legend.maxWidth = 100;
-								chart.legend.scrollable = true;
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							};
-					
-							return false;
-
-						}else if (target.pixelWidth > 730) 
-						{
-							console.log("auii");
-							chart.legend.position = "right";
-							title.fontSize = 20;
-							chart.radius = am4core.percent(90);
-							markerTemplate2.width = 10;
-							markerTemplate2.height = 10;
-							chart.legend.disabled = false;
-							chart.legend.maxHeight = 100;
-							chart.legend.scrollable = true;
-							pieSeries.labels.template.disabled = true;
-							pieSeries.ticks.template.disabled = true;
-							return true;
-						};
-						return false;
-					},
-					state: function(target, stateId) {
-						//console.log("1")
-						if (target instanceof am4charts.PieSeries3D)
-						 {
-							if (target.pixelWidth <= 600) {
-							//chart.angle = 200;
-							//return true;
-							}
-							//console.log("soy yo")
-							//chart.angle = 200;
-						var state = target.states.create(stateId);
-
-						var labelState = target.labels.template.states.create(stateId);
-						labelState.properties.disabled = true;
-
-						var tickState = target.ticks.template.states.create(stateId);
-						tickState.properties.disabled = true;
-						return state;
-						}
-
-						return null;
-					}
-					});
 				
 				break;
 
@@ -490,7 +322,7 @@
 				am4core.useTheme(am4themes_material);
 				//am4core.useTheme(am4themes_animated);
 				chart = am4core.create(dom, am4charts.PieChart3D);
-				// chart.exporting.menu = new am4core.ExportMenu();
+				chart.exporting.menu = new am4core.ExportMenu();
 				chart.angle = 20;
 				var pieSeries = chart.series.push(new am4charts.PieSeries3D());
 				pieSeries.dataFields.value = "cantidad";
@@ -505,157 +337,6 @@
 				// Disable sliding out of slices
 				pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
 				pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
-
-				// Add chart title
-				var title = chart.titles.create();
-				title.text =  '[bold]'+titleGraf["title"];
-				if(titleGraf["size"])  title.fontSize = titleGraf["size"]
-				else title.fontSize = 20;
-				title.marginBottom = 30;
-				title.marginTop = 20;
-				
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				// chart.legend.scrollable = true;
-				//chart.legend.width = 10;
-				var markerTemplate3 = chart.legend.markers.template;
-				markerTemplate3.width = 10;
-				markerTemplate3.height = 10;
-				// Add cursor
-				chart.responsive.enabled=true;
-				chart.responsive.rules.push({
-					relevant: function(target) {
-						console.log(target.pixelWidth)
-						console.log("jaja")
-						
-						if( target.pixelWidth>0 && target.pixelWidth<304)
-						{
-							if( target.pixelWidth>0 && target.pixelWidth<200 ) 
-							{
-								
-								title.fontSize = 5;
-								chart.radius = am4core.percent(80);
-								//markerTemplate3.width = 10;
-								//markerTemplate3.height = 10;
-								chart.legend.disabled = true;
-								//chart.legend.maxHeight = 100;
-								//chart.legend.scrollable = true;
-								//chart.legend.position = "bottom";
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							}else{
-								title.fontSize = 10;
-								chart.radius = am4core.percent(80);
-								//markerTemplate3.width = 10;
-								//markerTemplate3.height = 10;
-								chart.legend.disabled = true;
-								//chart.legend.maxHeight = 100;
-								//chart.legend.scrollable = true;
-								//chart.legend.position = "bottom";
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							};
-							
-						}else if (target.pixelWidth>=304 && target.pixelWidth <= 750) 
-						{
-							console.log("tarde");
-							if(target.pixelWidth>400 && target.pixelWidth<=576)
-							{
-								//console.log("oliiiii")
-								chart.radius = am4core.percent(80);
-								chart.legend.maxWidth = 200;
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							}else if(target.pixelWidth>=576) 
-							{
-								title.fontSize = 12;
-								chart.radius = am4core.percent(90);
-								markerTemplate3.width = 10;
-								markerTemplate3.height = 10;
-								chart.legend.disabled = false;
-								chart.legend.maxHeight = 100;
-								chart.legend.scrollable = true;
-								chart.legend.position = "bottom";
-								pieSeries.labels.template.disabled = false;
-								pieSeries.ticks.template.disabled = false;
-								return true;
-
-							}else {
-								//console.log("bye");
-								chart.legend.position = "right";
-								title.fontSize = 15;
-								chart.radius = am4core.percent(80);
-								markerTemplate3.width = 10;
-								markerTemplate3.height = 10;
-								chart.legend.disabled = false;
-								chart.legend.maxHeight = 200;
-								chart.legend.maxWidth = 100;
-								chart.legend.scrollable = true;
-								pieSeries.labels.template.disabled = true;
-								pieSeries.ticks.template.disabled = true;
-								return true;
-							};
-							
-							
-							//chart.angle = 200;
-							return false;
-
-						}else if (target.pixelWidth > 730) 
-						{
-							console.log("auii");
-							chart.legend.position = "right";
-							title.fontSize = 20;
-							chart.radius = am4core.percent(90);
-							markerTemplate3.width = 10;
-							markerTemplate3.height = 10;
-							chart.legend.disabled = false;
-							chart.legend.maxHeight = 100;
-							chart.legend.scrollable = true;
-							pieSeries.labels.template.disabled = true;
-							pieSeries.ticks.template.disabled = true;
-							return true;
-
-							console.log("jaja")
-							/*title.fontSize = 12;
-							chart.radius = am4core.percent(90);
-							markerTemplate3.width = 10;
-							markerTemplate3.height = 10;
-							chart.legend.disabled = false;
-							chart.legend.maxHeight = 100;
-							chart.legend.scrollable = true;
-							chart.legend.position = "bottom";
-							pieSeries.labels.template.disabled = false;
-							pieSeries.ticks.template.disabled = false;*/
-						};
-						return false;
-					},
-					state: function(target, stateId) {
-						//console.log("1")
-						if (target instanceof am4charts.PieSeries3D)
-						 {
-							if (target.pixelWidth <= 600) {
-							//chart.angle = 200;
-							//return true;
-							}
-							//console.log("soy yo")
-							//chart.angle = 200;
-						var state = target.states.create(stateId);
-
-						var labelState = target.labels.template.states.create(stateId);
-						labelState.properties.disabled = true;
-
-						var tickState = target.ticks.template.states.create(stateId);
-						tickState.properties.disabled = true;
-						return state;
-						}
-
-						return null;
-					}
-					});
-				
 			
 				break;
 
@@ -678,7 +359,7 @@
 				am4core.useTheme(am4themes_kelly);
 				// Create chart instance
 				chart = am4core.create(dom, am4charts.XYChart3D);
-				// chart.exporting.menu = new am4core.ExportMenu();
+				chart.exporting.menu = new am4core.ExportMenu();
 			
 				// Create axes
 				var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -698,34 +379,31 @@
 				series2.dataFields.categoryX = "country";
 				series2.name = "No";
 				series2.tooltipText = "{name}: [bold]{valueY}[/]";
-
-				// Add chart title
-				var title = chart.titles.create();
-				title.text =  '[bold]'+titleGraf["title"];
-				if(titleGraf["size"])  title.fontSize = titleGraf["size"]
-				else title.fontSize = 20;
-				title.marginBottom = 30;
-				title.marginTop = 20;
-				
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				// chart.legend.scrollable = true;
-				//chart.legend.width = 10;
-				let markerTemplate4 = chart.legend.markers.template;
-				markerTemplate4.width = 10;
-				markerTemplate4.height = 10;
-				// Add cursor
 				
 				break;
 		};
 
+		// Add chart title
+		var title = chart.titles.create();
+		title.text =  '[bold]'+titleGraf["title"];
+		if(titleGraf["size"])  title.fontSize = titleGraf["size"]
+		else title.fontSize = 20;
+		title.marginBottom = 30;
+		title.marginTop = 20;
 		
+		chart.legend = new am4charts.Legend();
+		chart.legend.position = "right";
+		chart.legend.scrollable = true;
+		//chart.legend.width = 10;
+		let markerTemplate = chart.legend.markers.template;
+		markerTemplate.width = 10;
+		markerTemplate.height = 10;
+		// Add cursor
 		chart.cursor = new am4charts.XYCursor();
 
 		// Add data
 		chart.data = send;
 
-		
 		return chart;
 	};
 
@@ -871,23 +549,12 @@
 		chart.data = send;
 	};
 
-	
 
-	 function imprSelec(nombre) {
-	  var ficha = document.getElementById(nombre);
-	  var ventimp = window.open(' ', 'popimpr');
-	  ventimp.document.write( ficha.innerHTML );
-	  ventimp.document.close();
-	  ventimp.print( );
-	  ventimp.close();
-	}
 
 	</script>
-<div id="ContPrint">
-	<link rel="stylesheet" href="assets/css/main.css">
-<div id="ContPrint1">
-	
-<div class="col-md-12 content-estadist">
+
+
+	<div class="col-md-12 content-estadist">
 		
 		<div id="chartdiv4">
 			<img src="assets/img/1.jpg" alt="" style="width: 170px;height: 300px;margin: auto;">
@@ -905,9 +572,6 @@
 	<div class="col-md-12 content">
 		<div id="chartdiv8"><strong>CRUZE DE RESULTADOS DEL SI Y NO</strong></div>
 	</div>
-	
-</div>
-</div>
 
 </body>
 	

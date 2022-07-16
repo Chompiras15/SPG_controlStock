@@ -8,6 +8,7 @@ ul li:nth-child(8) a i
     border: 3px solid white;
     border-radius: 50%;
     position: relative;
+    
   }
   
   #oli:after {
@@ -33,7 +34,14 @@ ul li:nth-child(8) a i
 .lool{
     display: flex;
 }
-
+.back{
+    background: white;
+    color: #001f3f;
+}
+.back:hover{
+    background: #001f3f;
+    color: white;
+}
 .btn_print{
     padding-top: 0px;
     width: 80px;

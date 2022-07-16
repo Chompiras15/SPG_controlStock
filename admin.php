@@ -40,7 +40,7 @@ if ( isset( $_POST[ 'sede_TChimb' ] ) )
         redirect( 'admin.php', false );
     }
 }
-/*
+
 if ( isset( $_POST[ 'sede_tSamanco' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Samanco' );
@@ -69,20 +69,19 @@ if ( isset( $_POST[ 'sede_tSupe' ] ) )
     }
 }
 
-if ( isset( $_POST[ 'sede_tVegeta' ] ) )
-{
-    $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Vegueta' );
+// if ( isset( $_POST[ 'sede_tVegeta' ] ) )
+// {
+//     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Vegueta' );
 
-    if ( $var2 == true ) 
-    {
-        $session->msg( 's', 'Se encuentra en la Sede de TASA-VÉGUETA.' );
-        redirect( 'admin.php', false );
-    } else {
-        $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-VÉGUETA' );
-        redirect( 'admin.php', false );
-    }
-}
-*/
+//     if ( $var2 == true ) 
+//     {
+//         $session->msg( 's', 'Se encuentra en la Sede de TASA-VÉGUETA.' );
+//         redirect( 'admin.php', false );
+//     } else {
+//         $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-VÉGUETA' );
+//         redirect( 'admin.php', false );
+//     }
+// }
 if ( isset( $_POST[ 'sede_tCallao' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Callao' );
@@ -96,20 +95,20 @@ if ( isset( $_POST[ 'sede_tCallao' ] ) )
         redirect( 'admin.php', false );
     }
 }
-/*
-if ( isset( $_POST[ 'sede_tPisco' ] ) )
-{
-    $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Pisco' );
 
-    if ( $var2 == true ) 
-    {
-        $session->msg( 's', 'Se encuentra en la Sede de TASA-PISCO.' );
-        redirect( 'admin.php', false );
-    } else {
-        $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-PISCO' );
-        redirect( 'admin.php', false );
-    }
-}
+// if ( isset( $_POST[ 'sede_tPisco' ] ) )
+// {
+//     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Pisco' );
+
+//     if ( $var2 == true ) 
+//     {
+//         $session->msg( 's', 'Se encuentra en la Sede de TASA-PISCO.' );
+//         redirect( 'admin.php', false );
+//     } else {
+//         $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-PISCO' );
+//         redirect( 'admin.php', false );
+//     }
+// }
 
 if ( isset( $_POST[ 'sede_tAtico' ] ) )
 {
@@ -125,19 +124,19 @@ if ( isset( $_POST[ 'sede_tAtico' ] ) )
     }
 }
 
-if ( isset( $_POST[ 'sede_tMatarani' ] ) )
-{
-    $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Matarani' );
+// if ( isset( $_POST[ 'sede_tMatarani' ] ) )
+// {
+//     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Matarani' );
 
-    if ( $var2 == true ) 
-    {
-        $session->msg( 's', 'Se encuentra en la Sede de TASA-MATARANI.' );
-        redirect( 'admin.php', false );
-    } else {
-        $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-MATARANI' );
-        redirect( 'admin.php', false );
-    }
-}
+//     if ( $var2 == true ) 
+//     {
+//         $session->msg( 's', 'Se encuentra en la Sede de TASA-MATARANI.' );
+//         redirect( 'admin.php', false );
+//     } else {
+//         $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-MATARANI' );
+//         redirect( 'admin.php', false );
+//     }
+// }
 
 if ( isset( $_POST[ 'sede_eChimbote' ] ) )
 {
@@ -152,7 +151,7 @@ if ( isset( $_POST[ 'sede_eChimbote' ] ) )
         redirect( 'admin.php', false );
     }
 }
-*/
+
 if ( isset( $_POST[ 'sede_eChicama' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'E-Chicama' );
@@ -240,46 +239,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                     </div>
                 </button>
             </form>
-
- <!--           <form method='post' class='col-md-4 col-sm-12 panelForm'>
-                <button type='submit' name='sede_tSamanco' class='cont_sede cont_Sedetasa'>
-                    <div class='panel panel-box clearfix'>
-                        <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home formIco'></i>
-                        </div>
-                        <div class='contTextForm'>
-                            <h4 class='margin-top'> Samanco </h4>
-                        </div>
-                    </div>
-                </button>
-            </form>
-
-            <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
-                <button type='submit' name='sede_tSupe' class='cont_sede cont_Sedetasa'>
-                    <div class='panel panel-box clearfix'>
-                        <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home formIco'></i>
-                        </div>
-                        <div class='contTextForm'>
-                            <h4 class='margin-top'> Supe </h4>
-                        </div>
-                    </div>
-                </button>
-            </form>
-
-            <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
-                <button type='submit' name='sede_tVegeta' class='cont_sede cont_Sedetasa'>
-                    <div class='panel panel-box clearfix'>
-                        <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home formIco'></i>
-                        </div>
-                        <div class=' contTextForm'>
-                            <h4 class='margin-top'> Végueta </h4>
-                        </div>
-                    </div>
-                </button>
-            </form>
--->
+            
             <form method='post' action="admin.php?id=<?php echo (int)$SuperUser['id'];?>" class='col-md-6 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tCallao' class=' cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
@@ -293,7 +253,23 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 </button>
             </form>
 
- <!--           <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
+       
+
+            <!-- <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tVegeta' class='cont_sede cont_Sedetasa'>
+                    <div class='panel panel-box clearfix'>
+                        <div class='panel-icon pull-left bg-navy'>
+                            <i class='glyphicon glyphicon-home formIco'></i>
+                        </div>
+                        <div class=' contTextForm'>
+                            <h4 class='margin-top'> Végueta </h4>
+                        </div>
+                    </div>
+                </button>
+            </form> -->
+
+
+         <!-- <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tPisco' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -304,22 +280,11 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         </div>
                     </div>
                 </button>
-            </form>
+            </form> -->
 
-            <div  class='col-md-1 col-sm-12'></div>
-            <form method='post' action="admin.php" class='col-md-5 col-sm-12 panelForm'>
-                <button type='submit' name='sede_tAtico' class='cont_sede cont_Sedetasa'>
-                    <div class='panel panel-box clearfix'>
-                        <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
-                        </div>
-                        <div class=' contTextForm2'>
-                            <h4 class='margin-top'> Atico </h4>
-                        </div>
-                    </div>
-                </button>
-            </form>
-            <form method='post' action="admin.php" class='col-md-5 col-sm-12 panelForm'>
+            <!-- <div  class='col-md-1 col-sm-12'></div> -->
+               
+            <!-- <form method='post' action="admin.php" class='col-md-5 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tMatarani' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -330,8 +295,51 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         </div>
                     </div>
                 </button>
+            </form> -->
+            <div class='col-md-12'>
+            <div class='row titleClients'>
+                <p class='p_clientes'>INSPECCIÓN DE VEHÍCULOS</p>
+            </div>
+            <form method='post'class='col-md-6 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tAtico' class='cont_sede cont_Sedetasa'>
+                    <div class='panel panel-box clearfix'>
+                        <div class='panel-icon pull-left bg-navy'>
+                            <i class='glyphicon glyphicon-home'></i>
+                        </div>
+                        <div class=' contTextForm'>
+                            <h4 class='margin-top'> Atico </h4>
+                        </div>
+                    </div>
+                </button>
             </form>
--->
+                <form method='post'class='col-md-6 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tSamanco' class='cont_sede cont_Sedetasa'>
+                    <div class='panel panel-box clearfix'>
+                        <div class='panel-icon pull-left bg-navy'>
+                            <i class='glyphicon glyphicon-home formIco'></i>
+                        </div>
+                        <div class='contTextForm'>
+                            <h4 class='margin-top'> Samanco </h4>
+                        </div>
+                    </div>
+                </button>
+            </form>
+
+            <form method='post' action='admin.php' class='col-md-6 col-sm-12 panelForm'>
+                <button type='submit' name='sede_tSupe' class='cont_sede cont_Sedetasa'>
+                    <div class='panel panel-box clearfix'>
+                        <div class='panel-icon pull-left bg-navy'>
+                            <i class='glyphicon glyphicon-home formIco'></i>
+                        </div>
+                        <div class='contTextForm'>
+                            <h4 class='margin-top'> Supe </h4>
+                        </div>
+                    </div>
+                </button>
+            </form>
+            </div>
+
+
         </div>
 
         <div class='col-md-6 col-sm-12'>

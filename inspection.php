@@ -14,17 +14,16 @@
   if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
   
   $SuperUser = current_user();
-
   if( $SuperUser["sede"]=="T-Chimb") {$tableIns="instachim";}
   if( $SuperUser["sede"]=="T-Samanco") {$tableIns="instasama";}
   if( $SuperUser["sede"]=="T-Supe") {$tableIns="instasupe";}
   if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
   if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
-  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaastic";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
-  if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}//falta crear BD
+  if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}
   $tableInspec = $tableIns;
   $SuperUser = current_user();
   $all_inspections = find_all($tableInspec)
@@ -77,8 +76,6 @@
 
 <body>
  <?php include_once('layouts/header.php'); ?>
-    <?php include_once('layouts/header.php'); ?>
-
     <div class="row">
         <div class="col-md-12">
             <?php echo display_msg($msg); ?>
@@ -95,8 +92,8 @@
                     </strong>
                     <!-- <a href="add_inspection.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva inspeccion"></i></a> -->
                     <!-- <a href="company.php" class="pull-right btn-sm"><i class="iconCat glyphicon glyphicon-arrow-left" title="Ver Estadisticas"></i></a> -->
-                    <a href="add_inspection.php"> <button class="pull-right btn-sm estaticButton contButtonT" >Nuevo</button></a>
-                    <a href="home.php"> <button class="pull-right btn-sm estaticButton" >Ver estadísticas</button></a>
+                    <a href="add_inspection.php"> <button class="pull-right btn-sm estaticButton contButtonT" >NUEVO</button></a>
+                    <a href="home.php"> <button class="pull-right btn-sm estaticButton" >VER ESTADISTICAS</button></a>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered " id="tabla">
@@ -108,6 +105,9 @@
                                 <th class="text-center" style="width: 50px;">Conductor</th>
                                  <th class="text-center" style="width: 50px;">Brevete</th>
                                 <th class="text-center" style="width: 50px;">¿Tiene Manta tipo Pañuelo?</th>
+                                <th class="text-center" style="width: 50px;">¿Estado de la Manta?</th>
+                                <th class="text-center" style="width: 50px;">¿Estado de la soga?</th>
+                                <th class="text-center" style="width: 50px;">Observaciones</th>
                                 <th class="text-center" style="width: 50px;">Responsable</th>
                                 <th class="text-center" style="width: 50px;">Fecha</th>
                                 <th class="text-center" style="width: 10px;">Acciones</th>
@@ -122,6 +122,9 @@
                                  <td><?php echo remove_junk(ucfirst($act['conductor'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['brevete'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['manta'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($act['e_manta'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($act['soga'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($act['observaciones'])); ?></td>
                                  <td><?php echo $act['responsable']; ?></td>
                                  <td><?php echo remove_junk(ucfirst($act['fecha'])); ?></td>
 

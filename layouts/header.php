@@ -87,6 +87,10 @@
       <?php elseif($user['user_level'] === '5'): ?>
         <!-- Cliente menu -->
       <?php include_once('cliente_menu.php');?>
+
+       <?php elseif($user['user_level'] === '6'): ?>
+        <!-- Menu Momentaneo-->
+      <?php include_once('inspection_menu.php');?>
         
        
 
