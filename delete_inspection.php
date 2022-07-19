@@ -21,7 +21,7 @@
   if( $SuperUser["sede"]=="T-Vegueta") {$tableIns="instavegu";}
   if( $SuperUser["sede"]=="T-Callao") {$tableIns="instacall";}
   if( $SuperUser["sede"]=="T-Pisco") {$tableIns="instapisc";}
-  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaatic";}
+  if( $SuperUser["sede"]=="T-Atico") {$tableIns="instaastic";}
   if( $SuperUser["sede"]=="T-Matarani") {$tableIns="instamata";}
   if( $SuperUser["sede"]=="E-Chimbote") {$tableIns="insexchim";}
   if( $SuperUser["sede"]=="E-Chicama") {$tableIns="insexchic";}
