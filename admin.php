@@ -69,19 +69,19 @@ if ( isset( $_POST[ 'sede_tSupe' ] ) )
     }
 }
 
-// if ( isset( $_POST[ 'sede_tVegeta' ] ) )
-// {
-//     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Vegueta' );
+if ( isset( $_POST[ 'sede_tVegeta' ] ) )
+{
+    $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Vegueta' );
 
-//     if ( $var2 == true ) 
-//     {
-//         $session->msg( 's', 'Se encuentra en la Sede de TASA-VÉGUETA.' );
-//         redirect( 'admin.php', false );
-//     } else {
-//         $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-VÉGUETA' );
-//         redirect( 'admin.php', false );
-//     }
-// }
+    if ( $var2 == true ) 
+    {
+        $session->msg( 's', 'Se encuentra en la Sede de TASA-VÉGUETA.' );
+        redirect( 'admin.php', false );
+    } else {
+        $session->msg( 'd', 'Ya se encuentra ubicado en la sede de TASA-VÉGUETA' );
+        redirect( 'admin.php', false );
+    }
+}
 if ( isset( $_POST[ 'sede_tCallao' ] ) )
 {
     $var2 = updateSedeSuperUser( $SuperUser[ 'username' ], 'T-Callao' );
@@ -255,7 +255,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
 
        
 
-            <!-- <form method='post' action='admin.php' class='col-md-4 col-sm-12 panelForm'>
+            <form method='post' action='admin.php' class='col-md-6 col-sm-12 panelForm'>
                 <button type='submit' name='sede_tVegeta' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
@@ -266,7 +266,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                         </div>
                     </div>
                 </button>
-            </form> -->
+            </form>
 
 
          <!-- <form method='post' action="admin.php" class='col-md-4 col-sm-12 panelForm'>
@@ -304,7 +304,7 @@ if ( isset( $_POST[ 'sede_eChicama' ] ) )
                 <button type='submit' name='sede_tAtico' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
                         <div class='panel-icon pull-left bg-navy'>
-                            <i class='glyphicon glyphicon-home'></i>
+                            <i class='glyphicon glyphicon-home formIco'></i>
                         </div>
                         <div class=' contTextForm'>
                             <h4 class='margin-top'> Atico </h4>

@@ -18,7 +18,7 @@
 if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="history_tasachimb";};
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
+  if( $SuperUser["sede"]=="T-Vegueta") {$table="sede_vegueta";$tableHistory="history_vegueta";};
   if( $SuperUser["sede"]=="T-Callao") {$table="sede_callao"; $tableHistory="history_callao";};
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
