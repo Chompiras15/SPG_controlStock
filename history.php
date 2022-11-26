@@ -19,7 +19,7 @@
   if( $SuperUser["sede"]=="T-Chimb") $table="history_tasachimb";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
+  if( $SuperUser["sede"]=="T-Vegueta") $table="history_vegueta";
   if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
@@ -93,7 +93,7 @@
                             <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
                             <?php } ?>
 
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 50px;">F.Producción</th>
@@ -119,7 +119,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>

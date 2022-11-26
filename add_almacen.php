@@ -53,6 +53,10 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
         $cat_placa = remove_junk($db->escape($_POST['placa']));
         $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     };
+    if($SuperUser["sede"]=="T-Vegueta")  
+    {
+        $cat_placa = remove_junk($db->escape($_POST['placa']));
+    };
     $cat_observation = remove_junk($db->escape($_POST['observation']));
  
     if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
@@ -86,6 +90,14 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                 $sql.=")";
 
                 
+              }else if($SuperUser["sede"]=="T-Vegueta")
+              {
+                $sql= "INSERT INTO $table (";
+                $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
+                $sql.=") VALUES (";
+                $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_observation}','{$SuperUser['name']}'";
+                $sql.=")";
+
               }else
               {
                 $sql  = "INSERT INTO $table (";
@@ -107,7 +119,14 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                     $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
 
-                }else 
+                }else if($SuperUser["sede"]=="T-Vegueta")
+                {
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                }else
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
@@ -156,6 +175,11 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
     
+            }else if($SuperUser["sede"]=="T-Vegueta"){
+                $sql   = "UPDATE $table SET";
+                $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
+                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
             }else
             {
                 $sql   = "UPDATE $table SET";
@@ -176,7 +200,13 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
 
-                }else 
+                }else if($SuperUser["sede"]=="T-Vegueta"){
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                }else
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
@@ -230,7 +260,7 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_almacen.php">
                     
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                    <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
                             <label>Placa Vehicular</label>

@@ -54,7 +54,7 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
   $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
   $cat_calidad = remove_junk($db->escape($_POST['calidad']));
   $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-  if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+  if($SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta")  $cat_placa = remove_junk($db->escape($_POST['placa']));
   $cat_observation = remove_junk($db->escape($_POST['observation']));
   $cat_descripcion = remove_junk($db->escape($_POST['description']));
 
@@ -73,7 +73,13 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
             $sql  .=" sector ='{$cat_sector}',f_actividad='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',description='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
-        }else{
+        }else if($SuperUser["sede"]=="T-Vegueta"){
+          $sql   = "UPDATE $table SET";
+          $sql  .=" sector ='{$cat_sector}',f_actividad='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
+          $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
+          $sql .= " WHERE id='{$categorie['id']}'";
+        }else
+        {
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
@@ -174,7 +180,7 @@ $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', '
                             value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
 
-                     <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                     <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> 
                       <div class="form-group col-md-6">
                           <label for="name" class="control-label">Placa</label>
                           <input type="text" class="form-control" name="placa"
