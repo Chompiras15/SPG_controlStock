@@ -61,7 +61,7 @@ if(isset($_POST['edit_emb']))
     $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
     $supervisor = remove_junk($db->escape($_POST['supervisor']));
 
-    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb") {
+    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"|| $SuperUser["sede"]=="T-Vegueta") {
       $placa = remove_junk($db->escape($_POST['placa']));
       
     };
@@ -97,7 +97,7 @@ if(isset($_POST['edit_emb']))
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}',placa ='{$placa}',cod_container ='{$cod_container}',date_out ='{$date}', supervisor ='{$supervisor}'";
               $sql .= " WHERE id='{$categorie['id']}'";
-            }else if($SuperUser["sede"]=="T-Chimb"){
+            }else if($SuperUser["sede"]=="T-Chimb"||$SuperUser["sede"]=="T-Vegueta"){
               $sql   = "UPDATE $table SET";
               $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
               $sql  .=" cod_ruma ='{$cod_ruma}', placa ='{$placa}',date_out ='{$date}', supervisor ='{$supervisor}'";
@@ -176,7 +176,7 @@ if(isset($_POST['edit_emb']))
                         <input type="text" class="form-control" name="cod_ruma" placeholder="Codigo Ruma"
                             value="<?php echo remove_junk(ucfirst($categorie['cod_ruma']));?>">
                     </div>
-                    <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"){?>
+                    <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"|| $SuperUser["sede"]=="T-Vegueta"){?>
                       <div class="form-group col-md-6">
                         <label for="name" class="control-label">Placa</label>
                         <input type="text" class="form-control" name="placa" placeholder="Placa"

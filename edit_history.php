@@ -17,7 +17,7 @@
   if( $SuperUser["sede"]=="T-Chimb") $table="history_tasachimb";
   if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
   if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="sede_vegueta";
+  if( $SuperUser["sede"]=="T-Vegueta") $table="history_vegueta";
   if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
   if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
   if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
@@ -53,7 +53,7 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
   $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
   $cat_calidad = remove_junk($db->escape($_POST['calidad']));
   $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-  if($SuperUser["sede"]=="T-Callao")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+  if($SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta")  $cat_placa = remove_junk($db->escape($_POST['placa']));
   $cat_observation = remove_junk($db->escape($_POST['observation']));
   $cat_descripcion = remove_junk($db->escape($_POST['description']));
 
@@ -71,6 +71,12 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
+            $sql .= " WHERE id='{$categorie['id']}'";
+        
+        }else if($SuperUser["sede"]=="T-Vegueta"){
+            $sql   = "UPDATE $table SET";
+            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
+            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
             $sql .= " WHERE id='{$categorie['id']}'";
         }else{
             $sql   = "UPDATE $table SET";
@@ -172,7 +178,7 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                         <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
 
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                    <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> 
                       <div class="form-group col-md-6">
                           <label for="name" class="control-label">Placa</label>
                           <input type="text" class="form-control" name="placa"
