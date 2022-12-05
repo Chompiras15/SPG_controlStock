@@ -117,14 +117,13 @@
 							<option value="Descarga Provincia">Descarga Provincia</option>
                             <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
                             <option value="Eslinga a Piso">Eslinga a Piso</option>
-                            <option value=" Movimiento Interno"> Movimiento Interno</option>
+                            <option value="Movimiento Interno"> Movimiento Interno</option>
                             <option value="Ventilación de sacos (Cachaquitos)">Ventilación de sacos (Cachaquitos)</option>
                             <option value="Descarga/Carga eslinga">Descarga/Carga eslinga</option>
                             <option value="Muestreo de rumas">Muestreo de rumas</option>
                             <option value="Borrado y codificado de código">Borrado y codificado de código</option>
                             <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
                             <option value="Corte y vaceado en jumbo">Corte y vaceado en jumbo</option>
-                            <option value="Corte y vaceado a Dino">Corte y vaceado en jumbo</option>
                             <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
                             <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
                             <option value="Embarque">Embarque</option>

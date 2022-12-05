@@ -299,7 +299,7 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                     </div>
                      <div class="material-textfield">
                         <label class="select">Fecha Ejecucion</label>
-                        <input placeholder=" " type="date" name="f_actividad" onblur="changeDateVen(this)" required>
+                        <input placeholder=" " type="date" name="f_actividad" required>
                         
                     </div>
                     

@@ -159,12 +159,11 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-                }else if( $SuperUser['sede' ] =="T-Chimb"||$SuperUser['sede' ] =="T-Vegueta")
-                {
+                }else if( $SuperUser['sede' ] ='T-Chim'||$SuperUser['sede' ] =='T-Vegueta'){
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,placa,date_out,supervisor';
                     $sql .= ') VALUES (';
-                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$cod_placa}','{$date_out}', '{$supervisor}'";
+                    $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$cod_placa}', '{$date_out}', '{$supervisor}'";
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
                 }else{
