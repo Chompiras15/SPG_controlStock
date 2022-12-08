@@ -51,15 +51,15 @@
     function addFilter($temp,$filter)
     {
         if($temp['typeRuma']=="BHT") {?> 
-         <?php if((float)$temp[$filter]>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br><b> CACHACO </b>'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> Eslinga Piso </b>'; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=38 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> Ventilación de Ruma </b> '; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  <b> Ruma Tapada </b> '; ?></td><?php } 
+         <?php if((float)$temp[$filter]>=50)  {?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=38 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]<=37.9)  {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } 
           }else{?>
-            <?php if((float)$temp[$filter]>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b> CACHACO </b> '; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b>  Eslinga Piso </b> '; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]>=36 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br> <b>  Ventilación de Ruma </b> '; ?></td><?php } ?>
-            <?php if((float)$temp[$filter]<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  <b> Ruma Tapada </b> '; ?></td><?php }   
+            <?php if((float)$temp[$filter]>=50){?> <td style="background:red;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>  '; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=47 && (float)$temp[$filter]<=49.9) {?> <td style="background:#f58425;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]>=36 && (float)$temp[$filter]<=46.9)  {?> <td style="background: #FAE22E;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php } ?>
+            <?php if((float)$temp[$filter]<=35.9) {?> <td style="background:#78FA37;"><?php echo remove_junk(ucfirst($temp[$filter])).' ºC. <br>'; ?></td><?php }   
         } 
     }
     ?>
@@ -118,6 +118,7 @@
                             <th class="text-center" style="width: 10px;">Cañon_25</th>
                             <th class="text-center" style="width: 10px;">Promedio</th>
                             <th class="text-center" style="width: 10px;">Observacion</th>
+                            <th class="text-center" style="width: 10px;">Registrado</th>
                             <th class="text-center" style="width: 10px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Tipo_Ruma</th>
                             <th class="text-center" style="width: 10px;">Fecha</th>
@@ -172,6 +173,7 @@
                             } ?> 
                             
                             <td><?php echo remove_junk(ucfirst($temp['observacion'])); ?></td>
+                            <td><?php echo changeFormat_date($temp['f_monitoreo'],'d/m/Y'); ?></td>
                              <td><?php echo remove_junk(ucfirst($temp['supervisor'])); ?></td>
                              <td><?php echo remove_junk(ucfirst($temp['typeRuma'])); ?></td>
                             <td><?php echo read_date($temp['fecha']); ?></td>
@@ -259,7 +261,7 @@
                         className: 'btn btn-success',
                         exportOptions: {
                     columns: function(column, data, node) {
-                        if (column <31) {//Oculta todas lac
+                        if (column <32) {//Oculta todas lac
                             return true;
                         }
                         return false;

@@ -39,7 +39,7 @@
 <?php
 if(isset($_POST['Edit_ExalTemperature']))
 {
-  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion','filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor');
+  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion','filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor','f_monitoreo');
   
   validate_fields($req_field);
 
@@ -72,7 +72,8 @@ if(isset($_POST['Edit_ExalTemperature']))
     $tem_25 = remove_junk($db->escape($_POST['filter25']));
     
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
-
+    $tem_monitoreo = remove_junk($db->escape($_POST['f_monitoreo']));
+    
 
   if(empty($errors))
   {
@@ -84,7 +85,7 @@ if(isset($_POST['Edit_ExalTemperature']))
     {
         $sql   = "UPDATE $tabletemp SET";
         $sql  .=" codRuma ='{$tem_ruma}', observacion ='{$tem_observacion}', filter1 ='{$tem_1}',";
-        $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', filter10 ='{$tem_10}', filter11 ='{$tem_11}', filter12 ='{$tem_12}', filter13 ='{$tem_13}', filter14 ='{$tem_14}', filter15 = '{$tem_15}', filter16 ='{$tem_16}', filter17 ='{$tem_17}', filter18 ='{$tem_18}', filter19 ='{$tem_19}', filter20 ='{$tem_20}', filter21 ='{$tem_21}', filter22 ='{$tem_22}', filter23 = '{$tem_23}',filter24 ='{$tem_24}', filter25 ='{$tem_25}', promedio ='{$promedio}', supervisor ='{$tem_supervisor}'";
+        $sql  .=" filter2 ='{$tem_2}', filter3 ='{$tem_3}', filter4 ='{$tem_4}', filter5 ='{$tem_5}', filter6 ='{$tem_6}', filter7 ='{$tem_7}', filter8 ='{$tem_8}', filter9 ='{$tem_9}', filter10 ='{$tem_10}', filter11 ='{$tem_11}', filter12 ='{$tem_12}', filter13 ='{$tem_13}', filter14 ='{$tem_14}', filter15 = '{$tem_15}', filter16 ='{$tem_16}', filter17 ='{$tem_17}', filter18 ='{$tem_18}', filter19 ='{$tem_19}', filter20 ='{$tem_20}', filter21 ='{$tem_21}', filter22 ='{$tem_22}', filter23 = '{$tem_23}',filter24 ='{$tem_24}', filter25 ='{$tem_25}', promedio ='{$promedio}', supervisor ='{$tem_supervisor}', f_monitoreo ='{$tem_monitoreo}'";
         $sql .= " WHERE id='{$temperature['id']}'";
 
         if($db->query($sql))
@@ -274,6 +275,12 @@ if(isset($_POST['Edit_ExalTemperature']))
                         <label for="name" class="control-label">Observación</label>
                         <input type="text" class="form-control" name="observacion"
                             value="<?php echo remove_junk(ucfirst($temperature['observacion']));?>">
+                    </div>
+
+                    <div class="form-group col-md-6"> 
+                        <label for="name" class="control-label">Fecha de Monitoreo</label>
+                        <input type="date" class="form-control" name="f_monitoreo"
+                            value="<?php echo remove_junk(ucfirst($temperature['f_monitoreo']));?>">
                     </div>
 
                     <div class="form-group col-md-6"> 

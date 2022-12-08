@@ -1,6 +1,6 @@
 <!--   
  ====================================================================
-        SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
+ SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
  Descripción:Muestra Todas Las actividades y Agrega adicionalmente
  Creado: 11/03/2022
  Chimbote Peru 
@@ -33,7 +33,7 @@
 <?php
  if(isset($_POST['add_ExalTemperature']))
  {
-  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor');
+  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor','f_monitoreo');
    
     validate_fields($req_field);
    
@@ -65,6 +65,7 @@
     $tem_24 = remove_junk($db->escape($_POST['filter24']));
     $tem_25 = remove_junk($db->escape($_POST['filter25']));
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
+    $tem_monitoreo = remove_junk($db->escape($_POST['f_monitoreo']));
   
     //$tem_fecha = remove_junk($db->escape($_POST['fecha']));
 
@@ -80,9 +81,9 @@
             if($SuperUser["sede"]=="E-Chicama")
             {
                 $sql  = "INSERT INTO $tabletemp (";
-                $sql .=" codRuma, observacion, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor, typeRuma";
+                $sql .=" codRuma, observacion, filter1, filter2, filter3, filter4, filter5, filter6, filter7, filter8, filter9, filter10, filter11, filter12, filter13, filter14, filter15, filter16, filter17, filter18, filter19, filter20, filter21, filter22, filter23, filter24, filter25, promedio, supervisor, typeRuma, f_monitoreo";
                 $sql .=") VALUES (";
-                $sql .=" '{$tem_ruma}','{$tem_observacion}' ,'{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}','{$typeR}'";
+                $sql .=" '{$tem_ruma}','{$tem_observacion}' ,'{$tem_1}', '{$tem_2}', '{$tem_3}', '{$tem_4}', '{$tem_5}', '{$tem_6}', '{$tem_7}', '{$tem_8}', '{$tem_9}', '{$tem_10}', '{$tem_11}', '{$tem_12}', '{$tem_13}', '{$tem_14}', '{$tem_15}', '{$tem_16}', '{$tem_17}', '{$tem_18}', '{$tem_19}', '{$tem_20}', '{$tem_21}', '{$tem_22}', '{$tem_23}', '{$tem_24}', '{$tem_25}','{$promedio}','{$tem_supervisor}','{$typeR}','{$tem_monitoreo}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE codRuma='{$tem_ruma}'";
 
@@ -278,6 +279,11 @@
                         
                         <input type="text" name="observacion" placeholder=" " required>
                         <label> Observación</label>
+                    </div>
+                    <div class="material-textfield">
+                        
+                        <input type="date" name="f_monitoreo" placeholder=" " required>
+                        <label>Fecha de Monitoreado</label>
                     </div>
                      <div class="material-textfield">
                         
