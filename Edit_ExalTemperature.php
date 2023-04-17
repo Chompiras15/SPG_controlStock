@@ -73,7 +73,7 @@ if(isset($_POST['Edit_ExalTemperature']))
     
     $tem_supervisor = remove_junk($db->escape($_POST['supervisor']));
     $tem_monitoreo = remove_junk($db->escape($_POST['f_monitoreo']));
-    
+
 
   if(empty($errors))
   {
@@ -276,8 +276,8 @@ if(isset($_POST['Edit_ExalTemperature']))
                         <input type="text" class="form-control" name="observacion"
                             value="<?php echo remove_junk(ucfirst($temperature['observacion']));?>">
                     </div>
-
-                    <div class="form-group col-md-6"> 
+                    
+                      <div class="form-group col-md-6"> 
                         <label for="name" class="control-label">Fecha de Monitoreo</label>
                         <input type="date" class="form-control" name="f_monitoreo"
                             value="<?php echo remove_junk(ucfirst($temperature['f_monitoreo']));?>">

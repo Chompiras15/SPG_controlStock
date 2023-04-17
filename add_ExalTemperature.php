@@ -1,6 +1,6 @@
 <!--   
  ====================================================================
- SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
+        SGP - BUSINESS ( JHONATAN LARA && ABRAHAM VALVERDE)
  Descripción:Muestra Todas Las actividades y Agrega adicionalmente
  Creado: 11/03/2022
  Chimbote Peru 
@@ -280,11 +280,13 @@
                         <input type="text" name="observacion" placeholder=" " required>
                         <label> Observación</label>
                     </div>
+                    
                     <div class="material-textfield">
                         
                         <input type="date" name="f_monitoreo" placeholder=" " required>
-                        <label>Fecha de Monitoreado</label>
+                        <label>Fecha de Monitoreo</label>
                     </div>
+                    
                      <div class="material-textfield">
                         
                         <input type="text" name="supervisor" placeholder=" " required>

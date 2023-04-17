@@ -123,7 +123,7 @@
                             <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
                                 <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
-                            <td class="text-center">    
+                            <td class="text-center">
                                 <div class="btn-group">
                                     <a style ="margin-right: 7px;padding: 5px;" href="edit_almacen.php?id=<?php echo (int)$cat['id'];?>"
                                         class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">

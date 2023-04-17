@@ -69,7 +69,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
     $cod_contrato = remove_junk( $db->escape( $_POST[ 'cod_contrato' ] ) );
     $cant_out = remove_junk( $db->escape( $_POST[ 'cant_out' ] ) );
     $cod_ruma = remove_junk( $db->escape( $_POST[ 'cod_ruma' ] ) );
-    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"||$SuperUser["sede"]=="T-Vegueta" ) $cod_placa = remove_junk( $db->escape( $_POST[ 'placa' ] ) );
+    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb" ||$SuperUser["sede"]=="T-Vegueta" ) $cod_placa = remove_junk( $db->escape( $_POST[ 'placa' ] ) );
     if( $SuperUser["sede"]=="T-Callao") $cod_container = remove_junk( $db->escape( $_POST[ 'cod_container' ] ) );
     $date_out = remove_junk( $db->escape( $_POST[ 'date_out' ] ) );
     $supervisor = remove_junk( $db->escape( $_POST[ 'supervisor' ] ) );
@@ -98,7 +98,6 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
-                   
 
                 } else  if( $SuperUser["sede"]=="T-Callao")
                 {
@@ -108,14 +107,15 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                     $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                }else if( $SuperUser["sede"]=="T-Chimb"||$SuperUser["sede"]=="T-Vegueta")
+                }else if( $SuperUser['sede' ] =="T-Chimb"||$SuperUser['sede' ] =="T-Vegueta")
                 {
-                     $sql  = "INSERT INTO $table (";
+                    $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,placa,date_out,supervisor';
                     $sql .= ') VALUES (';
                     $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}', '{$cod_placa}','{$date_out}', '{$supervisor}'";
                     $sql .= ')';
                     $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+               
                 }else{
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor';
@@ -255,7 +255,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
                         <label>Codigo Ruma</label>
                     </div>
 
-                    <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb"||$SuperUser["sede"]=="T-Vegueta"){?>
+                    <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb" ||$SuperUser["sede"]=="T-Vegueta"){?>
                         <div class='material-textfield'>
                             <input placeholder=' ' type='text' name='placa' required>
                             <label>Placa</label>

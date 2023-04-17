@@ -105,14 +105,6 @@ if(isset($_POST['edit_actividad'])){
                             <option value="Monitoreo de Temperatura"
                                 <?php if($activity['nameActivity']=="Monitoreo de Temperatura"){;?>selected <?php } ?>>
                                 Monitoreo de Temperatura</option>
-                                
-                            <option value="Movimiento Interno"
-                                <?php if($activity['nameActivity']=="Movimiento Interno"){;?>selected
-                                <?php } ?>>Movimiento Interno</option>
-                                
-                            <option value="Corte y Vaceado a Dino"
-                                <?php if($activity['nameActivity']=="Corte y Vaceado a Dino"){;?>selected
-                                <?php } ?>>Corte y Vaceado a Dino</option>
                             
                                 <option value="Eslinga a Piso"
                                 <?php if($activity['nameActivity']=="Eslinga a Piso"){;?>selected
@@ -126,9 +118,18 @@ if(isset($_POST['edit_actividad'])){
                                 <?php if($activity['nameActivity']=="Descarga/Carga eslinga"){;?>selected <?php } ?>>
                                 Descarga/Carga eslinga</option>
 
+			    <option value="Corte y Vaceado a Dino"
+                                <?php if($activity['nameActivity']=="Corte y Vaceado a Dino"){;?>selected <?php } ?>>
+                                Corte y Vaceado a Dino</option>
+
+
                             <option value="Muestreo de rumas"
                                 <?php if($activity['nameActivity']=="Muestreo de rumas"){;?>selected
                                 <?php } ?>>Muestreo de rumas</option>
+
+                            <option value="Movimiento Interno"
+                                <?php if($activity['nameActivity']=="Movimiento Interno"){;?>selected
+                                <?php } ?>>Movimiento Interno</option>
 
                             <option value="Borrado y codificado de código"
                                 <?php if($activity['nameActivity']=="Borrado y codificado de código"){;?>selected
@@ -156,7 +157,7 @@ if(isset($_POST['edit_actividad'])){
                                 <?php if($activity['nameActivity']=="Embarque"){;?>selected <?php } ?>>
                                 Embarque</option>
 
-                                <option value="Trasiego de sacos"
+				<option value="Trasiego de sacos"
                                 <?php if($activity['nameActivity']=="Trasiego de sacos"){;?>selected <?php } ?>>
                                 Trasiego de sacos</option>
                                 
@@ -195,6 +196,10 @@ if(isset($_POST['edit_actividad'])){
                                 <option value="Limpieza de mantas"
                                 <?php if($activity['nameActivity']=="Limpieza de mantas"){;?>selected <?php } ?>>
                                 Limpieza de mantas</option>
+								
+								<option value="Apoyo en Balanza"
+                                <?php if($activity['nameActivity']=="Apoyo en Balanza"){;?>selected <?php } ?>>
+                                Apoyo en Balanza</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">

@@ -72,7 +72,6 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
             $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
             $sql .= " WHERE id='{$categorie['id']}'";
-        
         }else if($SuperUser["sede"]=="T-Vegueta"){
             $sql   = "UPDATE $table SET";
             $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";

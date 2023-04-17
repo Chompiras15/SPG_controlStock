@@ -3,10 +3,10 @@
  require_once('includes/load.php');
  if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
 page_require_level(1);
-$host="localhost";
-$username="root";
-$password="";
-$database_name="sgp_logisticstock";
+$host="https://auth-db754.hstgr.io/index.php?route=/&route=%2F&db=u753240976_Costatranspor";
+$username="u753240976_costatransport";
+$password="Ub7Hb5M@~@u&";
+$database_name="u753240976_costatransport";
 
 $conn=mysqli_connect($host,$username,$password,$database_name);
 

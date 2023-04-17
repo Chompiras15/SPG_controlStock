@@ -53,6 +53,7 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
         $cat_placa = remove_junk($db->escape($_POST['placa']));
         $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     };
+    
     if($SuperUser["sede"]=="T-Vegueta")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
@@ -89,7 +90,6 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
-                
               }else if($SuperUser["sede"]=="T-Vegueta")
               {
                 $sql= "INSERT INTO $table (";
@@ -97,7 +97,6 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                 $sql.=") VALUES (";
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
-
               }else
               {
                 $sql  = "INSERT INTO $table (";
@@ -118,7 +117,6 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-
                 }else if($SuperUser["sede"]=="T-Vegueta")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
@@ -174,12 +172,13 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                 $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-    
+                
             }else if($SuperUser["sede"]=="T-Vegueta"){
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+    
             }else
             {
                 $sql   = "UPDATE $table SET";
@@ -199,14 +198,13 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-
                 }else if($SuperUser["sede"]=="T-Vegueta"){
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else
+                }else 
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
@@ -353,14 +351,31 @@ if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="hi
 <?php include_once('layouts/footer.php'); ?>
 <script>
     function changeDateVen(data){
+        
+     
+        
         var fecha =data.value;
+        //console.log(fecha)
+        
+        
+        var currentDateObj = new Date(fecha);
+        var numberOfMlSeconds = currentDateObj.getTime();
+        var addMlSeconds = 60 * 60000 *5;
+        var start = new Date(numberOfMlSeconds + addMlSeconds);
+        //console.log(newDateObj)
+        
         var domDateV= document.getElementById("dateV");
-        var start=new Date(fecha);
+        //var start=new Date(fecha);
+        //var start2=new Date(fecha+"T00:00:00+0000");
+        //console.log("fecha")
+        //console.log(start2);
         if((start.getMonth()+1)<10) mes="0"+(start.getMonth()+1);
         else mes=start.getMonth()+1;
-
-        if((start.getDate()+1)<10) dia="0"+(start.getDate()+1);
-        else dia=start.getDate()+1;
+        //console.log(start.getDay())
+        if((start.getDate()+1)<10) dia="0"+(start.getDate());
+        else dia=start.getDate();
+        
+        console.log(start.getFullYear()+1+"-"+mes+"-"+dia);
         domDateV.value=start.getFullYear()+1+"-"+mes+"-"+dia;
         
     }
