@@ -15,16 +15,16 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(3);
-if( $SuperUser["sede"]=="T-Chimb"){ $table="sede_tasachimbote";$tableHistory="history_tasachimb";};
-  if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
-  if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") {$table="sede_vegueta";$tableHistory="history_vegueta";};
-  if( $SuperUser["sede"]=="T-Callao") {$table="sede_callao"; $tableHistory="history_callao";};
-  if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
-  if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
-  if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") {$table="sede_exalmar_mala"; $tableHistory="history_exalmal";};
+if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_tasachimb";};
+  if( $SuperUser["sede"]=="2") $table="sede_samanco";
+  if( $SuperUser["sede"]=="3") $table="sede_supe";
+  if( $SuperUser["sede"]=="4") {$table="sede_vegueta";$tableHistory="history_vegueta";};
+  if( $SuperUser["sede"]=="5") {$table="sede_callao"; $tableHistory="history_callao";};
+  if( $SuperUser["sede"]=="6") $table="sede_pisco";
+  if( $SuperUser["sede"]=="7") $table="sede_atico";
+  if( $SuperUser["sede"]=="8") $table="sede_matarani";
+  if( $SuperUser["sede"]=="9") $table="sede_exalmar_chim";
+  if( $SuperUser["sede"]=="10") {$table="sede_exalmar_mala"; $tableHistory="history_exalmal";};
   
   $all_categories = find_all($table)
 ?>

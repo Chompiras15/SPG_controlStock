@@ -8,23 +8,23 @@ $table = '';
 $tabla_sed = '';
 //require_once( 'includes/load.php' );
 $SuperUser = current_user();
-if ( $SuperUser[ 'sede' ] == 'T-Chimb' ) {
+if ( $SuperUser[ 'sede' ] == '1' ) {
     $table = 'emb_tasachim';
     $tabla_sed = 'sede_tasachimbote';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Samanco' ) {
+if ( $SuperUser[ 'sede' ] == '2' ) {
     $table = 'emb_samanco';
     $tabla_sed = 'sede_samanco';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Supe' ) {
+if ( $SuperUser[ 'sede' ] == '3' ) {
     $table = 'emb_supe';
     $tabla_sed = 'sede_supe';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Vegueta' ) {
+if ( $SuperUser[ 'sede' ] == '4' ) {
     $table = 'emb_vegueta';
     $tabla_sed = 'sede_vegueta';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Callao' ) 
+if ( $SuperUser[ 'sede' ] == '5' ) 
 {
    
     $table = 'emb_callao';
@@ -36,23 +36,23 @@ if ( $SuperUser[ 'sede' ] == 'T-Callao' )
          $type='pnc';
      };
 }
-if ( $SuperUser[ 'sede' ] == 'T-Pisco' ) {
+if ( $SuperUser[ 'sede' ] == '6' ) {
     $table = 'emb_pisco';
     $tabla_sed = 'sede_pisco';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Atico' ) {
+if ( $SuperUser[ 'sede' ] == '7' ) {
     $table = 'emb_atico';
     $tabla_sed = 'sede_atico';
 }
-if ( $SuperUser[ 'sede' ] == 'T-Matarani' ) {
+if ( $SuperUser[ 'sede' ] == '8' ) {
     $table = 'emb_matarani';
     $tabla_sed = 'sede_matarani';
 }
-if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) {
+if ( $SuperUser[ 'sede' ] == '9' ) {
     $table = 'emb_exalmar_chim';
     $tabla_sed = 'sede_exalmar_chim';
 }
-if ( $SuperUser[ 'sede' ] == 'E-Chicama' ) {
+if ( $SuperUser[ 'sede' ] == '10' ) {
     $table = 'emb_exalmar_mala';
     $tabla_sed = 'sede_exalmar_mala';
 }
@@ -62,18 +62,18 @@ $all_embarques = find_all( $table )
 <?php
 if ( isset( $_POST[ 'add_emb' ] ) )
  {
-    if ( $SuperUser[ 'sede' ] == 'E-Chimbote' )  $req_field = array( 'cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor', 'almacen' );
+    if ( $SuperUser[ 'sede' ] == '9' )  $req_field = array( 'cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor', 'almacen' );
     else  $req_field = array( 'cod_contrato', 'cant_out', 'cod_ruma', 'date_out', 'supervisor' );
 
     validate_fields( $req_field );
     $cod_contrato = remove_junk( $db->escape( $_POST[ 'cod_contrato' ] ) );
     $cant_out = remove_junk( $db->escape( $_POST[ 'cant_out' ] ) );
     $cod_ruma = remove_junk( $db->escape( $_POST[ 'cod_ruma' ] ) );
-    if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="T-Chimb" ||$SuperUser["sede"]=="T-Vegueta" ) $cod_placa = remove_junk( $db->escape( $_POST[ 'placa' ] ) );
-    if( $SuperUser["sede"]=="T-Callao") $cod_container = remove_junk( $db->escape( $_POST[ 'cod_container' ] ) );
+    if( $SuperUser["sede"]=="5" || $SuperUser["sede"]=="1" ||$SuperUser["sede"]=="4" ) $cod_placa = remove_junk( $db->escape( $_POST[ 'placa' ] ) );
+    if( $SuperUser["sede"]=="5") $cod_container = remove_junk( $db->escape( $_POST[ 'cod_container' ] ) );
     $date_out = remove_junk( $db->escape( $_POST[ 'date_out' ] ) );
     $supervisor = remove_junk( $db->escape( $_POST[ 'supervisor' ] ) );
-    if ( $SuperUser[ 'sede' ] == 'E-Chimbote' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
+    if ( $SuperUser[ 'sede' ] == '9' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
 
     if ( empty( $errors ) )
  {
@@ -89,7 +89,7 @@ if ( isset( $_POST[ 'add_emb' ] ) )
             if ( $restaSacos == 0 )
             {
 
-                if ( $SuperUser[ 'sede' ] == 'E-Chimbote' ) 
+                if ( $SuperUser[ 'sede' ] == '9' ) 
                 {
                     $sql  = "INSERT INTO $table (";
                     $sql .= ' cod_contrato,cant_out,cod_ruma,date_out,supervisor,almacen';
