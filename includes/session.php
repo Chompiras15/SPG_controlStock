@@ -15,11 +15,11 @@ class Session {
     return $this->user_is_logged_in;
   }
   public function login($user_id){
-    $_SESSION['user_id'] = $user_id;
+    $_SESSION['sess_control'] = $user_id;
   }
   private function userLoginSetup()
   {
-    if(isset($_SESSION['user_id']))
+    if(isset($_SESSION['sess_control']))
     {
       $this->user_is_logged_in = true;
     } else {
@@ -28,7 +28,7 @@ class Session {
 
   }
   public function logout(){
-    unset($_SESSION['user_id']);
+    unset($_SESSION['sess_control']);
   }
 
   public function msg($type ='', $msg =''){

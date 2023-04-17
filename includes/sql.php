@@ -45,7 +45,7 @@ function find_by_id( $table, $id )
 /*--------------------------------------------------------------*/
 
 function find_by_codRuma( $table, $cod_ruma )
- {
+{
     global $db;
     //$id = ( int )$id;
     if ( tableExists( $table ) ) {
@@ -191,13 +191,16 @@ function tableExists( $table ) {
 /* coming from the login form.
 /*--------------------------------------------------------------*/
 
-function authenticate( $username = '', $password = '' ) {
+function authenticate( $username = '', $password = '',$table='') 
+{
     global $db;
     $username = $db->escape( $username );
     $password = $db->escape( $password );
-    $sql  = sprintf( "SELECT id,username,password,user_level FROM users WHERE username ='%s' LIMIT 1", $username );
+    $sql  = sprintf( "SELECT id,username,password,user_level FROM $table WHERE username ='%s' && (typeSystems ='%s' || typeSystems ='%s') && status='%s' LIMIT 1", $username,"3","1","1");
+
     $result = $db->query( $sql );
-    if ( $db->num_rows( $result ) ) {
+    if ( $db->num_rows( $result ) ) 
+    {
         $user = $db->fetch_assoc( $result );
         $password_request = sha1( $password );
         if ( $password_request === $user[ 'password' ] ) {
@@ -236,8 +239,8 @@ function current_user() {
     static $current_user;
     global $db;
     if ( !$current_user ) {
-        if ( isset( $_SESSION[ 'user_id' ] ) ):
-        $user_id = intval( $_SESSION[ 'user_id' ] );
+        if ( isset( $_SESSION[ 'sess_control' ] ) ):
+        $user_id = intval( $_SESSION[ 'sess_control' ] );
         $current_user = find_by_id( 'users', $user_id );
         endif;
     }

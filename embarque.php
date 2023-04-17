@@ -8,16 +8,16 @@
   $tabla_sed="";
   //require_once('includes/load.php');
   $SuperUser = current_user();
-  if( $SuperUser["sede"]=="T-Chimb"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
-  if( $SuperUser["sede"]=="T-Samanco") {$table="emb_samanco";$tabla_sed="sede_samanco";}
-  if( $SuperUser["sede"]=="T-Supe") {$table="emb_supe";$tabla_sed="sede_supe";}
-  if( $SuperUser["sede"]=="T-Vegueta"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
-  if( $SuperUser["sede"]=="T-Callao") {$table="emb_callao";$tabla_sed="sede_callao";}
-  if( $SuperUser["sede"]=="T-Pisco") {$table="emb_pisco";$tabla_sed="sede_pisco";}
-  if( $SuperUser["sede"]=="T-Atico") {$table="emb_atico";$tabla_sed="sede_atico";}
-  if( $SuperUser["sede"]=="T-Matarani") {$table="emb_matarani";$tabla_sed="sede_matarani";}
-  if( $SuperUser["sede"]=="E-Chimbote") {$table="emb_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
-  if( $SuperUser["sede"]=="E-Chicama") {$table="emb_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
+  if( $SuperUser["sede"]=="1"){ $table="emb_tasachim";$tabla_sed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="2") {$table="emb_samanco";$tabla_sed="sede_samanco";}
+  if( $SuperUser["sede"]=="3") {$table="emb_supe";$tabla_sed="sede_supe";}
+  if( $SuperUser["sede"]=="4"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
+  if( $SuperUser["sede"]=="5") {$table="emb_callao";$tabla_sed="sede_callao";}
+  if( $SuperUser["sede"]=="6") {$table="emb_pisco";$tabla_sed="sede_pisco";}
+  if( $SuperUser["sede"]=="7") {$table="emb_atico";$tabla_sed="sede_atico";}
+  if( $SuperUser["sede"]=="8") {$table="emb_matarani";$tabla_sed="sede_matarani";}
+  if( $SuperUser["sede"]=="9") {$table="emb_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="10") {$table="emb_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
   
   $all_embarques = find_all($table)
 ?>

@@ -4,39 +4,46 @@
   // Checkin What level user has permission to view this page
   page_require_level(1);
   $groups = find_all('user_groups');
-?>
-<?php
-  if(isset($_POST['add_user'])){
+  $sedes = find_all('sedes');
 
-   $req_fields = array('full-name','username','password','sede','level' );
-   validate_fields($req_fields);
+  if(isset($_POST['add_user']))
+  {
+    $req_fields = array('full-name','username','password','sede','level' );
+    validate_fields($req_fields);
 
-   if(empty($errors)){
-           $name   = remove_junk($db->escape($_POST['full-name']));
-       $username   = remove_junk($db->escape($_POST['username']));
-       $password   = remove_junk($db->escape($_POST['password']));
-       $sede   = remove_junk($db->escape($_POST['sede']));
-       $user_level = (int)$db->escape($_POST['level']);
-       $password = sha1($password);
-        $query = "INSERT INTO users (";
-        $query .="name,username,password,sede,user_level,status";
-        $query .=") VALUES (";
-        $query .=" '{$name}', '{$username}', '{$password}', '{$sede}','{$user_level}','1'";
-        $query .=")";
-        if($db->query($query)){
+    if(empty($errors))
+    {
+      $name   = remove_junk($db->escape($_POST['full-name']));
+      $username   = remove_junk($db->escape($_POST['username']));
+      $password   = remove_junk($db->escape($_POST['password']));
+      $sede   = remove_junk($db->escape($_POST['sede']));
+      $user_level = (int)$db->escape($_POST['level']);
+      $password = sha1($password);
+      
+      $query = "INSERT INTO users (";
+      $query .="name,username,password,sede,user_level,status,typeSystems";
+      $query .=") VALUES (";
+      $query .=" '{$name}', '{$username}', '{$password}', '{$sede}','{$user_level}','1','3'";
+      $query .=")";
+      
+      if($db->query($query))
+      {
           //sucess
-          $session->msg('s'," Cuenta de usuario ha sido creada");
-          redirect('users.php', false);
-        } else {
+        $session->msg('s'," Cuenta de usuario ha sido creada");
+        redirect('users.php', false);
+      
+      } else {
           //failed
-          $session->msg('d',' No se pudo crear la cuenta.');
-          redirect('add_user.php', false);
-        }
-   } else {
-     $session->msg("d", $errors);
+        $session->msg('d',' No se pudo crear la cuenta.');
+        redirect('add_user.php', false);
+      }
+    } else {
+      
+      $session->msg("d", $errors);
       redirect('add_user.php',false);
-   }
- }
+    }
+  }
+  
 ?>
 <?php include_once('layouts/header.php'); ?>
   <?php echo display_msg($msg); ?>
@@ -71,17 +78,10 @@
         <div class="material-textfield">
               <label class="select" for="sede">Selecciona Sede:</label>
                 <select class="form-control" name="sede">
-              <!-- Opciones de la lista -->
-                <option value="T-Chimb" selected>Tasa - Chimbote</option>
-                <option value="T-Samanco" >Tasa - Samanco</option> <!-- Opción por defecto -->
-                <option value="T-Supe">Tasa - Supe</option>
-                <option value="T-Vegueta">Tasa - Végueta</option>
-                <option value="T-Callao">Tasa - Callao</option>
-                <option value="T-Pisco">Tasa - Pisco</option>
-                <option value="T-Atico">Tasa - Atico</option>
-                <option value="T-Matarani">Tasa - Matarani</option>
-                <option value="E-Chimbote">Exalmar - Chimbote</option>
-                <option value="E-Chicama">Exalmar - Chicama</option>
+              
+                  <?php foreach ($sedes as $sed ):?>
+                    <option value="<?php echo $sed['id'];?>"><?php echo ucwords($sed['name']);?></option>
+                  <?php endforeach;?>
                 
                 </select>
             </div>

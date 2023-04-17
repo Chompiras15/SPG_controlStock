@@ -4,17 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="assets/css/material.min.css">
-
 	<link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
 	<link rel="icon" href="icono/icono.png" type="image/x-icon">  
 	<link rel="stylesheet" href="assets/css/spg_login.css">
 	<script src="assets/js/material.min.js" ></script>
-	
-
 </head>
+
 <style>
   .spg_logoInit
   {
@@ -25,12 +22,11 @@
     margin:auto;
   }
 </style>
+
 <body>
 <?php require_once('includes/load.php');?>
 
 	<div class="login-wrap cover">
-	
-		
 	
 		<div class="container-login">
 			<p class="text-center" style="font-size: 80px;">
@@ -44,7 +40,8 @@
 					<?php echo display_msg($msg); ?>
 				</div>
 			</div>
-			 <form method="post" action="auth.php" class="clearfix">
+
+			<form method="post" action="auth.php" class="clearfix">
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" type="text" id="userName" name="username">
 				    <label class="mdl-textfield__label" for="userName">Usuario</label>
@@ -57,11 +54,12 @@
 					INICIAR SESIÓN
 				</button>
 			</form>
+
 		</div>
 	</div>
 </body>
 </html>
 
- <?php include_once('layouts/footer.php'); ?>
+ <?php //include_once('layouts/footer.php?4545'); ?>
 
 
