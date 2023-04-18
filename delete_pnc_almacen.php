@@ -15,19 +15,18 @@
   $tableActi = "";
   $SuperUser = current_user();
 
-  if( $SuperUser["sede"]=="T-Callao") {$tableActi="activity_callao";$tabla_sed="sede_pnc_callao";}
+  if( $SuperUser["sede"]=="5") {$tableActi="activity_callao";$tabla_sed="sede_pnc_callao";}
 
-?>
-<?php
   $categorieDelete = find_by_id($tabla_sed,(int)$_GET['id']);
-  if(!$categorieDelete){
+  if(!$categorieDelete)
+  {
     $session->msg("d","ID de la ruma falta.");
     redirect('pnc_almacen.php');
   }
-?>
-<?php
+
   $delete_idDelete = delete_by_id($tabla_sed,(int)$categorieDelete['id']);
-  if($delete_idDelete){
+  if($delete_idDelete)
+  {
       $session->msg("s","Ruma eliminada");
       redirect('pnc_almacen.php');
   } else {

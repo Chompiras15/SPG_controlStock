@@ -6,100 +6,91 @@
  Chimbote Peru 
  ====================================================================   -->
 
+<?php
 
+    $page_title = 'Almacen';
+    require_once('includes/load.php');
+    $table = "";
+    //require_once('includes/load.php');
+    $SuperUser = current_user();
+    // Checkin What level user has permission to view this page
+    page_require_level(5);
 
- <?php
-  $page_title = 'Almacen';
-  require_once('includes/load.php');
-  $table = "";
-  //require_once('includes/load.php');
-  $SuperUser = current_user();
-  // Checkin What level user has permission to view this page
-  page_require_level(5);
+    if( $SuperUser["sede"]=="5") $table="sede_pnc_callao";
 
-  if( $SuperUser["sede"]=="T-Callao") $table="sede_pnc_callao";
+    $all_categories = find_all($table);
 
-  $all_categories = find_all($table)
+    include_once('layouts/header.php');
 ?>
 
+<style>
+    /*estilos para la tabla*/
+    table th 
+    {
+        background-color: #001f3f;
+        color: white;
+    }
+</style>
 
-<html lang="es">
 
-<head>
-    <style>
-        /*estilos para la tabla*/
-        table th {
-            background-color: #001f3f;
-            ;
-            color: white;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <?php include_once('layouts/header.php'); ?>
-
-    <div class="row">
-        <div class="col-md-12">
-            <?php echo display_msg($msg); ?>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading clearfix contTitleTT">
-                    <strong>
-                        <span class="glyphicon glyphicon-indent-left"></span>
-                        <span>RUMAS NO CONFORMES</span>
-                    </strong>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix contTitleTT">
+                <strong>
+                    <span class="glyphicon glyphicon-indent-left"></span>
+                    <span>RUMAS NO CONFORMES</span>
+                </strong>
 
-                    <a href="add_pnc_almacen.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
+                <a href="add_pnc_almacen.php" class="pull-right contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i></a>
+                <a href="history.php" class="pull-right historialicon"><i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
 
-                    <a href="history.php" class="pull-right historialicon"><i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>
+                <?php  if( $SuperUser["sede"]=="5")
+                {?> 
+                    <a href="almacen.php" class="pull-right pnc_btnAlmacen"><i class="iconCat glyphicon glyphicon-arrow-left" title="Regresar"></i></a>
+                <?php } ?>
+            </div>
+            
+            <div class="panel-body">
+                <table class="table table-bordered table-striped table-hover" id="tabla">
+                    <thead>
+                        <tr>
+                            <?php  if( $SuperUser["sede"]=="5"){?> <th class="text-center" style="width: 30px;">Lote</th>
+                            <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
+                            <?php } ?>
 
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
-                        <a href="almacen.php" class="pull-right pnc_btnAlmacen"><i class="iconCat glyphicon glyphicon-arrow-left" title="Regresar"></i></a>
-                    <?php } ?>
-                </div>
-                <div class="panel-body">
+                            <th class="text-center" style="width: 10px;">Sacos</th>
 
-                    <table class="table table-bordered table-striped table-hover" id="tabla">
-
-                        <thead>
-
-                            <tr>
-                                <?php  if( $SuperUser["sede"]=="T-Callao"){?> <th class="text-center" style="width: 30px;">Lote</th>
-                                <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
-                                <?php } ?>
-
-                                <th class="text-center" style="width: 10px;">Sacos</th>
-
-                                <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
-                                <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
-                                <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="10"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
+                            <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
+                            <?php } ?>
                                 
-                                <?php  if( $SuperUser["sede"]=="T-Callao"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
-                                    <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
-                                <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
-                                <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="5"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
+                            <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
+                            <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
+                            <?php } ?>
 
-                                <th class="text-center" style="width: 10px;">F.Produccion</th>
-                                <th class="text-center" style="width: 10px;">F.Vencimiento</th>
-                                <th class="text-center" style="width: 10px;">Fecha_Ejecucion</th>
-                                <th class="text-center" style="width: 10px;">Responsable</th>
+                            <th class="text-center" style="width: 10px;">F.Produccion</th>
+                            <th class="text-center" style="width: 10px;">F.Vencimiento</th>
+                            <th class="text-center" style="width: 10px;">Fecha_Ejecucion</th>
+                            <th class="text-center" style="width: 10px;">Responsable</th>
 
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
-                                    style="width: 100px;">Almacen</th> <?php } ?>
+                            <?php if( $SuperUser["sede"]=="9") 
+                            {?>
+                                <th class="text-center"style="width: 100px;">Almacen</th> <?php } ?>
                                 <th class="text-center" style="width: 100px;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($all_categories as $cat):?>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <?php foreach ($all_categories as $cat):?>
                             <tr>
-                            
                                 <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
@@ -108,8 +99,10 @@
                                 <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
                                 <td><?php echo changeFormat_date($cat['f_actividad'],'d/m/Y'); ?></td>
                                 <td><?php echo $cat['responsable']; ?></td>
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
-                                    <?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
+                                <?php if( $SuperUser["sede"]=="9") 
+                                {?>
+                                    <td><?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> 
+                                <?php } ?>
 
                                 <td class="text-center">
                                     <div class="btn-group">
@@ -126,28 +119,22 @@
                                 </td>
 
                             </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">
-                            Total de sacos: <span id="total" class="badge badge-light"></span>
-                            
-                        </button>
-                    
-                    </div>
-                    
-                    
-                    
+                <div class="col">
+                    <button type="button" class="btn btn-primary">
+                        Total de sacos: <span id="total" class="badge badge-light"></span>
+                    </button>
                 </div>
+   
             </div>
         </div>
     </div>
+</div>
 
-
-
-    <?php include_once('layouts/footer.php'); ?>
+<?php include_once('layouts/footer.php'); ?>
 
     <!-- Busqueda por columna -->
 
@@ -288,11 +275,5 @@
                     }
                 });
             });
-        });
-        </script>
-
-
-
-
-        <?php include_once('layouts/footer.php'); ?>
-        
+        }); 
+</script>

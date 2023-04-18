@@ -9,145 +9,132 @@
 -->
 
 <?php
-  $page_title = 'Editar Almacen';
-  require_once('includes/load.php');
-  $SuperUser = current_user();
-  // Checkin What level user has permission to view this page
-  page_require_level(2);
-  if( $SuperUser["sede"]=="T-Chimb") $table="history_tasachimb";
-  if( $SuperUser["sede"]=="T-Samanco") $table="sede_samanco";
-  if( $SuperUser["sede"]=="T-Supe") $table="sede_supe";
-  if( $SuperUser["sede"]=="T-Vegueta") $table="history_vegueta";
-  if( $SuperUser["sede"]=="T-Callao") $table="history_callao";
-  if( $SuperUser["sede"]=="T-Pisco") $table="sede_pisco";
-  if( $SuperUser["sede"]=="T-Atico") $table="sede_atico";
-  if( $SuperUser["sede"]=="T-Matarani") $table="sede_matarani";
-  if( $SuperUser["sede"]=="E-Chimbote") $table="sede_exalmar_chim";
-  if( $SuperUser["sede"]=="E-Chicama") $table="history_exalmal";
+    $page_title = 'Editar Almacen';
+    require_once('includes/load.php');
+    $SuperUser = current_user();
+    // Checkin What level user has permission to view this page
+    page_require_level(2);
+    if( $SuperUser["sede"]=="1") $table="history_tasachimb";
+    if( $SuperUser["sede"]=="2") $table="sede_samanco";
+    if( $SuperUser["sede"]=="3") $table="sede_supe";
+    if( $SuperUser["sede"]=="4") $table="history_vegueta";
+    if( $SuperUser["sede"]=="5") $table="history_callao";
+    if( $SuperUser["sede"]=="6") $table="sede_pisco";
+    if( $SuperUser["sede"]=="7") $table="sede_atico";
+    if( $SuperUser["sede"]=="8") $table="sede_matarani";
+    if( $SuperUser["sede"]=="9") $table="sede_exalmar_chim";
+    if( $SuperUser["sede"]=="10") $table="history_exalmal";
 
-?>
-<?php
-  //Display all catgories.
-  $categorie = find_by_id($table,(int)$_GET['id']);
-  // $dateHistory = find_by_codRumaHistory($table,$_POST['cod_ruma'],$_POST['placa']);
-  if(!$categorie){
-    $session->msg("d","Missing categorie id.");
-    redirect('history.php');
-  }
-?>
+    $categorie = find_by_id($table,(int)$_GET['id']);
+    // $dateHistory = find_by_codRumaHistory($table,$_POST['cod_ruma'],$_POST['placa']);
+    if(!$categorie)
+    {
+        $session->msg("d","Missing categorie id.");
+        redirect('history.php');
+    }
 
-<?php
-if(isset($_POST['edit_cat']))
-{
+    if(isset($_POST['edit_cat']))
+    {
 
-$req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+        $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+        validate_fields($req_field);
+        $cat_sector = remove_junk($db->escape($_POST['sector']));
+        $cat_tipo = remove_junk($db->escape($_POST['tipo']));
+        $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
+        $cat_saco = remove_junk($db->escape($_POST['cant_saco']));
+        $cat_producc = remove_junk($db->escape($_POST['date_producc']));
+        $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
+        $cat_calidad = remove_junk($db->escape($_POST['calidad']));
+        $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+        if($SuperUser["sede"]=="5"||$SuperUser["sede"]=="4")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+        $cat_observation = remove_junk($db->escape($_POST['observation']));
+        $cat_descripcion = remove_junk($db->escape($_POST['description']));
 
- 
-  validate_fields($req_field);
-
-  $cat_sector = remove_junk($db->escape($_POST['sector']));
-  $cat_tipo = remove_junk($db->escape($_POST['tipo']));
-  $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-  $cat_saco = remove_junk($db->escape($_POST['cant_saco']));
-  $cat_producc = remove_junk($db->escape($_POST['date_producc']));
-  $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
-  $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-  $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-  if($SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta")  $cat_placa = remove_junk($db->escape($_POST['placa']));
-  $cat_observation = remove_junk($db->escape($_POST['observation']));
-  $cat_descripcion = remove_junk($db->escape($_POST['description']));
-
-  //if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen = remove_junk($db->escape($_POST['almacen']));
-  
-  if(empty($errors))
-  {
-    //$findCatRuma = find_by_codRuma( $table, $_POST[ 'cod_ruma']);
-    //if(!$findCatRuma)
-    //{
-      if($cat_saco<1001)
-      {   
-        if($SuperUser["sede"]=="T-Callao") 
+        //if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen = remove_junk($db->escape($_POST['almacen']));
+        
+        if(empty($errors))
         {
-            $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
-            $sql .= " WHERE id='{$categorie['id']}'";
-        }else if($SuperUser["sede"]=="T-Vegueta"){
-            $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
-            $sql .= " WHERE id='{$categorie['id']}'";
-        }else{
-            $sql   = "UPDATE $table SET";
-            $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
-            $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
-            $sql .= " WHERE id='{$categorie['id']}'";
-        }
-            $result = $db->query($sql);
-            
-       
-            if($result && $db->affected_rows() === 1) 
-            {
-              $session->msg("s", "Ruma actualizada con éxito.");
-              redirect('history.php',false);
-            } else {
-              $session->msg("d", "Lo siento, actualización falló.");
-              redirect('history.php',false);
+            if($cat_saco<1001)
+            {   
+                if($SuperUser["sede"]=="5") 
+                {
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
+                    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',descripcion='{$cat_descripcion}'";
+                    $sql .= " WHERE id='{$categorie['id']}'";
+
+                }else if($SuperUser["sede"]=="4")
+                {
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
+                    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
+                    $sql .= " WHERE id='{$categorie['id']}'";
+
+                }else{
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}',tipo ='{$cat_tipo}' ,";
+                    $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}'";
+                    $sql .= " WHERE id='{$categorie['id']}'";
+                }
+                $result = $db->query($sql);
+                
+                if($result && $db->affected_rows() === 1) 
+                {
+                    $session->msg("s", "Ruma actualizada con éxito.");
+                    redirect('history.php',false);
+                } else {
+                    $session->msg("d", "Lo siento, actualización falló.");
+                    redirect('history.php',false);
+                }
+                
+        
+            }else{
+
+                $session->msg("d", "Excedió el límite de cantidad.");
+                redirect('history.php',false);
             }
-         
-  
-      }else{
-        $session->msg("d", "Excedió el límite de cantidad.");
-        redirect('history.php',false);
-      }
 
-   
+        
 
-  } else {
-    $session->msg("d", $errors);
-    redirect('history.php',false);
-  }
-}
+        } else {
+            $session->msg("d", $errors);
+            redirect('history.php',false);
+        }
+    }
+
+include_once('layouts/header.php'); 
 ?>
-<?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-    <div class="col-md-12">
-        <?php echo display_msg($msg); ?>
-    </div>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
                 <span class="glyphicon glyphicon-indent-left"></span>
-                 <span>Editando Historial Ruma: <b style="color: red;"><?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></b></span>
-
+                <span>Editando Historial Ruma: <b style="color: red;"><?php echo remove_junk(ucfirst($categorie['cod_ruma']));?></b></span>
             </strong>
-
         </div>
-        <div class="panel-body">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-12 edit_form">
 
+        <div class="panel-body">
+            <div class="col-md-3"></div>
+            <div class="col-md-12 edit_form">
                 <form method="post" action="edit_history.php?id=<?php echo (int)$categorie['id'];?>">
-                    
-                     <div class="form-group col-md-12">
-                      <label for="name" class="control-label">Selecione Antioxidante</label>
+                    <div class="form-group col-md-12">
+                        <label for="name" class="control-label">Selecione Antioxidante</label>
                         <select name="tipo" <?php echo (int)$categorie['id'];?> style="width:100%;">
                             <!-- Opciones de la lista -->
                             <option value="BHT"
-                                <?php if($categorie['tipo']=="BHT"){;?>selected <?php } ?>>
-                                BHT</option>
+                                <?php if($categorie['tipo']=="BHT"){;?>selected <?php } ?>>BHT
+                            </option>
                             <option value="Etoxiquina"
-                                <?php if($categorie['tipo']=="Etoxiquina"){;?>selected <?php } ?>>
-                                Etoxiquina</option> <!-- Opción por defecto -->
-                         
+                                <?php if($categorie['tipo']=="Etoxiquina"){;?>selected <?php } ?>>Etoxiquina
+                            </option> <!-- Opción por defecto -->
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <?php  if( $SuperUser["sede"]=="T-Callao"){?> <label for="name" class="control-label">Lote</label>
+                        <?php  if( $SuperUser["sede"]=="5")
+                        {?> 
+                            <label for="name" class="control-label">Lote</label>
                         <?php }else {  ?> <label for="name" class="control-label">Codigo Ruma</label>
                         <?php } ?> 
                         <input type="text" class="form-control" name="cod_ruma"
@@ -161,31 +148,30 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
 
                     <div class="form-group col-md-6">
                         
-                        <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <label for="name" class="control-label">Cuartel</label>
+                        <?php  if( $SuperUser["sede"]=="10"){?> <label for="name" class="control-label">Cuartel</label>
                         <?php }else {  ?> <label for="name" class="control-label">Sector</label>
                         <?php } ?>  
                         <input type="text" class="form-control" name="sector" value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
                         
                     </div>
 
-                  
-
                     <div class="form-group col-md-6">
-                        <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <label for="name" class="control-label">Ubicación</label>
+                        <?php  if( $SuperUser["sede"]=="5"){?>  <label for="name" class="control-label">Ubicación</label>
                         <?php }else {  ?>  <label for="name" class="control-label">Carril</label>
                         <?php } ?> 
                         <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
                     </div>
 
-                    <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> 
-                      <div class="form-group col-md-6">
-                          <label for="name" class="control-label">Placa</label>
-                          <input type="text" class="form-control" name="placa"
+                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4")
+                    {?> 
+                        <div class="form-group col-md-6">
+                            <label for="name" class="control-label">Placa</label>
+                            <input type="text" class="form-control" name="placa"
                               value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
-                      </div>
+                        </div>
                     <?php }?> 
                    
-                     <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="name" class="control-label">Calidad</label>
                         <input type="text" class="form-control" name="calidad"
                             value="<?php echo remove_junk(ucfirst($categorie['calidad']));?>">
@@ -207,16 +193,14 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
                             value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
                     </div>
                    
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
-                      <div class="form-group col-md-6">
-                          <label for="name" class="control-label">Descripcion</label>
-                          <input type="text" class="form-control" name="description"
-                              value="<?php echo remove_junk(ucfirst($categorie['descripcion']));?>">
-                      </div>
+                    <?php  if( $SuperUser["sede"]=="5")
+                    {?> 
+                        <div class="form-group col-md-6">
+                            <label for="name" class="control-label">Descripcion</label>
+                            <input type="text" class="form-control" name="description"
+                                value="<?php echo remove_junk(ucfirst($categorie['descripcion']));?>">
+                        </div>
                     <?php }?> 
-                  
-
-
 
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_cat"
@@ -229,12 +213,11 @@ $req_field = array('sector','tipo', 'cant_saco', 'date_producc', 'date_vencimien
     </div>
 </div>
 
-
-
 <?php include_once('layouts/footer.php'); ?>
 
 <script>
-    function changeDateVen(data){
+    function changeDateVen(data)
+    {
         var fecha =data.value;
         var domDateV= document.getElementById("dateV");
         var start=new Date(fecha);

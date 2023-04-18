@@ -43,10 +43,9 @@
       redirect('add_user.php',false);
     }
   }
-  
+  include_once('layouts/header.php');
 ?>
-<?php include_once('layouts/header.php'); ?>
-  <?php echo display_msg($msg); ?>
+
   <div class="row">
     <div class="panel panel-default ">
       <div class="panel-heading">
@@ -63,49 +62,48 @@
             <div class="material-textfield">
               <input placeholder=" " type="text" name="full-name" required>
               <label>Nombre</label>
-          </div>
+            </div>
 
-          <div class="material-textfield">
-              <input placeholder=" " type="text" name="username" required>
-              <label>Usuario</label>
-          </div>
+            <div class="material-textfield">
+                <input placeholder=" " type="text" name="username" required>
+                <label>Usuario</label>
+            </div>
 
-          <div class="material-textfield">
-              <input placeholder=" " type="password" name="password" required>
-              <label>Contraseña</label>
-          </div>
+            <div class="material-textfield">
+                <input placeholder=" " type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
 
-        <div class="material-textfield">
+            <div class="material-textfield">
               <label class="select" for="sede">Selecciona Sede:</label>
-                <select class="form-control" name="sede">
-              
-                  <?php foreach ($sedes as $sed ):?>
-                    <option value="<?php echo $sed['id'];?>"><?php echo ucwords($sed['name']);?></option>
-                  <?php endforeach;?>
-                
-                </select>
+              <select class="form-control" name="sede">
+                <?php foreach ($sedes as $sed ):?>
+                  <option value="<?php echo $sed['id'];?>"><?php echo ucwords($sed['name']);?></option>
+                <?php endforeach;?>
+              </select>
             </div>
 
             <div class="material-textfield">
               <label class="select" for="level">Rol de usuario</label>
-                <select class="form-control" name="level">
-                  <?php foreach ($groups as $group ):?>
-                   <option value="<?php echo $group['group_level'];?>"><?php echo ucwords($group['group_name']);?></option>
+              <select class="form-control" name="level">
+                <?php foreach ($groups as $group ):?>
+                  <option value="<?php echo $group['group_level'];?>"><?php echo ucwords($group['group_name']);?></option>
                 <?php endforeach;?>
-                </select>
+              </select>
             </div>
+
             <div class="form-group clearfix">
               <button style="width:100%;border-radius: 50px;    margin-top: 15px;" type="submit" name="add_user" class="btn btn-primary">Guardar</button>
-
             </div>
+
           </form>
         </div>
+
         <div class="col-md-3">
         </div>              
        
 
       </div>
-
     </div>
   </div>
 

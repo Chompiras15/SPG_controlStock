@@ -8,206 +8,205 @@
 -->
 
 <?php
-  $page_title = 'Pnc_Almacen';
-  require_once('includes/load.php');
-  $table = "";
-  //require_once('includes/load.php');
-  $SuperUser = current_user();
-  // Checkin What level user has permission to view this page
-  page_require_level(3);
 
-  if( $SuperUser["sede"]=="T-Callao") {$table="sede_pnc_callao"; $tableHistory="history_callao";};
+    $page_title = 'Pnc_Almacen';
+    require_once('includes/load.php');
+    $table = "";
+    //require_once('includes/load.php');
+    $SuperUser = current_user();
+    // Checkin What level user has permission to view this page
+    page_require_level(3);
+
+    if( $SuperUser["sede"]=="5") {$table="sede_pnc_callao"; $tableHistory="history_callao";};
   
-  $all_categories = find_all($table)
-?>
+    $all_categories = find_all($table);
 
-<?php
- if(isset($_POST['add_cat']))
- {
-   $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
-   
-   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
-   else $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
-   
-   validate_fields($req_field);
-
-    $cat_sector = remove_junk($db->escape($_POST['sector']));
-    $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
-    $cat_tipo = remove_junk($db->escape($_POST['tipo']));
-    $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
-    $cat_sacos = remove_junk($db->escape($_POST['cant_saco']));
-    $cat_producc = remove_junk($db->escape($_POST['date_producc']));
-    $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
-    $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    if($SuperUser["sede"]=="T-Callao")  
+    if(isset($_POST['add_cat']))
     {
-        $cat_placa = remove_junk($db->escape($_POST['placa']));
-        $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
-    };
-    $cat_observation = remove_junk($db->escape($_POST['observation']));
- 
-    if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
+        $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
    
-    //$date   = make_date();
+        if( $SuperUser["sede"]=="9")  $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
+        else $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+   
+        validate_fields($req_field);
 
-    $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
-    
-    if($sumaSacos<=1000)
-    {
-        if(!$findCatRuma)
+        $cat_sector = remove_junk($db->escape($_POST['sector']));
+        $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
+        $cat_tipo = remove_junk($db->escape($_POST['tipo']));
+        $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
+        $cat_sacos = remove_junk($db->escape($_POST['cant_saco']));
+        $cat_producc = remove_junk($db->escape($_POST['date_producc']));
+        $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
+        $cat_calidad = remove_junk($db->escape($_POST['calidad']));
+        $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+        
+        if($SuperUser["sede"]=="5")  
         {
+            $cat_placa = remove_junk($db->escape($_POST['placa']));
+            $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
+        };
+        $cat_observation = remove_junk($db->escape($_POST['observation']));
+    
+        if( $SuperUser["sede"]=="9")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
+    
+        //$date   = make_date();
 
-            if(empty($errors))
+        $sumaSacos=(int)$cat_sacos+(int)$findCatRuma["cant_saco"];
+    
+        if($sumaSacos<=1000)
+        {
+            if(!$findCatRuma)
             {
-              if( $SuperUser["sede"]=="E-Chimbote") 
-              {
-                $sql  = "INSERT INTO $table (";
-                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
-                $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
-               
-              }else if($SuperUser["sede"]=="T-Callao") 
-              {
-                $sql= "INSERT INTO $table (";
-                $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
-                $sql.=") VALUES (";
-                $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
-                $sql.=")";
 
-                
-              }else
-              {
-                $sql  = "INSERT INTO $table (";
-                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
-                $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
-                $sql .=")";
-                $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
-              }
-
-              if($db->query($sql))
-              {
-
-                if( $SuperUser["sede"]=="T-Callao")
+                if(empty($errors))
                 {
-                    $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
-                    $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}',{$cat_actividad},'{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
-                    $sql2.=")";
+                    if( $SuperUser["sede"]=="9") 
+                    {
+                        $sql  = "INSERT INTO $table (";
+                        $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
+                        $sql .=") VALUES (";
+                        $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}'";
+                        $sql .=")";
+                        $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+                    
+                    }else if($SuperUser["sede"]=="5") 
+                    {
+                        $sql= "INSERT INTO $table (";
+                        $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
+                        $sql.=") VALUES (";
+                        $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
+                        $sql.=")";
 
-                }else 
-                {
-                    $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
-                    $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
-                    $sql2.=")";
-                };
-                
-                if($db->query($sql2))
-                {
-                    $session->msg("s", "RUMA AGREGADO CON EXITO.");
-                    redirect('pnc_almacen.php',false);
-                }else{
-                    $session->msg("d", "Lo siento, Registro falló");
-                    redirect('pnc_almacen.php',false);
-                }
-                //$session->msg("s", "Ruma agregada exitosamente.");
-                //redirect('almacen.php',false);
-              } else {
-                $session->msg("d", "Lo siento, Registro falló");
-                redirect('pnc_almacen.php',false);
-              }
+                    }else{
+
+                        $sql  = "INSERT INTO $table (";
+                        $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                        $sql .=") VALUES (";
+                        $sql .=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                        $sql .=")";
+                        $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
+                    }
+
+                    if($db->query($sql))
+                    {
+
+                        if( $SuperUser["sede"]=="5")
+                        {
+                            $sql2= "INSERT INTO $tableHistory (";
+                            $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                            $sql2.=") VALUES (";
+                            $sql2.=" '{$cat_sector}',{$cat_actividad},'{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                            $sql2.=")";
+
+                        }else 
+                        {
+                            $sql2= "INSERT INTO $tableHistory (";
+                            $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                            $sql2.=") VALUES (";
+                            $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                            $sql2.=")";
+                        };
+                        
+                        if($db->query($sql2))
+                        {
+                            $session->msg("s", "RUMA AGREGADO CON EXITO.");
+                            redirect('pnc_almacen.php',false);
+
+                        }else{
+
+                            $session->msg("d", "Lo siento, Registro falló");
+                            redirect('pnc_almacen.php',false);
+                        }
+                        //$session->msg("s", "Ruma agregada exitosamente.");
+                        //redirect('almacen.php',false);
+                    } else {
+
+                        $session->msg("d", "Lo siento, Registro falló");
+                        redirect('pnc_almacen.php',false);
+                    }
               
 
-            } else {
-              $session->msg("d", $errors);
-              redirect('pnc_almacen.php',false);
-            }
+                } else {
+                    
+                    $session->msg("d", $errors);
+                    redirect('pnc_almacen.php',false);
+                }
 
-        }else 
-        {
-            //UPDATE DATA ALMACEN 
+            }else {
+                //UPDATE DATA ALMACEN 
             
-            if( $SuperUser["sede"]=="E-Chimbote") 
-            {
-
-                $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
-                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-
-            }else if( $SuperUser["sede"]=="T-Callao") {
-
-                $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}' ,tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
-                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-    
-            }else
-            {
-                $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}', f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
-                $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
-                $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
-            };
-
-            $result = $db->query($sql);
-
-            if($result && $db->affected_rows() === 1) 
-            {
-                if( $SuperUser["sede"]=="T-Callao")
+                if( $SuperUser["sede"]=="9") 
                 {
-                    $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
-                    $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
-                    $sql2.=")";
 
-                }else 
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
+                    $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
+                    $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+
+                }else if( $SuperUser["sede"]=="5") {
+
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}' ,tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                    $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
+                    $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+        
+                }else
                 {
-                    $sql2= "INSERT INTO $tableHistory (";
-                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
-                    $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
-                    $sql2.=")";
+                    $sql   = "UPDATE $table SET";
+                    $sql  .=" sector ='{$cat_sector}', f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
+                    $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
+                    $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
                 };
 
-                $history = $db->query($sql2);
+                $result = $db->query($sql);
 
-                if($history)
+                if($result && $db->affected_rows() === 1) 
                 {
-                    $session->msg("s", "Almacen actualizada con éxito.");
-                    redirect('pnc_almacen.php',false);
-                 } else {
-                    $session->msg("d", "no se guardo.");
-                    redirect('pnc_almacen.php',false);
+                    if( $SuperUser["sede"]=="5")
+                    {
+                        $sql2= "INSERT INTO $tableHistory (";
+                        $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
+                        $sql2.=") VALUES (";
+                        $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                        $sql2.=")";
+
+                    }else 
+                    {
+                        $sql2= "INSERT INTO $tableHistory (";
+                        $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
+                        $sql2.=") VALUES (";
+                        $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$SuperUser['name']}'";
+                        $sql2.=")";
+                    };
+
+                    $history = $db->query($sql2);
+
+                    if($history)
+                    {
+                        $session->msg("s", "Almacen actualizada con éxito.");
+                        redirect('pnc_almacen.php',false);
+                    } else {
+                        $session->msg("d", "no se guardo.");
+                        redirect('pnc_almacen.php',false);
+                    } 
+                
                 } 
+
+            }
             
-            } 
+            $session->msg("d", " que va Almacenar");
+            redirect('pnc_almacen.php',false);  
+        
+        }else{
 
+            $session->msg("d", "Verifique la cantidad que va Almacenar");
+            redirect('pnc_almacen.php',false);
         }
-        $session->msg("d", " que va Almacenar");
-        redirect('pnc_almacen.php',false);  
-    }else{
-      $session->msg("d", "Verifique la cantidad que va Almacenar");
-      redirect('pnc_almacen.php',false);
     }
-}
+include_once('layouts/header.php');
 ?>
-<?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-    <div class="col-md-12">
-        <?php echo display_msg($msg); ?>
-    </div>
-</div>
-<div class="row">
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <strong>
@@ -218,12 +217,12 @@
         </div>
 
         <div class="panel-body">
-            <div class="col-md-3">
-            </div>
+            <div class="col-md-3"></div>
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_pnc_almacen.php">
                     
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                    <?php  if( $SuperUser["sede"]=="5")
+                    {?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
                             <label>Placa Vehicular</label>
@@ -260,7 +259,7 @@
                         <input placeholder=" " type="date" name="date_vencimiento" id="dateV" required>
 
                     </div>
-                     <div class="material-textfield">
+                    <div class="material-textfield">
                         <label class="select">Fecha_Ejecución</label>
                         <input placeholder=" " type="date" name="f_actividad" required>
 
@@ -268,11 +267,10 @@
                     
                     <div class="material-textfield">
                         <label class="select" for="tipo">Selecciona Antioxidante:</label>
-                         <select class="form-control" name="tipo">
-                        <!-- Opciones de la lista -->
+                        <select class="form-control" name="tipo">
+                            <!-- Opciones de la lista -->
                             <option value="BHT" selected>BHT</option>
                             <option value="Etoxiquina">Etoxiquina</option> <!-- Opción por defecto -->
-                           
                         </select>
                     </div>
                    
@@ -280,28 +278,29 @@
                         <input placeholder=" " type="text" name="observation" required>
                         <label>Observacion</label>
                     </div>
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
-                     <div class="material-textfield">
-                        <input placeholder=" " type="text" name="descripcion" >
-                        <label>Descripcion</label>
-                    </div>
+                    <?php  if( $SuperUser["sede"]=="5")
+                    {?> 
+                        <div class="material-textfield">
+                            <input placeholder=" " type="text" name="descripcion" >
+                            <label>Descripcion</label>
+                        </div>
                     <?php }?> 
 
-                    <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                    <?php if( $SuperUser["sede"]=="9") 
+                    {?>
 
-                    <div class="material-textfield">
-                        <label class="select" for="almacen">Nombre de Almacen</label>
-                        <select class="form-control" name="almacen">
-                            <!-- Opciones de la lista -->
-                            <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
-                            <option value="Blackar">Almacen de Blackar</option>
-                            <option value="Bpo">Almacen de Bpo</option>
-                            <option value="Promosa">Almacen de Promasa</option>
-                        </select>
-                    </div>
-
-
+                        <div class="material-textfield">
+                            <label class="select" for="almacen">Nombre de Almacen</label>
+                            <select class="form-control" name="almacen">
+                                <!-- Opciones de la lista -->
+                                <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
+                                <option value="Blackar">Almacen de Blackar</option>
+                                <option value="Bpo">Almacen de Bpo</option>
+                                <option value="Promosa">Almacen de Promasa</option>
+                            </select>
+                        </div>
                     <?php } ?>
+
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type='submit' name='add_cat'
                             class='btn btn-info'>Guardar</button>
@@ -315,7 +314,8 @@
 
 <?php include_once('layouts/footer.php'); ?>
 <script>
-    function changeDateVen(data){
+    function changeDateVen(data)
+    {
         var fecha =data.value;
         var domDateV= document.getElementById("dateV");
         var start=new Date(fecha);

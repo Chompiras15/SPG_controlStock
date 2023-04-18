@@ -9,99 +9,77 @@
 -->
 
 <?php
-  $page_title = 'SGP - ACTIVIDADES';
-  require_once('includes/load.php');
+    $page_title = 'SGP - ACTIVIDADES';
+    require_once('includes/load.php');
 
-  // Checkin What level user has permission to view this page
-  page_require_level(5); // verifica el nivel de usuario 
+    // Checkin What level user has permission to view this page
+    page_require_level(5); // verifica el nivel de usuario 
 
-  $tableActi = "";
-  $SuperUser = current_user();
-  if( $SuperUser["sede"]=="1"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
-  if( $SuperUser["sede"]=="2") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
-  if( $SuperUser["sede"]=="3") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
-  if( $SuperUser["sede"]=="4"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
-  if( $SuperUser["sede"]=="5") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
-  if( $SuperUser["sede"]=="6") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
-  if( $SuperUser["sede"]=="7") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
-  if( $SuperUser["sede"]=="8") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
-  if( $SuperUser["sede"]=="9") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
-  if( $SuperUser["sede"]=="10") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
+    $tableActi = "";
+    $SuperUser = current_user();
+    if( $SuperUser["sede"]=="1"){ $tableActi="activity_tasachim";$tabla_sed="sede_tasachimbote";}
+    if( $SuperUser["sede"]=="2") {$tableActi="activity_samanco";$tabla_sed="sede_samanco";}
+    if( $SuperUser["sede"]=="3") {$tableActi="activity_supe";$tabla_sed="sede_supe";}
+    if( $SuperUser["sede"]=="4"){ $tableActi="activity_vegueta";$tabla_sed="sede_vegueta";}
+    if( $SuperUser["sede"]=="5") {$tableActi="activity_callao";$tabla_sed="sede_callao";}
+    if( $SuperUser["sede"]=="6") {$tableActi="activity_pisco";$tabla_sed="sede_pisco";}
+    if( $SuperUser["sede"]=="7") {$tableActi="activity_atico";$tabla_sed="sede_atico";}
+    if( $SuperUser["sede"]=="8") {$tableActi="activity_matarani";$tabla_sed="sede_matarani";}
+    if( $SuperUser["sede"]=="9") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
+    if( $SuperUser["sede"]=="10") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 
- 
-  //$all_actividades = find_all_sale();
-  $all_actividades = find_all($tableActi)
+    $all_actividades = find_all($tableActi);
+    include_once('layouts/header.php');
+
 ?>
 
-</div>
-<?php //include_once('layouts/footer.php'); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad</title>
-
-
-
-    <style>
+<style>
     /*estilos para la tabla*/
-    table th {
+    table th 
+    {
         background-color: #001f3f;
-        ;
         color: white;
     }
-    </style>
-
-</head>
-
-<body>
+</style>
 
 
-
-    <?php include_once('layouts/header.php'); ?>
-
-    <div class="row">
-        <div class="col-md-12">
-            <?php echo display_msg($msg); ?>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <?php echo display_msg($msg); ?>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading clearfix contTitleTT">
-                    <strong>
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        <span>Lista de Actividades</span>
+</div>
 
-                    </strong>
-                    <a href="add_actividad.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Actividad"></i></a>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered " id="tabla">
-
-                        <thead>
-                            <tr>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix contTitleTT">
+                <strong>
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <span>Lista de Actividades</span>
+                </strong>
+                <a href="add_actividad.php" class="pull-right btn-sm contButtonTT"><i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Actividad"></i></a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered " id="tabla">
+                    <thead>
+                        <tr>
                               
-                                <th class="text-center" style="width: 50px;">Actividad</th>
-                                <th class="text-center" style="width: 50px;">Detalle</th>
-                                <th class="text-center" style="width: 50px;">Observacion</th>
-                                <th class="text-center" style="width: 50px;">auxiliares</th>
-                                <th class="text-center" style="width: 10px;">Inició</th>
-                                <th class="text-center" style="width: 100px;">Terminó</th>
-                                <th class="text-center" style="width: 10px;">&nbsp&nbsp&nbspFecha&nbsp&nbsp&nbsp  </th>
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                            <th class="text-center" style="width: 50px;">Actividad</th>
+                            <th class="text-center" style="width: 50px;">Detalle</th>
+                            <th class="text-center" style="width: 50px;">Observacion</th>
+                            <th class="text-center" style="width: 50px;">auxiliares</th>
+                            <th class="text-center" style="width: 10px;">Inició</th>
+                            <th class="text-center" style="width: 100px;">Terminó</th>
+                            <th class="text-center" style="width: 10px;">&nbsp&nbsp&nbspFecha&nbsp&nbsp&nbsp  </th>
+                                <?php if( $SuperUser["sede"]=="9") {?><th class="text-center"
                                     style="width: 100px;">Almacen</th> <?php } ?>
-                                <th class="text-center" style="width: 10px;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($all_actividades as $act):?>
+                            <th class="text-center" style="width: 10px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($all_actividades as $act):?>
                             <tr>
-                                
+                                    
                                 <td><?php echo remove_junk(ucfirst($act['nameActivity'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['details'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['observation'])); ?></td>
@@ -109,52 +87,44 @@
                                 <td><?php echo remove_junk(ucfirst($act['hora_ini'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($act['hora_fin'])); ?></td>
                                 <td><?php echo read_onlyDate($act['fecha']); ?></td>
-                                <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td>
-                                    <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
-
-
+                                <?php if( $SuperUser["sede"]=="9") 
+                                {?>
+                                    <td> <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> 
+                                <?php } ?>
 
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a style ="margin-right: 7px;padding: 5px;" href="edit_actividad.php?id=<?php echo (int)$act['id'];?>"
-                                            class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                                        <a style ="margin-right: 7px;padding: 5px;" href="edit_actividad.php?id=<?php echo (int)$act['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                                             <span class="glyphicon glyphicon-edit"></span>
                                         </a>
-                                        <a style ="padding: 5px;" href="delete_actividad.php?id=<?php echo (int)$act['id'];?>"
-                                            class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                                        <a style ="padding: 5px;" href="delete_actividad.php?id=<?php echo (int)$act['id'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
                                 </td>
 
                             </tr>
-                            <!----------------------------------------------->
+                           
+                        <?php endforeach; ?>
+                    </tbody>
 
-                            <!----------------------------------------------->
-
-                            <?php endforeach; ?>
-                        </tbody>
-
-                    </table>
-                </div>
-
+                </table>
             </div>
 
         </div>
 
     </div>
 
-    </div>
+</div>
 
+<?php include_once('layouts/footer.php'); ?>
 
-    <?php include_once('layouts/footer.php'); ?>
+<script>
+    var today=Date.now();
+    var t=new Date(today);
 
-    <!-- Busqueda por columna -->
-
-    <script>
-         var today=Date.now();
-            var t=new Date(today);
-    $(document).ready(function() {
+    $(document).ready(function() 
+    {
         var table = $('#tabla').DataTable({
             responsive: true,
             dom: 'B<"clear">lfrtp',
@@ -281,6 +251,6 @@
             });
         });
     });
-    </script>
+</script>
 
-    <?php include_once('layouts/footer.php'); ?>
+   

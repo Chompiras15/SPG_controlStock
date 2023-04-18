@@ -1,71 +1,86 @@
 <?php
-  $page_title = 'Editar Usuario';
-  require_once('includes/load.php');
-  // Checkin What level user has permission to view this page
-   page_require_level(1);
-?>
-<?php
-  $e_user = find_by_id('users',(int)$_GET['id']);
-  $groups  = find_all('user_groups');
-  if(!$e_user){
-    $session->msg("d","Missing user id.");
-    redirect('users.php');
-  }
-?>
+    $page_title = 'Editar Usuario';
+    require_once('includes/load.php');
+    // Checkin What level user has permission to view this page
+    page_require_level(1);
 
-<?php
-//Update User basic info
-  if(isset($_POST['update'])) {
-    $req_fields = array('name','username','level');
-    validate_fields($req_fields);
-    if(empty($errors)){
-             $id = (int)$e_user['id'];
-           $name = remove_junk($db->escape($_POST['name']));
-       $username = remove_junk($db->escape($_POST['username']));
-          $level = (int)$db->escape($_POST['level']);
-       $status   = remove_junk($db->escape($_POST['status']));
-       $sede   = remove_junk($db->escape($_POST['sede']));
-            $sql = "UPDATE users SET name ='{$name}', username ='{$username}',user_level='{$level}',status='{$status}',sede='{$sede}' WHERE id='{$db->escape($id)}'";
-         $result = $db->query($sql);
-          if($result && $db->affected_rows() === 1){
-            $session->msg('s',"Cuenta de Usuario Actualizada ");
-            redirect('users.php', false);
-          } else {
-            $session->msg('d',' Lo siento no se actualizó los datos.');
-            redirect('edit_user.php?id='.(int)$e_user['id'], false);
-          }
-    } else {
-      $session->msg("d", $errors);
-      redirect('edit_user.php?id='.(int)$e_user['id'],false);
+    $e_user = find_by_id('users',(int)$_GET['id']);
+    $groups  = find_all('user_groups');
+    $sedes = find_all('sedes');
+    if(!$e_user)
+    {
+        $session->msg("d","Missing user id.");
+        redirect('users.php');
     }
-  }
-?>
-<?php
-// Update user password
-if(isset($_POST['update-pass'])) {
-  $req_fields = array('password');
-  validate_fields($req_fields); 
-  if(empty($errors)){
-           $id = (int)$e_user['id'];
-     $password = remove_junk($db->escape($_POST['password']));
-     $h_pass   = sha1($password);
-          $sql = "UPDATE users SET password='{$h_pass}' WHERE id='{$db->escape($id)}'";
-       $result = $db->query($sql);
-        if($result && $db->affected_rows() === 1){
-          $session->msg('s',"Se ha actualizado la contraseña del usuario. ");
-          redirect('edit_user.php?id='.(int)$e_user['id'], false);
-        } else {
-          $session->msg('d','No se pudo actualizar la contraseña de usuario..');
-          redirect('edit_user.php?id='.(int)$e_user['id'], false);
-        }
-  } else {
-    $session->msg("d", $errors);
-    redirect('edit_user.php?id='.(int)$e_user['id'],false);
-  }
-}
 
+    if(isset($_POST['update'])) 
+    {
+        $req_fields = array('name','username','level');
+        validate_fields($req_fields);
+        
+        if(empty($errors))
+        {
+            $id = (int)$e_user['id'];
+            $name = remove_junk($db->escape($_POST['name']));
+            $username = remove_junk($db->escape($_POST['username']));
+            $level = (int)$db->escape($_POST['level']);
+            $status   = remove_junk($db->escape($_POST['status']));
+            $sede   = remove_junk($db->escape($_POST['sede']));
+            
+            $sql = "UPDATE users SET name ='{$name}', username ='{$username}',user_level='{$level}',status='{$status}',sede='{$sede}' WHERE id='{$db->escape($id)}'";
+            $result = $db->query($sql);
+            
+            if($result && $db->affected_rows() === 1)
+            {
+                $session->msg('s',"Cuenta de Usuario Actualizada ");
+                redirect('users.php', false);
+            }else{
+                $session->msg('d',' Lo siento no se actualizó los datos.');
+                redirect('edit_user.php?id='.(int)$e_user['id'], false);
+            }
+        
+        } else {
+            
+            $session->msg("d", $errors);
+            redirect('edit_user.php?id='.(int)$e_user['id'],false);
+        }
+    }
+
+    // Update user password
+    if(isset($_POST['update-pass'])) 
+    {
+        $req_fields = array('password');
+        validate_fields($req_fields); 
+        if(empty($errors))
+        {
+            $id = (int)$e_user['id'];
+            $password = remove_junk($db->escape($_POST['password']));
+            $h_pass   = sha1($password);
+            
+            $sql = "UPDATE users SET password='{$h_pass}' WHERE id='{$db->escape($id)}'";
+            $result = $db->query($sql);
+            
+            if($result && $db->affected_rows() === 1)
+            {
+                $session->msg('s',"Se ha actualizado la contraseña del usuario. ");
+                redirect('edit_user.php?id='.(int)$e_user['id'], false);
+            
+            } else {
+          
+                $session->msg('d','No se pudo actualizar la contraseña de usuario..');
+                redirect('edit_user.php?id='.(int)$e_user['id'], false);
+            }
+        
+        } else {
+    
+            $session->msg("d", $errors);
+            redirect('edit_user.php?id='.(int)$e_user['id'],false);
+        }
+    }
+
+include_once('layouts/header.php'); 
 ?>
-<?php include_once('layouts/header.php'); ?>
+
 <div class="row">
     <div class="col-md-12"> <?php echo display_msg($msg); ?> </div>
     <div class="col-md-6">
@@ -116,17 +131,9 @@ if(isset($_POST['update-pass'])) {
                         <div class="form-group">
                             <label for="sede">SEDE</label>
                             <select class="form-control" name="sede">
-                                <option value="T-Chimb">Tasa - Chimbote</option>
-                                <option value="T-Samanco">Tasa - Samanco</option>
-                                <option value="T-Supe">Tasa - Supe</option>
-                                <option value="T-Vegueta">Tasa - Végueta</option>
-                                <option value="T-Callao">Tasa - Callao</option>
-                                <option value="T-Pisco">Tasa - Pisco</option>
-                                <option value="T-Atico">Tasa - Atico</option>
-                                <option value="T-Matarani">Tasa - Matarani</option>
-                                <option value="E-Chimbote">Exalmar - Chimbote</option>
-                                <option value="E-Chicama">Exalmar - Chicama</option>
-
+                                <?php foreach ($sedes as $sed ):?>
+                                    <option value="<?php echo $sed['id'];?>"><?php echo ucwords($sed['name']);?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
 
@@ -149,7 +156,6 @@ if(isset($_POST['update-pass'])) {
             </div>
             <div class="panel-body">
                 <div class="col-md-12 cont_form" style="margin-bottom:50px;">
-
                     <form action="edit_user.php?id=<?php echo (int)$e_user['id'];?>" method="post" class="clearfix">
                         <div class="form-group">
                             <label for="password" class="control-label">Contraseña</label>
@@ -164,6 +170,5 @@ if(isset($_POST['update-pass'])) {
             </div>
         </div>
     </div>
-
 </div>
 <?php include_once('layouts/footer.php'); ?>
