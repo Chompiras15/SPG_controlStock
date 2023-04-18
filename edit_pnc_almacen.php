@@ -173,7 +173,7 @@ include_once('layouts/header.php');
                       
           <div class="form-group col-md-6">
             <label for="name" class="control-label">Fecha_ejecución</label>
-            <input type="date" class="form-control" name="f_actividad" onblur="changeDateVen(this)" value="<?php echo remove_junk(ucfirst($categorie['f_actividad']));?>">
+            <input type="date" class="form-control" name="f_actividad"  value="<?php echo remove_junk(ucfirst($categorie['f_actividad']));?>">
           </div>     
           
           <div class="form-group col-md-6">
