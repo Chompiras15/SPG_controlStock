@@ -77,37 +77,37 @@
                     <thead>
 
                         <tr>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?>
+                            <?php  if( $SuperUser["sede"]=="5"){?>
                                 <th class="text-center" style="width: 30px;">Lote</th>
                             <?php }else { ?><th class="text-center" style="width: 30px;">Codigo</th>
                             <?php } ?>
 
                             <th class="text-center" style="width: 10px;">Sacos</th>
 
-                            <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
+                            <?php  if( $SuperUser["sede"]=="10"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
                             <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
                             <?php } ?> 
                             
-                            <?php  if( $SuperUser["sede"]=="T-Callao"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
+                            <?php  if( $SuperUser["sede"]=="5"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
                             <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
                             <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
                             <?php } ?>
 
-                            <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
+                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 50px;">F.Producción</th>
                             <th class="text-center" style="width: 50px;">F.Vencimiento</th>
-                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama"|| $SuperUser["sede"]=="T-Chimb"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
+                            <!-- <?php  if( $SuperUser["sede"]=="5" || $SuperUser["sede"]=="10"|| $SuperUser["sede"]=="1"){?> <th class="text-center" style="width: 10px;">Temperatura</th><?php } ?> -->
                             <th class="text-center" style="width: 50px;">Fecha_Ejecucion</th>
                             <th class="text-center" style="width: 50px;">Responsable</th>
                             <th class="text-center" style="width: 50px;">Observación</th>
-                            <?php if( $SuperUser["sede"]=="T-Callao") {?><th class="text-center" style="width: 50px;">Descripción</th><?php } ?>
+                            <?php if( $SuperUser["sede"]=="5") {?><th class="text-center" style="width: 50px;">Descripción</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Fecha</th>
                              <th class="text-center" style="width: 50px;">Acciones</th>
 
 
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><th class="text-center"
+                            <?php if( $SuperUser["sede"]=="9") {?><th class="text-center"
                                 style="width: 100px;">Almacen</th> <?php } ?>
                         </tr>
                     </thead>
@@ -119,13 +119,13 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
                             <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>
                             
-                            <!-- <?php  if( $SuperUser["sede"]=="T-Callao" || $SuperUser["sede"]=="E-Chicama" || $SuperUser["sede"]=="T-Chimb"){?>
+                            <!-- <?php  if( $SuperUser["sede"]=="5" || $SuperUser["sede"]=="10" || $SuperUser["sede"]=="1"){?>
 
 
                              <?php if($cat['tipo']=="HBT") {?> 
@@ -144,12 +144,12 @@
                             } ?> 
                                 
                             <?php } ?> -->
-                            <td><?php echo remove_junk(ucfirst($cat['f_actividad'])); ?></td>
+                            <td><?php echo changeFormat_date($cat['f_actividad'],'d/m/Y'); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['responsable'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['observation'])); ?></td>
-                            <?php if( $SuperUser["sede"]=="T-Callao") {?><td><?php echo remove_junk(ucfirst($cat['descripcion'])); ?></td><?php } ?>
+                            <?php if( $SuperUser["sede"]=="5") {?><td><?php echo remove_junk(ucfirst($cat['descripcion'])); ?></td><?php } ?>
                             <td><?php echo read_date($cat['date_almacenamiento']); ?></td>
-                            <?php if( $SuperUser["sede"]=="E-Chimbote") {?><td><?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
+                            <?php if( $SuperUser["sede"]=="9") {?><td><?php echo remove_junk(ucfirst($cat['almacen'])); ?></td> <?php } ?>
 
 
 
