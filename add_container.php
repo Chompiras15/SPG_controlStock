@@ -17,7 +17,7 @@
   // Checkin What level user has permission to view this page
   page_require_level(5);
 
-  if( $SuperUser["sede"]=="T-Callao") {$table="emb_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="5") {$table="emb_callao"; $tableSed="sede_callao";}
   
   $all_temperature = find_all($table);
 

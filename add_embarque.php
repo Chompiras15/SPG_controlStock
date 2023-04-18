@@ -67,7 +67,7 @@
                         $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
 
-                    } else  if( $SuperUser["sede"]=="T-Callao")
+                    } else  if( $SuperUser["sede"]=="5")
                     {
                         $sql  = "INSERT INTO $table (";
                         $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,type';
@@ -75,7 +75,7 @@
                         $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
                         $sql .= ')';
                         $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
-                    }else if( $SuperUser['sede' ] =="T-Chimb"||$SuperUser['sede' ] =="T-Vegueta")
+                    }else if( $SuperUser['sede' ] =="1"||$SuperUser['sede' ] =="4")
                     {
                         $sql  = "INSERT INTO $table (";
                         $sql .= ' cod_contrato,cant_out,cod_ruma,placa,date_out,supervisor';

@@ -23,11 +23,7 @@
   if( $SuperUser["sede"]=="2") {$table="emb_samanco";$tabla_sed="sede_samanco";}
   if( $SuperUser["sede"]=="3") {$table="emb_supe";$tabla_sed="sede_supe";}
   if( $SuperUser["sede"]=="4"){ $table="emb_vegueta";$tabla_sed="sede_vegueta";}
-  if( $SuperUser["sede"]=="5") 
-  {
-    $table="emb_callao"; 
-   
-  }
+  if( $SuperUser["sede"]=="5"){$table="emb_callao";$tabla_sed="sede_callao";}
   if( $SuperUser["sede"]=="6") {$table="emb_pisco";$tabla_sed="sede_pisco";}
   if( $SuperUser["sede"]=="7") {$table="emb_atico";$tabla_sed="sede_atico";}
   if( $SuperUser["sede"]=="8") {$table="emb_matarani";$tabla_sed="sede_matarani";}
@@ -38,7 +34,7 @@
   $categorie = find_by_id($table,(int)$_GET['id']);
   if(!$categorie)
   {
-    $session->msg("d","Missing Embarcaciones id.");
+    $session->msg("d","No se encontro el embarque id.");
     redirect('embarque.php');
   }
 
