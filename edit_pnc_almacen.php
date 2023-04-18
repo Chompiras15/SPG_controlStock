@@ -36,6 +36,7 @@
     $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
     $cat_saco = remove_junk($db->escape($_POST['cant_saco']));
+    $cat_sector = remove_junk($db->escape($_POST['sector']));
     $cat_producc = remove_junk($db->escape($_POST['date_producc']));
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));

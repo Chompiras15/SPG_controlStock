@@ -158,8 +158,8 @@
                 $sql.=") VALUES (";
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
-                /*var_dump($sql);
-                return;/**/
+               /*var_dump($sql);
+                return; **/
                         
             }else{
 
@@ -182,10 +182,10 @@
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
                     $sql2.=") VALUES (";
-                    $sql2.=" '{$cat_sector}',{$cat_actividad},'{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
+                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-                    //var_dump($cat_actividad);
-                    //return;
+                    /*var_dump($sql2);
+                    return;*/
                 
                 }else {
                     
