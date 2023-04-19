@@ -54,6 +54,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
         $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     };
     
+    if($SuperUser["sede"]=="4")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
     };
