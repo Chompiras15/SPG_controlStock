@@ -138,7 +138,14 @@
                             <option value="Manteado de plataformas">Manteado de plataformas</option>
                             <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
                             <option value="Limpieza de mantas">Limpieza de mantas</option>  
-							<option value="Apoyo en Balanza">Apoyo en Balanza</option>  
+							<option value="Apoyo en Balanza">Apoyo en Balanza</option>
+
+                            <option value="Personal armado muro de arena">Personal armado muro de arena</option>  
+                            <option value="Limpieza de fullpack">Limpieza de fullpack</option>  
+                            <option value="Cocido de mallas">Cocido de mallas</option>  
+                            <option value="Selección de mantas">Selección de mantas</option>
+                            <option value="Fabricación de letreros ubicaciones">Fabricación de letreros ubicaciones</option>
+                            <option value="Calidad">Calidad</option>  
                         </select>
                 </div>
                 <div class="material-textfield">
