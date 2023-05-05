@@ -9,7 +9,7 @@ function find_all( $table ) {
     global $db;
     if ( tableExists( $table ) )
  {
-        return find_by_sql( 'SELECT * FROM '.$db->escape( $table ) );
+        return find_by_sql( 'SELECT * FROM '.$db->escape( $table));
     }
 }
 /*--------------------------------------------------------------*/
@@ -445,6 +445,19 @@ function find_all_sale() {
     /*$sql .= ' LEFT JOIN products p ON s.product_id = p.id';
     */
     $sql .= ' ORDER BY s.date DESC';
+    return find_by_sql( $sql );
+}
+
+function orden_asc_almacen($table){
+    global $db;
+    $sql  = 'SELECT *';
+    $sql .= "FROM $table order by sector, nicho";
+    return find_by_sql( $sql );
+}
+function consultaSector($table, $sector){
+    global $db;
+    $sql  = 'SELECT *';
+    $sql .= "FROM $table WHERE sector=$sector order by sector, nicho";
     return find_by_sql( $sql );
 }
 /*--------------------------------------------------------------*/

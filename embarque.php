@@ -74,6 +74,9 @@
                             
                              <?php if( $SuperUser["sede"]=="5") {?>
                                 <th class="text-center" style="width: 100px;">Tipo</th> <?php } ?>
+
+                             <?php if( $SuperUser["sede"]=="5") {?>
+                                <th class="text-center" style="width: 100px;">Observacion</th> <?php } ?>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -95,6 +98,8 @@
                                 <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
                             <?php if( $SuperUser["sede"]=="5") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['type'])); ?></td><?php } ?>
+                            <?php if( $SuperUser["sede"]=="5") {?>
+                                <td><?php echo remove_junk(ucfirst($embar['observacion'])); ?></td><?php } ?>
 
                             <td class="text-center">
                                 <div class="btn-group">
@@ -138,8 +143,8 @@
             ordering: false,
             scrollCollapse: true,
             lengthMenu: [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "All"]
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
             ],
             info: true,
             columnDefs: [{

@@ -27,8 +27,17 @@
     if( $SuperUser["sede"]=="9") $table="sede_exalmar_chim";
     if( $SuperUser["sede"]=="10") $table="sede_exalmar_mala";
     
-    $all_categories = find_all($table);
+        $all_categories= orden_asc_almacen($table);
+    
+   
 
+    if(!empty ($_GET["numSector"])){
+        $sector=$_GET["numSector"];
+        $all_categories= consultaSector($table,$sector);
+      }else{
+        $all_categories= orden_asc_almacen($table);
+      }
+    //   $result = $db->query($sql);
     include_once('layouts/header.php'); 
 ?>
 
@@ -38,6 +47,15 @@
     {
         background-color: #001f3f;
         color: white;
+    }
+    .searchSector{
+        background-color: #001f3f;
+        color: white;
+    }
+    .searchSector:hover{
+        background-color: #03c4eb;
+        color: white;
+        
     }
 </style>
 
@@ -54,8 +72,9 @@
                 <strong class="titleA">
                     <span class="glyphicon glyphicon-indent-left"></span>
                     <span>Lista de Rumas</span>
+                    
                 </strong>
-
+                
                 <a href="add_almacen.php" class="pull-right contButtonTT">
                     <i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i>
                 </a>
@@ -63,7 +82,7 @@
                 <a href="history.php" class="pull-right historialicon">
                     <i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i>
                 </a>
-
+                
                 <?php  if( $SuperUser["sede"]=="5")
                 {?> 
                     <a href="pnc_almacen.php" class="pull-right pnc_btnAlmacen">
@@ -72,7 +91,23 @@
                     <!-- <a href="add_MultAlmacen.php" style="padding-top: 5px;right: 250px;position: absolute;"class="pull-right"><i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>-->
                 <?php } ?>
             </div>
-            
+            <div style="margin-left: 30%;">
+                        <form class="form-inline" method="GET" action="">
+                            <div style="display: flex;">
+                                <div class=""  style="display:flex;height: 50px;margin-top:3px;">
+                                    <label for="" style="color: black;margin-top:20px;margin-right:5px;">Sector:</label>
+                                     <input style="padding: 3px;" type="number"  placeholder="Numero de Sector"  name="numSector"/>
+                                </div>
+                                <div class="" style="margin-left: 10px;margin-top:22px;">
+                                    <input src="" class="searchSector" type="submit" value="Buscar" style="margin: 0; padding: 3px;border-radius: 5px; width: 60px;border:none;"> 
+                                </div>
+                                <div class="" style="margin-left: 10px;margin-top:22px;">
+                                    <button style="margin: 0; padding: 0; border-radius: 5px;width: 60px;border: none; padding: 3px;" class="searchSector"><a href="almacen.php" style="color: white;text-decoration:none;">Limpiar</a></button>
+                               </div>                            
+                            </div>
+                        </form>
+                    </div>
+           
             <div class="panel-body">
                 <table class="table table-bordered table-striped table-hover" id="tabla">
                     <thead>
@@ -167,8 +202,8 @@
             scrollCollapse: true,
             lengthMenu: 
             [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "Todo"]
+                [10, 25, 50, -1],
+                [10, 25, 50, "Todo"]
             ],
 
             columnDefs: 
@@ -280,24 +315,24 @@
         $("#total").text(tot);
 
         //Creamos una fila en el head de la tabla y lo clonamos para cada columna
-        $('#tabla thead tr').clone(true).appendTo('#tabla thead');
+        // $('#tabla thead tr').clone(true).appendTo('#tabla thead');
 
-        $('#tabla thead tr:eq(1) th').each(function(i) 
-        {
-            var title = $(this).text(); //es el nombre de la columna
-            $(this).html('<input type="text" placeholder="Buscar"/>');
+        // $('#tabla thead tr:eq(1) th').each(function(i) 
+        // {
+        //     var title = $(this).text(); //es el nombre de la columna
+        //     $(this).html('<input type="text" placeholder="Buscar"/>');
 
-            $('input', this).on('keyup change', function() 
-            {
-                if (table.column(i).search() !== this.value) 
-                {
-                    table
-                        .column(i)
-                        .search(this.value)
-                        .draw();
-                }
-            });
-        });
+        //     $('input', this).on('keyup change', function() 
+        //     {
+        //         if (table.column(i).search() !== this.value) 
+        //         {
+        //             table
+        //                 .column(i)
+        //                 .search(this.value)
+        //                 .draw();
+        //         }
+        //     });
+        // });
     });
 </script>
    

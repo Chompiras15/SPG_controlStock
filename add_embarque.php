@@ -46,6 +46,7 @@
         if( $SuperUser["sede"]=="5") $cod_container = remove_junk( $db->escape( $_POST[ 'cod_container' ] ) );
         $date_out = remove_junk( $db->escape( $_POST[ 'date_out' ] ) );
         $supervisor = remove_junk( $db->escape( $_POST[ 'supervisor' ] ) );
+        if( $SuperUser["sede"]=="5") $emb_observacion = remove_junk( $db->escape( $_POST[ 'observacionC' ] ) );
         if ( $SuperUser[ 'sede' ] == '9' )  $almacen = remove_junk( $db->escape( $_POST[ 'almacen' ] ) );
 
         if ( empty( $errors ) )
@@ -70,9 +71,9 @@
                     } else  if( $SuperUser["sede"]=="5")
                     {
                         $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,type';
+                        $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,observacion,type';
                         $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
+                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$emb_observacion}','{$type}'";
                         $sql .= ')';
                         $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
                     }else if( $SuperUser['sede' ] =="1"||$SuperUser['sede' ] =="4")
@@ -122,9 +123,9 @@
                     } else if ( $SuperUser[ 'sede' ] == '5' )
                     {
                         $sql  = "INSERT INTO $table (";
-                        $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,type';
+                        $sql .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor,observacion,type';
                         $sql .= ') VALUES (';
-                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$type}'";
+                        $sql .= " '{$cod_contrato}', '{$cant_out}', '{$cod_ruma}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}','{$emb_observacion}','{$type}'";
                         $sql .= ')';
                         $sql .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
 
@@ -241,6 +242,13 @@ include_once( 'layouts/header.php' );
                             <input placeholder=' ' type='text' name='supervisor' required>
                             <label>Supervisor</label>
                         </div>
+                        <?php  if( $SuperUser["sede"]=="5")
+                        {?>
+                            <div class='material-textfield'>
+                                <input placeholder=' ' type='text' name='observacionC' required>
+                                <label>Observacion</label>
+                            </div>
+                        <?php } ?>
 
                         <?php if ( $SuperUser[ 'sede' ] == '9' ) 
                         {?>

@@ -40,9 +40,10 @@
     if(isset($_POST['codRuma2']) && isset($_POST['cant_out2'])) { $ruma2=remove_junk($db->escape($_POST['codRuma2']));$cant2=remove_junk($db->escape($_POST['cant_out2']));}
     if(isset($_POST['codRuma3']) && isset($_POST['cant_out3'])) { $ruma3=remove_junk($db->escape($_POST['codRuma3']));$cant3=remove_junk($db->escape($_POST['cant_out3']));}
     if(isset($_POST['codRuma4']) && isset($_POST['cant_out4'])) { $ruma4=remove_junk($db->escape($_POST['codRuma4']));$cant4=remove_junk($db->escape($_POST['cant_out4']));}
+    if(isset($_POST['codRuma5']) && isset($_POST['cant_out4'])) { $ruma5=remove_junk($db->escape($_POST['codRuma5']));$cant5=remove_junk($db->escape($_POST['cant_out5']));}
 
 
-    if( $cant1<1001 && $cant2<1001 && $cant3<1001 && $cant4<1001)
+    if( $cant1<1001 && $cant2<1001 && $cant3<1001 && $cant4<1001 && $cant5<1001)
     {
         if($ruma1!=null) 
         {
@@ -115,6 +116,23 @@
             $sql4 .= " '{$cod_contrato}', '{$cant4}', '{$ruma4}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}'";
             $sql4 .= ')';
             $sql4 .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
+        };
+
+        if($ruma5!=null) 
+        {
+            $findCatRuma5 = find_by_codRuma( $tableSed, $ruma5 );
+            $restaSacos5 = ( int )$findCatRuma5[ 'cant_saco' ]-( int )$cant5;
+            if ( $restaSacos5 < 0 )
+            {
+                $session->msg( 'd', 'Verificar la Cantidad Sacos en la Ruma'); //concatenar ruma falta
+                redirect( 'embarque.php', false );
+            };
+            $sql10  = "INSERT INTO $table (";
+            $sql10 .= ' cod_contrato,cant_out,cod_ruma,placa,cod_container,date_out,supervisor';
+            $sql10 .= ') VALUES (';
+            $sql10 .= " '{$cod_contrato}', '{$cant5}', '{$ruma5}','{$cod_placa}','{$cod_container}', '{$date_out}', '{$supervisor}'";
+            $sql10 .= ')';
+            $sql10 .= " ON DUPLICATE KEY UPDATE cod_contrato='{$cod_contrato}'";
         };
 
         
@@ -191,6 +209,25 @@
             }else if ( $restaSacos4 == 0 )
             {
                 if($db->query($sql4)) $delete_cod_ruma = delete_by_id( $tableSed, $findCatRuma4[ 'id' ] );
+            };
+           
+        };
+
+        if($ruma5!=null)
+        { 
+            if ( $restaSacos5 > 0 )
+            {
+                if($db->query($sql10))
+                {
+                    $sql11   = "UPDATE $tableSed SET";
+                    $sql11  .= " cant_saco ='{$restaSacos5}'";
+                    $sql11 .= " WHERE cod_ruma='{$findCatRuma5['cod_ruma']}'";
+                    $db->query( $sql11 );
+
+                };
+            }else if ( $restaSacos5 == 0 )
+            {
+                if($db->query($sql10)) $delete_cod_ruma = delete_by_id( $tableSed, $findCatRuma5[ 'id' ] );
             };
            
         };
@@ -279,7 +316,7 @@
         return 0;
       }else
       {
-        if(inputCant>0 && inputCant<5 ) 
+        if(inputCant>0 && inputCant<6 ) 
         {
             createFormRepro(parent,inputCant);
             dom.disabled=true;
@@ -316,7 +353,7 @@
             var cant_out = document.createElement("input");
             cant_out.setAttribute("type", "number");
             cant_out.setAttribute("name", "cant_out"+(i+1));
-            cant_out.setAttribute("placeholder", "Cantidad de Sacos"+(i+1));
+            cant_out.setAttribute("placeholder", "Cantidad de Sacos "+(i+1));
             cant_out.setAttribute("class", "inpContainer  m-l");
             cant_out.required=true;
                
