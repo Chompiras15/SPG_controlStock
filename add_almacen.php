@@ -48,19 +48,19 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    if($SuperUser["sede"]=="T-Callao")  
+    if($SuperUser["sede"]=="5")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
         $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     };
     
-    if($SuperUser["sede"]=="T-Vegueta")  
+    if($SuperUser["sede"]=="4")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
     };
     $cat_observation = remove_junk($db->escape($_POST['observation']));
  
-    if( $SuperUser["sede"]=="E-Chimbote")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
+    if( $SuperUser["sede"]=="9")  $cat_almacen =remove_junk($db->escape($_POST['almacen']));
    
     //$date   = make_date();
 
@@ -73,7 +73,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
 
             if(empty($errors))
             {
-              if( $SuperUser["sede"]=="E-Chimbote") 
+              if( $SuperUser["sede"]=="9") 
               {
                 $sql  = "INSERT INTO $table (";
                 $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen";
@@ -82,7 +82,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
                
-              }else if($SuperUser["sede"]=="T-Callao") 
+              }else if($SuperUser["sede"]=="5") 
               {
                 $sql= "INSERT INTO $table (";
                 $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,description,observation,responsable";
@@ -90,7 +90,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
-              }else if($SuperUser["sede"]=="T-Vegueta")
+              }else if($SuperUser["sede"]=="4")
               {
                 $sql= "INSERT INTO $table (";
                 $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
@@ -110,14 +110,14 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
               if($db->query($sql))
               {
 
-                if( $SuperUser["sede"]=="T-Callao")
+                if( $SuperUser["sede"]=="5")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else if($SuperUser["sede"]=="T-Vegueta")
+                }else if($SuperUser["sede"]=="4")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
@@ -158,7 +158,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
         {
             //UPDATE DATA ALMACEN 
             
-            if( $SuperUser["sede"]=="E-Chimbote") 
+            if( $SuperUser["sede"]=="9") 
             {
 
                 $sql   = "UPDATE $table SET";
@@ -166,14 +166,14 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
 
-            }else if( $SuperUser["sede"]=="T-Callao") {
+            }else if( $SuperUser["sede"]=="5") {
 
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
                 
-            }else if($SuperUser["sede"]=="T-Vegueta"){
+            }else if($SuperUser["sede"]=="4"){
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
@@ -191,14 +191,14 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
 
             if($result && $db->affected_rows() === 1) 
             {
-                if( $SuperUser["sede"]=="T-Callao")
+                if( $SuperUser["sede"]=="5")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,descripcion,responsable";
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else if($SuperUser["sede"]=="T-Vegueta"){
+                }else if($SuperUser["sede"]=="4"){
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
                     $sql2.=") VALUES (";
@@ -258,7 +258,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_almacen.php">
                     
-                    <?php  if( $SuperUser["sede"]=="T-Callao"||$SuperUser["sede"]=="T-Vegueta"){?> 
+                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
                             <label>Placa Vehicular</label>
@@ -315,14 +315,14 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                         <input placeholder=" " type="text" name="observation" required>
                         <label>Observacion</label>
                     </div>
-                    <?php  if( $SuperUser["sede"]=="T-Callao"){?> 
+                    <?php  if( $SuperUser["sede"]=="5"){?> 
                      <div class="material-textfield">
                         <input placeholder=" " type="text" name="descripcion" >
                         <label>Descripcion</label>
                     </div>
                     <?php }?> 
 
-                    <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                    <?php if( $SuperUser["sede"]=="9") {?>
 
                     <div class="material-textfield">
                         <label class="select" for="almacen">Nombre de Almacen</label>
