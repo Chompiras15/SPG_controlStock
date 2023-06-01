@@ -54,7 +54,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
         $cat_descripcion = remove_junk($db->escape($_POST['descripcion']));
     };
     
-    if($SuperUser["sede"]=="4")  
+    if($SuperUser["sede"]=="4" || $SuperUser["sede"]=="1")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
     };
@@ -90,7 +90,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
-              }else if($SuperUser["sede"]=="4")
+              }else if($SuperUser["sede"]=="1"||$SuperUser["sede"]=="1")
               {
                 $sql= "INSERT INTO $table (";
                 $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
@@ -117,7 +117,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else if($SuperUser["sede"]=="4")
+                }else if($SuperUser["sede"]=="4" ||$SuperUser["sede"]=="1")
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
@@ -173,7 +173,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
                 
-            }else if($SuperUser["sede"]=="4"){
+            }else if($SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){
                 $sql   = "UPDATE $table SET";
                 $sql  .=" sector ='{$cat_sector}', f_actividad = '{$cat_actividad}',tipo ='{$cat_tipo}',cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',responsable='{$SuperUser['name']}'";
@@ -198,7 +198,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$cat_descripcion}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else if($SuperUser["sede"]=="4"){
+                }else if($SuperUser["sede"]=="4" ||$SuperUser["sede"]=="1"){
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
                     $sql2.=") VALUES (";
@@ -258,7 +258,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_almacen.php">
                     
-                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?> 
+                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
                             <label>Placa Vehicular</label>

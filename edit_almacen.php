@@ -52,7 +52,7 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    if($SuperUser["sede"]=="5"||$SuperUser["sede"]=="4")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+    if($SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1")  $cat_placa = remove_junk($db->escape($_POST['placa']));
     $cat_observation = remove_junk($db->escape($_POST['observation']));
     $cat_descripcion = remove_junk($db->escape($_POST['description']));
 
@@ -70,7 +70,7 @@
           $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',description='{$cat_descripcion}'";
           $sql .= " WHERE id='{$categorie['id']}'";
               
-        }else if($SuperUser["sede"]=="4")
+        }else if($SuperUser["sede"]=="4"||$SuperUser["sede"]=="1")
         {
           $sql   = "UPDATE $table SET";
           $sql  .=" sector ='{$cat_sector}',f_actividad='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
@@ -158,13 +158,13 @@
           <input type="text" class="form-control" name="sector" value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
         </div>
         <div class="form-group col-md-6">
-          <?php  if( $SuperUser["sede"]=="T-Callao"){?>  <label for="name" class="control-label">Ubicación</label>
+          <?php  if( $SuperUser["sede"]=="5"){?>  <label for="name" class="control-label">Ubicación</label>
           <?php }else {  ?>  <label for="name" class="control-label">Carril</label>
           <?php } ?>  
           <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
         </div>
 
-        <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4")
+        <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1")
         {?> 
             <div class="form-group col-md-6">
               <label for="name" class="control-label">Placa</label>
