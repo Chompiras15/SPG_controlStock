@@ -92,7 +92,7 @@
                             <td><?php echo read_onlyDate($embar['date_out']); ?></td>
                             <td><?php echo remove_junk(ucfirst($embar['supervisor'])); ?></td>
                             <?php if( $SuperUser["sede"]=="9") {?><td>
-                                <?php echo remove_junk(ucfirst($act['almacen'])); ?></td> <?php } ?>
+                                <?php echo remove_junk(ucfirst($embar['almacen'])); ?></td> <?php } ?>
                             <?php if( $SuperUser["sede"]=="5") {?>
                                 <td><?php echo remove_junk(ucfirst($embar['type'])); ?></td><?php } ?>
 

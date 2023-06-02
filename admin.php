@@ -367,6 +367,21 @@
                                 </button>
                             </form>
                 -->
+
+
+            <a class='col-md-12 col-sm-12 panelForm' href="admin.php?cod=9&id=<?php echo (int)$SuperUser['id'];?>">
+                <button type='submit' name='sede_TChimb' class='cont_sede cont_Sedetasa'>
+                    <div class='panel panel-box clearfix'>
+                        <div class='panel-icon pull-left bg-navy '>
+                            <i class='glyphicon glyphicon-home formIco'></i>
+                        </div>
+
+                        <div class=' contTextForm'>
+                            <h4 class='margin-top'> Chimbote </h4>
+                        </div>
+                    </div>
+                </button>
+            </a>
             <a class='col-md-12 col-sm-12 panelForm' href="admin.php?cod=10&id=<?php echo (int)$SuperUser['id'];?>">
                 <button type='submit' name='sede_TChimb' class='cont_sede cont_Sedetasa'>
                     <div class='panel panel-box clearfix'>
