@@ -52,6 +52,7 @@
       $cant_out = remove_junk($db->escape($_POST['cant_out']));
       $cod_ruma = remove_junk($db->escape($_POST['cod_ruma']));
       $supervisor = remove_junk($db->escape($_POST['supervisor']));
+      $date_out = remove_junk($db->escape($_POST['date_out']));
 
       if( $SuperUser["sede"]=="5" || $SuperUser["sede"]=="1" || $SuperUser["sede"]=="5") 
       {
@@ -62,6 +63,12 @@
       {
         $cod_container = remove_junk($db->escape($_POST['cod_container']));
       };
+
+      if($SuperUser["sede"]=="5")
+      {
+        $observacionEmb = remove_junk($db->escape($_POST['observationCA']));
+      };
+
       $date=make_date();
       /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
       $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
@@ -90,14 +97,14 @@
               {
                 $sql   = "UPDATE $table SET";
                 $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
-                $sql  .=" cod_ruma ='{$cod_ruma}',placa ='{$placa}',cod_container ='{$cod_container}',date_out ='{$date}', supervisor ='{$supervisor}'";
+                $sql  .=" cod_ruma ='{$cod_ruma}',placa ='{$placa}',cod_container ='{$cod_container}',date_out ='{$date_out}', supervisor ='{$supervisor}',observacion='{$observacionEmb}'";
                 $sql .= " WHERE id='{$categorie['id']}'";
 
               }else if($SuperUser["sede"]=="1" || $SuperUser["sede"]=="4")
               {
                 $sql   = "UPDATE $table SET";
                 $sql  .=" cod_contrato ='{$cod_contrato}', cant_out ='{$cant_out}',";
-                $sql  .=" cod_ruma ='{$cod_ruma}', placa ='{$placa}',date_out ='{$date}', supervisor ='{$supervisor}'";
+                $sql  .=" cod_ruma ='{$cod_ruma}', placa ='{$placa}',date_out ='{$date_out}', supervisor ='{$supervisor}'";
                 $sql .= " WHERE id='{$categorie['id']}'";
 
               }else{
@@ -165,6 +172,11 @@ include_once('layouts/header.php');
             <label for="name" class="control-label">Cantidad de sacos</label>
             <input type="text" class="form-control" name="cant_out" placeholder="Cantidad " value="<?php echo remove_junk(ucfirst($categorie['cant_out']));?>">
           </div>
+
+          <div class="form-group col-md-6">
+            <label for="name" class="control-label">Fecha</label>
+            <input type="date" class="form-control" name="date_out" value="<?php echo remove_junk(ucfirst($categorie['date_out']));?>">
+          </div>
                     
           <div class="form-group col-md-6">
             <label for="name" class="control-label">Código de Ruma</label>
@@ -175,8 +187,7 @@ include_once('layouts/header.php');
           {?>
               <div class="form-group col-md-6">
                 <label for="name" class="control-label">Placa</label>
-                <input type="text" class="form-control" name="placa" placeholder="Placa" value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">
-              </div>
+                <input type="date" class="form-control" name="date_out" onblur="changeDateVen(this)" value="<?php echo remove_junk(ucfirst($categorie['date_out']));?>">              </div>
           <?php } ?>
 
           <?php  if( $SuperUser["sede"]=="5")
@@ -191,6 +202,13 @@ include_once('layouts/header.php');
             <label for="name" class="control-label">Supervisor</label>
             <input type="text" class="form-control" name="supervisor" placeholder="Supervisor" value="<?php echo remove_junk(ucfirst($categorie['supervisor']));?>">
           </div>
+          <?php  if( $SuperUser["sede"]=="5")
+          {?>
+              <div class="form-group col-md-6">
+                <label for="name" class="control-label">Observacion</label>
+                <input type="text" class="form-control" name="observationCA" placeholder="observacion" value="<?php echo remove_junk(ucfirst($categorie['observacion']));?>">
+              </div>
+          <?php } ?>
                     
           <div class='form-group clearfix'>
             <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_emb" class="btn btn-primary">Actualizar Embarcaciones</button>

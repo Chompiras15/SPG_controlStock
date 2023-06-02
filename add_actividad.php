@@ -129,7 +129,7 @@
 
                 <div class="material-textfield">
                     <input type="text" name="auxiliares" placeholder=" " required>  
-                    <label>Auxiliares</label>
+                    <label>Supervisor</label>
                 </div>
 
                 <div class="material-textfield">

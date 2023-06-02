@@ -93,7 +93,7 @@
                             <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
                             <?php } ?>
 
-                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
+                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
                             <th class="text-center" style="width: 50px;">F.Producción</th>
@@ -119,7 +119,7 @@
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
-                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
+                            <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
                             <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
