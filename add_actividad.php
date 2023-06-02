@@ -27,10 +27,9 @@
   if( $SuperUser["sede"]=="9") {$tableActi="activity_exalmar_chim";$tabla_sed="sede_exalmar_chim";}
   if( $SuperUser["sede"]=="10") {$tableActi="activity_exalmar_mala";$tabla_sed="sede_exalmar_mala";}
 
-  $all_actividades = find_all($tableActi)
-?>
+  $all_actividades = find_all($tableActi);
+  $actividades = find_all("activitis");
 
-<?php
  if(isset($_POST['add_actividad']))
  {
 
@@ -111,41 +110,11 @@
                 <div class="col-md-12 cont_select" style="margin:0;padding:0;">
                    
                          <select  class="selectpicker" data-show-subtext="true" data-live-search="true" name="nameActivity">
-                        <!-- Opciones dae la lista -->
-                            <option value="Armado de eslingas" selected>Armado de eslingas</option>
-                            <option value="Recepcion de Producción">Recepcion de Producción</option>
-			    <option value="Descarga Provincia">Descarga Provincia</option>
-                            <option value="Monitoreo de Temperatura">Monitoreo de Temperatura</option>
-                            <option value="Eslinga a Piso">Eslinga a Piso</option>
-			    <option value="Corte y vaceado a Dino">Corte y vaceado a Dino</option>
-                            <option value="Ventilación de sacos (Cachaquitos)">Ventilación de sacos (Cachaquitos)</option>
-                            <option value="Descarga/Carga eslinga">Descarga/Carga eslinga</option>
-                            <option value="Muestreo de rumas">Muestreo de rumas</option>
-                            <option value="Borrado y codificado de código">Borrado y codificado de código</option>
-                            <option value="Etiquetado de sacos">Etiquetado de sacos</option> <!-- Opción por defecto -->
-                            <option value="Corte y vaceado en jumbo">Corte y vaceado en jumbo</option>
-                            <option value="Seleccion y armado eslinga">Seleccion y armado eslinga</option>
-                            <option value="Ventilación de sacos con HP">Ventilación de sacos con HP</option>
-                            <option value="Embarque">Embarque</option>
-							<option value="Trasiego de sacos">Trasiego de sacos</option>
-                            <option value="Encintado y serrado de contenedores">Encintado y serrado de contenedores</option>
-                            <option value="Reproceso">Reproceso</option>
-                            <option value="Homogenizado">Homogenizado</option>
-                            <option value="Movimiento Interno">Movimiento Interno</option>
-                            <option value="Mantenimiento">Mantenimiento</option>
-                            <option value="Corte de Drizas">Corte de Drizas</option>
-                            <option value="Control de Calidad">Control de Calidad</option>
-                            <option value="Manteado de plataformas">Manteado de plataformas</option>
-                            <option value="Limpieza de tanques de aceite">Limpieza de tanques de aceite</option>
-                            <option value="Limpieza de mantas">Limpieza de mantas</option>  
-							<option value="Apoyo en Balanza">Apoyo en Balanza</option>
-
-                            <option value="Personal armado muro de arena">Personal armado muro de arena</option>  
-                            <option value="Limpieza de fullpack">Limpieza de fullpack</option>  
-                            <option value="Cocido de mallas">Cocido de mallas</option>  
-                            <option value="Selección de mantas">Selección de mantas</option>
-                            <option value="Fabricación de letreros ubicaciones">Fabricación de letreros ubicaciones</option>
-                            <option value="Calidad">Calidad</option>  
+                       
+                            <?php foreach ($actividades as $act ):?>
+                                <option value="<?php echo $act['name'];?>"><?php echo ucwords($act['name']);?></option>
+                            <?php endforeach;?>
+                            
                         </select>
                 </div>
                 <div class="material-textfield">
