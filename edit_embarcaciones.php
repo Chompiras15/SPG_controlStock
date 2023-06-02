@@ -187,7 +187,7 @@ include_once('layouts/header.php');
           {?>
               <div class="form-group col-md-6">
                 <label for="name" class="control-label">Placa</label>
-                <input type="date" class="form-control" name="date_out" onblur="changeDateVen(this)" value="<?php echo remove_junk(ucfirst($categorie['date_out']));?>">              </div>
+                <input type="text" class="form-control" name="placa" onblur="changeDateVen(this)" value="<?php echo remove_junk(ucfirst($categorie['placa']));?>">              </div>
           <?php } ?>
 
           <?php  if( $SuperUser["sede"]=="5")

@@ -74,7 +74,7 @@
                     <span>Lista de Rumas</span>
                     
                 </strong>
-                
+                <button><a href="plano.php" style="text-decoration:none;" target="_blanck">Plano</a></button>
                 <a href="add_almacen.php" class="pull-right contButtonTT">
                     <i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i>
                 </a>
