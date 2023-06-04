@@ -34,12 +34,13 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
  {
    $findCatRuma = find_by_codRuma($table,$_POST['cod_ruma']);
    
-   if( $SuperUser["sede"]=="E-Chimbote")  $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho', 'observation','almacen');
-   else $req_field = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+//    if( $SuperUser["sede"]=="E-Chimbote") = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation','almacen');
+//    else  = array('sector','f_actividad','tipo','cod_ruma', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad','nicho','observation');
    
-   validate_fields($req_field);
-
+  
+   
     $cat_sector = remove_junk($db->escape($_POST['sector']));
+    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
     $cat_actividad = remove_junk($db->escape($_POST['f_actividad']));
     $cat_tipo = remove_junk($db->escape($_POST['tipo']));
     $cat_ruma = remove_junk($db->escape($_POST['cod_ruma']));
@@ -47,7 +48,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
     $cat_producc = remove_junk($db->escape($_POST['date_producc']));
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
-    $cat_nicho = remove_junk($db->escape($_POST['nicho']));
+    
     if($SuperUser["sede"]=="5")  
     {
         $cat_placa = remove_junk($db->escape($_POST['placa']));
@@ -80,9 +81,9 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
               if( $SuperUser["sede"]=="9") 
               {
                 $sql  = "INSERT INTO $table (";
-                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen,placa";
+                $sql .=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen,placa,responsable";
                 $sql .=") VALUES (";
-                $sql .=" '{$cat_sector}', '{$cat_actividad}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_observation}','{$cat_almacen}', '{$cat_placa}'";
+                $sql .=" '{$cat_sector}','{$cat_actividad}', '{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}','{$cat_nicho}','{$cat_observation}','{$cat_almacen}', '{$cat_placa}','{$SuperUser['name']}'";
                 $sql .=")";
                 $sql .=" ON DUPLICATE KEY UPDATE cod_ruma='{$cat_ruma}'";
                 //var_dump()
@@ -95,7 +96,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                 $sql.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}','{$cat_descripcion}', '{$cat_observation}','{$SuperUser['name']}'";
                 $sql.=")";
 
-              }else if($SuperUser["sede"]=="1"||$SuperUser["sede"]=="1")
+              }else if($SuperUser["sede"]=="1"||$SuperUser["sede"]=="4")
               {
                 $sql= "INSERT INTO $table (";
                 $sql.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
@@ -128,6 +129,12 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,placa,observation,responsable";
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                }else if($SuperUser["sede"]=="9"){
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen,placa,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}','{$cat_nicho}','{$cat_observation}','{$cat_almacen}', '{$cat_placa}','{$SuperUser['name']}'";
                     $sql2.=")";
                 }else
                 {
@@ -167,10 +174,11 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
             {
 
                 $sql   = "UPDATE $table SET";
-                $sql  .=" sector ='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
+                $sql  .=" sector='{$cat_sector}',f_actividad ='{$cat_actividad}',tipo ='{$cat_tipo}', cod_ruma ='{$cat_ruma}',";
                 $sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
                 //$sql  .=" cant_saco ='{$sumaSacos}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
                 $sql .= " WHERE cod_ruma='{$findCatRuma['cod_ruma']}'";
+                
 
             }else if( $SuperUser["sede"]=="5") {
 
@@ -194,7 +202,7 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
             };
 
             $result = $db->query($sql);
-
+           
             if($result && $db->affected_rows() === 1) 
             {
                 if( $SuperUser["sede"]=="5")
@@ -210,7 +218,13 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                     $sql2.=") VALUES (";
                     $sql2.=" '{$cat_sector}', '{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}', '{$cat_nicho}', '{$cat_placa}', '{$cat_observation}','{$SuperUser['name']}'";
                     $sql2.=")";
-                }else 
+                }else if($SuperUser["sede"]=="9"){
+                    $sql2= "INSERT INTO $tableHistory (";
+                    $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,almacen,placa,responsable";
+                    $sql2.=") VALUES (";
+                    $sql2.=" '{$cat_sector}','{$cat_actividad}','{$cat_tipo}','{$cat_ruma}', '{$cat_sacos}', '{$cat_producc}', '{$cat_caduca}', '{$cat_calidad}','{$cat_nicho}','{$cat_observation}','{$cat_almacen}', '{$cat_placa}','{$SuperUser['name']}'";
+                    $sql2.=")";
+                }else
                 {
                     $sql2= "INSERT INTO $tableHistory (";
                     $sql2.=" sector,f_actividad,tipo,cod_ruma,cant_saco,date_producc,date_vencimiento,calidad,nicho,observation,responsable";
@@ -264,16 +278,14 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
             <div class="col-md-12 cont_form">
                 <form method="post" action="add_almacen.php">
                     
-<<<<<<< HEAD
-                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="9"){?> 
-=======
-                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?> 
->>>>>>> 480bb1513160c494c76306b79397ca3ef2c25ee4
+                    <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="9"||$SuperUser["sede"]=="1"){?> 
                         <div class="material-textfield">
                             <input placeholder=" " type="text" name="placa" required>
                             <label>Placa Vehicular</label>
                         </div>
                     <?php } ?>
+
+                    <!-- CONDICIONAR SECTOR Y CARRIL PARA EXALMAR CHIMBOTE -->
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="cod_ruma" required>
                         <label>Cod.Ruma</label>
@@ -282,18 +294,21 @@ if( $SuperUser["sede"]=="1"){ $table="sede_tasachimbote";$tableHistory="history_
                         <input placeholder=" " type="number" name="cant_saco" required>
                         <label>Cantidad sacos</label>
                     </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " type="number" name="sector" required>
-                        <label>Sector</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " type="number" name="nicho" required>
-                        <label>Carril</label>
-                    </div>
+                     <?php if($SuperUser['sede']!=="9") {?>
+                            <div class="material-textfield">
+                            <input placeholder=" " type="number" name="sector">
+                            <label>Sector</label>
+                            </div>
+                            <div class="material-textfield">
+                            <input placeholder=" " type="number" name="nicho">
+                            <label>Carril</label>
+                            </div>
+                            <?php }?> 
+                    
                     <div class="material-textfield">
                         <input placeholder=" " type="text" name="calidad" required>
                         <label>Calidad</label>
-                    </div>
+                        </div>
 
                     <div class="material-textfield">
                         <label class="select">Fecha Produccion</label>

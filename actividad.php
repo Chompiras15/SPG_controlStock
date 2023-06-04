@@ -67,10 +67,10 @@
                             <th class="text-center" style="width: 50px;">Actividad</th>
                             <th class="text-center" style="width: 50px;">Detalle</th>
                             <th class="text-center" style="width: 50px;">Observacion</th>
-                            <th class="text-center" style="width: 50px;">auxiliares</th>
+                            <th class="text-center" style="width: 50px;">Supervisor</th>
                             <th class="text-center" style="width: 10px;">Inició</th>
                             <th class="text-center" style="width: 100px;">Terminó</th>
-                            <th class="text-center" style="width: 10px;">&nbsp&nbsp&nbspFecha&nbsp&nbsp&nbsp  </th>
+                            <th class="text-center" style="width: 10px;">Fecha</th>
                                 <?php if( $SuperUser["sede"]=="9") {?><th class="text-center"
                                     style="width: 100px;">Almacen</th> <?php } ?>
                             <th class="text-center" style="width: 10px;">Acciones</th>

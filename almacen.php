@@ -74,7 +74,7 @@
                     <span>Lista de Rumas</span>
                     
                 </strong>
-                <button><a href="plano.php" style="text-decoration:none;" target="_blanck">Plano</a></button>
+                <!-- <button><a href="plano.php" style="text-decoration:none;" target="_blanck">Plano</a></button> -->
                 <a href="add_almacen.php" class="pull-right contButtonTT">
                     <i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i>
                 </a>
@@ -91,6 +91,7 @@
                     <!-- <a href="add_MultAlmacen.php" style="padding-top: 5px;right: 250px;position: absolute;"class="pull-right"><i class="iconCat glyphicon glyphicon-list-alt" title="Historial"></i></a>-->
                 <?php } ?>
             </div>
+            <?php if($SuperUser['sede']!=="9"){?>
             <div style="margin-left: 30%;">
                         <form class="form-inline" method="GET" action="">
                             <div style="display: flex;">
@@ -107,7 +108,7 @@
                             </div>
                         </form>
                     </div>
-           
+                    <?php }?>
             <div class="panel-body">
                 <table class="table table-bordered table-striped table-hover" id="tabla">
                     <thead>
@@ -118,14 +119,19 @@
 
                             <th class="text-center" style="width: 10px;">Sacos</th>
 
-                            <?php  if( $SuperUser["sede"]=="10"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
-                            <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
+                            <?php if($SuperUser["sede"]!=="9"){?>
+
+                                   <th class="text-center" style="width: 10px;">Sector</th>   
+                                    
                             <?php } ?>
-                            
+
+                          <?php if($SuperUser["sede"]!=="9"){?>
                             <?php  if( $SuperUser["sede"]=="5"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
-                                <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
+                            
                             <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
                             <?php } ?>
+                            <?php } ?>
+
                             <th class="text-center" style="width: 10px;">Placa</th>
                             <th class="text-center" style="width: 10px;">F.Produccion</th>
                             <th class="text-center" style="width: 10px;">F.Vencimiento</th>
@@ -143,8 +149,12 @@
                             
                                 <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
                                 <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                                <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                                <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                                <?php if($SuperUser['sede']!=="9"){?>
+                                    <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                               <?php }?>
+                               <?php if($SuperUser['sede']!=="9"){?>
+                                <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>  
+                                <?php }?>                            
                                 <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td>
                                 <td><?php echo changeFormat_date($cat['date_producc'],'d/m/Y'); ?></td>
                                 <td><?php echo changeFormat_date($cat['date_vencimiento'],'d/m/Y'); ?></td>

@@ -35,8 +35,8 @@
 
     if(isset($_POST['edit_actividad']))
     {
-        $req_field = array('nameActivity', 'details', 'observation', 'auxiliares','hora_ini','hora_fin','fecha');
-        validate_fields($req_field);
+        // $req_field = array('nameActivity', 'details', 'observation', 'auxiliares','hora_ini','hora_fin','fecha','almacen');
+        // validate_fields($req_field);
         $act_name = remove_junk($db->escape($_POST['nameActivity']));
         $act_details = remove_junk($db->escape($_POST['details']));
         $act_observation = remove_junk($db->escape($_POST['observation']));
@@ -44,16 +44,26 @@
         $act_ini = remove_junk($db->escape($_POST['hora_ini']));
         $act_fin = remove_junk($db->escape($_POST['hora_fin']));
         $act_fecha = remove_junk($db->escape($_POST['fecha']));
+        if( $SuperUser["sede"]=="9")  $act_almacen =remove_junk($db->escape($_POST['almacen']));
         $date=make_date();
         /**<var>$cat_name = remove_junk($db->escape($_POST['categorie-name']));
          $cat_name = remove_junk($db->escape($_POST['categorie-name']));</var>*/
         if(empty($errors))
         {
+            if($SuperUser['sede']==9){
             $sql   = "UPDATE $tableActi SET";
+            $sql  .=" nameActivity ='{$act_name}', details ='{$act_details}',";
+            $sql  .=" observation ='{$act_observation}', auxiliares ='{$act_aux}', hora_ini ='{$act_ini}', hora_fin ='{$act_fin}', fecha ='{$act_fecha}', date ='{$date}',almacen='{$act_almacen}'";
+            $sql .= " WHERE id='{$activity['id']}'";
+            $result = $db->query($sql);
+            }else{
+                $sql   = "UPDATE $tableActi SET";
             $sql  .=" nameActivity ='{$act_name}', details ='{$act_details}',";
             $sql  .=" observation ='{$act_observation}', auxiliares ='{$act_aux}', hora_ini ='{$act_ini}', hora_fin ='{$act_fin}', fecha ='{$act_fecha}', date ='{$date}'";
             $sql .= " WHERE id='{$activity['id']}'";
             $result = $db->query($sql);
+            }
+            
 
             if($result && $db->affected_rows() === 1) 
             {
@@ -231,8 +241,29 @@
                         <input type="date" class="form-control" name="fecha"
                             value="<?php echo remove_junk(ucfirst($activity['fecha']));?>">
                     </div>
+                    <?php if($SuperUser["sede"]=="9"){?>
+                    <div class="form-group col-md-6" >
+                        <label for="" class="control-label">Seleccione almacén</label>
+                        <select name="almacen" id="" class="col-md-12">
+                                <option value="Oslo"
+                                <?php if($activity['almacen']=="Oslo"){;?>selected <?php } ?>>
+                                Oslo</option>
 
-            
+                                <option value="Blackar"
+                                <?php if($activity['almacen']=="Blackar"){;?>selected <?php } ?>>
+                                Blackar</option>
+
+                                <option value="BPO"
+                                <?php if($activity['almacen']=="BPO"){;?>selected <?php } ?>>
+                                BPO</option>
+
+                                <option value="Promasa"
+                                <?php if($activity['almacen']=="Promasa"){;?>selected <?php } ?>>
+                                Promasa</option>
+
+                        </select>
+                    </div>
+                    <?php }?>
                     <div class='form-group clearfix'>
                         <button style='width:100%;border-radius: 35px;margin-top:10px' type="submit" name="edit_actividad"
                             class="btn btn-primary">Actualizar

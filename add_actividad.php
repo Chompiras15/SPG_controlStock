@@ -33,7 +33,7 @@
  if(isset($_POST['add_actividad']))
  {
 
-    if( $SuperUser["sede"]=="E-Chimbote") $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','fecha','almacen');
+    if( $SuperUser["sede"]=="9") $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','fecha','almacen');
     else $req_field = array('nameActivity', 'details','observation','auxiliares','hora_ini','fecha');
     
     validate_fields($req_field);
@@ -44,13 +44,13 @@
     $act_ini = remove_junk($db->escape($_POST['hora_ini']));
     $act_fin = remove_junk($db->escape($_POST['hora_fin']));
     $act_fecha = remove_junk($db->escape($_POST['fecha']));
-    if( $SuperUser["sede"]=="E-Chimbote")  $act_almacen =remove_junk($db->escape($_POST['almacen']));
+    if( $SuperUser["sede"]=="9")  $act_almacen =remove_junk($db->escape($_POST['almacen']));
     
 
     if(empty($errors))
     {
 
-            if( $SuperUser["sede"]=="E-Chimbote")
+            if( $SuperUser["sede"]=="9")
             {
                 $sql  = "INSERT INTO $tableActi (";
                 $sql .=" nameActivity,details,observation,auxiliares,hora_ini,hora_fin,fecha,date,almacen";
@@ -149,16 +149,16 @@
                     
                 </div>
                 
-                <?php if( $SuperUser["sede"]=="E-Chimbote") {?>
+                <?php if( $SuperUser["sede"]=="9"){?>
 
                     <div class="material-textfield">
                         <label class="select" for="almacen">Nombre de Almacen</label>
                         <select class="form-control" name="almacen">
                             <!-- Opciones de la lista -->
-                            <option value="Oslo" selected>Almacen de Oslo</option><!-- Opción por defecto -->
-                            <option value="Blackar">Almacen de Blackar</option>
-                            <option value="Bpo">Almacen de Bpo</option>
-                            <option value="Promosa">Almacen de Promasa</option>
+                            <option value="Oslo" selected>Oslo</option><!-- Opción por defecto -->
+                            <option value="Blackar">Blackar</option>
+                            <option value="Bpo">BPO</option>
+                            <option value="Promosa">Promasa</option>
                         </select>
                     </div>
                 <?php } ?>

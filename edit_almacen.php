@@ -38,7 +38,7 @@
   if(isset($_POST['edit_cat']))
   {
 
-    $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
+    // $req_field = array('sector','f_actividad','tipo', 'cant_saco', 'date_producc', 'date_vencimiento', 'calidad', 'nicho','observation');
 
  
     validate_fields($req_field);
@@ -52,7 +52,8 @@
     $cat_caduca = remove_junk($db->escape($_POST['date_vencimiento']));
     $cat_calidad = remove_junk($db->escape($_POST['calidad']));
     $cat_nicho = remove_junk($db->escape($_POST['nicho']));
-    if($SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1")  $cat_placa = remove_junk($db->escape($_POST['placa']));
+    $cat_almacen = remove_junk($db->escape($_POST['almacen']));
+    if($SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"||$SuperUser["sede"]=="9")  $cat_placa = remove_junk($db->escape($_POST['placa']));
     $cat_observation = remove_junk($db->escape($_POST['observation']));
     $cat_descripcion = remove_junk($db->escape($_POST['description']));
 
@@ -77,6 +78,11 @@
           $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}'";
           $sql .= " WHERE id='{$categorie['id']}'";
         
+        }else if($SuperUser['sede']=="9"){
+          $sql   = "UPDATE $table SET";
+          $sql  .=" sector ='{$cat_sector}',f_actividad='{$cat_actividad}',tipo ='{$cat_tipo}' ,";
+          $sql  .=" cant_saco ='{$cat_saco}',date_producc ='{$cat_producc}', date_vencimiento ='{$cat_caduca}', calidad ='{$cat_calidad}',nicho='{$cat_nicho}',placa='{$cat_placa}',observation='{$cat_observation}',almacen='{$cat_almacen}'";
+          $sql .= " WHERE id='{$categorie['id']}'";
         }else
         {
             $sql   = "UPDATE $table SET";
@@ -151,20 +157,23 @@
           <label for="name" class="control-label">Cantidad de Sacos</label>
           <input type="text" class="form-control" name="cant_saco" value="<?php echo remove_junk(ucfirst($categorie['cant_saco']));?>">
         </div>
+        <?php if($SuperUser['sede']!=="9"){?>
         <div class="form-group col-md-6">
           <?php  if( $SuperUser["sede"]=="E-Chicama"){?> <label for="name" class="control-label">Cuartel</label>
           <?php }else {  ?> <label for="name" class="control-label">Sector</label>
           <?php } ?>  
           <input type="text" class="form-control" name="sector" value="<?php echo remove_junk(ucfirst($categorie['sector']));?>">
         </div>
+        <?php }?>
+        <?php if($SuperUser['sede']!=="9"){?>
         <div class="form-group col-md-6">
           <?php  if( $SuperUser["sede"]=="5"){?>  <label for="name" class="control-label">Ubicación</label>
           <?php }else {  ?>  <label for="name" class="control-label">Carril</label>
           <?php } ?>  
           <input type="text" class="form-control" name="nicho" value="<?php echo remove_junk(ucfirst($categorie['nicho']));?>">
         </div>
-
-        <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1")
+        <?php }?>
+        <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"||$SuperUser["sede"]=="9")
         {?> 
             <div class="form-group col-md-6">
               <label for="name" class="control-label">Placa</label>
@@ -196,7 +205,20 @@
           <label for="name" class="control-label">Observación</label>
           <input type="text" class="form-control" name="observation" value="<?php echo remove_junk(ucfirst($categorie['observation']));?>">
         </div>
-        
+        <?php if($SuperUser['sede']=="9"){?>
+        <div class="form-group col-md-6">
+          <label for="name" class="control-label">Seleccione Almacén</label>
+
+          <select name="almacen" <?php echo (int)$categorie['id'];?> style="width:100%;">
+            <!-- Opciones de la lista -->
+            <option value="Oslo" <?php if($categorie['almacen']=="Oslo"){;?>selected <?php } ?>>Oslo</option>
+            <option value="Blackar" <?php if($categorie['almacen']=="Blackar"){;?>selected <?php } ?>>Blackar</option>
+            <option value="BPO" <?php if($categorie['almacen']=="BPO"){;?>selected <?php } ?>>BPO</option>
+            <option value="Promasa" <?php if($categorie['almacen']=="Promasa"){;?>selected <?php } ?>>Promasa</option> <!-- Opción por defecto -->
+          </select>
+          
+        </div>
+        <?php }?>
         <?php  if( $SuperUser["sede"]=="5")
         {?> 
             <div class="form-group col-md-6">

@@ -16,16 +16,16 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(5);
-  if( $SuperUser["sede"]=="T-Chimb") {$table="temp_tasachimbote";$tableSed="sede_tasachimbote";}
-  if( $SuperUser["sede"]=="T-Samanco") {$table="temp_samanco";$tableSed="sede_samanco";}
-  if( $SuperUser["sede"]=="T-Supe") {$table="temp_supe";$tableSed="sede_supe";}
-  if( $SuperUser["sede"]=="T-Vegueta") {$table="temp_vegueta";$tableSed="sede_vegueta";}
-  if( $SuperUser["sede"]=="T-Callao") {$table="temp_callao"; $tableSed="sede_callao";}
-  if( $SuperUser["sede"]=="T-Pisco") {$table="temp_pisco";$tableSed="sede_pisco";}
-  if( $SuperUser["sede"]=="T-Atico") {$table="temp_atico";$tableSed="sede_atico";}
-  if( $SuperUser["sede"]=="T-Matarani") {$table="temp_matarani"; $tableSed="sede_matarani";}
-  if( $SuperUser["sede"]=="E-Chimbote") {$table="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
-  if( $SuperUser["sede"]=="E-Chicama") {$table="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
+  if( $SuperUser["sede"]=="1") {$table="temp_tasachimbote";$tableSed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="2") {$table="temp_samanco";$tableSed="sede_samanco";}
+  if( $SuperUser["sede"]=="3") {$table="temp_supe";$tableSed="sede_supe";}
+  if( $SuperUser["sede"]=="4") {$table="temp_vegueta";$tableSed="sede_vegueta";}
+  if( $SuperUser["sede"]=="5") {$table="temp_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="6") {$table="temp_pisco";$tableSed="sede_pisco";}
+  if( $SuperUser["sede"]=="7") {$table="temp_atico";$tableSed="sede_atico";}
+  if( $SuperUser["sede"]=="8") {$table="temp_matarani"; $tableSed="sede_matarani";}
+  if( $SuperUser["sede"]=="9") {$table="temp_exalmar_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="10") {$table="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
   $all_temperature = find_all($table)
 ?>

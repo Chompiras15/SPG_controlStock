@@ -83,16 +83,18 @@
                             <?php } ?>
 
                             <th class="text-center" style="width: 10px;">Sacos</th>
-
+                            <?php if($SuperUser['sede']!=="9") {?>
+                                
                             <?php  if( $SuperUser["sede"]=="10"){?> <th class="text-center" style="width: 10px;">Cuartel</th>
                             <?php }else {  ?> <th class="text-center" style="width: 10px;">Sector</th>
-                            <?php } ?> 
-                            
+                            <?php } ?>
+                            <?php }?>
+                            <?php if($SuperUser['sede']!=="9") {?>
                             <?php  if( $SuperUser["sede"]=="5"){?> <th class="text-center" style="width: 30px;">Ubicación</th>
                             <?php /*}else if( $SuperUser["sede"]=="E-Chicama"){ */?><!--<th class="text-center" style="width: 30px;">Pasadizo</th>-->
                             <?php }else{ ?><th class="text-center" style="width: 30px;">Carril</th>
                             <?php } ?>
-
+                            <?php }?>
                             <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?>  <th class="text-center" style="width: 10px;">Placa</th><?php } ?>
                             <th class="text-center" style="width: 30px;">Tipo</th>
                             <th class="text-center" style="width: 50px;">Calidad</th>
@@ -104,11 +106,12 @@
                             <th class="text-center" style="width: 50px;">Observación</th>
                             <?php if( $SuperUser["sede"]=="5") {?><th class="text-center" style="width: 50px;">Descripción</th><?php } ?>
                             <th class="text-center" style="width: 50px;">Fecha</th>
+                            <?php if( $SuperUser["sede"]=="9") {?><th class="text-center"
+                                style="width: 100px;">Almacen</th> <?php } ?>
                              <th class="text-center" style="width: 50px;">Acciones</th>
 
 
-                            <?php if( $SuperUser["sede"]=="9") {?><th class="text-center"
-                                style="width: 100px;">Almacen</th> <?php } ?>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -117,8 +120,11 @@
                            
                             <td><?php echo remove_junk(ucfirst($cat['cod_ruma'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['cant_saco'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
-                            <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                            <?php if($SuperUser['sede']!=="9"){?>
+                                <td><?php echo remove_junk(ucfirst($cat['sector'])); ?></td>
+                                <td><?php echo remove_junk(ucfirst($cat['nicho'])); ?></td>
+                           <?php }?>
+                            
                             <?php  if( $SuperUser["sede"]=="5"||$SuperUser["sede"]=="4"||$SuperUser["sede"]=="1"){?> <td><?php echo remove_junk(ucfirst($cat['placa'])); ?></td> <?php } ?>
                              <td><?php echo remove_junk(ucfirst($cat['tipo'])); ?></td>
                             <td><?php echo remove_junk(ucfirst($cat['calidad'])); ?></td>
