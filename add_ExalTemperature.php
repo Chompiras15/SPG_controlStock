@@ -16,16 +16,16 @@
   $SuperUser = current_user();
   // Checkin What level user has permission to view this page
   page_require_level(4);
-  if( $SuperUser["sede"]=="T-Chimb") {$tabletemp="temp_tasachimbote";$tableSed="sede_tasachimbote";}
-  if( $SuperUser["sede"]=="T-Samanco") {$tabletemp="temp_samanco";$tableSed="sede_samanco";}
-  if( $SuperUser["sede"]=="T-Supe") {$tabletemp="temp_supe";$tableSed="sede_supe";}
-  if( $SuperUser["sede"]=="T-Vegueta") {$tabletemp="temp_vegueta";$tableSed="sede_vegueta";}
-  if( $SuperUser["sede"]=="T-Callao") {$tabletemp="temp_callao"; $tableSed="sede_callao";}
-  if( $SuperUser["sede"]=="T-Pisco") {$tabletemp="temp_pisco";$tableSed="sede_pisco";}
-  if( $SuperUser["sede"]=="T-Atico") {$tabletemp="temp_atico";$tableSed="sede_atico";}
-  if( $SuperUser["sede"]=="T-Matarani") {$tabletemp="temp_matarani"; $tableSed="sede_matarani";}
-  if( $SuperUser["sede"]=="E-Chimbote") {$tabletemp="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
-  if( $SuperUser["sede"]=="E-Chicama") {$tabletemp="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
+  if( $SuperUser["sede"]=="1") {$tabletemp="temp_tasachimbote";$tableSed="sede_tasachimbote";}
+  if( $SuperUser["sede"]=="2") {$tabletemp="temp_samanco";$tableSed="sede_samanco";}
+  if( $SuperUser["sede"]=="3") {$tabletemp="temp_supe";$tableSed="sede_supe";}
+  if( $SuperUser["sede"]=="4") {$tabletemp="temp_vegueta";$tableSed="sede_vegueta";}
+  if( $SuperUser["sede"]=="5") {$tabletemp="temp_callao"; $tableSed="sede_callao";}
+  if( $SuperUser["sede"]=="6") {$tabletemp="temp_pisco";$tableSed="sede_pisco";}
+  if( $SuperUser["sede"]=="7") {$tabletemp="temp_atico";$tableSed="sede_atico";}
+  if( $SuperUser["sede"]=="8") {$tabletemp="temp_matarani"; $tableSed="sede_matarani";}
+  if( $SuperUser["sede"]=="9") {$tabletemp="exalmar_temp_chim";$tableSed="sede_exalmar_chim";}
+  if( $SuperUser["sede"]=="10") {$tabletemp="temp_exalmar_mala";$tableSed="sede_exalmar_mala";}
   
 
   $all_temperaturas = find_all($tabletemp)
@@ -33,7 +33,7 @@
 <?php
  if(isset($_POST['add_ExalTemperature']))
  {
-  if( $SuperUser["sede"]=="E-Chicama") $req_field = array('codRuma', 'observacion', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor','f_monitoreo');
+  if( $SuperUser["sede"]=="10") $req_field = array('codRuma', 'observacion', 'filter1', 'filter2', 'filter3', 'filter4', 'filter5', 'filter6', 'filter7','filter8','filter9', 'filter10', 'filter11','filter12','filter13','filter14', 'filter15','filter16','filter17','filter18', 'filter19','filter20','filter21','filter22', 'filter23','filter24','filter25','supervisor','f_monitoreo');
    
     validate_fields($req_field);
    
