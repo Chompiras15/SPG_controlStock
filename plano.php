@@ -99,44 +99,23 @@ $all_rumas = find_all($table);
         <!-- <div class="col-sm-12" style="display:flex;"> -->
             <div class="col-sm-3 sector" >
                 <h5>SECTOR 5</h5>
-                    <div id="contSector5">
-                       
-                    </div>
-                   
-                    
-                    
+                    <div id="contSector5"></div>        
             </div>
             <div class="col-sm-3 sector">
                 <h5 >SECTOR 4</h5>
-                <div id="contSector4">
-                       
-                </div>
-
-                    
+                <div id="contSector4"></div>      
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 3</h5>
-                <div id="contSector3">
-                       
-                </div>
-                
-
-                    
+                <div id="contSector3"></div>     
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 2</h5>
-                <div id="contSector2">
-                       
-                </div>
-                
+                <div id="contSector2"></div>
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 1</h5>
-                <div id="contSector1">
-                       
-                </div>
-                
-                    
+                <div id="contSector1"></div>
             </div>
         
   <!-- </div> -->
