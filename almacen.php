@@ -74,7 +74,9 @@
                     <span>Lista de Rumas</span>
                     
                 </strong>
-                <!-- <button><a href="plano.php" style="text-decoration:none;" target="_blanck">Plano</a></button> -->
+               <?php if($SuperUser['sede']=="1"){ ?>
+               <button class="searchSector" style="border-radius:4px;border:none;padding:4px;margin-left: 20px;"><a href="plano.php" style="text-decoration:none;color:white;"  target="_blanck">Generar plano</a></button>
+               <?php }?>
                 <a href="add_almacen.php" class="pull-right contButtonTT">
                     <i class="iconCat glyphicon glyphicon-plus-sign" title="Nueva Ruma"></i>
                 </a>
