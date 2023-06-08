@@ -24,7 +24,7 @@ $all_rumas = find_all($table);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLANO DE TASA - CHIMBOTE</title>
+    <title>PLANO TASA - CHIMBOTE</title>
     <style>
         .contenedorGen{
             text-align: center;
@@ -99,23 +99,59 @@ $all_rumas = find_all($table);
         <!-- <div class="col-sm-12" style="display:flex;"> -->
             <div class="col-sm-3 sector" >
                 <h5>SECTOR 5</h5>
-                    <div id="contSector5"></div>        
+                    <div id="contSector5">
+                       
+                    </div>
+                    <div class="col-sm-3 sector" style="text-align:center;">
+                    <label for="" style="font-weight:bold;">Total S. 5</label>
+                    <input type="text"class="codRum" style="background: yellow;text-align:center;font-weight:bold;" id="sec5">
+                    </div> 
             </div>
             <div class="col-sm-3 sector">
                 <h5 >SECTOR 4</h5>
-                <div id="contSector4"></div>      
+                <div id="contSector4">
+                       
+                </div>
+                <div class="col-sm-3 sector" style="text-align:center;">
+                    <label for=""  style="font-weight:bold;">Total S. 4</label>
+                    <input type="text"class="codRum" style="background: yellow;text-align:center;font-weight:bold;" id="sec4">
+                    </div> 
+
+                    
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 3</h5>
-                <div id="contSector3"></div>     
+                <div id="contSector3">
+                       
+                </div>
+                <div class="col-sm-3 sector" style="text-align:center;">
+                    <label for=""  style="font-weight:bold;">Total S. 3</label>
+                    <input type="text"class="codRum" style="background: yellow;text-align:center;font-weight:bold;" id="sec3">
+                    </div> 
+
+                    
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 2</h5>
-                <div id="contSector2"></div>
+                <div id="contSector2">
+                       
+                </div>
+                <div class="col-sm-3 sector" style="text-align:center;">
+                    <label for=""  style="font-weight:bold;">Total S. 2</label>
+                    <input type="text"class="codRum" style="background: yellow;text-align:center;font-weight:bold;" id="sec2">
+                    </div> 
+                
             </div>
             <div class="col-sm-3 sector">
                 <h5>SECTOR 1</h5>
-                <div id="contSector1"></div>
+                <div id="contSector1">
+                       
+                </div>
+                <div class="col-sm-3 sector" style="text-align:center;">
+                    <label for=""  style="font-weight:bold;">Total S. 1</label>
+                    <input type="text"class="codRum" style="background: yellow;text-align:center;font-weight:bold;" id="sec1">
+                    </div> 
+                    
             </div>
         
   <!-- </div> -->
@@ -127,27 +163,32 @@ $all_rumas = find_all($table);
 <script>
       // Crear un div
     var jsVariable = <?php echo json_encode($all_rumas); ?>;
-   
-    function sgp_createSector(parent,cantidadSector,sectorpertenece,data)
+   var sec5=document.getElementById("sec5");
+   var sec4=document.getElementById("sec4");
+   var sec3=document.getElementById("sec3");
+   var sec2=document.getElementById("sec2");
+   var sec1=document.getElementById("sec1");
+   var sum5=0;
+   var sum4=0;
+   var sum3=0;
+   var sum2=0;
+   var sum1=0;
+    function sgp_createSector(parent,cantidadNicho,sectorpertenece,data)
     {
-        console.log(data)
+        
        //var array=JSON.parse(data);
+       var dataTmp=[];
        array=data;
-        console.log(array)
-        for (var j = 0; j < cantidadSector; j++) 
+        
+        for (var j = 0; j < cantidadNicho; j++) 
         {
             var div = document.createElement('div');
-
-            // Agregar algunos estilos al div (opcional)
-            div.style.border = '1px solid black';
-            div.style.padding = '10px';
 
             // Crear tres inputs
             for (var i = 0; i < 3; i++) 
             {
                 var input = document.createElement('input');
                 input.type = 'text';
-                input.placeholder = 'Input ' + (i + 1);
                 if(i==0) input.value=j+1;
                 if(i==1) 
                 {
@@ -161,28 +202,116 @@ $all_rumas = find_all($table);
                         console.log("nicho")
                         console.log(array[k]["nicho"])
                         console.log("'"+(j+1)+"'")*/
-                        if(array[k]["sector"]==sectorpertenece && array[k]["nicho"]==(j+1)) 
+                        if(array[k]["sector"]==sectorpertenece && array[k]["nicho"]==(j+1))
                         {   
-                            //console.log("si entre")
-                            input.value= array[k]["cod_ruma"]; 
+                            dataTmp[dataTmp.length]={"sector":array[k]["sector"],"nicho":array[k]["nicho"],"cant_saco":array[k]["cant_saco"],"cod_ruma":array[k]["cod_ruma"]}
+                            input.value= array[k]["cod_ruma"];
+                           
                         }
+                        if( input.value!=""){
+                            input.style.background = 'yellow';
+                            
+                            }
                     }
                 }else input.classList.add('num');
 
-                // Agregar los inputs al div
+                if(i==2) 
+                {
+                    
+     
+                    for (var k = 0; k < array.length; k++) 
+                    {
+                        /*console.log("entre al forrrr222")
+                        console.log("sector")
+                        console.log(array[k]["sector"])
+                        console.log("nicho")
+                        console.log(array[k]["nicho"])
+                        console.log("'"+(j+1)+"'")*/
+                        if(array[k]["sector"]==sectorpertenece && array[k]["nicho"]==(j+1)) 
+                        {   
+                            //console.log("si entre")
+                            input.value= array[k]["cant_saco"]; 
+                           if(sectorpertenece=="5"){
+                            sum5+=parseInt(input.value= array[k]["cant_saco"]);
+                           }
+                           if(sectorpertenece=="4"){
+                            sum4+=parseInt(input.value= array[k]["cant_saco"]);
+                           }
+                           if(sectorpertenece=="3"){
+                            sum3+=parseInt(input.value= array[k]["cant_saco"]);
+                           }
+                           if(sectorpertenece=="2"){
+                            sum2+=parseInt(input.value= array[k]["cant_saco"]);
+                            
+                           }
+                           if(sectorpertenece=="1"){
+                            sum1+=parseInt(input.value= array[k]["cant_saco"]);
+                           }
+                        }
+                        
+                    }
+                }
                 div.appendChild(input);
+                if(i==2)
+                {
+                    div2=null;
+                    if(dataTmp.length>0)
+                    {
+                       
+                        console.log("Esperoooooo")
+                        console.log(dataTmp);
+                        console.log(dataTmp.length);
+                        for(var m=0;m<dataTmp.length-1;m++)
+                        {
+                            
+                            var div2 = document.createElement('div');
+                            console.log(m)
+                            console.log("tegngo 2")
+                            var input2 = document.createElement('input');
+                            input2.type = 'text';
+                            input2.value=dataTmp[m].nicho;
+                            input2.classList.add('num');
+                            div2.appendChild(input2);
+
+                            var input2 = document.createElement('input');
+                            input2.type = 'text';
+                            input2.value=dataTmp[m]["cod_ruma"];
+                            input2.classList.add('codRum');
+                            
+                            div2.appendChild(input2);
+
+                            var input2 = document.createElement('input');
+                            input2.type = 'text';
+                            input2.value=dataTmp[m]["cant_saco"]
+                            input2.classList.add('num');
+                            div2.appendChild(input2);
+                            div.appendChild(div2);
+                            
+                        }
+                        dataTmp=[];
+                   
+                    }
+
+                }
+             
             }
 
             // Agregar el div al cuerpo del documento
             document.getElementById(parent).appendChild(div);
+
+            
         };
+        sec5.value=sum5;
+        sec4.value=sum4;
+        sec3.value=sum3;
+        sec2.value=sum2;
+        sec1.value=sum1;
       };
-     
     sgp_createSector("contSector1",104,"1",jsVariable);
     sgp_createSector("contSector2",104,"2",jsVariable);
     sgp_createSector("contSector3",104,"3",jsVariable);
-    sgp_createSector("contSector4",70,"4",jsVariable);
-    sgp_createSector("contSector5",38,"5",jsVariable);/*s*/
+    sgp_createSector("contSector4",75,"4",jsVariable);
+    sgp_createSector("contSector5",38,"5",jsVariable)/* ;*/
     
 
       </script>
